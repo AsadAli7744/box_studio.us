@@ -1,8 +1,6 @@
-import { render, screen } from '@testing-library/react';
-import App from './App';
+import { site } from './data/site';
 
-test('renders learn react link', () => {
-  render(<App />);
-  const linkElement = screen.getByText(/learn react/i);
-  expect(linkElement).toBeInTheDocument();
+test('uses the Box Studio domain', () => {
+  expect(site.url).toBe('https://boxstudio.us');
+  expect(site.email).toBe('');
 });
