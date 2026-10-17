@@ -1,0 +1,4080 @@
+{
+  "categories": [
+    {
+      "slug": "rigid-boxes",
+      "name": "Rigid Boxes",
+      "image": "/images/cat-rigid.jpg",
+      "alt": "Rigid boxes, one open with bottles seated inside.",
+      "short": "Set-up boxes for gifts and sets people keep.",
+      "intro": "Magnetic lids, lift-off lids, and drawers for sets that should feel firm after they are opened.",
+      "line": "Lids, drawers, and jewelry boxes",
+      "faqs": []
+    },
+    {
+      "slug": "cosmetic-boxes",
+      "name": "Cosmetic Boxes",
+      "image": "/images/cat-cosmetic.jpg",
+      "alt": "Eyeliner, mascara, lipstick, and a cream jar with their cartons.",
+      "short": "Cartons and rigid boxes for makeup and skincare.",
+      "intro": "Eyeliner, mascara, lipstick, lotion, perfume, and skincare sets. Pick the product you pack, then open the box that fits it.",
+      "line": "Eyeliner, mascara, lipstick, and sets",
+      "faqs": []
+    },
+    {
+      "slug": "display-boxes",
+      "name": "Display Boxes",
+      "image": "/images/cat-display.jpg",
+      "alt": "A sleeve box and a window carton on a counter.",
+      "short": "Sleeves, windows, and counter trays that show the product.",
+      "intro": "For a product people should see before they buy. A sleeve slides open, a window shows the front, a tray holds a row on the counter.",
+      "line": "Sleeves, windows, and counter trays",
+      "faqs": []
+    },
+    {
+      "slug": "food-boxes",
+      "name": "Food Boxes",
+      "image": "/images/cat-food.jpg",
+      "alt": "A tea carton and a bakery window box together.",
+      "short": "Cartons for coffee, chocolate, cereal, bakery, and other dry goods.",
+      "intro": "Coffee, chocolate, cereal, tea, bakery, and other dry goods. The carton is the outer pack. An inner bag, tin, or tray is the contact layer when the product needs one. This site does not certify a box for food contact.",
+      "line": "Coffee, chocolate, cereal, and bakery",
+      "faqs": []
+    },
+    {
+      "slug": "mailer-boxes",
+      "name": "Mailer Boxes",
+      "image": "/images/cat-mailer.jpg",
+      "alt": "Two open mailer boxes packed with products.",
+      "short": "The box a customer opens when clothing, a candle, shoes, or an order arrives.",
+      "intro": "Mailers for clothing, shoes, candles, samples, and the order a customer opens. The lid is the part they open.",
+      "line": "Clothing, candles, shoes, and orders",
+      "faqs": []
+    },
+    {
+      "slug": "shipping-boxes",
+      "name": "Shipping Boxes",
+      "image": "/images/cat-shipping.jpg",
+      "alt": "Corrugated shipping cartons, one open around a smaller box.",
+      "short": "Outer cartons for delivery.",
+      "intro": "Corrugated cartons for the trip from you to the customer. A regular slotted box for most orders. A full-overlap top when the shipment is heavier.",
+      "line": "Outer cartons for delivery",
+      "faqs": []
+    },
+    {
+      "slug": "gift-boxes",
+      "name": "Gift Boxes",
+      "image": "/images/cat-gift.jpg",
+      "alt": "A foldable gift box and a rigid client gift box.",
+      "short": "Boxes for gifts and client kits.",
+      "intro": "A fold-flat gift cover, a window that shows the present, or a rigid kit someone will keep.",
+      "line": "Presents and client kits",
+      "faqs": []
+    }
+  ],
+  "products": [
+    {
+      "slug": "custom-eyeliner-boxes",
+      "name": "Custom Eyeliner Boxes",
+      "category": "cosmetic-boxes",
+      "structure": "straight-tuck-end-box",
+      "short": "A slim tuck carton for a pencil or pen liner, with room for the shade name on the front.",
+      "meta": "Custom eyeliner boxes for pencil and pen liners. A slim tuck carton sized to the barrel. See the fit and request a quote.",
+      "description": "An eyeliner box has to be narrow enough to look like the pencil it holds and tall enough for the cap. A straight tuck carton does that, folds flat before it is filled, and leaves the front clear for the shade.",
+      "images": [
+        {
+          "src": "/images/use-eyeliner.jpg",
+          "alt": "A slim emerald carton with a gold edge beside a black eyeliner pencil."
+        },
+        {
+          "src": "/images/g-eyeliner-open.jpg",
+          "alt": "An open burgundy gloss carton with a black eyeliner pencil inside."
+        },
+        {
+          "src": "/images/g-eyeliner-kraft.jpg",
+          "alt": "A cobalt matte eyeliner carton beside a navy pencil with a silver cap."
+        },
+        {
+          "src": "/images/g-eyeliner-window.jpg",
+          "alt": "A coral carton with a black window frame and a black eyeliner pencil."
+        }
+      ],
+      "sections": [
+        {
+          "heading": "When an eyeliner box fits",
+          "body": "Choose this when the product is a pencil liner or a slim pen. The carton stands on a shelf, and both tucks close from the same face so packing is simple. It is not the box for a mascara wand or a bottle."
+        },
+        {
+          "heading": "How this differs from a mascara box",
+          "body": "Mascara is a taller tube. Eyeliner is a slim barrel. The tuck is the same family, but the proportions change. Send the pencil length and the cap diameter so the carton is not a generic square."
+        },
+        {
+          "heading": "What to send with the quote",
+          "body": "Internal width only needs to clear the barrel and cap. Height is the pencil length plus a little clearance. Do not count the tuck flap as height."
+        }
+      ],
+      "uses": [
+        "Pencil eyeliners",
+        "Pen liners",
+        "Slim cosmetic tools"
+      ],
+      "related": [
+        {
+          "slug": "custom-mascara-boxes",
+          "note": "A taller carton for a mascara tube and wand."
+        },
+        {
+          "slug": "custom-lipstick-boxes",
+          "note": "A small carton for a lipstick bullet instead of a pencil."
+        },
+        {
+          "slug": "custom-skincare-jar-boxes",
+          "note": "A wider carton for a cream jar."
+        }
+      ],
+      "faqs": [
+        {
+          "q": "Can the front name the shade?",
+          "a": "Yes. The tucks sit on one face, so the front panel can carry the shade. Artwork is reviewed with the quote."
+        },
+        {
+          "q": "Will a liquid liner fit the same carton?",
+          "a": "Only if the bottle is as slim as a pencil. A wider bottle needs its own width. Send the component, not a guess."
+        }
+      ],
+      "structureText": "One sheet of paperboard forms the body, the glue seam, the dust flaps, and both tucks. The tucks enter from the same side. The carton folds flat before it is set up.",
+      "measurement": "Measure the product, then add clearance. Internal length is the front panel, width is the side panel, and height runs from the inside bottom to the opening. Do not include the tuck length in the height.",
+      "structuralOptions": [
+        "Top and bottom tucks from the same panel",
+        "Optional hang tab on the top tuck",
+        "Optional window on the front panel"
+      ],
+      "materialIds": [
+        "paperboard",
+        "kraft-board"
+      ],
+      "finishIds": [
+        "matte",
+        "gloss",
+        "foil",
+        "emboss",
+        "spot-uv"
+      ],
+      "insertIds": [
+        "none",
+        "cradle",
+        "dividers",
+        "tissue",
+        "advice"
+      ]
+    },
+    {
+      "slug": "custom-mascara-boxes",
+      "name": "Custom Mascara Boxes",
+      "category": "cosmetic-boxes",
+      "structure": "reverse-tuck-end-box",
+      "short": "A tall tuck carton for a mascara tube, with the wand length included in the height.",
+      "meta": "Custom mascara boxes for tubes and wands. A tall tuck carton sized to the component. See it and request a quote.",
+      "description": "A mascara box is tall and narrow. The tube and the wand set the height. A reverse tuck keeps the closure off the face that carries the name.",
+      "images": [
+        {
+          "src": "/images/use-mascara.jpg",
+          "alt": "A tall violet gloss carton beside a gold-cap mascara tube and a wand."
+        },
+        {
+          "src": "/images/g-mascara-open.jpg",
+          "alt": "An open saffron carton with a black mascara tube standing inside."
+        },
+        {
+          "src": "/images/g-mascara-kraft.jpg",
+          "alt": "A navy mascara carton with a copper edge beside a black tube and wand."
+        },
+        {
+          "src": "/images/g-mascara-window.jpg",
+          "alt": "A mint carton with a window and a white mascara tube."
+        }
+      ],
+      "sections": [
+        {
+          "heading": "When a mascara box fits",
+          "body": "Use this for a single mascara tube. The carton is filled by hand and folds flat before that. It is the wrong proportion for a short lipstick or a wide jar."
+        },
+        {
+          "heading": "Tube, not a set",
+          "body": "A skincare set with several bottles wants a rigid box. One mascara tube wants this carton. If you sell a mascara and a liner together, say so, because that is a set, not this sleeve of board."
+        },
+        {
+          "heading": "What to send with the quote",
+          "body": "Measure the closed tube, including the cap. Internal height must clear that length. Width and depth only need to stop the tube from rattling."
+        }
+      ],
+      "uses": [
+        "Mascara tubes",
+        "Brow gels in a tube",
+        "Single wand products"
+      ],
+      "related": [
+        {
+          "slug": "custom-eyeliner-boxes",
+          "note": "A slimmer carton for a pencil liner."
+        },
+        {
+          "slug": "custom-lip-gloss-boxes",
+          "note": "A smaller tube carton for gloss."
+        },
+        {
+          "slug": "custom-lotion-boxes",
+          "note": "A taller carton when the product is a pump bottle."
+        }
+      ],
+      "faqs": [
+        {
+          "q": "Should the wand fit inside with the cap on?",
+          "a": "Yes. Size the carton to the closed product the customer buys, not to the wand alone."
+        },
+        {
+          "q": "Can two mascaras share one box?",
+          "a": "That becomes a set. Send both tubes and ask for a wider carton or a rigid box with an insert."
+        }
+      ],
+      "structureText": "The body is a tube of paperboard. Dust flaps fold in from the sides and the tuck flap closes over them. Because the tucks are reversed, the top opening and the bottom closure are mirrored.",
+      "measurement": "Use internal length, width, and height. The tuck flap length is extra board beyond the height and should not be counted as internal height.",
+      "structuralOptions": [
+        "Top and bottom tucks from opposite panels",
+        "Optional hang tab",
+        "Optional front window"
+      ],
+      "materialIds": [
+        "paperboard",
+        "kraft-board"
+      ],
+      "finishIds": [
+        "matte",
+        "gloss",
+        "foil",
+        "emboss",
+        "spot-uv"
+      ],
+      "insertIds": [
+        "none",
+        "cradle",
+        "dividers",
+        "tissue",
+        "advice"
+      ]
+    },
+    {
+      "slug": "custom-nail-polish-boxes",
+      "name": "Custom Nail Polish Boxes",
+      "category": "cosmetic-boxes",
+      "structure": "magnetic-closure-rigid-box",
+      "short": "A rigid box with an insert that holds nail polish bottles upright.",
+      "meta": "Custom nail polish boxes for single bottles or a set of shades. A rigid box with an insert. Request a quote.",
+      "description": "Nail polish tips if the bottle can fall. A rigid box with a fitted insert holds the bottles upright and gives a set of shades one lid.",
+      "images": [
+        {
+          "src": "/images/use-nail-polish.jpg",
+          "alt": "An open magenta rigid box holding coral, gold, nude, and red nail polish bottles."
+        },
+        {
+          "src": "/images/g-polish-closed.jpg",
+          "alt": "A closed forest-green rigid box beside teal and silver nail polish bottles."
+        },
+        {
+          "src": "/images/g-polish-row.jpg",
+          "alt": "A black rigid box holding lemon, lilac, white, and cobalt nail polish bottles."
+        },
+        {
+          "src": "/images/g-polish-single.jpg",
+          "alt": "An apricot rigid box holding one amber nail polish bottle with a chrome cap."
+        }
+      ],
+      "sections": [
+        {
+          "heading": "When a nail polish box fits",
+          "body": "Use this for a set of bottles that should stay upright. The lid is hinged and closes on a magnet. A single mini bottle can use a tuck carton instead, and you can say that in the quote if the set is only one shade."
+        },
+        {
+          "heading": "An insert, not a loose bottle",
+          "body": "The photo shows bottles seated in the box. The insert is part of the request. Without it, glass bottles knock the lid. A foldable gift box will not hold the same weight."
+        },
+        {
+          "heading": "What to send with the quote",
+          "body": "Count the bottles and send one bottle’s height and diameter. The insert cells have to clear the caps and still let the lid close."
+        }
+      ],
+      "uses": [
+        "Shade sets",
+        "Gift sets of polish",
+        "Bottles that must stay upright"
+      ],
+      "related": [
+        {
+          "slug": "custom-lipstick-boxes",
+          "note": "A small carton for one lipstick, not a bottle set."
+        },
+        {
+          "slug": "custom-skincare-set-boxes",
+          "note": "The same style of rigid set box for bottles and jars."
+        },
+        {
+          "slug": "custom-perfume-boxes",
+          "note": "A rigid box for one fragrance bottle."
+        }
+      ],
+      "faqs": [
+        {
+          "q": "Can the insert match the number of shades?",
+          "a": "Yes. Tell us how many bottles and whether the count can change between orders."
+        },
+        {
+          "q": "Is the lid removable?",
+          "a": "On this structure the lid stays hinged. A lid that lifts off completely is the two-piece lid and base."
+        }
+      ],
+      "structureText": "The base is a five-sided tray. The lid is hinged along the back edge and carries a front lip, and often side lips, so it sits over the base. The magnet is a closure detail, not a substitute for the board.",
+      "measurement": "Give the internal size of the base. The lid adds height outside the cavity. If an insert is needed, the cradle has to sit inside that cavity and still let the lid close.",
+      "structuralOptions": [
+        "Hinged lid",
+        "Concealed magnet in the front lip",
+        "Wrapped base and lid"
+      ],
+      "materialIds": [
+        "rigid-wrap"
+      ],
+      "finishIds": [
+        "matte",
+        "gloss",
+        "foil",
+        "emboss",
+        "spot-uv"
+      ],
+      "insertIds": [
+        "none",
+        "cradle",
+        "dividers",
+        "tissue",
+        "advice"
+      ]
+    },
+    {
+      "slug": "custom-lipstick-boxes",
+      "name": "Custom Lipstick Boxes",
+      "category": "cosmetic-boxes",
+      "structure": "straight-tuck-end-box",
+      "short": "A small tuck carton sized to a lipstick bullet and cap.",
+      "meta": "Custom lipstick boxes sized to the bullet and cap. A small tuck carton for one lipstick. Request a quote.",
+      "description": "A lipstick box is small. The bullet and the cap set both the height and the width. A tuck carton keeps it light enough for a shade wall.",
+      "images": [
+        {
+          "src": "/images/use-lipstick.jpg",
+          "alt": "A short ruby gloss carton beside a gold lipstick."
+        },
+        {
+          "src": "/images/g-lipstick-open.jpg",
+          "alt": "An open powder-blue carton with a berry lipstick inside."
+        },
+        {
+          "src": "/images/g-lipstick-kraft.jpg",
+          "alt": "A charcoal lipstick carton beside a rose-gold lipstick."
+        },
+        {
+          "src": "/images/g-lipstick-window.jpg",
+          "alt": "A sunflower-yellow carton with a window and a plum lipstick."
+        }
+      ],
+      "sections": [
+        {
+          "heading": "When a lipstick box fits",
+          "body": "Use this for one lipstick. The front can carry the shade. It is not a set box and it is not tall enough for mascara unless you send those dimensions instead."
+        },
+        {
+          "heading": "One bullet, one carton",
+          "body": "A lip gloss tube is often slimmer and shorter. A lipstick mechanism is wider. They should not share a dieline. If you need a sleeve of three bullets, that is a different request."
+        },
+        {
+          "heading": "What to send with the quote",
+          "body": "Measure the closed lipstick, cap included. Add a little clearance so the mechanism is not crushed. The tuck length is extra board, not internal height."
+        }
+      ],
+      "uses": [
+        "Lipstick bullets",
+        "Lip crayons",
+        "Single lip color"
+      ],
+      "related": [
+        {
+          "slug": "custom-lip-gloss-boxes",
+          "note": "A carton for a slim gloss tube."
+        },
+        {
+          "slug": "custom-lip-balm-boxes",
+          "note": "A carton for a round balm tin."
+        },
+        {
+          "slug": "custom-nail-polish-boxes",
+          "note": "A rigid set box when you pack several shades together."
+        }
+      ],
+      "faqs": [
+        {
+          "q": "Can the shade color show on the box?",
+          "a": "The front panel is free for print. The exact color is confirmed when artwork is reviewed, not from the photo."
+        },
+        {
+          "q": "Will a square lipstick fit?",
+          "a": "Send the cross-section. A square mechanism needs a wider internal width than a round bullet."
+        }
+      ],
+      "structureText": "One sheet of paperboard forms the body, the glue seam, the dust flaps, and both tucks. The tucks enter from the same side. The carton folds flat before it is set up.",
+      "measurement": "Measure the product, then add clearance. Internal length is the front panel, width is the side panel, and height runs from the inside bottom to the opening. Do not include the tuck length in the height.",
+      "structuralOptions": [
+        "Top and bottom tucks from the same panel",
+        "Optional hang tab on the top tuck",
+        "Optional window on the front panel"
+      ],
+      "materialIds": [
+        "paperboard",
+        "kraft-board"
+      ],
+      "finishIds": [
+        "matte",
+        "gloss",
+        "foil",
+        "emboss",
+        "spot-uv"
+      ],
+      "insertIds": [
+        "none",
+        "cradle",
+        "dividers",
+        "tissue",
+        "advice"
+      ]
+    },
+    {
+      "slug": "custom-lip-gloss-boxes",
+      "name": "Custom Lip Gloss Boxes",
+      "category": "cosmetic-boxes",
+      "structure": "reverse-tuck-end-box",
+      "short": "A slim tuck carton for a lip gloss tube and doe-foot applicator.",
+      "meta": "Custom lip gloss boxes for tubes and applicators. A slim tuck carton. See the fit and request a quote.",
+      "description": "Lip gloss is a slim tube with an applicator cap. The carton should match that slimness so the shade wall does not look like it is packing a bottle.",
+      "images": [
+        {
+          "src": "/images/use-lip-gloss.jpg",
+          "alt": "A slim tangerine gloss carton beside a pink lip gloss tube with a gold cap."
+        },
+        {
+          "src": "/images/g-gloss-open.jpg",
+          "alt": "An open lilac carton with a teal lip gloss tube inside."
+        },
+        {
+          "src": "/images/g-gloss-kraft.jpg",
+          "alt": "A deep wine gloss carton beside a gold lip gloss tube."
+        },
+        {
+          "src": "/images/g-gloss-window.jpg",
+          "alt": "A seafoam carton with a window and a coral lip gloss tube."
+        }
+      ],
+      "sections": [
+        {
+          "heading": "When a lip gloss box fits",
+          "body": "Use this for one gloss tube. The reverse tuck leaves a clean front. It is a folding carton, so it ships flat and is set up when you fill it."
+        },
+        {
+          "heading": "Slimmer than lipstick",
+          "body": "Do not reuse a lipstick dieline. Gloss tubes are usually narrower. A mascara carton is taller. Send the tube you actually sell."
+        },
+        {
+          "heading": "What to send with the quote",
+          "body": "Measure the closed tube from the end of the cap to the base. Width should clear the cap, which is often the widest part."
+        }
+      ],
+      "uses": [
+        "Lip gloss tubes",
+        "Lip oil tubes",
+        "Doe-foot applicators"
+      ],
+      "related": [
+        {
+          "slug": "custom-lipstick-boxes",
+          "note": "A slightly wider carton for a lipstick bullet."
+        },
+        {
+          "slug": "custom-mascara-boxes",
+          "note": "A taller carton for a mascara wand."
+        },
+        {
+          "slug": "custom-lip-balm-boxes",
+          "note": "A shorter carton for a balm tin."
+        }
+      ],
+      "faqs": [
+        {
+          "q": "Does the applicator need extra height?",
+          "a": "Size the closed product. The applicator is inside the cap when it is sold."
+        },
+        {
+          "q": "Can the tube show through the box?",
+          "a": "That is a window box. This carton has a solid front. Ask for a window if the gloss should be seen."
+        }
+      ],
+      "structureText": "The body is a tube of paperboard. Dust flaps fold in from the sides and the tuck flap closes over them. Because the tucks are reversed, the top opening and the bottom closure are mirrored.",
+      "measurement": "Use internal length, width, and height. The tuck flap length is extra board beyond the height and should not be counted as internal height.",
+      "structuralOptions": [
+        "Top and bottom tucks from opposite panels",
+        "Optional hang tab",
+        "Optional front window"
+      ],
+      "materialIds": [
+        "paperboard",
+        "kraft-board"
+      ],
+      "finishIds": [
+        "matte",
+        "gloss",
+        "foil",
+        "emboss",
+        "spot-uv"
+      ],
+      "insertIds": [
+        "none",
+        "cradle",
+        "dividers",
+        "tissue",
+        "advice"
+      ]
+    },
+    {
+      "slug": "custom-lip-balm-boxes",
+      "name": "Custom Lip Balm Boxes",
+      "category": "cosmetic-boxes",
+      "structure": "straight-tuck-end-box",
+      "short": "A short tuck carton for a lip balm stick or a round tin.",
+      "meta": "Custom lip balm boxes for sticks and tins. A short tuck carton for one balm. Request a quote.",
+      "description": "A balm stick or a small tin needs a short carton. The box is often the only place the flavor name appears, so the front should stay clear of the tuck.",
+      "images": [
+        {
+          "src": "/images/use-lip-balm.jpg",
+          "alt": "A short butter-yellow carton with a copper edge beside a rose-gold balm tin."
+        },
+        {
+          "src": "/images/g-balm-open.jpg",
+          "alt": "An open slate-blue carton with a white lip balm tin inside."
+        },
+        {
+          "src": "/images/g-balm-kraft.jpg",
+          "alt": "A raspberry balm carton beside a silver tin."
+        },
+        {
+          "src": "/images/g-balm-window.jpg",
+          "alt": "An olive carton with a window and a copper lip balm tin."
+        }
+      ],
+      "sections": [
+        {
+          "heading": "When a lip balm box fits",
+          "body": "Use this for one stick or one tin. It is a light paperboard carton. A gift set of several tins belongs in a rigid box or a sleeve, not in this single carton."
+        },
+        {
+          "heading": "Shorter than a lipstick carton",
+          "body": "Balm tins are squat. Lipstick mechanisms are taller. Share which one you pack. A kraft face is a material choice if the balm should look simple."
+        },
+        {
+          "heading": "What to send with the quote",
+          "body": "For a tin, measure diameter and height. For a stick, measure the closed tube. Add clearance so the lid of the tin still opens if it is packed closed."
+        }
+      ],
+      "uses": [
+        "Balm sticks",
+        "Round balm tins",
+        "Single lip care"
+      ],
+      "related": [
+        {
+          "slug": "custom-lipstick-boxes",
+          "note": "A taller carton for a lipstick bullet."
+        },
+        {
+          "slug": "custom-kraft-boxes",
+          "note": "A kraft tuck carton when the board color should show."
+        },
+        {
+          "slug": "custom-skincare-jar-boxes",
+          "note": "A taller carton for a cream jar."
+        }
+      ],
+      "faqs": [
+        {
+          "q": "Can a twist-up balm and a tin share one size?",
+          "a": "Not usefully. They have different heights. Pick the component you are packing now."
+        },
+        {
+          "q": "Is this a food-safe box?",
+          "a": "No certification is offered here. Lip balm contact with the board should be confirmed for your formula."
+        }
+      ],
+      "structureText": "One sheet of paperboard forms the body, the glue seam, the dust flaps, and both tucks. The tucks enter from the same side. The carton folds flat before it is set up.",
+      "measurement": "Measure the product, then add clearance. Internal length is the front panel, width is the side panel, and height runs from the inside bottom to the opening. Do not include the tuck length in the height.",
+      "structuralOptions": [
+        "Top and bottom tucks from the same panel",
+        "Optional hang tab on the top tuck",
+        "Optional window on the front panel"
+      ],
+      "materialIds": [
+        "paperboard",
+        "kraft-board"
+      ],
+      "finishIds": [
+        "matte",
+        "gloss",
+        "foil",
+        "emboss",
+        "spot-uv"
+      ],
+      "insertIds": [
+        "none",
+        "cradle",
+        "dividers",
+        "tissue",
+        "advice"
+      ]
+    },
+    {
+      "slug": "custom-perfume-boxes",
+      "name": "Custom Perfume Boxes",
+      "category": "cosmetic-boxes",
+      "structure": "magnetic-closure-rigid-box",
+      "short": "A rigid box with an insert that holds one fragrance bottle.",
+      "meta": "Custom perfume boxes for a single fragrance bottle. A rigid lid and a fitted insert. Request a quote.",
+      "description": "A perfume bottle is glass and usually valuable enough that the box is kept. A rigid magnetic lid and a fitted insert hold the bottle so it does not hit the lid.",
+      "images": [
+        {
+          "src": "/images/use-perfume.jpg",
+          "alt": "An open midnight-blue rigid box with a gold-cap perfume bottle in the insert."
+        },
+        {
+          "src": "/images/g-perfume-closed.jpg",
+          "alt": "A closed blush rigid box beside a clear perfume bottle with a black cap."
+        },
+        {
+          "src": "/images/g-perfume-insert.jpg",
+          "alt": "An open emerald rigid box holding an amber perfume bottle."
+        },
+        {
+          "src": "/images/g-perfume-sleeve.jpg",
+          "alt": "A black sleeve pulled back from a silver tray holding a frosted perfume bottle."
+        }
+      ],
+      "sections": [
+        {
+          "heading": "When a perfume box fits",
+          "body": "Use this for one bottle that should feel like a gift. The lid stays on a magnet. It is heavier than a tuck carton, which is the point for fragrance."
+        },
+        {
+          "heading": "One bottle, held in place",
+          "body": "A lotion carton is paperboard and tall. This is a wrapped rigid box. If you also need a shipping carton around it, add a shipping box in the notes. The perfume box is not the mailer."
+        },
+        {
+          "heading": "What to send with the quote",
+          "body": "Send the bottle height, the base size, and the cap height. The insert cavity has to clear the glass and still let the lid close."
+        }
+      ],
+      "uses": [
+        "Fragrance bottles",
+        "Travel sprays in a gift box",
+        "Bottles that should not rattle"
+      ],
+      "related": [
+        {
+          "slug": "custom-skincare-set-boxes",
+          "note": "A rigid box for several bottles instead of one."
+        },
+        {
+          "slug": "custom-jewelry-boxes",
+          "note": "A smaller rigid box for earrings or a ring."
+        },
+        {
+          "slug": "custom-lotion-boxes",
+          "note": "A folding carton for a pump bottle of lotion."
+        }
+      ],
+      "faqs": [
+        {
+          "q": "Can the insert be shaped to the bottle?",
+          "a": "Yes. A cradle can follow the base. Send a photo or drawing of the bottle with the quote."
+        },
+        {
+          "q": "Does the box ship by itself?",
+          "a": "This is a presentation box. If it has to travel, plan an outer mailer or shipping carton as well."
+        }
+      ],
+      "structureText": "The base is a five-sided tray. The lid is hinged along the back edge and carries a front lip, and often side lips, so it sits over the base. The magnet is a closure detail, not a substitute for the board.",
+      "measurement": "Give the internal size of the base. The lid adds height outside the cavity. If an insert is needed, the cradle has to sit inside that cavity and still let the lid close.",
+      "structuralOptions": [
+        "Hinged lid",
+        "Concealed magnet in the front lip",
+        "Wrapped base and lid"
+      ],
+      "materialIds": [
+        "rigid-wrap"
+      ],
+      "finishIds": [
+        "matte",
+        "gloss",
+        "foil",
+        "emboss",
+        "spot-uv"
+      ],
+      "insertIds": [
+        "none",
+        "cradle",
+        "dividers",
+        "tissue",
+        "advice"
+      ]
+    },
+    {
+      "slug": "custom-lotion-boxes",
+      "name": "Custom Lotion Boxes",
+      "category": "cosmetic-boxes",
+      "structure": "reverse-tuck-end-box",
+      "short": "A tall tuck carton for a pump bottle of lotion or cream.",
+      "meta": "Custom lotion boxes for pump bottles. A tall tuck carton sized to the bottle and pump. Request a quote.",
+      "description": "A lotion bottle with a pump is tall. The carton has to clear the pump, not only the shoulder of the bottle. A reverse tuck keeps the front free for the product name.",
+      "images": [
+        {
+          "src": "/images/use-cosmetic-bottle.jpg",
+          "alt": "A tall terracotta carton with a copper edge beside a cream pump bottle."
+        },
+        {
+          "src": "/images/g-lotion-open.jpg",
+          "alt": "An open ice-blue carton with a white pump bottle inside."
+        },
+        {
+          "src": "/images/g-lotion-kraft.jpg",
+          "alt": "A magenta lotion carton beside a black pump bottle."
+        },
+        {
+          "src": "/images/g-lotion-window.jpg",
+          "alt": "A chartreuse carton with a window and a glass pump bottle with a gold collar."
+        }
+      ],
+      "sections": [
+        {
+          "heading": "When a lotion box fits",
+          "body": "Use this for one pump bottle. It folds flat and is filled by hand. A set of a bottle plus a jar wants the skincare set box instead."
+        },
+        {
+          "heading": "Include the pump",
+          "body": "People under-measure pumps. The internal height starts at the base and ends above the pump. A skincare jar carton is shorter and wider."
+        },
+        {
+          "heading": "What to send with the quote",
+          "body": "Measure the bottle with the pump locked down, the way it ships. Width should clear the bottle, not the label overhang if the label is wider."
+        }
+      ],
+      "uses": [
+        "Pump bottles",
+        "Body lotion",
+        "Hand cream bottles"
+      ],
+      "related": [
+        {
+          "slug": "custom-skincare-jar-boxes",
+          "note": "A shorter carton for a cream jar."
+        },
+        {
+          "slug": "custom-bottle-boxes",
+          "note": "A locked base when the bottle is heavy."
+        },
+        {
+          "slug": "custom-skincare-set-boxes",
+          "note": "A rigid box when the lotion is part of a set."
+        }
+      ],
+      "faqs": [
+        {
+          "q": "Should the pump be locked for measuring?",
+          "a": "Yes. Measure the bottle as it will be packed, with the pump in its shipping position."
+        },
+        {
+          "q": "Can the carton be kraft?",
+          "a": "A kraft face can be requested. The closure stays a tuck. Say that you want the natural board."
+        }
+      ],
+      "structureText": "The body is a tube of paperboard. Dust flaps fold in from the sides and the tuck flap closes over them. Because the tucks are reversed, the top opening and the bottom closure are mirrored.",
+      "measurement": "Use internal length, width, and height. The tuck flap length is extra board beyond the height and should not be counted as internal height.",
+      "structuralOptions": [
+        "Top and bottom tucks from opposite panels",
+        "Optional hang tab",
+        "Optional front window"
+      ],
+      "materialIds": [
+        "paperboard",
+        "kraft-board"
+      ],
+      "finishIds": [
+        "matte",
+        "gloss",
+        "foil",
+        "emboss",
+        "spot-uv"
+      ],
+      "insertIds": [
+        "none",
+        "cradle",
+        "dividers",
+        "tissue",
+        "advice"
+      ]
+    },
+    {
+      "slug": "custom-skincare-jar-boxes",
+      "name": "Custom Skincare Jar Boxes",
+      "category": "cosmetic-boxes",
+      "structure": "straight-tuck-end-box",
+      "short": "A tuck carton sized to one cream jar and its lid.",
+      "meta": "Custom skincare jar boxes for one cream jar. A tuck carton with a clear front panel for the name. Request a quote.",
+      "description": "A cream jar is short and wide compared with a pump bottle. The carton should match the jar, including the lid, so it does not look like a bottle box.",
+      "images": [
+        {
+          "src": "/images/use-skincare-jar.jpg",
+          "alt": "A sand carton with a copper edge beside a frosted jar with a terracotta lid."
+        },
+        {
+          "src": "/images/g-jar-open.jpg",
+          "alt": "An open royal-purple carton with a white jar and a pink lid inside."
+        },
+        {
+          "src": "/images/g-jar-kraft.jpg",
+          "alt": "A crimson jar carton beside a black cream jar."
+        },
+        {
+          "src": "/images/g-jar-window.jpg",
+          "alt": "A sky-blue carton with a window and a gold-lidded cream jar."
+        }
+      ],
+      "sections": [
+        {
+          "heading": "When a skincare jar box fits",
+          "body": "Use this for one jar. The straight tuck is filled by hand. It suits a single moisturizer, mask, or balm jar on a shelf."
+        },
+        {
+          "heading": "A jar, not a set",
+          "body": "Several jars in one pack need an insert and usually a rigid box. This carton is for one jar. A lotion pump is taller. Send the jar you have, lid on."
+        },
+        {
+          "heading": "What to send with the quote",
+          "body": "Measure diameter and height with the lid closed. Add clearance so the lid is not forced. Do not include the tuck in the height."
+        }
+      ],
+      "uses": [
+        "Cream jars",
+        "Mask jars",
+        "Single skincare jars"
+      ],
+      "related": [
+        {
+          "slug": "custom-lotion-boxes",
+          "note": "A taller carton for a pump bottle."
+        },
+        {
+          "slug": "custom-skincare-set-boxes",
+          "note": "A rigid box for a jar plus other bottles."
+        },
+        {
+          "slug": "custom-bottle-boxes",
+          "note": "A locked base for a heavier jar."
+        }
+      ],
+      "faqs": [
+        {
+          "q": "Can a spatula fit in the same carton?",
+          "a": "Only if you add its length to the measurement. Say so in the quote if the tool is packed beside the jar."
+        },
+        {
+          "q": "Will the jar show through?",
+          "a": "This carton is solid board. Ask for a window box if the jar should be visible."
+        }
+      ],
+      "structureText": "One sheet of paperboard forms the body, the glue seam, the dust flaps, and both tucks. The tucks enter from the same side. The carton folds flat before it is set up.",
+      "measurement": "Measure the product, then add clearance. Internal length is the front panel, width is the side panel, and height runs from the inside bottom to the opening. Do not include the tuck length in the height.",
+      "structuralOptions": [
+        "Top and bottom tucks from the same panel",
+        "Optional hang tab on the top tuck",
+        "Optional window on the front panel"
+      ],
+      "materialIds": [
+        "paperboard",
+        "kraft-board"
+      ],
+      "finishIds": [
+        "matte",
+        "gloss",
+        "foil",
+        "emboss",
+        "spot-uv"
+      ],
+      "insertIds": [
+        "none",
+        "cradle",
+        "dividers",
+        "tissue",
+        "advice"
+      ]
+    },
+    {
+      "slug": "custom-skincare-set-boxes",
+      "name": "Custom Skincare Set Boxes",
+      "category": "cosmetic-boxes",
+      "structure": "magnetic-closure-rigid-box",
+      "short": "A rigid magnetic box with an insert for a set of bottles and jars.",
+      "meta": "Custom skincare set boxes for bottles and jars packed together. A rigid magnetic lid and an insert. Request a quote.",
+      "description": "A set needs a box that holds every piece in place and still feels worth opening. A rigid lid on a magnet and a fitted insert do that. A tuck carton does not.",
+      "images": [
+        {
+          "src": "/images/use-skincare-set.jpg",
+          "alt": "An open teal rigid box with white, blush, and gold skincare bottles in an insert."
+        },
+        {
+          "src": "/images/g-set-closed.jpg",
+          "alt": "A closed oxblood rigid box with a gold edge beside green and amber bottles."
+        },
+        {
+          "src": "/images/g-set-insert.jpg",
+          "alt": "A pearl-white rigid box with a black insert holding cobalt and orange bottles."
+        },
+        {
+          "src": "/images/g-set-lid.jpg",
+          "alt": "A mustard rigid lid beside a base of navy skincare bottles."
+        }
+      ],
+      "sections": [
+        {
+          "heading": "When a skincare set box fits",
+          "body": "Use this when more than one component is packed together: a serum, a cream, a small oil. The lid stays attached. People often keep this box."
+        },
+        {
+          "heading": "Heavier than a carton",
+          "body": "Single jars and single bottles have their own tuck cartons. This box does not fold flat. If the set also has to ship, add a mailer or a shipping carton around it."
+        },
+        {
+          "heading": "What to send with the quote",
+          "body": "List every component with its height and diameter. The insert has to clear the tallest cap and still let the lid close."
+        }
+      ],
+      "uses": [
+        "Skincare sets",
+        "Serum and cream pairs",
+        "Gift sets of bottles"
+      ],
+      "related": [
+        {
+          "slug": "custom-perfume-boxes",
+          "note": "A rigid box for one fragrance bottle."
+        },
+        {
+          "slug": "custom-nail-polish-boxes",
+          "note": "A rigid insert box for polish bottles."
+        },
+        {
+          "slug": "custom-skincare-jar-boxes",
+          "note": "A tuck carton when you only pack one jar."
+        }
+      ],
+      "faqs": [
+        {
+          "q": "Can the pieces be different heights?",
+          "a": "Yes. The insert can step. Send each component so the tallest one is known before the lid height is set."
+        },
+        {
+          "q": "Can the inside be a different color?",
+          "a": "The wrap and the lining can be specified separately in the notes."
+        }
+      ],
+      "structureText": "The base is a five-sided tray. The lid is hinged along the back edge and carries a front lip, and often side lips, so it sits over the base. The magnet is a closure detail, not a substitute for the board.",
+      "measurement": "Give the internal size of the base. The lid adds height outside the cavity. If an insert is needed, the cradle has to sit inside that cavity and still let the lid close.",
+      "structuralOptions": [
+        "Hinged lid",
+        "Concealed magnet in the front lip",
+        "Wrapped base and lid"
+      ],
+      "materialIds": [
+        "rigid-wrap"
+      ],
+      "finishIds": [
+        "matte",
+        "gloss",
+        "foil",
+        "emboss",
+        "spot-uv"
+      ],
+      "insertIds": [
+        "none",
+        "cradle",
+        "dividers",
+        "tissue",
+        "advice"
+      ]
+    },
+    {
+      "slug": "custom-bottle-boxes",
+      "name": "Custom Bottle Boxes",
+      "category": "cosmetic-boxes",
+      "structure": "auto-lock-bottom-box",
+      "short": "A tuck-top carton with a base that locks when the box is opened.",
+      "meta": "Custom bottle boxes with an auto-lock base for heavier jars and bottles. See the base and request a quote.",
+      "description": "A heavy jar or bottle is awkward if someone must fold the bottom on every unit. An auto-lock base is glued in advance and locks when the carton is squared. The top is still a tuck.",
+      "images": [
+        {
+          "src": "/images/use-jar-lock-base.jpg",
+          "alt": "A graphite carton with a gold edge beside a heavy amber bottle."
+        },
+        {
+          "src": "/images/g-bottle-open.jpg",
+          "alt": "An open fuchsia carton with a clear blue-liquid bottle inside."
+        },
+        {
+          "src": "/images/g-bottle-kraft.jpg",
+          "alt": "A sage bottle carton beside a black glass bottle."
+        },
+        {
+          "src": "/images/g-bottle-window.jpg",
+          "alt": "A scarlet carton with a window and a silver-cap bottle."
+        }
+      ],
+      "sections": [
+        {
+          "heading": "When a locked-base bottle box fits",
+          "body": "Use this when the same bottle is packed often and the base should not be folded by hand. It still ships flat. It is paperboard, not a rigid perfume box."
+        },
+        {
+          "heading": "The base is the difference",
+          "body": "A straight tuck closes both ends by hand. This one only asks for the top. Choose it for heavier glass. A light sample vial does not need it."
+        },
+        {
+          "heading": "What to send with the quote",
+          "body": "Internal height is the clear opening above the locked base, not through the bottom flaps. Check that the bottle and cap can pass through the top."
+        }
+      ],
+      "uses": [
+        "Heavier glass jars",
+        "Bottles packed in volume",
+        "Cartons filled on a table"
+      ],
+      "related": [
+        {
+          "slug": "custom-lotion-boxes",
+          "note": "A hand-closed tuck for a lighter pump bottle."
+        },
+        {
+          "slug": "custom-skincare-jar-boxes",
+          "note": "A simple tuck for one cream jar."
+        },
+        {
+          "slug": "custom-shipping-boxes",
+          "note": "An outer corrugated carton if this bottle also has to ship."
+        }
+      ],
+      "faqs": [
+        {
+          "q": "Is the bottom glued?",
+          "a": "Yes. The lock is glued during converting, then it snaps into place when the carton is opened."
+        },
+        {
+          "q": "Can the top lock automatically too?",
+          "a": "This style is a tuck top. A different top closure has to be described as its own structure."
+        }
+      ],
+      "structureText": "The bottom flaps are part of the same sheet and are glued so they lock when the tube is opened. The top remains a separate closure, usually a tuck and dust flaps. The carton still ships flat.",
+      "measurement": "Internal height is the clear opening above the locked base, not the depth of the bottom flaps. Check that the product and any insert can pass through the top.",
+      "structuralOptions": [
+        "Pre-glued automatic bottom",
+        "Tuck top",
+        "Optional window above the product line"
+      ],
+      "materialIds": [
+        "paperboard"
+      ],
+      "finishIds": [
+        "matte",
+        "gloss",
+        "foil",
+        "emboss",
+        "spot-uv"
+      ],
+      "insertIds": [
+        "none",
+        "cradle",
+        "dividers",
+        "tissue",
+        "advice"
+      ]
+    },
+    {
+      "slug": "custom-lid-and-base-boxes",
+      "name": "Custom Lid and Base Boxes",
+      "category": "rigid-boxes",
+      "structure": "two-piece-lid-and-base-box",
+      "short": "A rigid base and a separate lid that lifts off.",
+      "meta": "Custom lid and base boxes for gifts packed from above. The lid lifts off. See both pieces and request a quote.",
+      "description": "Some gifts are packed from above and presented by lifting the cover away. The lid and the base are two rigid pieces. There is no hinge.",
+      "images": [
+        {
+          "src": "/images/use-lid-gift.jpg",
+          "alt": "A champagne rigid base with a teal interior and a black wrapped gift, lid beside it."
+        },
+        {
+          "src": "/images/g-lid-closed.jpg",
+          "alt": "A closed lacquer-red two-piece rigid box."
+        },
+        {
+          "src": "/images/g-lid-insert.jpg",
+          "alt": "A glacier-blue rigid base holding orange bottles, with the lid beside it."
+        },
+        {
+          "src": "/images/g-lid-band.jpg",
+          "alt": "A black rigid box wrapped with a wide gold paper band."
+        }
+      ],
+      "sections": [
+        {
+          "heading": "When a lid and base box fits",
+          "body": "Use this when the product is placed down into the base and the lid is a separate cover. Apparel folds, scarves, and flat gift sets sit well here."
+        },
+        {
+          "heading": "The lid comes away",
+          "body": "A magnetic box keeps the lid attached. This one does not. A drawer slides instead of lifting. Say which opening you want, because they are different structures."
+        },
+        {
+          "heading": "What to send with the quote",
+          "body": "Quote the internal size of the base, then say how deep the lid should be. The lid needs a small clearance so it can come off."
+        }
+      ],
+      "uses": [
+        "Gifts packed from above",
+        "Folded accessories",
+        "Presentation bases"
+      ],
+      "related": [
+        {
+          "slug": "custom-skincare-set-boxes",
+          "note": "A hinged magnetic lid for a bottle set."
+        },
+        {
+          "slug": "custom-drawer-boxes",
+          "note": "A rigid box that opens by sliding a drawer."
+        },
+        {
+          "slug": "custom-gift-boxes",
+          "note": "A lighter cover that folds flat before packing."
+        }
+      ],
+      "faqs": [
+        {
+          "q": "Will the lid fit tightly?",
+          "a": "It needs a little clearance to lift off. How tight that feels is agreed with the specification."
+        },
+        {
+          "q": "Can this box fold for storage?",
+          "a": "No. Both pieces stay set up. A foldable gift box is the one that collapses."
+        }
+      ],
+      "structureText": "Each piece is wrapped board. The lid’s inside length and width are larger than the base’s outside by a small clearance so it can lift on and off. That fit is part of the specification.",
+      "measurement": "Quote the internal size of the base. Note how deep the lid should be. A deep lid changes the proportion and the way the box looks when closed.",
+      "structuralOptions": [
+        "Separate lid",
+        "Base tray",
+        "Lid depth specified to suit the product"
+      ],
+      "materialIds": [
+        "rigid-wrap"
+      ],
+      "finishIds": [
+        "matte",
+        "gloss",
+        "foil",
+        "emboss",
+        "spot-uv"
+      ],
+      "insertIds": [
+        "none",
+        "cradle",
+        "dividers",
+        "tissue",
+        "advice"
+      ]
+    },
+    {
+      "slug": "custom-drawer-boxes",
+      "name": "Custom Drawer Boxes",
+      "category": "rigid-boxes",
+      "structure": "rigid-drawer-box",
+      "short": "A rigid sleeve with a drawer that slides out.",
+      "meta": "Custom drawer boxes for kits and flat gifts. A rigid drawer slides from a sleeve. Request a quote.",
+      "description": "A drawer box reveals the product by pulling, not by lifting a lid. It suits a notebook, a small bottle, or a flat kit that should feel kept.",
+      "images": [
+        {
+          "src": "/images/use-drawer-kit.jpg",
+          "alt": "A walnut drawer pulled open, emerald interior, with a notebook and an amber bottle."
+        },
+        {
+          "src": "/images/g-drawer-closed.jpg",
+          "alt": "A glossy white drawer box with a cobalt front panel."
+        },
+        {
+          "src": "/images/g-drawer-insert.jpg",
+          "alt": "An open plum drawer with a gold divided insert and small silver items."
+        },
+        {
+          "src": "/images/g-drawer-low.jpg",
+          "alt": "A shallow lemon drawer with a black interior and a flat black bar inside."
+        }
+      ],
+      "sections": [
+        {
+          "heading": "When a drawer box fits",
+          "body": "Use this for flat or layered contents. The sleeve and the drawer are wrapped board, so the piece stays assembled. It does not fold flat."
+        },
+        {
+          "heading": "Not a paper sleeve",
+          "body": "A sleeve and tray is folded paperboard and can ship flat. This drawer is rigid. The motion is similar. The weight in the hand is not."
+        },
+        {
+          "heading": "What to send with the quote",
+          "body": "State the drawer’s internal length, width, and height. The sleeve is larger than that cavity. The usual opening is on the width."
+        }
+      ],
+      "uses": [
+        "Stationery kits",
+        "Flat gift sets",
+        "Keepsake drawers"
+      ],
+      "related": [
+        {
+          "slug": "custom-sleeve-boxes",
+          "note": "A lighter paperboard sleeve and tray."
+        },
+        {
+          "slug": "custom-corporate-gift-boxes",
+          "note": "A rigid gift box arranged as a client kit."
+        },
+        {
+          "slug": "custom-lid-and-base-boxes",
+          "note": "A base you pack from above, with a lid that lifts off."
+        }
+      ],
+      "faqs": [
+        {
+          "q": "Can a ribbon pull be added?",
+          "a": "A pull can be noted. It is separate from the board and has to be described in the quote."
+        },
+        {
+          "q": "Can the drawer open from a short side?",
+          "a": "The standard opens on the width. Another face has to be requested so the structure can be reviewed."
+        }
+      ],
+      "structureText": "The sleeve is open at the front. The drawer is a tray that travels inside it. The drawer front can sit flush with the sleeve. A pull, if you want one, should be described in the notes.",
+      "measurement": "The internal drawer cavity is the useful size. The sleeve is larger. State the drawer’s internal length, width, and height. Those numbers are the cavity unless you say otherwise.",
+      "structuralOptions": [
+        "Closed outer sleeve",
+        "Sliding inner drawer",
+        "Optional ribbon pull, noted separately from the board"
+      ],
+      "materialIds": [
+        "rigid-wrap"
+      ],
+      "finishIds": [
+        "matte",
+        "gloss",
+        "foil",
+        "emboss",
+        "spot-uv"
+      ],
+      "insertIds": [
+        "none",
+        "cradle",
+        "dividers",
+        "tissue",
+        "advice"
+      ]
+    },
+    {
+      "slug": "custom-jewelry-boxes",
+      "name": "Custom Jewelry Boxes",
+      "category": "rigid-boxes",
+      "structure": "magnetic-closure-rigid-box",
+      "short": "A small rigid box with an insert for earrings, a ring, or a chain.",
+      "meta": "Custom jewelry boxes for earrings, rings, and chains. A small rigid lid and a soft insert. Request a quote.",
+      "description": "Jewelry is small and easy to lose in a large box. A small rigid box with a fitted insert holds a pair of earrings or a ring and feels like part of the gift.",
+      "images": [
+        {
+          "src": "/images/use-jewelry.jpg",
+          "alt": "A small open black jewelry box with a blush insert and gold hoop earrings."
+        },
+        {
+          "src": "/images/g-jewelry-closed.jpg",
+          "alt": "A closed pearlescent white jewelry box with a thin emerald edge."
+        },
+        {
+          "src": "/images/g-jewelry-open.jpg",
+          "alt": "An open sapphire jewelry box with silver earrings inside."
+        },
+        {
+          "src": "/images/g-jewelry-drawer.jpg",
+          "alt": "A rose-gold drawer pulled open to show a thin gold chain on a black interior."
+        }
+      ],
+      "sections": [
+        {
+          "heading": "When a jewelry box fits",
+          "body": "Use this for one piece or a pair. The lid is magnetic and hinged. It is not a shipping box. Chains that are long need the length stated so the insert is not a guess."
+        },
+        {
+          "heading": "Smaller than a skincare set",
+          "body": "A skincare set box is built around bottles. This one is built around a small piece. Do not start from a bottle dieline. Send the jewelry, or its length and width."
+        },
+        {
+          "heading": "What to send with the quote",
+          "body": "Measure the piece as it will sit, not hanging. Earring posts and ring shanks need a slot or a pad, which you can request as an insert."
+        }
+      ],
+      "uses": [
+        "Earrings",
+        "Rings",
+        "Short chains"
+      ],
+      "related": [
+        {
+          "slug": "custom-perfume-boxes",
+          "note": "A larger rigid box for a fragrance bottle."
+        },
+        {
+          "slug": "custom-drawer-boxes",
+          "note": "A sliding drawer for a flat jewelry kit."
+        },
+        {
+          "slug": "custom-gift-boxes",
+          "note": "A foldable cover if the piece does not need a rigid lid."
+        }
+      ],
+      "faqs": [
+        {
+          "q": "Can the insert be soft?",
+          "a": "A pad or a slot can be requested. Describe the piece so the insert is not a generic hole."
+        },
+        {
+          "q": "Will a necklace fit coiled?",
+          "a": "Only if you say it is coiled and send that diameter. A long chain laid straight needs a longer box."
+        }
+      ],
+      "structureText": "The base is a five-sided tray. The lid is hinged along the back edge and carries a front lip, and often side lips, so it sits over the base. The magnet is a closure detail, not a substitute for the board.",
+      "measurement": "Give the internal size of the base. The lid adds height outside the cavity. If an insert is needed, the cradle has to sit inside that cavity and still let the lid close.",
+      "structuralOptions": [
+        "Hinged lid",
+        "Concealed magnet in the front lip",
+        "Wrapped base and lid"
+      ],
+      "materialIds": [
+        "rigid-wrap"
+      ],
+      "finishIds": [
+        "matte",
+        "gloss",
+        "foil",
+        "emboss",
+        "spot-uv"
+      ],
+      "insertIds": [
+        "none",
+        "cradle",
+        "dividers",
+        "tissue",
+        "advice"
+      ]
+    },
+    {
+      "slug": "custom-sleeve-boxes",
+      "name": "Custom Sleeve Boxes",
+      "category": "display-boxes",
+      "structure": "sleeve-and-tray-box",
+      "short": "A printed sleeve over a tray that slides out.",
+      "meta": "Custom sleeve boxes for sets that should slide out. A paperboard sleeve and tray. Request a quote.",
+      "description": "A sleeve box is two pieces. The tray holds the product. The sleeve is the printed cover people pull away. It still folds, unlike a rigid drawer.",
+      "images": [
+        {
+          "src": "/images/use-sleeve-set.jpg",
+          "alt": "A burnt-orange sleeve pulled back from a tray of green and amber bottles."
+        },
+        {
+          "src": "/images/g-sleeve-closed.jpg",
+          "alt": "A closed glossy black sleeve box."
+        },
+        {
+          "src": "/images/g-sleeve-window.jpg",
+          "alt": "A lavender sleeve with a window over a tray of yellow bottles."
+        },
+        {
+          "src": "/images/g-sleeve-tray.jpg",
+          "alt": "A crimson open tray holding a row of white bottles."
+        }
+      ],
+      "sections": [
+        {
+          "heading": "When a sleeve box fits",
+          "body": "Use this for a gift set or a retail set that should slide, not lift out of a tuck. Small bottles in a tray are a typical fit."
+        },
+        {
+          "heading": "Paperboard, not a rigid drawer",
+          "body": "The motion looks like a drawer. The board is folding paperboard, so it can ship flat. Choose a rigid drawer when the box should feel heavy and stay set up."
+        },
+        {
+          "heading": "What to send with the quote",
+          "body": "Size the tray from the products first. The sleeve has to clear the outside of that tray. Say whether your numbers are the tray cavity."
+        }
+      ],
+      "uses": [
+        "Gift sets that slide",
+        "Retail sleeves",
+        "Small bottle sets"
+      ],
+      "related": [
+        {
+          "slug": "custom-drawer-boxes",
+          "note": "The same slide in wrapped rigid board."
+        },
+        {
+          "slug": "custom-window-boxes",
+          "note": "A carton that shows the product through the front instead."
+        },
+        {
+          "slug": "custom-counter-display-boxes",
+          "note": "A tray that holds a row of products on a counter."
+        }
+      ],
+      "faqs": [
+        {
+          "q": "Which piece is printed?",
+          "a": "The sleeve is usually the printed piece. Say if the tray needs print as well."
+        },
+        {
+          "q": "Can the tray be stopped so it does not slide through?",
+          "a": "A stop can be requested. Note it with the quote."
+        }
+      ],
+      "structureText": "The sleeve is a tube. The tray is a shallow carton that moves along the length. Neither piece is a hinged lid. Clearance between the tray and the sleeve has to be enough to slide, and tight enough that the tray does not fall out.",
+      "measurement": "Size the tray from the product first. The sleeve’s internal size has to clear the tray’s outside. In the quote, state whether your numbers describe the tray cavity or the outside of the sleeve. Treat the numbers as the internal tray unless you say otherwise.",
+      "structuralOptions": [
+        "Outer sleeve open at the ends",
+        "Inner tray with a low wall",
+        "Optional stop so the tray does not slide through"
+      ],
+      "materialIds": [
+        "paperboard",
+        "kraft-board"
+      ],
+      "finishIds": [
+        "matte",
+        "gloss",
+        "foil",
+        "emboss",
+        "spot-uv"
+      ],
+      "insertIds": [
+        "none",
+        "cradle",
+        "tissue",
+        "advice"
+      ]
+    },
+    {
+      "slug": "custom-window-boxes",
+      "name": "Custom Window Boxes",
+      "category": "display-boxes",
+      "structure": "window-gift-box",
+      "short": "A tuck carton with a clear window so the product shows.",
+      "meta": "Custom window boxes that show the product through a clear front. A tuck carton with a window. Request a quote.",
+      "description": "A window box is for a product people should see before they open it. The front has a clear opening. The rest of the carton can carry the name.",
+      "images": [
+        {
+          "src": "/images/use-window-gift.jpg",
+          "alt": "A peacock-blue carton with a window and a cream candle inside."
+        },
+        {
+          "src": "/images/g-window-open.jpg",
+          "alt": "An open black window carton with a red interior and a gold candle."
+        },
+        {
+          "src": "/images/g-window-kraft.jpg",
+          "alt": "A strawberry-pink window carton beside a white candle."
+        },
+        {
+          "src": "/images/g-window-side.jpg",
+          "alt": "A mustard window carton with a green candle showing through the panel."
+        }
+      ],
+      "sections": [
+        {
+          "heading": "When a window box fits",
+          "body": "Use this for a candle, a soap, a baked good, or a gift that is the front of the pack. The closure is a tuck, so the carton can ship flat."
+        },
+        {
+          "heading": "The window is not print",
+          "body": "Artwork sits beside the opening, not over it. A sleeve shows the product by sliding. This shows it through film. Tell us the product height so the window frames the product, not empty board."
+        },
+        {
+          "heading": "What to send with the quote",
+          "body": "Size the cavity for the product first. Then place the window. Internal height does not include the tuck. Say if the board should be white or kraft."
+        }
+      ],
+      "uses": [
+        "Candles",
+        "Soap",
+        "Gifts that should be seen"
+      ],
+      "related": [
+        {
+          "slug": "custom-bakery-boxes",
+          "note": "A window carton planned around a baked good."
+        },
+        {
+          "slug": "custom-sleeve-boxes",
+          "note": "A sleeve and tray when the product should slide out."
+        },
+        {
+          "slug": "custom-gift-boxes",
+          "note": "A cover that hides the gift until it opens."
+        }
+      ],
+      "faqs": [
+        {
+          "q": "Can the window be a custom shape?",
+          "a": "Describe the shape with the quote. The photo shows a rectangle as an example, not the only cut."
+        },
+        {
+          "q": "What is the window made from?",
+          "a": "It is an opening covered with a clear film. The film is confirmed with the quote."
+        }
+      ],
+      "structureText": "The body is a tuck carton. The window is cut from the front panel and patched with film. The film, the window size, and the distance from the creases are specification details.",
+      "measurement": "Size the cavity for the product first. Then place the window so it frames the product rather than the empty space above it. Internal height does not include the tuck.",
+      "structuralOptions": [
+        "Front window opening",
+        "Clear film over the opening",
+        "Tuck closure"
+      ],
+      "materialIds": [
+        "paperboard",
+        "kraft-board"
+      ],
+      "finishIds": [
+        "matte",
+        "gloss",
+        "foil",
+        "emboss",
+        "spot-uv"
+      ],
+      "insertIds": [
+        "none",
+        "cradle",
+        "dividers",
+        "tissue",
+        "advice"
+      ]
+    },
+    {
+      "slug": "custom-counter-display-boxes",
+      "name": "Custom Counter Display Boxes",
+      "category": "display-boxes",
+      "structure": "sleeve-and-tray-box",
+      "short": "A low tray that holds a row of products on a counter.",
+      "meta": "Custom counter display boxes that hold a row of products upright. A tray for the counter. Request a quote.",
+      "description": "A counter display is a low tray that presents a row of the same product where people can take one. It is not a shipping carton and it is not a single retail carton.",
+      "images": [
+        {
+          "src": "/images/use-counter-display.jpg",
+          "alt": "A glossy black counter tray holding coral, lemon, and cobalt bottles."
+        },
+        {
+          "src": "/images/g-counter-row.jpg",
+          "alt": "A matte lilac counter tray filled with apricot cartons."
+        },
+        {
+          "src": "/images/g-counter-step.jpg",
+          "alt": "A navy and white stepped tray holding silver cartons."
+        },
+        {
+          "src": "/images/g-counter-single.jpg",
+          "alt": "A scarlet counter tray with one chrome carton standing in front."
+        }
+      ],
+      "sections": [
+        {
+          "heading": "When a counter display fits",
+          "body": "Use this when several units of a small product stand together on a counter. The header can be blank board for your own artwork. The products in the photo are there to show the fit."
+        },
+        {
+          "heading": "A row, not one unit",
+          "body": "A sleeve box is one set that slides out. This tray holds a row. Send the unit size and how many units face the customer. A tall carton is the wrong start."
+        },
+        {
+          "heading": "What to send with the quote",
+          "body": "Measure one unit, then say how many across and how many deep. Height has to clear the product if it stands above the tray wall."
+        }
+      ],
+      "uses": [
+        "Counter rows of small cosmetics",
+        "Checkout trays",
+        "A line of the same unit"
+      ],
+      "related": [
+        {
+          "slug": "custom-sleeve-boxes",
+          "note": "One set in a sleeve, not a row on the counter."
+        },
+        {
+          "slug": "custom-window-boxes",
+          "note": "One product visible through a window."
+        },
+        {
+          "slug": "custom-mascara-boxes",
+          "note": "The carton for a single mascara that might sit in a display."
+        }
+      ],
+      "faqs": [
+        {
+          "q": "Can the header be printed?",
+          "a": "Yes. The header is part of the artwork request. The photo shows it blank."
+        },
+        {
+          "q": "Will it ship flat?",
+          "a": "The tray is folding board and can be set up at the counter. Say if it must be delivered already filled, because that changes the pack."
+        }
+      ],
+      "structureText": "The sleeve is a tube. The tray is a shallow carton that moves along the length. Neither piece is a hinged lid. Clearance between the tray and the sleeve has to be enough to slide, and tight enough that the tray does not fall out.",
+      "measurement": "Size the tray from the product first. The sleeve’s internal size has to clear the tray’s outside. In the quote, state whether your numbers describe the tray cavity or the outside of the sleeve. Treat the numbers as the internal tray unless you say otherwise.",
+      "structuralOptions": [
+        "Outer sleeve open at the ends",
+        "Inner tray with a low wall",
+        "Optional stop so the tray does not slide through"
+      ],
+      "materialIds": [
+        "paperboard",
+        "kraft-board"
+      ],
+      "finishIds": [
+        "matte",
+        "gloss",
+        "foil",
+        "emboss",
+        "spot-uv"
+      ],
+      "insertIds": [
+        "none",
+        "cradle",
+        "tissue",
+        "advice"
+      ]
+    },
+    {
+      "slug": "custom-tea-boxes",
+      "name": "Custom Tea Boxes",
+      "category": "food-boxes",
+      "structure": "straight-tuck-end-box",
+      "short": "A tuck carton for tea bags or a tin, with an inner pack as the contact layer.",
+      "meta": "Custom tea boxes for tins and tea bags. A tuck carton around the inner pack. Request a quote. Not a food-contact certification.",
+      "description": "A tea box is the carton people see. The tea itself should sit in a tin or a bag. This site does not certify the board for food contact.",
+      "images": [
+        {
+          "src": "/images/use-tea.jpg",
+          "alt": "A deep red tea carton with a gold edge beside a gold tin."
+        },
+        {
+          "src": "/images/g-tea-open.jpg",
+          "alt": "An open forest-green tea carton with a copper tin inside."
+        },
+        {
+          "src": "/images/g-tea-kraft.jpg",
+          "alt": "An ice-gray tea carton beside a black tin."
+        },
+        {
+          "src": "/images/g-tea-window.jpg",
+          "alt": "A sunflower tea carton with a window and a blue tin."
+        }
+      ],
+      "sections": [
+        {
+          "heading": "When a tea box fits",
+          "body": "Use this as the outer carton for a tin or for tea bags in their own wrap. The tuck closes by hand. A kraft face can be requested when the paper color is part of the look."
+        },
+        {
+          "heading": "Outer carton, inner pack",
+          "body": "Do not plan the board as the only thing touching loose leaf. Say what the inner pack is. A bakery window box is a different shape because the product is meant to be seen."
+        },
+        {
+          "heading": "What to send with the quote",
+          "body": "Measure the tin or the wrapped bags, not the loose leaf. Add clearance so the tuck can close over the lid of the tin."
+        }
+      ],
+      "uses": [
+        "Tea tins",
+        "Wrapped tea bags",
+        "Outer cartons for dry tea"
+      ],
+      "related": [
+        {
+          "slug": "custom-kraft-boxes",
+          "note": "A kraft tuck carton when the natural board is the look."
+        },
+        {
+          "slug": "custom-bakery-boxes",
+          "note": "A window carton for a baked good."
+        },
+        {
+          "slug": "custom-skincare-jar-boxes",
+          "note": "A similar tuck used for a cream jar instead of a tin."
+        }
+      ],
+      "faqs": [
+        {
+          "q": "Is the carton food-contact certified?",
+          "a": "No. Suitability is confirmed for your product. Plan an inner tin or bag as the contact layer."
+        },
+        {
+          "q": "Can it be a tall carton for many bags?",
+          "a": "Yes. Send the stack height of the bags so the carton is not sized to a single tin."
+        }
+      ],
+      "structureText": "One sheet of paperboard forms the body, the glue seam, the dust flaps, and both tucks. The tucks enter from the same side. The carton folds flat before it is set up.",
+      "measurement": "Measure the product, then add clearance. Internal length is the front panel, width is the side panel, and height runs from the inside bottom to the opening. Do not include the tuck length in the height.",
+      "structuralOptions": [
+        "Top and bottom tucks from the same panel",
+        "Optional hang tab on the top tuck",
+        "Optional window on the front panel"
+      ],
+      "materialIds": [
+        "paperboard",
+        "kraft-board"
+      ],
+      "finishIds": [
+        "matte",
+        "gloss",
+        "foil",
+        "emboss",
+        "spot-uv"
+      ],
+      "insertIds": [
+        "none",
+        "cradle",
+        "dividers",
+        "tissue",
+        "advice"
+      ]
+    },
+    {
+      "slug": "custom-bakery-boxes",
+      "name": "Custom Bakery Boxes",
+      "category": "food-boxes",
+      "structure": "window-gift-box",
+      "short": "A window carton for a pastry, cookie, or small cake.",
+      "meta": "Custom bakery boxes with a window so the bake shows. A tuck carton sized to the pastry. Request a quote.",
+      "description": "A bakery box has to show the bake and still close around it. A window carton does that. The board is the outer pack. A liner or tray is the contact layer when the bake needs one.",
+      "images": [
+        {
+          "src": "/images/use-bakery.jpg",
+          "alt": "A glossy chocolate bakery box with a pink pastry visible through the window."
+        },
+        {
+          "src": "/images/g-bakery-closed.jpg",
+          "alt": "A closed mint bakery carton beside a berry tart."
+        },
+        {
+          "src": "/images/g-bakery-kraft.jpg",
+          "alt": "A cobalt bakery box with a lemon pastry visible through the window."
+        },
+        {
+          "src": "/images/g-bakery-open.jpg",
+          "alt": "An open magenta bakery carton with a white cream pastry inside."
+        }
+      ],
+      "sections": [
+        {
+          "heading": "When a bakery box fits",
+          "body": "Use this for a cookie, a pastry, or a small cake that should be seen. It is not a corrugated cake tier box. Send the height of the bake, including any swirl."
+        },
+        {
+          "heading": "A window, not a plain tea carton",
+          "body": "A tea carton can be solid. A bakery carton wastes its job if the bake is hidden. The window has to sit over the product, not over the empty lid space."
+        },
+        {
+          "heading": "What to send with the quote",
+          "body": "Measure the bake on the board or tray you actually use. Internal height must clear the tallest point. The window position is part of the quote."
+        }
+      ],
+      "uses": [
+        "Pastries",
+        "Cookies",
+        "Small cakes"
+      ],
+      "related": [
+        {
+          "slug": "custom-window-boxes",
+          "note": "The same window idea for a candle, soap, or gift."
+        },
+        {
+          "slug": "custom-tea-boxes",
+          "note": "A solid carton for a tea tin."
+        },
+        {
+          "slug": "custom-kraft-boxes",
+          "note": "A natural-board carton without a window."
+        }
+      ],
+      "faqs": [
+        {
+          "q": "Will grease mark the board?",
+          "a": "That depends on the bake and whether a liner is used. The liner is something to note. The carton photo is not a grease test."
+        },
+        {
+          "q": "Can the window be on the top?",
+          "a": "Describe the face. The example is a front or lid window. The face changes the dieline."
+        }
+      ],
+      "structureText": "The body is a tuck carton. The window is cut from the front panel and patched with film. The film, the window size, and the distance from the creases are specification details.",
+      "measurement": "Size the cavity for the product first. Then place the window so it frames the product rather than the empty space above it. Internal height does not include the tuck.",
+      "structuralOptions": [
+        "Front window opening",
+        "Clear film over the opening",
+        "Tuck closure"
+      ],
+      "materialIds": [
+        "paperboard",
+        "kraft-board"
+      ],
+      "finishIds": [
+        "matte",
+        "gloss",
+        "foil",
+        "emboss",
+        "spot-uv"
+      ],
+      "insertIds": [
+        "none",
+        "cradle",
+        "dividers",
+        "tissue",
+        "advice"
+      ]
+    },
+    {
+      "slug": "custom-kraft-boxes",
+      "name": "Custom Kraft Boxes",
+      "category": "food-boxes",
+      "structure": "kraft-product-box",
+      "short": "A tuck carton in unbleached kraft board for a natural retail pack.",
+      "meta": "Custom kraft boxes in unbleached board for dry goods and simple retail packs. See the carton and request a quote.",
+      "description": "Kraft is the color of the board, not a different closure. This is a tuck carton in unbleached paperboard for a product that should look natural: dry goods in a pouch, a simple retail piece, a balm.",
+      "images": [
+        {
+          "src": "/images/use-kraft-goods.jpg",
+          "alt": "A kraft carton with a black panel beside a rust pouch."
+        },
+        {
+          "src": "/images/g-kraft-open.jpg",
+          "alt": "An open teal carton with a white jar inside."
+        },
+        {
+          "src": "/images/g-kraft-window.jpg",
+          "alt": "A violet carton with a window beside a gold-lidded jar."
+        },
+        {
+          "src": "/images/g-kraft-sleeve.jpg",
+          "alt": "A scarlet sleeve pulled back from a tray holding a cream jar."
+        }
+      ],
+      "sections": [
+        {
+          "heading": "When a kraft box fits",
+          "body": "Use this when the paper color is the look. The fiber shows. It is not a corrugated shipper, even though both can look brown."
+        },
+        {
+          "heading": "Board color, tuck closure",
+          "body": "A white skincare jar carton is the same tuck in a different sheet. A shipping box is corrugated. Pick kraft when you want the natural face, and say if an inner pouch is the contact layer for food."
+        },
+        {
+          "heading": "What to send with the quote",
+          "body": "Measure the pouch or the product the same way as any tuck carton. Do not include the tuck in the height."
+        }
+      ],
+      "uses": [
+        "Dry goods in a pouch",
+        "Natural retail packs",
+        "Simple branded cartons"
+      ],
+      "related": [
+        {
+          "slug": "custom-tea-boxes",
+          "note": "A tea carton, which can also be requested in kraft."
+        },
+        {
+          "slug": "custom-skincare-jar-boxes",
+          "note": "The same tuck in a white sheet for a cream jar."
+        },
+        {
+          "slug": "custom-shipping-boxes",
+          "note": "A corrugated outer carton when the brown board has to be a shipper."
+        }
+      ],
+      "faqs": [
+        {
+          "q": "Will the brown match a printed color?",
+          "a": "Unbleached board has its own tone and can vary. A controlled color needs print on a white sheet."
+        },
+        {
+          "q": "Is kraft food-contact certified here?",
+          "a": "No. Confirm the product and use an inner pack when the board should not touch the food."
+        }
+      ],
+      "structureText": "The dieline matches a straight tuck end. The sheet is kraft paperboard. A gloss film is not part of this specification because it covers the natural surface. Matte, foil, and embossing can be discussed.",
+      "measurement": "Measure internal length, width, and height the same way as any tuck carton. Kraft thickness is still paperboard, not corrugated flute.",
+      "structuralOptions": [
+        "Straight tuck top and bottom",
+        "Kraft board face",
+        "Optional hang tab"
+      ],
+      "materialIds": [
+        "kraft-board"
+      ],
+      "finishIds": [
+        "matte",
+        "foil",
+        "emboss"
+      ],
+      "insertIds": [
+        "none",
+        "cradle",
+        "dividers",
+        "tissue",
+        "advice"
+      ]
+    },
+    {
+      "slug": "custom-coffee-boxes",
+      "name": "Custom Coffee Boxes",
+      "category": "food-boxes",
+      "structure": "straight-tuck-end-box",
+      "short": "A tuck carton for a coffee bag or tin, with the bag as the contact layer.",
+      "meta": "Custom coffee boxes for bags and tins. A tuck carton around the inner pack. Request a quote. Not a food-contact certification.",
+      "description": "A coffee box is the carton on the shelf or in the mailer. The beans stay in a bag or a tin. This site does not certify the board for food contact.",
+      "images": [
+        {
+          "src": "/images/use-coffee.jpg",
+          "alt": "An espresso-brown coffee carton with a copper edge beside a cream coffee bag."
+        },
+        {
+          "src": "/images/g-coffee-open.jpg",
+          "alt": "An open cobalt coffee carton with a black coffee bag inside."
+        },
+        {
+          "src": "/images/g-coffee-kraft.jpg",
+          "alt": "A sand coffee carton beside a rust tin with a black lid."
+        },
+        {
+          "src": "/images/g-coffee-window.jpg",
+          "alt": "A forest-green window carton showing a cream coffee bag."
+        }
+      ],
+      "sections": [
+        {
+          "heading": "When a coffee box fits",
+          "body": "Use this as the outer carton for a coffee bag or a small tin. The tuck closes by hand. It is not a tall cereal carton and it is not the mailer the bag ships in."
+        },
+        {
+          "heading": "A bag or a tin, not loose beans",
+          "body": "Do not plan the board as the only thing touching the beans. A tea carton is a similar tuck, but a tea tin is usually shorter and squarer. Send the bag’s filled size, including the valve if it sticks out."
+        },
+        {
+          "heading": "What to send with the quote",
+          "body": "Measure the filled bag or the tin, not a scoop of beans. Add clearance so the tuck can close over the top of the bag."
+        }
+      ],
+      "uses": [
+        "Coffee bags",
+        "Small coffee tins",
+        "Outer cartons for whole bean or ground coffee"
+      ],
+      "related": [
+        {
+          "slug": "custom-tea-boxes",
+          "note": "A shorter tuck carton for a tea tin."
+        },
+        {
+          "slug": "custom-cereal-boxes",
+          "note": "A taller carton for a cereal bag."
+        },
+        {
+          "slug": "custom-kraft-boxes",
+          "note": "The same tuck in unbleached board."
+        }
+      ],
+      "faqs": [
+        {
+          "q": "Is the carton food-contact certified?",
+          "a": "No. Suitability is confirmed for your product. Plan the bag or tin as the contact layer."
+        },
+        {
+          "q": "Can one carton hold two bags?",
+          "a": "Yes, if you send both bags as the thing to measure. A carton sized to one bag will not fit two."
+        }
+      ],
+      "structureText": "One sheet of paperboard forms the body, the glue seam, the dust flaps, and both tucks. The tucks enter from the same side. The carton folds flat before it is set up.",
+      "measurement": "Measure the product, then add clearance. Internal length is the front panel, width is the side panel, and height runs from the inside bottom to the opening. Do not include the tuck length in the height.",
+      "structuralOptions": [
+        "Top and bottom tucks from the same panel",
+        "Optional hang tab on the top tuck",
+        "Optional window on the front panel"
+      ],
+      "materialIds": [
+        "paperboard",
+        "kraft-board"
+      ],
+      "finishIds": [
+        "matte",
+        "gloss",
+        "foil",
+        "emboss",
+        "spot-uv"
+      ],
+      "insertIds": [
+        "none",
+        "cradle",
+        "dividers",
+        "tissue",
+        "advice"
+      ]
+    },
+    {
+      "slug": "custom-chocolate-bar-boxes",
+      "name": "Custom Chocolate Bar Boxes",
+      "category": "food-boxes",
+      "structure": "straight-tuck-end-box",
+      "short": "A slim tuck carton for one chocolate bar in its own wrapper.",
+      "meta": "Custom chocolate bar boxes for a wrapped bar. A slim tuck carton sized to the bar. Request a quote.",
+      "description": "A chocolate bar is wide and thin. The carton should follow that, not become a square. The wrapper or an inner tray is the contact layer. This site does not certify the board for food contact.",
+      "images": [
+        {
+          "src": "/images/use-chocolate-bar.jpg",
+          "alt": "A cocoa carton with a gold edge beside a dark chocolate bar in a gold wrapper."
+        },
+        {
+          "src": "/images/g-chocolate-open.jpg",
+          "alt": "An open ivory carton with a ruby-wrapped chocolate bar inside."
+        },
+        {
+          "src": "/images/g-chocolate-kraft.jpg",
+          "alt": "A black chocolate carton beside a gold-foil bar."
+        },
+        {
+          "src": "/images/g-chocolate-window.jpg",
+          "alt": "A blush window carton with a dark chocolate bar visible."
+        }
+      ],
+      "sections": [
+        {
+          "heading": "When a chocolate bar box fits",
+          "body": "Use this for one wrapped bar, or a thin stack of bars if you send that stack as the size. It is the wrong box for a tray of truffles."
+        },
+        {
+          "heading": "A bar, not an assortment",
+          "body": "A truffle box is deeper so the pieces can sit in a tray and be seen. This carton stays slim. A cookie window box is also wider and shows a stack."
+        },
+        {
+          "heading": "What to send with the quote",
+          "body": "Measure the wrapped bar, not the bare chocolate. Height is the thickness of the bar plus a little clearance. Do not count the tuck as height."
+        }
+      ],
+      "uses": [
+        "Wrapped chocolate bars",
+        "A thin stack of bars",
+        "Outer cartons for a single bar"
+      ],
+      "related": [
+        {
+          "slug": "custom-truffle-boxes",
+          "note": "A deeper window carton for an assortment."
+        },
+        {
+          "slug": "custom-candy-boxes",
+          "note": "A carton for wrapped sweets instead of one bar."
+        },
+        {
+          "slug": "custom-cookie-boxes",
+          "note": "A window carton for a stack of cookies."
+        }
+      ],
+      "faqs": [
+        {
+          "q": "Will the chocolate touch the board?",
+          "a": "Plan a wrapper or tray as the contact layer. This site does not certify the board for food contact."
+        },
+        {
+          "q": "Can the bar show through a window?",
+          "a": "A window can be requested. Say which face, because that changes the dieline. The example carton is solid."
+        }
+      ],
+      "structureText": "One sheet of paperboard forms the body, the glue seam, the dust flaps, and both tucks. The tucks enter from the same side. The carton folds flat before it is set up.",
+      "measurement": "Measure the product, then add clearance. Internal length is the front panel, width is the side panel, and height runs from the inside bottom to the opening. Do not include the tuck length in the height.",
+      "structuralOptions": [
+        "Top and bottom tucks from the same panel",
+        "Optional hang tab on the top tuck",
+        "Optional window on the front panel"
+      ],
+      "materialIds": [
+        "paperboard",
+        "kraft-board"
+      ],
+      "finishIds": [
+        "matte",
+        "gloss",
+        "foil",
+        "emboss",
+        "spot-uv"
+      ],
+      "insertIds": [
+        "none",
+        "cradle",
+        "dividers",
+        "tissue",
+        "advice"
+      ]
+    },
+    {
+      "slug": "custom-truffle-boxes",
+      "name": "Custom Truffle Boxes",
+      "category": "food-boxes",
+      "structure": "window-gift-box",
+      "short": "A window carton for a tray of chocolates people should see.",
+      "meta": "Custom truffle boxes with a window over a tray of chocolates. The tray is the contact layer. Request a quote.",
+      "description": "An assortment needs a carton deep enough for a tray, and a window if the chocolates are the reason to pick it up. The tray or cups are the contact layer. This site does not certify the board for food contact.",
+      "images": [
+        {
+          "src": "/images/use-truffle.jpg",
+          "alt": "A burgundy window carton with gold and pink truffles visible in a tray."
+        },
+        {
+          "src": "/images/g-truffle-open.jpg",
+          "alt": "An open emerald carton with a tray of white and cocoa truffles."
+        },
+        {
+          "src": "/images/g-truffle-kraft.jpg",
+          "alt": "A midnight-blue window carton showing gold-dusted truffles."
+        },
+        {
+          "src": "/images/g-truffle-window.jpg",
+          "alt": "A coral carton with a clear window over pink and dark truffles."
+        }
+      ],
+      "sections": [
+        {
+          "heading": "When a truffle box fits",
+          "body": "Use this for a tray of truffles or filled chocolates that should be seen. It is not a slim bar carton and it is not a tall bakery box for a cake."
+        },
+        {
+          "heading": "A tray you can see",
+          "body": "A chocolate bar carton hides a thin bar. This one is sized to the tray and leaves a window over the pieces. Send the tray, not a single truffle, if that is what the carton has to hold."
+        },
+        {
+          "heading": "What to send with the quote",
+          "body": "Measure the filled tray, including the height of the tallest piece. The window position is part of the quote."
+        }
+      ],
+      "uses": [
+        "Truffle trays",
+        "Filled chocolate assortments",
+        "A window over a candy tray"
+      ],
+      "related": [
+        {
+          "slug": "custom-chocolate-bar-boxes",
+          "note": "A slim carton for one wrapped bar."
+        },
+        {
+          "slug": "custom-bakery-boxes",
+          "note": "A window carton for a pastry instead of a tray."
+        },
+        {
+          "slug": "custom-cookie-boxes",
+          "note": "A window carton for a stack of cookies."
+        }
+      ],
+      "faqs": [
+        {
+          "q": "Is the carton food-contact certified?",
+          "a": "No. Use a tray or cups as the contact layer and confirm suitability for your product."
+        },
+        {
+          "q": "Can the window be left off?",
+          "a": "Yes. Say if the front should be solid. The dieline changes."
+        }
+      ],
+      "structureText": "The body is a tuck carton. The window is cut from the front panel and patched with film. The film, the window size, and the distance from the creases are specification details.",
+      "measurement": "Size the cavity for the product first. Then place the window so it frames the product rather than the empty space above it. Internal height does not include the tuck.",
+      "structuralOptions": [
+        "Front window opening",
+        "Clear film over the opening",
+        "Tuck closure"
+      ],
+      "materialIds": [
+        "paperboard",
+        "kraft-board"
+      ],
+      "finishIds": [
+        "matte",
+        "gloss",
+        "foil",
+        "emboss",
+        "spot-uv"
+      ],
+      "insertIds": [
+        "none",
+        "cradle",
+        "dividers",
+        "tissue",
+        "advice"
+      ]
+    },
+    {
+      "slug": "custom-cookie-boxes",
+      "name": "Custom Cookie Boxes",
+      "category": "food-boxes",
+      "structure": "window-gift-box",
+      "short": "A window carton for a stack or sleeve of cookies.",
+      "meta": "Custom cookie boxes with a window over a stack of cookies. A liner or tray is the contact layer. Request a quote.",
+      "description": "A cookie carton is wider than it is tall when the cookies are stacked or stood in a sleeve. The window shows the bake. A liner or tray is the contact layer. This site does not certify the board for food contact.",
+      "images": [
+        {
+          "src": "/images/use-cookie.jpg",
+          "alt": "A butter-yellow window carton with a stack of chocolate chip cookies inside."
+        },
+        {
+          "src": "/images/g-cookie-open.jpg",
+          "alt": "An open lilac carton with a stack of pale sugar cookies inside."
+        },
+        {
+          "src": "/images/g-cookie-kraft.jpg",
+          "alt": "A scarlet window carton showing dark chocolate cookies."
+        },
+        {
+          "src": "/images/g-cookie-window.jpg",
+          "alt": "A mint carton with a window over oatmeal cookies."
+        }
+      ],
+      "sections": [
+        {
+          "heading": "When a cookie box fits",
+          "body": "Use this for a stack, a sleeve, or a short row of cookies. A tall frosted cake or a single pastry with a swirl is the bakery box, because the height is different."
+        },
+        {
+          "heading": "A stack, not a tall pastry",
+          "body": "The bakery carton is sized to a pastry or a small cake that rises. This one stays lower and wider. Send the stack you actually pack, including any paper cup."
+        },
+        {
+          "heading": "What to send with the quote",
+          "body": "Measure the cookies on the tray or in the sleeve you use. Internal height must clear the stack. The window position is part of the quote."
+        }
+      ],
+      "uses": [
+        "Cookie stacks",
+        "Cookie sleeves",
+        "A short row of cookies"
+      ],
+      "related": [
+        {
+          "slug": "custom-bakery-boxes",
+          "note": "A taller window carton for a pastry or small cake."
+        },
+        {
+          "slug": "custom-truffle-boxes",
+          "note": "A window carton for a chocolate tray."
+        },
+        {
+          "slug": "custom-kraft-boxes",
+          "note": "A solid kraft carton when the cookies should not show."
+        }
+      ],
+      "faqs": [
+        {
+          "q": "Will grease mark the board?",
+          "a": "That depends on the cookie and whether a liner is used. Note the liner. The photo is not a grease test."
+        },
+        {
+          "q": "Can it hold one large cookie?",
+          "a": "Yes. Send that diameter and thickness. A carton sized to a stack will be too deep for one cookie."
+        }
+      ],
+      "structureText": "The body is a tuck carton. The window is cut from the front panel and patched with film. The film, the window size, and the distance from the creases are specification details.",
+      "measurement": "Size the cavity for the product first. Then place the window so it frames the product rather than the empty space above it. Internal height does not include the tuck.",
+      "structuralOptions": [
+        "Front window opening",
+        "Clear film over the opening",
+        "Tuck closure"
+      ],
+      "materialIds": [
+        "paperboard",
+        "kraft-board"
+      ],
+      "finishIds": [
+        "matte",
+        "gloss",
+        "foil",
+        "emboss",
+        "spot-uv"
+      ],
+      "insertIds": [
+        "none",
+        "cradle",
+        "dividers",
+        "tissue",
+        "advice"
+      ]
+    },
+    {
+      "slug": "custom-cereal-boxes",
+      "name": "Custom Cereal Boxes",
+      "category": "food-boxes",
+      "structure": "reverse-tuck-end-box",
+      "short": "A tall tuck carton for cereal or granola in an inner bag.",
+      "meta": "Custom cereal boxes for a bag of cereal or granola. A tall tuck carton around the bag. Request a quote. Not a food-contact certification.",
+      "description": "Cereal and granola need a tall carton and a bag inside it. The bag is the contact layer. The reverse tuck closes from the opposite faces, which suits a carton people open from the top. This site does not certify the board for food contact.",
+      "images": [
+        {
+          "src": "/images/use-cereal.jpg",
+          "alt": "A tall sky-blue cereal carton beside a cream bag of oats."
+        },
+        {
+          "src": "/images/g-cereal-open.jpg",
+          "alt": "An open sunflower cereal carton with a white bag of grain inside."
+        },
+        {
+          "src": "/images/g-cereal-kraft.jpg",
+          "alt": "A tall charcoal cereal carton beside a kraft grain bag."
+        },
+        {
+          "src": "/images/g-cereal-window.jpg",
+          "alt": "A tall teal carton with a window showing an oat-colored bag."
+        }
+      ],
+      "sections": [
+        {
+          "heading": "When a cereal box fits",
+          "body": "Use this for a bag of cereal, granola, or a similar dry good that stands tall. It is the wrong box for a flat coffee bag or a single chocolate bar."
+        },
+        {
+          "heading": "Tall, because the bag stands",
+          "body": "A coffee carton follows a shorter bag. This one is tall so the inner bag can stand. A kraft carton can be the same idea in unbleached board if the natural face matters more than the height."
+        },
+        {
+          "heading": "What to send with the quote",
+          "body": "Measure the filled bag standing up, not the loose grain. Internal height has to clear the bag with the tuck closed. Do not count the tuck flap as height."
+        }
+      ],
+      "uses": [
+        "Cereal bags",
+        "Granola bags",
+        "Tall dry-good cartons"
+      ],
+      "related": [
+        {
+          "slug": "custom-coffee-boxes",
+          "note": "A shorter carton for a coffee bag."
+        },
+        {
+          "slug": "custom-kraft-boxes",
+          "note": "A natural-board tuck when the brown face is the look."
+        },
+        {
+          "slug": "custom-tea-boxes",
+          "note": "A small carton for a tin or wrapped tea bags."
+        }
+      ],
+      "faqs": [
+        {
+          "q": "Is the carton food-contact certified?",
+          "a": "No. The bag is the contact layer. Suitability is confirmed for your product."
+        },
+        {
+          "q": "Why a reverse tuck?",
+          "a": "The tucks close from opposite faces, which is a simple top opening on a tall carton. A straight tuck can be requested if both tucks should come from the same face."
+        }
+      ],
+      "structureText": "The body is a tube of paperboard. Dust flaps fold in from the sides and the tuck flap closes over them. Because the tucks are reversed, the top opening and the bottom closure are mirrored.",
+      "measurement": "Use internal length, width, and height. The tuck flap length is extra board beyond the height and should not be counted as internal height.",
+      "structuralOptions": [
+        "Top and bottom tucks from opposite panels",
+        "Optional hang tab",
+        "Optional front window"
+      ],
+      "materialIds": [
+        "paperboard",
+        "kraft-board"
+      ],
+      "finishIds": [
+        "matte",
+        "gloss",
+        "foil",
+        "emboss",
+        "spot-uv"
+      ],
+      "insertIds": [
+        "none",
+        "cradle",
+        "dividers",
+        "tissue",
+        "advice"
+      ]
+    },
+    {
+      "slug": "custom-candy-boxes",
+      "name": "Custom Candy Boxes",
+      "category": "food-boxes",
+      "structure": "straight-tuck-end-box",
+      "short": "A tuck carton for wrapped candies, with the wrappers as the contact layer.",
+      "meta": "Custom candy boxes for wrapped sweets. A tuck carton sized to the fill. Request a quote. Not a food-contact certification.",
+      "description": "Wrapped candy is a loose fill, not one bar and not a tray of truffles. The carton has to fit the count you actually pack. The wrappers are the contact layer. This site does not certify the board for food contact.",
+      "images": [
+        {
+          "src": "/images/use-candy.jpg",
+          "alt": "A magenta candy carton beside jewel-toned wrapped sweets."
+        },
+        {
+          "src": "/images/g-candy-open.jpg",
+          "alt": "An open navy carton filled with gold and red wrapped candies."
+        },
+        {
+          "src": "/images/g-candy-kraft.jpg",
+          "alt": "A pistachio carton beside silver-wrapped sweets."
+        },
+        {
+          "src": "/images/g-candy-window.jpg",
+          "alt": "A black window carton showing lemon and violet wrapped candies."
+        }
+      ],
+      "sections": [
+        {
+          "heading": "When a candy box fits",
+          "body": "Use this for wrapped sweets, a small bag of candy inside the carton, or a counted fill. Say the count. A carton sized to ten pieces will crush or rattle if you later pack thirty."
+        },
+        {
+          "heading": "A fill, not one bar",
+          "body": "A chocolate bar carton is slim and sized to one wrapper. A truffle box is a tray you look into. This carton is for pieces that fill a cavity. A liner can be noted if the wrappers should not touch the board."
+        },
+        {
+          "heading": "What to send with the quote",
+          "body": "Pack the count you intend, then measure that fill. Internal height must let the tuck close without crushing the top pieces."
+        }
+      ],
+      "uses": [
+        "Wrapped sweets",
+        "A counted candy fill",
+        "A small inner bag of candy"
+      ],
+      "related": [
+        {
+          "slug": "custom-chocolate-bar-boxes",
+          "note": "A slim carton for one wrapped bar."
+        },
+        {
+          "slug": "custom-truffle-boxes",
+          "note": "A window carton for chocolates in a tray."
+        },
+        {
+          "slug": "custom-cookie-boxes",
+          "note": "A window carton for cookies instead of wrapped candy."
+        }
+      ],
+      "faqs": [
+        {
+          "q": "Can loose unwrapped candy go straight in?",
+          "a": "Plan a wrapper, bag, or tray as the contact layer. This site does not certify the board for food contact."
+        },
+        {
+          "q": "Can there be a window?",
+          "a": "Yes. Say which face. The example is a solid carton."
+        }
+      ],
+      "structureText": "One sheet of paperboard forms the body, the glue seam, the dust flaps, and both tucks. The tucks enter from the same side. The carton folds flat before it is set up.",
+      "measurement": "Measure the product, then add clearance. Internal length is the front panel, width is the side panel, and height runs from the inside bottom to the opening. Do not include the tuck length in the height.",
+      "structuralOptions": [
+        "Top and bottom tucks from the same panel",
+        "Optional hang tab on the top tuck",
+        "Optional window on the front panel"
+      ],
+      "materialIds": [
+        "paperboard",
+        "kraft-board"
+      ],
+      "finishIds": [
+        "matte",
+        "gloss",
+        "foil",
+        "emboss",
+        "spot-uv"
+      ],
+      "insertIds": [
+        "none",
+        "cradle",
+        "dividers",
+        "tissue",
+        "advice"
+      ]
+    },
+    {
+      "slug": "custom-spice-boxes",
+      "name": "Custom Spice Boxes",
+      "category": "food-boxes",
+      "structure": "auto-lock-bottom-box",
+      "short": "An auto-lock carton for small spice jars or tins.",
+      "meta": "Custom spice boxes for small jars and tins. An auto-lock carton so the glass has a locked base. Request a quote.",
+      "description": "Spice is usually a few small jars or tins. Glass wants a base that locks, not a tuck someone has to fold under a jar. The jar is the contact layer. This site does not certify the board for food contact.",
+      "images": [
+        {
+          "src": "/images/use-spice.jpg",
+          "alt": "A terracotta spice carton beside three small jars of saffron, green, and red spice."
+        },
+        {
+          "src": "/images/g-spice-open.jpg",
+          "alt": "An open ink-blue carton holding two small red and yellow spice jars."
+        },
+        {
+          "src": "/images/g-spice-kraft.jpg",
+          "alt": "A white spice carton beside a row of tiny black-lidded jars."
+        },
+        {
+          "src": "/images/g-spice-window.jpg",
+          "alt": "A moss-green window carton showing three copper-lidded spice tins."
+        }
+      ],
+      "sections": [
+        {
+          "heading": "When a spice box fits",
+          "body": "Use this for one small jar or a short row of tins. The bottom locks when the carton is opened. It is not a tall cereal carton and it is not a single honey jar if that jar is wider."
+        },
+        {
+          "heading": "Small jars, a locked base",
+          "body": "A tea tuck is enough for a light tin. Glass spice jars are easier to pack when the base locks itself. A honey carton is the same lock sized to one wider jar."
+        },
+        {
+          "heading": "What to send with the quote",
+          "body": "Measure the jars with their lids. If more than one jar shares the carton, measure the group, not a single jar. Internal height must clear the lids."
+        }
+      ],
+      "uses": [
+        "Spice jars",
+        "Small tins",
+        "A short row of jars"
+      ],
+      "related": [
+        {
+          "slug": "custom-honey-boxes",
+          "note": "The same lock sized to one wider jar."
+        },
+        {
+          "slug": "custom-tea-boxes",
+          "note": "A tuck carton for a lighter tea tin."
+        },
+        {
+          "slug": "custom-bottle-boxes",
+          "note": "A taller auto-lock carton for a bottle."
+        }
+      ],
+      "faqs": [
+        {
+          "q": "Is the carton food-contact certified?",
+          "a": "No. The jar or tin is the contact layer."
+        },
+        {
+          "q": "Will the jars rattle?",
+          "a": "A carton with extra room will. Send the real jar count so the fit can be tight enough to discuss, including a divider if you want one."
+        }
+      ],
+      "structureText": "The bottom flaps are part of the same sheet and are glued so they lock when the tube is opened. The top remains a separate closure, usually a tuck and dust flaps. The carton still ships flat.",
+      "measurement": "Internal height is the clear opening above the locked base, not the depth of the bottom flaps. Check that the product and any insert can pass through the top.",
+      "structuralOptions": [
+        "Pre-glued automatic bottom",
+        "Tuck top",
+        "Optional window above the product line"
+      ],
+      "materialIds": [
+        "paperboard"
+      ],
+      "finishIds": [
+        "matte",
+        "gloss",
+        "foil",
+        "emboss",
+        "spot-uv"
+      ],
+      "insertIds": [
+        "none",
+        "cradle",
+        "dividers",
+        "tissue",
+        "advice"
+      ]
+    },
+    {
+      "slug": "custom-honey-boxes",
+      "name": "Custom Honey Boxes",
+      "category": "food-boxes",
+      "structure": "auto-lock-bottom-box",
+      "short": "An auto-lock carton for one glass jar of honey.",
+      "meta": "Custom honey boxes for a glass jar. An auto-lock carton around the jar. Request a quote. Not a food-contact certification.",
+      "description": "A honey jar is glass, squat, and heavier than a tea tin. The carton needs a base that locks under that weight. The jar is the contact layer. This site does not certify the board for food contact.",
+      "images": [
+        {
+          "src": "/images/use-honey.jpg",
+          "alt": "A sunflower carton beside a squat amber honey jar with a black lid."
+        },
+        {
+          "src": "/images/g-honey-open.jpg",
+          "alt": "An open cream carton with an amber honey jar seated inside."
+        },
+        {
+          "src": "/images/g-honey-kraft.jpg",
+          "alt": "A deep plum carton beside a gold-lidded honey jar."
+        },
+        {
+          "src": "/images/g-honey-window.jpg",
+          "alt": "A sky-blue window carton with a honey jar visible through the front."
+        }
+      ],
+      "sections": [
+        {
+          "heading": "When a honey box fits",
+          "body": "Use this for one jar. Send the jar with its lid on. A row of small spice jars is a different carton, even though the lock is the same family."
+        },
+        {
+          "heading": "One jar, not a row of tins",
+          "body": "Spice cartons are sized to smaller jars side by side. This one is sized to a single wider jar. A bottle of sauce is taller. Do not reuse a honey height for a tall bottle."
+        },
+        {
+          "heading": "What to send with the quote",
+          "body": "Measure the jar including the lid. Internal width needs clearance for the glass, and height must clear the lid so the tuck can close."
+        }
+      ],
+      "uses": [
+        "Honey jars",
+        "One squat glass jar",
+        "Outer cartons for a jar"
+      ],
+      "related": [
+        {
+          "slug": "custom-spice-boxes",
+          "note": "An auto-lock carton for smaller jars side by side."
+        },
+        {
+          "slug": "custom-bottle-boxes",
+          "note": "A taller auto-lock carton for a bottle."
+        },
+        {
+          "slug": "custom-tea-boxes",
+          "note": "A lighter tuck carton for a tin."
+        }
+      ],
+      "faqs": [
+        {
+          "q": "Is the carton food-contact certified?",
+          "a": "No. The jar is the contact layer. Suitability is confirmed for your product."
+        },
+        {
+          "q": "Can two jars share it?",
+          "a": "Only if you send both jars as the size. A carton cut for one jar will not become a two-jar carton later."
+        }
+      ],
+      "structureText": "The bottom flaps are part of the same sheet and are glued so they lock when the tube is opened. The top remains a separate closure, usually a tuck and dust flaps. The carton still ships flat.",
+      "measurement": "Internal height is the clear opening above the locked base, not the depth of the bottom flaps. Check that the product and any insert can pass through the top.",
+      "structuralOptions": [
+        "Pre-glued automatic bottom",
+        "Tuck top",
+        "Optional window above the product line"
+      ],
+      "materialIds": [
+        "paperboard"
+      ],
+      "finishIds": [
+        "matte",
+        "gloss",
+        "foil",
+        "emboss",
+        "spot-uv"
+      ],
+      "insertIds": [
+        "none",
+        "cradle",
+        "dividers",
+        "tissue",
+        "advice"
+      ]
+    },
+    {
+      "slug": "custom-mailer-boxes",
+      "name": "Custom Mailer Boxes",
+      "category": "mailer-boxes",
+      "structure": "die-cut-mailer-box",
+      "short": "A mailer with one lid, for the order a customer opens.",
+      "meta": "Custom mailer boxes for online orders. One lid folds over tissue and the product. Request a quote.",
+      "description": "A mailer is the box the customer opens. One lid folds over the top and down the front. Tissue and the product sit inside. It is not a carton of four loose flaps.",
+      "images": [
+        {
+          "src": "/images/use-mailer-order.jpg",
+          "alt": "An open navy mailer with blush tissue and a gold jar inside."
+        },
+        {
+          "src": "/images/g-mailer-closed.jpg",
+          "alt": "A closed glossy white mailer with a coral edge."
+        },
+        {
+          "src": "/images/g-mailer-tissue.jpg",
+          "alt": "An open emerald mailer with cream tissue and a black jar."
+        },
+        {
+          "src": "/images/g-mailer-insert.jpg",
+          "alt": "An open apricot mailer with a charcoal insert holding a silver jar."
+        }
+      ],
+      "sections": [
+        {
+          "heading": "When a mailer box fits",
+          "body": "Use this for an online order that can travel in the box people open. A jar in tissue is a typical fit. If the goods are heavy or fragile beyond what a mailer can do, add a shipping carton in the notes."
+        },
+        {
+          "heading": "One lid, not four flaps",
+          "body": "A shipping box closes with flaps that meet. This mailer is the unboxing. A subscription mailer is the same lid style packed with more than one item."
+        },
+        {
+          "heading": "What to send with the quote",
+          "body": "Measure length and width inside the base. Height has to include the product and the tissue, because the lid must close over that stack."
+        }
+      ],
+      "uses": [
+        "Online orders",
+        "A product in tissue",
+        "The box the customer opens"
+      ],
+      "related": [
+        {
+          "slug": "custom-subscription-boxes",
+          "note": "A mailer packed with a few items, not one jar."
+        },
+        {
+          "slug": "custom-flat-mailer-boxes",
+          "note": "A shallower mailer for a book or a flat set."
+        },
+        {
+          "slug": "custom-shipping-boxes",
+          "note": "An outer carton when the mailer is not the shipper."
+        }
+      ],
+      "faqs": [
+        {
+          "q": "Can this be the only box in the shipment?",
+          "a": "Often, yes. If you still want an outer carton, order that as a shipping box and say they travel together."
+        },
+        {
+          "q": "Can I add a thank-you card?",
+          "a": "Yes. Include its thickness in the height so the lid still closes."
+        }
+      ],
+      "structureText": "The blank includes the base, the walls, the lid, and the front tuck. Tabs on the sides hold the lid. It is die-cut rather than a regular slotted carton.",
+      "measurement": "Internal height must include the product and any tissue. The lid has to close over that height. Measure length and width inside the base.",
+      "structuralOptions": [
+        "Hinged lid flap",
+        "Front tuck",
+        "Side locking tabs"
+      ],
+      "materialIds": [
+        "corrugated"
+      ],
+      "finishIds": [
+        "matte",
+        "gloss"
+      ],
+      "insertIds": [
+        "none",
+        "cradle",
+        "dividers",
+        "tissue",
+        "advice"
+      ]
+    },
+    {
+      "slug": "custom-subscription-boxes",
+      "name": "Custom Subscription Boxes",
+      "category": "mailer-boxes",
+      "structure": "die-cut-mailer-box",
+      "short": "A mailer sized for a few items packed together each cycle.",
+      "meta": "Custom subscription boxes for a small set of items in one mailer. See the fit and request a quote.",
+      "description": "A subscription box is a mailer that has to fit more than one thing, and often a different mix later. The lid is the same mailer lid. The size has to be honest about the largest kit you expect to send.",
+      "images": [
+        {
+          "src": "/images/use-subscription.jpg",
+          "alt": "An open sunflower mailer holding a purple jar, a green soap, and white tissue."
+        },
+        {
+          "src": "/images/g-sub-closed.jpg",
+          "alt": "A closed burgundy mailer with a gold edge."
+        },
+        {
+          "src": "/images/g-sub-tissue.jpg",
+          "alt": "An open sky-blue mailer with an orange tin and a white jar."
+        },
+        {
+          "src": "/images/g-sub-kraft.jpg",
+          "alt": "An open black mailer with gold tissue and an emerald jar."
+        }
+      ],
+      "sections": [
+        {
+          "heading": "When a subscription box fits",
+          "body": "Use this when each shipment is a few items in tissue: a jar, a bar, a card. Size it to the fullest kit, not the smallest one, or later cycles will not close."
+        },
+        {
+          "heading": "A kit, not a single jar",
+          "body": "The single-product mailer is smaller. This one leaves room for a group. It is still not a corrugated shipping carton. Say if an outer shipper is also required."
+        },
+        {
+          "heading": "What to send with the quote",
+          "body": "List the largest combination you will pack. Measure that stack, including tissue and a card. Internal height must clear it with the lid closed."
+        }
+      ],
+      "uses": [
+        "Monthly kits",
+        "A few items in one mailer",
+        "Unboxing sets"
+      ],
+      "related": [
+        {
+          "slug": "custom-mailer-boxes",
+          "note": "A mailer for one product in tissue."
+        },
+        {
+          "slug": "custom-corporate-gift-boxes",
+          "note": "A rigid kit when the box should be kept, not mailed as the shipper."
+        },
+        {
+          "slug": "custom-flat-mailer-boxes",
+          "note": "A shallow mailer when everything inside is flat."
+        }
+      ],
+      "faqs": [
+        {
+          "q": "What if next month’s items are taller?",
+          "a": "The mailer will not grow. Size this one to the tallest kit you intend, or plan a second size."
+        },
+        {
+          "q": "Can dividers keep items apart?",
+          "a": "A simple divider can be discussed if it still lets the lid close."
+        }
+      ],
+      "structureText": "The blank includes the base, the walls, the lid, and the front tuck. Tabs on the sides hold the lid. It is die-cut rather than a regular slotted carton.",
+      "measurement": "Internal height must include the product and any tissue. The lid has to close over that height. Measure length and width inside the base.",
+      "structuralOptions": [
+        "Hinged lid flap",
+        "Front tuck",
+        "Side locking tabs"
+      ],
+      "materialIds": [
+        "corrugated"
+      ],
+      "finishIds": [
+        "matte",
+        "gloss"
+      ],
+      "insertIds": [
+        "none",
+        "cradle",
+        "dividers",
+        "tissue",
+        "advice"
+      ]
+    },
+    {
+      "slug": "custom-flat-mailer-boxes",
+      "name": "Custom Flat Mailer Boxes",
+      "category": "mailer-boxes",
+      "structure": "roll-end-tuck-mailer",
+      "short": "A shallow mailer for a book, a print, or a flat set.",
+      "meta": "Custom flat mailer boxes for books and flat goods. A shallow mailer with a tuck lock. Request a quote.",
+      "description": "Flat goods do not need a deep mailer. A roll-end mailer stays shallow, the ends roll shut, and a tuck locks. A book or a print sits in it without a tall empty cavity.",
+      "images": [
+        {
+          "src": "/images/use-flat-mailer.jpg",
+          "alt": "An open lilac shallow mailer with a yellow book inside."
+        },
+        {
+          "src": "/images/g-flat-open.jpg",
+          "alt": "An open cream shallow mailer with a cobalt wrapped item inside."
+        },
+        {
+          "src": "/images/g-flat-kraft.jpg",
+          "alt": "A closed glossy scarlet shallow mailer."
+        },
+        {
+          "src": "/images/g-flat-stack.jpg",
+          "alt": "An open teal shallow mailer beside a stack of black folios."
+        }
+      ],
+      "sections": [
+        {
+          "heading": "When a flat mailer fits",
+          "body": "Use this for books, prints, or a thin set. It is the wrong box for a jar. The height should stay modest next to the length and width."
+        },
+        {
+          "heading": "Shallower than a standard mailer",
+          "body": "The die-cut mailer has one lid and more depth. This one rolls at the ends. Pick it when the product is flat. A shipping carton is for a deeper outer pack."
+        },
+        {
+          "heading": "What to send with the quote",
+          "body": "Measure the book or the stack of flat pieces. Internal height is the closed cavity, not the length of the roll."
+        }
+      ],
+      "uses": [
+        "Books",
+        "Prints",
+        "Flat sets"
+      ],
+      "related": [
+        {
+          "slug": "custom-mailer-boxes",
+          "note": "A deeper mailer with one lid for a jar or a taller product."
+        },
+        {
+          "slug": "custom-subscription-boxes",
+          "note": "A mailer for a few items of mixed height."
+        },
+        {
+          "slug": "custom-shipping-boxes",
+          "note": "An outer carton if this mailer needs one."
+        }
+      ],
+      "faqs": [
+        {
+          "q": "Will a thin garment fit?",
+          "a": "Only if it is folded flat and you send that folded size. A bulky fold needs a deeper mailer."
+        },
+        {
+          "q": "Is the tuck the same as a cosmetic carton tuck?",
+          "a": "It is a tuck lock on a mailer, not a tall folding carton. The two are not interchangeable."
+        }
+      ],
+      "structureText": "The ends fold in a roll rather than standing as simple side walls with a separate lid. The tuck is the lock. Dust and roll scores are part of the blank.",
+      "measurement": "Keep the height modest relative to the length and width. Internal height is the closed cavity, not the length of the roll.",
+      "structuralOptions": [
+        "Rolling end panels",
+        "Front tuck lock",
+        "One-piece blank"
+      ],
+      "materialIds": [
+        "corrugated"
+      ],
+      "finishIds": [
+        "matte",
+        "gloss"
+      ],
+      "insertIds": [
+        "none",
+        "dividers",
+        "tissue",
+        "advice"
+      ]
+    },
+    {
+      "slug": "custom-clothing-mailer-boxes",
+      "name": "Custom Clothing Mailer Boxes",
+      "category": "mailer-boxes",
+      "structure": "die-cut-mailer-box",
+      "short": "A mailer sized to one folded garment.",
+      "meta": "Custom clothing mailer boxes for a folded shirt or similar garment. One lid over the fold. Request a quote.",
+      "description": "A clothing mailer has to fit the garment as you actually fold it. One lid closes over the shirt and the tissue. It is not a shallow book mailer and it is not a shoe box.",
+      "images": [
+        {
+          "src": "/images/use-clothing-mailer.jpg",
+          "alt": "An open ink-navy mailer with blush tissue and a folded cream shirt."
+        },
+        {
+          "src": "/images/g-clothing-closed.jpg",
+          "alt": "A closed sand clothing mailer with a black edge."
+        },
+        {
+          "src": "/images/g-clothing-tissue.jpg",
+          "alt": "An open emerald mailer with white tissue and a folded black shirt."
+        },
+        {
+          "src": "/images/g-clothing-stack.jpg",
+          "alt": "An open apricot mailer with a folded rust garment inside."
+        }
+      ],
+      "sections": [
+        {
+          "heading": "When a clothing mailer fits",
+          "body": "Use this for one folded shirt, tee, or a similarly flat garment. Send the folded size, not the size on the body. A bulky knit needs a taller cavity than a tee."
+        },
+        {
+          "heading": "A fold, not a pair of shoes",
+          "body": "A shoe mailer is longer and stiffer around a pair. A flat mailer is for a book. This one is the depth of a folded garment. If you ship three shirts, measure that stack, not one."
+        },
+        {
+          "heading": "What to send with the quote",
+          "body": "Fold the garment the way you pack it, then measure length, width, and the height of that fold plus tissue. The lid has to close over the stack."
+        }
+      ],
+      "uses": [
+        "Folded shirts",
+        "Tees",
+        "One garment in tissue"
+      ],
+      "related": [
+        {
+          "slug": "custom-shoe-mailer-boxes",
+          "note": "A longer mailer for a pair of shoes."
+        },
+        {
+          "slug": "custom-flat-mailer-boxes",
+          "note": "A shallower mailer for a book or a print."
+        },
+        {
+          "slug": "custom-mailer-boxes",
+          "note": "A mailer for a jar or a single product in tissue."
+        }
+      ],
+      "faqs": [
+        {
+          "q": "Will a hoodie fit the same mailer as a tee?",
+          "a": "Only if the folded hoodie matches the tee. Send the larger fold if both have to use one size."
+        },
+        {
+          "q": "Can it be the shipping box?",
+          "a": "Often, yes. If you still want an outer carton, order a shipping box and say they travel together."
+        }
+      ],
+      "structureText": "The blank includes the base, the walls, the lid, and the front tuck. Tabs on the sides hold the lid. It is die-cut rather than a regular slotted carton.",
+      "measurement": "Internal height must include the product and any tissue. The lid has to close over that height. Measure length and width inside the base.",
+      "structuralOptions": [
+        "Hinged lid flap",
+        "Front tuck",
+        "Side locking tabs"
+      ],
+      "materialIds": [
+        "corrugated"
+      ],
+      "finishIds": [
+        "matte",
+        "gloss"
+      ],
+      "insertIds": [
+        "none",
+        "cradle",
+        "dividers",
+        "tissue",
+        "advice"
+      ]
+    },
+    {
+      "slug": "custom-shoe-mailer-boxes",
+      "name": "Custom Shoe Mailer Boxes",
+      "category": "mailer-boxes",
+      "structure": "die-cut-mailer-box",
+      "short": "A mailer long enough for one pair of shoes.",
+      "meta": "Custom shoe mailer boxes for one pair. A lid mailer sized to the shoes. Request a quote.",
+      "description": "Shoes need length more than a folded shirt does. The mailer is the box the customer opens, with one lid over the pair. Tissue or a wrap keeps the shoes from marking the board.",
+      "images": [
+        {
+          "src": "/images/use-shoe-mailer.jpg",
+          "alt": "An open charcoal mailer with sage tissue and a pair of white sneakers."
+        },
+        {
+          "src": "/images/g-shoe-closed.jpg",
+          "alt": "A closed glossy white shoe mailer with a cobalt edge."
+        },
+        {
+          "src": "/images/g-shoe-tissue.jpg",
+          "alt": "An open burgundy mailer with cream tissue around black shoes."
+        },
+        {
+          "src": "/images/g-shoe-pair.jpg",
+          "alt": "An open mustard mailer with a pair of tan shoes side by side."
+        }
+      ],
+      "sections": [
+        {
+          "heading": "When a shoe mailer fits",
+          "body": "Use this for one pair, in the orientation you pack. Sneakers, heels, and boots do not share a size. Send the pair, not a guess from the size label."
+        },
+        {
+          "heading": "A pair, not a folded shirt",
+          "body": "A clothing mailer is sized to a fold. This one has to clear the sole and the heel. A corrugated shipping carton is the outer box if this mailer should not be the only carton in transit."
+        },
+        {
+          "heading": "What to send with the quote",
+          "body": "Measure the pair as packed, including any wrap. Internal length is the longest direction of the shoes. Height must let the lid close."
+        }
+      ],
+      "uses": [
+        "One pair of shoes",
+        "Sneakers in a mailer",
+        "The box a shoe order opens in"
+      ],
+      "related": [
+        {
+          "slug": "custom-clothing-mailer-boxes",
+          "note": "A mailer for a folded garment."
+        },
+        {
+          "slug": "custom-shipping-boxes",
+          "note": "An outer carton if the mailer should not travel alone."
+        },
+        {
+          "slug": "custom-mailer-boxes",
+          "note": "A mailer for a smaller product in tissue."
+        }
+      ],
+      "faqs": [
+        {
+          "q": "Can both shoes sit side by side?",
+          "a": "Yes, if that is how you measure them. Toe-to-heel in one line is a different length. Send the pack you will use."
+        },
+        {
+          "q": "Is this a rigid shoebox?",
+          "a": "No. It is a folding mailer with one lid. A set-up box is a different structure."
+        }
+      ],
+      "structureText": "The blank includes the base, the walls, the lid, and the front tuck. Tabs on the sides hold the lid. It is die-cut rather than a regular slotted carton.",
+      "measurement": "Internal height must include the product and any tissue. The lid has to close over that height. Measure length and width inside the base.",
+      "structuralOptions": [
+        "Hinged lid flap",
+        "Front tuck",
+        "Side locking tabs"
+      ],
+      "materialIds": [
+        "corrugated"
+      ],
+      "finishIds": [
+        "matte",
+        "gloss"
+      ],
+      "insertIds": [
+        "none",
+        "cradle",
+        "dividers",
+        "tissue",
+        "advice"
+      ]
+    },
+    {
+      "slug": "custom-candle-mailer-boxes",
+      "name": "Custom Candle Mailer Boxes",
+      "category": "mailer-boxes",
+      "structure": "die-cut-mailer-box",
+      "short": "A mailer tall enough for a jar candle and tissue.",
+      "meta": "Custom candle mailer boxes for a jar candle. One lid over the jar and tissue. Request a quote.",
+      "description": "A candle in glass needs a mailer tall enough for the jar and enough tissue that the lid still closes. It is the box the customer opens. It is not a flat mailer and it is not a clothing fold.",
+      "images": [
+        {
+          "src": "/images/use-candle-mailer.jpg",
+          "alt": "An open forest-green mailer with black tissue and a cream candle in a glass jar."
+        },
+        {
+          "src": "/images/g-candle-closed.jpg",
+          "alt": "A closed blush candle mailer with a gold edge."
+        },
+        {
+          "src": "/images/g-candle-tissue.jpg",
+          "alt": "An open navy mailer with gold tissue around a white candle."
+        },
+        {
+          "src": "/images/g-candle-insert.jpg",
+          "alt": "An open terracotta mailer holding a black candle jar in a fitted well."
+        }
+      ],
+      "sections": [
+        {
+          "heading": "When a candle mailer fits",
+          "body": "Use this for one jar candle, or two if you send that pair as the size. The glass is the reason to leave room for wrap. Say if a lid on the candle adds height."
+        },
+        {
+          "heading": "A jar, not a folded garment",
+          "body": "Clothing is wide and low. A candle is taller and heavier. A subscription mailer is for a mix of items. This one is sized to the candle you name."
+        },
+        {
+          "heading": "What to send with the quote",
+          "body": "Measure the candle with its lid. Add the tissue you intend to use, because that stack is the internal height. The mailer lid has to close over it."
+        }
+      ],
+      "uses": [
+        "Jar candles",
+        "One candle in tissue",
+        "A candle order the customer opens"
+      ],
+      "related": [
+        {
+          "slug": "custom-mailer-boxes",
+          "note": "A mailer for a cosmetic jar in tissue."
+        },
+        {
+          "slug": "custom-subscription-boxes",
+          "note": "A mailer for a few different items."
+        },
+        {
+          "slug": "custom-heavy-shipping-boxes",
+          "note": "An outer carton when the glass should not rely on the mailer alone."
+        }
+      ],
+      "faqs": [
+        {
+          "q": "Will the glass be safe in this mailer alone?",
+          "a": "That depends on the jar and the trip. Tissue is part of the pack. An outer shipping carton can be ordered if you want one."
+        },
+        {
+          "q": "Can a second smaller tin share it?",
+          "a": "Only if both are in the size you send. A mailer cut for one jar will not gain a second cavity later."
+        }
+      ],
+      "structureText": "The blank includes the base, the walls, the lid, and the front tuck. Tabs on the sides hold the lid. It is die-cut rather than a regular slotted carton.",
+      "measurement": "Internal height must include the product and any tissue. The lid has to close over that height. Measure length and width inside the base.",
+      "structuralOptions": [
+        "Hinged lid flap",
+        "Front tuck",
+        "Side locking tabs"
+      ],
+      "materialIds": [
+        "corrugated"
+      ],
+      "finishIds": [
+        "matte",
+        "gloss"
+      ],
+      "insertIds": [
+        "none",
+        "cradle",
+        "dividers",
+        "tissue",
+        "advice"
+      ]
+    },
+    {
+      "slug": "custom-jewelry-mailer-boxes",
+      "name": "Custom Jewelry Mailer Boxes",
+      "category": "mailer-boxes",
+      "structure": "die-cut-mailer-box",
+      "short": "A small mailer for a jewelry pouch or a rigid jewelry box.",
+      "meta": "Custom jewelry mailer boxes for a pouch or a small jewelry box in transit. One lid. Request a quote.",
+      "description": "The jewelry box someone keeps is not always the box that travels. This mailer is the parcel: a small lid over a pouch or over that rigid box. It should be sized to the pouch, not to a shirt.",
+      "images": [
+        {
+          "src": "/images/use-jewelry-mailer.jpg",
+          "alt": "A small open blush mailer with a black jewelry pouch and a thin gold chain."
+        },
+        {
+          "src": "/images/g-jewelry-mailer-closed.jpg",
+          "alt": "A closed small emerald jewelry mailer with a thin gold edge."
+        },
+        {
+          "src": "/images/g-jewelry-mailer-pouch.jpg",
+          "alt": "An open ivory mailer with a burgundy jewelry pouch inside."
+        },
+        {
+          "src": "/images/g-jewelry-mailer-open.jpg",
+          "alt": "An open cobalt mailer with a cream pouch and a silver chain."
+        }
+      ],
+      "sections": [
+        {
+          "heading": "When a jewelry mailer fits",
+          "body": "Use this when a necklace, a pair of earrings, or a small rigid jewelry box is what you ship. It is the mailer. The rigid jewelry box, if you use one, is a separate product."
+        },
+        {
+          "heading": "The parcel, not the keepsake box",
+          "body": "A rigid jewelry box stays on a dresser. This mailer is what arrives. A sample mailer is a similar small lid, but it is sized to vials rather than a pouch."
+        },
+        {
+          "heading": "What to send with the quote",
+          "body": "Measure the pouch or the rigid box you put inside, plus tissue. A chain that is not in a pouch will not give you a reliable size."
+        }
+      ],
+      "uses": [
+        "Jewelry pouches",
+        "A small jewelry box in transit",
+        "Earring and necklace orders"
+      ],
+      "related": [
+        {
+          "slug": "custom-jewelry-boxes",
+          "note": "The rigid box someone keeps, if the mailer is only the parcel."
+        },
+        {
+          "slug": "custom-sample-mailer-boxes",
+          "note": "A small mailer for vials instead of a pouch."
+        },
+        {
+          "slug": "custom-mailer-boxes",
+          "note": "A larger mailer for a jar."
+        }
+      ],
+      "faqs": [
+        {
+          "q": "Should I order the rigid jewelry box too?",
+          "a": "Only if the customer should keep one. This mailer can carry a pouch by itself."
+        },
+        {
+          "q": "Can a necklace ship loose?",
+          "a": "Send the pouch or card you will use. A loose chain is not a size."
+        }
+      ],
+      "structureText": "The blank includes the base, the walls, the lid, and the front tuck. Tabs on the sides hold the lid. It is die-cut rather than a regular slotted carton.",
+      "measurement": "Internal height must include the product and any tissue. The lid has to close over that height. Measure length and width inside the base.",
+      "structuralOptions": [
+        "Hinged lid flap",
+        "Front tuck",
+        "Side locking tabs"
+      ],
+      "materialIds": [
+        "corrugated"
+      ],
+      "finishIds": [
+        "matte",
+        "gloss"
+      ],
+      "insertIds": [
+        "none",
+        "cradle",
+        "dividers",
+        "tissue",
+        "advice"
+      ]
+    },
+    {
+      "slug": "custom-beauty-order-boxes",
+      "name": "Custom Beauty Order Boxes",
+      "category": "mailer-boxes",
+      "structure": "die-cut-mailer-box",
+      "short": "A mailer for the few beauty products in one online order.",
+      "meta": "Custom beauty order boxes for the bottles and jars in one shipment. A mailer sized to that order. Request a quote.",
+      "description": "A beauty order is often two or three products, not one jar and not a kit that changes every month. The mailer has to fit that group. Tissue or an insert keeps the bottles from meeting.",
+      "images": [
+        {
+          "src": "/images/use-beauty-mailer.jpg",
+          "alt": "An open lilac mailer holding a coral bottle, a white jar, and a teal bottle."
+        },
+        {
+          "src": "/images/g-beauty-closed.jpg",
+          "alt": "A closed glossy black beauty mailer with a coral edge."
+        },
+        {
+          "src": "/images/g-beauty-tissue.jpg",
+          "alt": "An open cream mailer with pink tissue around amber and white bottles."
+        },
+        {
+          "src": "/images/g-beauty-bottles.jpg",
+          "alt": "An open forest mailer holding a gold pump bottle and a lilac jar."
+        }
+      ],
+      "sections": [
+        {
+          "heading": "When a beauty order box fits",
+          "body": "Use this for the bottles and jars you ship together in one order. Size it to the fullest order you will pack in this mailer. A single jar can use the smaller mailer."
+        },
+        {
+          "heading": "One order, not a changing kit",
+          "body": "A subscription mailer is planned for a kit that may change later, so it is sized to the largest cycle. This one is for a known beauty order. The retail carton around each product, if you use one, has to be included in the measure."
+        },
+        {
+          "heading": "What to send with the quote",
+          "body": "Place the products the way you pack them and measure that group, including tissue. Internal height must let the lid close."
+        }
+      ],
+      "uses": [
+        "A few beauty products in one order",
+        "Bottles and jars shipped together",
+        "An online beauty shipment"
+      ],
+      "related": [
+        {
+          "slug": "custom-subscription-boxes",
+          "note": "A mailer sized to a kit that can change later."
+        },
+        {
+          "slug": "custom-mailer-boxes",
+          "note": "A mailer for one product in tissue."
+        },
+        {
+          "slug": "custom-lotion-boxes",
+          "note": "The retail carton for one bottle, before it is mailed."
+        }
+      ],
+      "faqs": [
+        {
+          "q": "What if some orders have one product?",
+          "a": "This mailer will be large for a single jar. Use the single-product mailer for those orders if the empty space matters."
+        },
+        {
+          "q": "Can an insert hold the bottles?",
+          "a": "A simple insert can be discussed if it still lets the lid close."
+        }
+      ],
+      "structureText": "The blank includes the base, the walls, the lid, and the front tuck. Tabs on the sides hold the lid. It is die-cut rather than a regular slotted carton.",
+      "measurement": "Internal height must include the product and any tissue. The lid has to close over that height. Measure length and width inside the base.",
+      "structuralOptions": [
+        "Hinged lid flap",
+        "Front tuck",
+        "Side locking tabs"
+      ],
+      "materialIds": [
+        "corrugated"
+      ],
+      "finishIds": [
+        "matte",
+        "gloss"
+      ],
+      "insertIds": [
+        "none",
+        "cradle",
+        "dividers",
+        "tissue",
+        "advice"
+      ]
+    },
+    {
+      "slug": "custom-sample-mailer-boxes",
+      "name": "Custom Sample Mailer Boxes",
+      "category": "mailer-boxes",
+      "structure": "die-cut-mailer-box",
+      "short": "A small mailer for vials, sachets, or a discovery set.",
+      "meta": "Custom sample mailer boxes for vials and sachets. A small lid mailer for a discovery set. Request a quote.",
+      "description": "Samples are small, and a full-size mailer makes them look lost. This is a short mailer for vials, sachets, or a few discovery pieces. The lid is still a mailer lid.",
+      "images": [
+        {
+          "src": "/images/use-sample-mailer.jpg",
+          "alt": "A small open lemon mailer with three tiny glass vials in white tissue."
+        },
+        {
+          "src": "/images/g-sample-closed.jpg",
+          "alt": "A closed small lilac sample mailer."
+        },
+        {
+          "src": "/images/g-sample-open.jpg",
+          "alt": "An open scarlet mailer with three silver sample vials in tissue."
+        },
+        {
+          "src": "/images/g-sample-vials.jpg",
+          "alt": "An open white mailer with black tissue and four tiny amber vials."
+        }
+      ],
+      "sections": [
+        {
+          "heading": "When a sample mailer fits",
+          "body": "Use this for a discovery set, a few sachets, or vials that travel together. It is the wrong box for a full-size bottle or a folded shirt."
+        },
+        {
+          "heading": "Smaller than a full order",
+          "body": "A beauty order mailer fits retail bottles. This one is cut down to the samples. A jewelry mailer is a similar size but follows a pouch. Send the samples, not the full-size product they represent."
+        },
+        {
+          "heading": "What to send with the quote",
+          "body": "Group the vials or sachets the way you pack them and measure that group, including a card if you add one. The lid has to close over the tallest vial."
+        }
+      ],
+      "uses": [
+        "Discovery sets",
+        "Vials",
+        "Sachets"
+      ],
+      "related": [
+        {
+          "slug": "custom-beauty-order-boxes",
+          "note": "A larger mailer for full-size bottles."
+        },
+        {
+          "slug": "custom-jewelry-mailer-boxes",
+          "note": "A small mailer for a jewelry pouch."
+        },
+        {
+          "slug": "custom-subscription-boxes",
+          "note": "A mailer when the shipment is a fuller kit."
+        }
+      ],
+      "faqs": [
+        {
+          "q": "Can a full-size jar share it later?",
+          "a": "No. Size this mailer to the samples. A jar needs the larger mailer."
+        },
+        {
+          "q": "How many vials?",
+          "a": "Send the count you will pack. Three vials and eight vials are different cartons."
+        }
+      ],
+      "structureText": "The blank includes the base, the walls, the lid, and the front tuck. Tabs on the sides hold the lid. It is die-cut rather than a regular slotted carton.",
+      "measurement": "Internal height must include the product and any tissue. The lid has to close over that height. Measure length and width inside the base.",
+      "structuralOptions": [
+        "Hinged lid flap",
+        "Front tuck",
+        "Side locking tabs"
+      ],
+      "materialIds": [
+        "corrugated"
+      ],
+      "finishIds": [
+        "matte",
+        "gloss"
+      ],
+      "insertIds": [
+        "none",
+        "cradle",
+        "dividers",
+        "tissue",
+        "advice"
+      ]
+    },
+    {
+      "slug": "custom-accessory-mailer-boxes",
+      "name": "Custom Accessory Mailer Boxes",
+      "category": "mailer-boxes",
+      "structure": "roll-end-tuck-mailer",
+      "short": "A shallow mailer for sunglasses, a case, or a phone case.",
+      "meta": "Custom accessory mailer boxes for sunglasses and cases. A shallow mailer with a tuck lock. Request a quote.",
+      "description": "A case or a pair of sunglasses is flat but rigid. A book mailer is the same family, but an accessory has hard edges and a different outline. The ends roll shut and a tuck locks.",
+      "images": [
+        {
+          "src": "/images/use-accessory-mailer.jpg",
+          "alt": "An open cobalt shallow mailer with a pair of black sunglasses inside."
+        },
+        {
+          "src": "/images/g-accessory-closed.jpg",
+          "alt": "A closed glossy graphite accessory mailer."
+        },
+        {
+          "src": "/images/g-accessory-open.jpg",
+          "alt": "An open blush shallow mailer with a black phone case inside."
+        },
+        {
+          "src": "/images/g-accessory-case.jpg",
+          "alt": "An open olive shallow mailer with gold-framed sunglasses."
+        }
+      ],
+      "sections": [
+        {
+          "heading": "When an accessory mailer fits",
+          "body": "Use this for sunglasses, a phone case, a small pouch, or a similar flat accessory. It is the wrong box for a jar candle or a pair of shoes."
+        },
+        {
+          "heading": "Flat, but not a book",
+          "body": "The flat mailer is described around a book or a print. This one is for a rigid accessory that should not sit in a deep clothing mailer. Measure the case if the product ships in one."
+        },
+        {
+          "heading": "What to send with the quote",
+          "body": "Measure the accessory or its case. Internal height is the closed cavity, not the length of the roll. A stack of two cases is a different height."
+        }
+      ],
+      "uses": [
+        "Sunglasses",
+        "Phone cases",
+        "Flat accessories"
+      ],
+      "related": [
+        {
+          "slug": "custom-flat-mailer-boxes",
+          "note": "A shallow mailer for a book or a print."
+        },
+        {
+          "slug": "custom-sample-mailer-boxes",
+          "note": "A small mailer for vials."
+        },
+        {
+          "slug": "custom-clothing-mailer-boxes",
+          "note": "A deeper mailer for a folded garment."
+        }
+      ],
+      "faqs": [
+        {
+          "q": "Will a phone in the case fit?",
+          "a": "Send the case as you ship it. A phone inside the case is thicker than the case alone."
+        },
+        {
+          "q": "Is the tuck a mailer lid?",
+          "a": "No. The ends roll and a tuck locks. A clothing mailer uses one lid."
+        }
+      ],
+      "structureText": "The ends fold in a roll rather than standing as simple side walls with a separate lid. The tuck is the lock. Dust and roll scores are part of the blank.",
+      "measurement": "Keep the height modest relative to the length and width. Internal height is the closed cavity, not the length of the roll.",
+      "structuralOptions": [
+        "Rolling end panels",
+        "Front tuck lock",
+        "One-piece blank"
+      ],
+      "materialIds": [
+        "corrugated"
+      ],
+      "finishIds": [
+        "matte",
+        "gloss"
+      ],
+      "insertIds": [
+        "none",
+        "dividers",
+        "tissue",
+        "advice"
+      ]
+    },
+    {
+      "slug": "custom-return-mailer-boxes",
+      "name": "Custom Return Mailer Boxes",
+      "category": "mailer-boxes",
+      "structure": "die-cut-mailer-box",
+      "short": "A mailer the customer can close again around the same kind of product.",
+      "meta": "Custom return mailer boxes with a lid the customer can close again. Sized to the product that may come back. Request a quote.",
+      "description": "A return is the same product going back, so the mailer has to close a second time over that product. One lid folds over the front. It is still a mailer, not a taped shipping carton.",
+      "images": [
+        {
+          "src": "/images/use-return-mailer.jpg",
+          "alt": "An open scarlet mailer with a folded gray garment ready to be closed again."
+        },
+        {
+          "src": "/images/g-return-closed.jpg",
+          "alt": "A closed ink-blue return mailer with the lid folded to the front."
+        },
+        {
+          "src": "/images/g-return-open.jpg",
+          "alt": "An open sand mailer with a folded white shirt ready to be covered."
+        },
+        {
+          "src": "/images/g-return-garment.jpg",
+          "alt": "An open black mailer with a folded gray garment and the lid raised."
+        }
+      ],
+      "sections": [
+        {
+          "heading": "When a return mailer fits",
+          "body": "Use this when the customer may send the item back in the box it arrived in. Size it to that item plus room to close the lid again. It does not include a label or a promise about the carrier."
+        },
+        {
+          "heading": "Closed again, not a one-time tissue pack",
+          "body": "A clothing mailer can be the arrival box. This one is specified so the same lid can cover the product on the way back. Do not size it only to the product with no room for the fold of the lid."
+        },
+        {
+          "heading": "What to send with the quote",
+          "body": "Measure the product as the customer would put it back, not as you first styled it with extra tissue you will not include for the return. The lid must still reach the front."
+        }
+      ],
+      "uses": [
+        "A mailer that can be closed again",
+        "Apparel that may be returned",
+        "The same box in both directions"
+      ],
+      "related": [
+        {
+          "slug": "custom-clothing-mailer-boxes",
+          "note": "A mailer sized to the first fold of a garment."
+        },
+        {
+          "slug": "custom-mailer-boxes",
+          "note": "A one-time unboxing mailer for a jar."
+        },
+        {
+          "slug": "custom-shipping-boxes",
+          "note": "A taped outer carton if the return should not be a mailer."
+        }
+      ],
+      "faqs": [
+        {
+          "q": "Does the mailer include a return label?",
+          "a": "No. This is the box. A label is separate from the carton."
+        },
+        {
+          "q": "Will the lid close if they add their own tissue?",
+          "a": "Only if that tissue was in the height you send. Extra bulk will stop the lid."
+        }
+      ],
+      "structureText": "The blank includes the base, the walls, the lid, and the front tuck. Tabs on the sides hold the lid. It is die-cut rather than a regular slotted carton.",
+      "measurement": "Internal height must include the product and any tissue. The lid has to close over that height. Measure length and width inside the base.",
+      "structuralOptions": [
+        "Hinged lid flap",
+        "Front tuck",
+        "Side locking tabs"
+      ],
+      "materialIds": [
+        "corrugated"
+      ],
+      "finishIds": [
+        "matte",
+        "gloss"
+      ],
+      "insertIds": [
+        "none",
+        "cradle",
+        "dividers",
+        "tissue",
+        "advice"
+      ]
+    },
+    {
+      "slug": "custom-shipping-boxes",
+      "name": "Custom Shipping Boxes",
+      "category": "shipping-boxes",
+      "structure": "shipping-box",
+      "short": "A corrugated carton whose outer flaps meet, for an order in transit.",
+      "meta": "Custom shipping boxes for online orders. A corrugated carton with flaps that meet. Request a quote.",
+      "description": "A shipping box is the outer carton. The flaps meet in the middle. It carries a product box or the goods themselves. It is not the lid people expect to photograph.",
+      "images": [
+        {
+          "src": "/images/use-shipping-order.jpg",
+          "alt": "An open forest-green shipping carton with a white inner box inside."
+        },
+        {
+          "src": "/images/g-ship-closed.jpg",
+          "alt": "A closed glossy black shipping carton."
+        },
+        {
+          "src": "/images/g-ship-inner.jpg",
+          "alt": "An open cobalt shipping carton with a gold inner box."
+        },
+        {
+          "src": "/images/g-ship-flaps.jpg",
+          "alt": "An open terracotta shipping carton with the top flaps raised."
+        }
+      ],
+      "sections": [
+        {
+          "heading": "When a shipping box fits",
+          "body": "Use this as the outer pack for an order. Put a mailer or a retail carton inside it when the unboxing should be a different box. Tape is how a slotted carton is normally closed."
+        },
+        {
+          "heading": "Flaps, not a mailer lid",
+          "body": "If the customer should open a finished lid, order a mailer. If the top should be two layers of board, order the heavy shipping box. This one is the regular slotted carton."
+        },
+        {
+          "heading": "What to send with the quote",
+          "body": "Measure the goods plus any inner box. Internal length, width, and height should clear that stack. Flap size is not part of the height you enter."
+        }
+      ],
+      "uses": [
+        "Outer cartons",
+        "Orders in transit",
+        "A box around a retail carton"
+      ],
+      "related": [
+        {
+          "slug": "custom-heavy-shipping-boxes",
+          "note": "A carton whose outer flaps each cover the whole top."
+        },
+        {
+          "slug": "custom-mailer-boxes",
+          "note": "The box the customer opens, with one lid."
+        },
+        {
+          "slug": "custom-bottle-boxes",
+          "note": "The retail carton that might sit inside this shipper."
+        }
+      ],
+      "faqs": [
+        {
+          "q": "Do the flaps need tape?",
+          "a": "A regular slotted carton is normally closed with tape. That is a packing choice, not a printed feature."
+        },
+        {
+          "q": "Can this carton be foil stamped?",
+          "a": "Foil is not part of this plain shipping structure. A printed face can be raised in the notes and reviewed separately."
+        }
+      ],
+      "structureText": "Four walls and eight flaps come from one corrugated blank. Minor flaps fold from the ends and major flaps fold from the sides to meet. The flute is visible on the cut edge.",
+      "measurement": "Internal length, width, and height should fit the goods plus any inner box. Flap size is derived from the width and is not part of the height you enter.",
+      "structuralOptions": [
+        "Regular slotted top and bottom",
+        "Outer flaps that meet",
+        "Fluted board edge"
+      ],
+      "materialIds": [
+        "corrugated"
+      ],
+      "finishIds": [],
+      "insertIds": [
+        "none",
+        "dividers",
+        "advice"
+      ]
+    },
+    {
+      "slug": "custom-heavy-shipping-boxes",
+      "name": "Custom Heavy Shipping Boxes",
+      "category": "shipping-boxes",
+      "structure": "full-overlap-shipping-box",
+      "short": "A corrugated carton whose outer flaps each cover the whole top.",
+      "meta": "Custom heavy shipping boxes with a full-overlap top for heavier bottles and jars. Request a quote.",
+      "description": "A heavier bottle or jar wants more board across the top. On a full-overlap carton each outer flap covers the opening, so the top is two layers. The flaps are still flaps, not a mailer lid.",
+      "images": [
+        {
+          "src": "/images/use-heavy-ship.jpg",
+          "alt": "An open charcoal shipping carton with overlapping flaps around a heavy amber bottle."
+        },
+        {
+          "src": "/images/g-heavy-closed.jpg",
+          "alt": "A closed crimson shipping carton with overlapping flaps."
+        },
+        {
+          "src": "/images/g-heavy-open.jpg",
+          "alt": "An open white shipping carton packed around a dark bottle."
+        },
+        {
+          "src": "/images/g-heavy-divider.jpg",
+          "alt": "An open olive shipping carton with a divider between a cobalt bottle and a clear bottle."
+        }
+      ],
+      "sections": [
+        {
+          "heading": "When a heavy shipping box fits",
+          "body": "Use this for a heavier shipment that should not rely on two flaps meeting at a seam. Glass bottles packed with paper are a typical reason. It is still an outer carton."
+        },
+        {
+          "heading": "Two layers on the top",
+          "body": "The regular shipping box is enough when the goods are light. This one uses more board across the width. It does not replace a fitted retail carton around the bottle."
+        },
+        {
+          "heading": "What to send with the quote",
+          "body": "Enter the internal cavity, including padding. The overlap does not add internal height. Say if an inner carton is already around the bottle."
+        }
+      ],
+      "uses": [
+        "Heavy glass",
+        "Bottles in transit",
+        "Cartons that need a double top"
+      ],
+      "related": [
+        {
+          "slug": "custom-shipping-boxes",
+          "note": "A regular slotted carton whose flaps meet in the middle."
+        },
+        {
+          "slug": "custom-bottle-boxes",
+          "note": "The retail carton for the bottle before it is shipped."
+        },
+        {
+          "slug": "custom-mailer-boxes",
+          "note": "A lid mailer when the customer should open this box itself."
+        }
+      ],
+      "faqs": [
+        {
+          "q": "Is the overlap a lid?",
+          "a": "No. The outer flaps lie over each other. A mailer lid is one panel that folds down the front."
+        },
+        {
+          "q": "Does overlap add inside height?",
+          "a": "No. It adds board on the top, not cavity height."
+        }
+      ],
+      "structureText": "The blank is a slotted carton with deeper outer flaps. When closed, one outer flap covers the opening and the second covers the first. The ends still fold in underneath.",
+      "measurement": "Enter the internal cavity. The overlap uses more board across the width, but it does not increase the internal height.",
+      "structuralOptions": [
+        "Full-overlap outer flaps",
+        "Inner flaps from the ends",
+        "Corrugated board"
+      ],
+      "materialIds": [
+        "corrugated"
+      ],
+      "finishIds": [],
+      "insertIds": [
+        "none",
+        "dividers",
+        "advice"
+      ]
+    },
+    {
+      "slug": "custom-gift-boxes",
+      "name": "Custom Gift Boxes",
+      "category": "gift-boxes",
+      "structure": "foldable-gift-box",
+      "short": "A foldable cover for a shallow gift that is stored flat before it is packed.",
+      "meta": "Custom gift boxes with a foldable cover for shallow presents. See the box and request a quote.",
+      "description": "A gift box can be a creased cover that stores flat, then opens on a hinge when it is packed. It suits a shallow present. It is not a rigid lid and it is not the mailer.",
+      "images": [
+        {
+          "src": "/images/use-foldable-gift.jpg",
+          "alt": "An open emerald gift box with a gold interior and a black wrapped gift."
+        },
+        {
+          "src": "/images/g-gift-closed.jpg",
+          "alt": "A closed pearl-white gift box with a thin ruby edge."
+        },
+        {
+          "src": "/images/g-gift-tissue.jpg",
+          "alt": "An open tangerine gift box with white tissue and a silver wrapped item."
+        },
+        {
+          "src": "/images/g-gift-window.jpg",
+          "alt": "A cobalt gift carton with a window and a cream wrapped item beside it."
+        }
+      ],
+      "sections": [
+        {
+          "heading": "When a foldable gift box fits",
+          "body": "Use this for a shallow gift you want to store flat before packing. The cover hides the present until it opens. A product that should be seen wants a window box instead."
+        },
+        {
+          "heading": "It folds, so it is not rigid",
+          "body": "A magnetic box stays set up and feels heavier. This one collapses. If the gift has to ship, add a mailer in the notes. This cover is not a shipper."
+        },
+        {
+          "heading": "What to send with the quote",
+          "body": "Internal height should match the gift plus any tissue. The cover is part of the blank and is not extra internal height."
+        }
+      ],
+      "uses": [
+        "Shallow gifts",
+        "Seasonal presents",
+        "Gifts stored flat before packing"
+      ],
+      "related": [
+        {
+          "slug": "custom-window-boxes",
+          "note": "A gift carton that shows the product through the front."
+        },
+        {
+          "slug": "custom-corporate-gift-boxes",
+          "note": "A rigid kit for a client gift that should be kept."
+        },
+        {
+          "slug": "custom-mailer-boxes",
+          "note": "The parcel if this gift box needs to be shipped."
+        }
+      ],
+      "faqs": [
+        {
+          "q": "Will it feel like a magnetic box?",
+          "a": "No. It folds, and the board is paperboard. A magnet and a wrapped wall are a different box."
+        },
+        {
+          "q": "Can it be mailed on its own?",
+          "a": "It is a gift box, not a mailer. Plan an outer mailer if it has to travel."
+        }
+      ],
+      "structureText": "Scores let the side walls fold inward and the cover hinge at the back. A front flap closes the box. It is not held by a magnet unless you ask for that change in the notes.",
+      "measurement": "This style is usually shallow. Internal height should match the product plus any tissue. The cover is included in the blank and is not extra internal height.",
+      "structuralOptions": [
+        "Hinged cover",
+        "Creased side walls that fold",
+        "Front closure flap"
+      ],
+      "materialIds": [
+        "paperboard"
+      ],
+      "finishIds": [
+        "matte",
+        "gloss",
+        "foil",
+        "emboss",
+        "spot-uv"
+      ],
+      "insertIds": [
+        "none",
+        "cradle",
+        "tissue",
+        "advice"
+      ]
+    },
+    {
+      "slug": "custom-corporate-gift-boxes",
+      "name": "Custom Corporate Gift Boxes",
+      "category": "gift-boxes",
+      "structure": "magnetic-closure-rigid-box",
+      "short": "A rigid box for a client kit or a welcome gift people keep.",
+      "meta": "Custom corporate gift boxes for welcome kits and client gifts. A rigid lid over the kit. Request a quote.",
+      "description": "A client gift is a small kit: a notebook, a candle, a card. The box should still feel right after it is opened. A rigid lid does that. The pieces need an insert or tissue so they do not shift.",
+      "images": [
+        {
+          "src": "/images/use-corporate-gift.jpg",
+          "alt": "An open ink-blue rigid gift box with a copper notebook and a white candle."
+        },
+        {
+          "src": "/images/g-corp-closed.jpg",
+          "alt": "A closed sand rigid gift box with a black edge."
+        },
+        {
+          "src": "/images/g-corp-insert.jpg",
+          "alt": "An open magenta rigid box with a black insert, a gold notebook, and a green tin."
+        },
+        {
+          "src": "/images/g-corp-lid.jpg",
+          "alt": "A pistachio rigid lid beside a charcoal base arranged as a client kit."
+        }
+      ],
+      "sections": [
+        {
+          "heading": "When a corporate gift box fits",
+          "body": "Use this for a welcome kit or a client gift that will be handed over or kept on a desk. It is a presentation box. Shipping it is a separate carton if the rigid box should not be the shipper."
+        },
+        {
+          "heading": "A kit people keep",
+          "body": "A subscription mailer is the shipper and is usually lighter. This box stays set up. A drawer is another way to reveal a kit if you want a pull instead of a lid."
+        },
+        {
+          "heading": "What to send with the quote",
+          "body": "List each item in the kit with its size. The tallest item sets the internal height. Tissue and a card count."
+        }
+      ],
+      "uses": [
+        "Welcome kits",
+        "Client gifts",
+        "Desk kits"
+      ],
+      "related": [
+        {
+          "slug": "custom-drawer-boxes",
+          "note": "A kit revealed by pulling a drawer."
+        },
+        {
+          "slug": "custom-subscription-boxes",
+          "note": "A mailer when the kit is meant to be shipped and opened once."
+        },
+        {
+          "slug": "custom-gift-boxes",
+          "note": "A lighter foldable cover for a single shallow gift."
+        }
+      ],
+      "faqs": [
+        {
+          "q": "Can our name go on the lid?",
+          "a": "The lid is a print surface. Send the artwork with the quote. The photo does not show a logo."
+        },
+        {
+          "q": "Can the mix of items change?",
+          "a": "The insert is cut for the mix you specify. A different mix later may not fit the same insert."
+        }
+      ],
+      "structureText": "The base is a five-sided tray. The lid is hinged along the back edge and carries a front lip, and often side lips, so it sits over the base. The magnet is a closure detail, not a substitute for the board.",
+      "measurement": "Give the internal size of the base. The lid adds height outside the cavity. If an insert is needed, the cradle has to sit inside that cavity and still let the lid close.",
+      "structuralOptions": [
+        "Hinged lid",
+        "Concealed magnet in the front lip",
+        "Wrapped base and lid"
+      ],
+      "materialIds": [
+        "rigid-wrap"
+      ],
+      "finishIds": [
+        "matte",
+        "gloss",
+        "foil",
+        "emboss",
+        "spot-uv"
+      ],
+      "insertIds": [
+        "none",
+        "cradle",
+        "dividers",
+        "tissue",
+        "advice"
+      ]
+    }
+  ]
+}
