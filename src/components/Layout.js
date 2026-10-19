@@ -1,28 +1,32 @@
+'use client';
+
 import { useEffect } from 'react';
-import { Outlet, useLocation } from 'react-router-dom';
-import { isOfferingSlug } from '../data/offerings';
+import { usePathname } from 'next/navigation';
+import { useCatalog } from '../context/CatalogContext';
 import Footer from './Footer';
 import Header from './Header';
 
-export default function Layout() {
-  const { pathname } = useLocation();
+export default function Layout({ children }) {
+  const pathname = usePathname();
+  const { getProduct } = useCatalog();
   const slug = pathname.replace(/^\//, '');
-  const dock = Boolean(slug) && !slug.includes('/') && isOfferingSlug(slug);
+  const admin = pathname.startsWith('/admin');
+  const dock = !admin && Boolean(slug) && !slug.includes('/') && Boolean(getProduct(slug));
 
   useEffect(() => {
     window.scrollTo(0, 0);
   }, [pathname]);
 
   return (
-    <div className={dock ? 'layout has-dock' : 'layout'}>
+    <div className={admin ? 'layout is-admin' : dock ? 'layout has-dock' : 'layout'}>
       <a className="skip-link" href="#main">
         Skip to content
       </a>
-      <Header />
-      <main id="main" className="page" key={pathname}>
-        <Outlet />
+      {admin ? null : <Header />}
+      <main id="main" className={admin ? 'page admin-main' : 'page'} key={pathname}>
+        {children}
       </main>
-      <Footer />
+      {admin ? null : <Footer />}
     </div>
   );
 }

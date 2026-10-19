@@ -1,4 +1,4 @@
-import { Link } from 'react-router-dom';
+import Link from 'next/link';
 import { industries } from '../data/uses';
 import { configuredContact } from '../data/site';
 import Logo from './Logo';
@@ -10,7 +10,7 @@ export default function Footer() {
     <footer className="site-footer">
       <div className="footer-grid">
         <div className="footer-brand">
-          <Logo tone="light" />
+          <Logo light />
           <p>
             Box Studio plans custom boxes around a product: the structure, the board, and the way the box is opened.
           </p>
@@ -20,7 +20,7 @@ export default function Footer() {
           <ul>
             {industries.map((item) => (
               <li key={item.id}>
-                <Link to={item.href}>{item.name}</Link>
+                <Link href={item.href}>{item.name}</Link>
               </li>
             ))}
           </ul>
@@ -29,13 +29,16 @@ export default function Footer() {
           <h2>Visit</h2>
           <ul>
             <li>
-              <Link to="/about">About</Link>
+              <Link href="/custom-box-for-your-brand">Get custom box for your brand</Link>
             </li>
             <li>
-              <Link to="/contact">Contact</Link>
+              <Link href="/about">About</Link>
             </li>
             <li>
-              <Link to="/quote">Request a quote</Link>
+              <Link href="/contact">Contact</Link>
+            </li>
+            <li>
+              <Link href="/quote">Request a quote</Link>
             </li>
           </ul>
         </div>

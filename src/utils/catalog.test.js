@@ -61,7 +61,7 @@ test('lists distinct box products in known categories', () => {
 });
 
 test('each public box has its own root url, photo, and copy', () => {
-  const reserved = new Set(['about', 'contact', 'quote', 'custom-boxes']);
+  const reserved = new Set(['about', 'contact', 'quote', 'custom-boxes', 'custom-box-for-your-brand']);
   const slugs = offerings.map((item) => item.slug);
   const images = offerings.flatMap((item) => item.images.map((image) => image.src));
   expect(new Set(slugs).size).toBe(slugs.length);

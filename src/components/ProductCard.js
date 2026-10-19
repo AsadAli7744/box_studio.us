@@ -1,5 +1,4 @@
-import { Link } from 'react-router-dom';
-import { categoryName } from '../data/products';
+import Link from 'next/link';
 import { usePrefersReducedMotion } from '../hooks/usePrefersReducedMotion';
 
 export default function ProductCard({ product }) {
@@ -20,12 +19,11 @@ export default function ProductCard({ product }) {
 
   return (
     <article className="product-card" onPointerMove={onMove} onPointerLeave={onLeave}>
-      <Link to={`/${product.slug}`} className="product-card-link">
+      <Link href={`/${product.slug}`} className="product-card-link">
         <img src={product.images[0].src} alt={product.images[0].alt} loading="lazy" />
-        <p className="eyebrow">{product.categoryLabel || categoryName(product.category)}</p>
+        {/* <p className="eyebrow">{product.categoryLabel || categoryName(product.category)}</p> */}
         <h2>{product.name}</h2>
-        <p>{product.short}</p>
-        <span className="text-link">View Box</span>
+        {/* <span className="text-link">View Box</span> */}
       </Link>
     </article>
   );

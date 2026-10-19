@@ -7,8 +7,8 @@ function line(label, value) {
   return `${label}: ${value || '—'}`;
 }
 
-export function buildQuoteSummary(draft) {
-  const product = draft.customDesign ? null : getOffering(draft.productSlug);
+export function buildQuoteSummary(draft, product) {
+  const chosen = draft.customDesign ? null : product || getOffering(draft.productSlug);
   const material = getMaterial(draft.materialId);
   const insert = getInsert(draft.insertId);
   const finishes = (draft.finishIds || []).map((id) => getFinish(id)?.name).filter(Boolean);
@@ -24,8 +24,8 @@ export function buildQuoteSummary(draft) {
     'Box Studio quote request',
     'This summary was prepared on your device. It has not been submitted.',
     '',
-    line('Box', draft.customDesign ? 'Own box design' : product?.name || '—'),
-    line('Category', draft.customDesign ? 'Custom structure' : product?.categoryLabel || '—'),
+    line('Box', draft.customDesign ? 'Own box design' : chosen?.name || '—'),
+    line('Category', draft.customDesign ? 'Custom structure' : chosen?.categoryLabel || '—'),
     line('Dimensions', dimensions),
     line('Quantity', quantity),
     line('Material', material?.name || '—'),

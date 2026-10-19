@@ -1,13 +1,19 @@
 const fs = require('fs');
 const text = fs.readFileSync('src/data/offerings.js', 'utf8');
 const named = [...text.matchAll(/slug: '([^']+)',\r?\n\s+name: '([^']+)'/g)].map((match) => match[1]);
-const categories = ['cosmetic-boxes', 'rigid-boxes', 'display-boxes', 'food-boxes', 'mailer-boxes', 'shipping-boxes', 'gift-boxes'];
-const products = named.filter((slug) => slug.startsWith('custom-'));
+let categories = ['cosmetic-boxes', 'rigid-boxes', 'display-boxes', 'food-boxes', 'mailer-boxes', 'shipping-boxes', 'gift-boxes'];
+let products = named.filter((slug) => slug.startsWith('custom-'));
+if (fs.existsSync('content/catalog.json')) {
+  const catalog = JSON.parse(fs.readFileSync('content/catalog.json', 'utf8'));
+  categories = catalog.categories.map((item) => item.slug);
+  products = catalog.products.map((item) => item.slug);
+}
 const urls = [
   'https://boxstudio.us/',
   'https://boxstudio.us/custom-boxes',
   ...categories.map((slug) => `https://boxstudio.us/${slug}`),
   ...products.map((slug) => `https://boxstudio.us/${slug}`),
+  'https://boxstudio.us/custom-box-for-your-brand',
   'https://boxstudio.us/about',
   'https://boxstudio.us/contact',
   'https://boxstudio.us/quote',

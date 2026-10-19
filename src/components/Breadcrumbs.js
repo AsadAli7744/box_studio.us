@@ -1,4 +1,4 @@
-import { Link } from 'react-router-dom';
+import Link from 'next/link';
 
 export default function Breadcrumbs({ items }) {
   return (
@@ -11,7 +11,7 @@ export default function Breadcrumbs({ items }) {
               {last || !item.to ? (
                 <span aria-current={last ? 'page' : undefined}>{item.label}</span>
               ) : (
-                <Link to={item.to}>{item.label}</Link>
+                <Link href={item.to}>{item.label}</Link>
               )}
             </li>
           );

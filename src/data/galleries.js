@@ -99,6 +99,46 @@ export const extraImages = {
     { src: '/images/g-kraft-window.jpg', alt: 'A violet carton with a window beside a gold-lidded jar.' },
     { src: '/images/g-kraft-sleeve.jpg', alt: 'A scarlet sleeve pulled back from a tray holding a cream jar.' },
   ],
+  'custom-coffee-boxes': [
+    { src: '/images/g-coffee-open.jpg', alt: 'An open cobalt coffee carton with a black coffee bag inside.' },
+    { src: '/images/g-coffee-kraft.jpg', alt: 'A sand coffee carton beside a rust tin with a black lid.' },
+    { src: '/images/g-coffee-window.jpg', alt: 'A forest-green window carton showing a cream coffee bag.' },
+  ],
+  'custom-chocolate-bar-boxes': [
+    { src: '/images/g-chocolate-open.jpg', alt: 'An open ivory carton with a ruby-wrapped chocolate bar inside.' },
+    { src: '/images/g-chocolate-kraft.jpg', alt: 'A black chocolate carton beside a gold-foil bar.' },
+    { src: '/images/g-chocolate-window.jpg', alt: 'A blush window carton with a dark chocolate bar visible.' },
+  ],
+  'custom-truffle-boxes': [
+    { src: '/images/g-truffle-open.jpg', alt: 'An open emerald carton with a tray of white and cocoa truffles.' },
+    { src: '/images/g-truffle-kraft.jpg', alt: 'A midnight-blue window carton showing gold-dusted truffles.' },
+    { src: '/images/g-truffle-window.jpg', alt: 'A coral carton with a clear window over pink and dark truffles.' },
+  ],
+  'custom-cookie-boxes': [
+    { src: '/images/g-cookie-open.jpg', alt: 'An open lilac carton with a stack of pale sugar cookies inside.' },
+    { src: '/images/g-cookie-kraft.jpg', alt: 'A scarlet window carton showing dark chocolate cookies.' },
+    { src: '/images/g-cookie-window.jpg', alt: 'A mint carton with a window over oatmeal cookies.' },
+  ],
+  'custom-cereal-boxes': [
+    { src: '/images/g-cereal-open.jpg', alt: 'An open sunflower cereal carton with a white bag of grain inside.' },
+    { src: '/images/g-cereal-kraft.jpg', alt: 'A tall charcoal cereal carton beside a kraft grain bag.' },
+    { src: '/images/g-cereal-window.jpg', alt: 'A tall teal carton with a window showing an oat-colored bag.' },
+  ],
+  'custom-candy-boxes': [
+    { src: '/images/g-candy-open.jpg', alt: 'An open navy carton filled with gold and red wrapped candies.' },
+    { src: '/images/g-candy-kraft.jpg', alt: 'A pistachio carton beside silver-wrapped sweets.' },
+    { src: '/images/g-candy-window.jpg', alt: 'A black window carton showing lemon and violet wrapped candies.' },
+  ],
+  'custom-spice-boxes': [
+    { src: '/images/g-spice-open.jpg', alt: 'An open ink-blue carton holding two small red and yellow spice jars.' },
+    { src: '/images/g-spice-kraft.jpg', alt: 'A white spice carton beside a row of tiny black-lidded jars.' },
+    { src: '/images/g-spice-window.jpg', alt: 'A moss-green window carton showing three copper-lidded spice tins.' },
+  ],
+  'custom-honey-boxes': [
+    { src: '/images/g-honey-open.jpg', alt: 'An open cream carton with an amber honey jar seated inside.' },
+    { src: '/images/g-honey-kraft.jpg', alt: 'A deep plum carton beside a gold-lidded honey jar.' },
+    { src: '/images/g-honey-window.jpg', alt: 'A sky-blue window carton with a honey jar visible through the front.' },
+  ],
   'custom-mailer-boxes': [
     { src: '/images/g-mailer-closed.jpg', alt: 'A closed glossy white mailer with a coral edge.' },
     { src: '/images/g-mailer-tissue.jpg', alt: 'An open emerald mailer with cream tissue and a black jar.' },
@@ -113,6 +153,46 @@ export const extraImages = {
     { src: '/images/g-flat-open.jpg', alt: 'An open cream shallow mailer with a cobalt wrapped item inside.' },
     { src: '/images/g-flat-kraft.jpg', alt: 'A closed glossy scarlet shallow mailer.' },
     { src: '/images/g-flat-stack.jpg', alt: 'An open teal shallow mailer beside a stack of black folios.' },
+  ],
+  'custom-clothing-mailer-boxes': [
+    { src: '/images/g-clothing-closed.jpg', alt: 'A closed sand clothing mailer with a black edge.' },
+    { src: '/images/g-clothing-tissue.jpg', alt: 'An open emerald mailer with white tissue and a folded black shirt.' },
+    { src: '/images/g-clothing-stack.jpg', alt: 'An open apricot mailer with a folded rust garment inside.' },
+  ],
+  'custom-shoe-mailer-boxes': [
+    { src: '/images/g-shoe-closed.jpg', alt: 'A closed glossy white shoe mailer with a cobalt edge.' },
+    { src: '/images/g-shoe-tissue.jpg', alt: 'An open burgundy mailer with cream tissue around black shoes.' },
+    { src: '/images/g-shoe-pair.jpg', alt: 'An open mustard mailer with a pair of tan shoes side by side.' },
+  ],
+  'custom-candle-mailer-boxes': [
+    { src: '/images/g-candle-closed.jpg', alt: 'A closed blush candle mailer with a gold edge.' },
+    { src: '/images/g-candle-tissue.jpg', alt: 'An open navy mailer with gold tissue around a white candle.' },
+    { src: '/images/g-candle-insert.jpg', alt: 'An open terracotta mailer holding a black candle jar in a fitted well.' },
+  ],
+  'custom-jewelry-mailer-boxes': [
+    { src: '/images/g-jewelry-mailer-closed.jpg', alt: 'A closed small emerald jewelry mailer with a thin gold edge.' },
+    { src: '/images/g-jewelry-mailer-pouch.jpg', alt: 'An open ivory mailer with a burgundy jewelry pouch inside.' },
+    { src: '/images/g-jewelry-mailer-open.jpg', alt: 'An open cobalt mailer with a cream pouch and a silver chain.' },
+  ],
+  'custom-beauty-order-boxes': [
+    { src: '/images/g-beauty-closed.jpg', alt: 'A closed glossy black beauty mailer with a coral edge.' },
+    { src: '/images/g-beauty-tissue.jpg', alt: 'An open cream mailer with pink tissue around amber and white bottles.' },
+    { src: '/images/g-beauty-bottles.jpg', alt: 'An open forest mailer holding a gold pump bottle and a lilac jar.' },
+  ],
+  'custom-sample-mailer-boxes': [
+    { src: '/images/g-sample-closed.jpg', alt: 'A closed small lilac sample mailer.' },
+    { src: '/images/g-sample-open.jpg', alt: 'An open scarlet mailer with three silver sample vials in tissue.' },
+    { src: '/images/g-sample-vials.jpg', alt: 'An open white mailer with black tissue and four tiny amber vials.' },
+  ],
+  'custom-accessory-mailer-boxes': [
+    { src: '/images/g-accessory-closed.jpg', alt: 'A closed glossy graphite accessory mailer.' },
+    { src: '/images/g-accessory-open.jpg', alt: 'An open blush shallow mailer with a black phone case inside.' },
+    { src: '/images/g-accessory-case.jpg', alt: 'An open olive shallow mailer with gold-framed sunglasses.' },
+  ],
+  'custom-return-mailer-boxes': [
+    { src: '/images/g-return-closed.jpg', alt: 'A closed ink-blue return mailer with the lid folded to the front.' },
+    { src: '/images/g-return-open.jpg', alt: 'An open sand mailer with a folded white shirt ready to be covered.' },
+    { src: '/images/g-return-garment.jpg', alt: 'An open black mailer with a folded gray garment and the lid raised.' },
   ],
   'custom-shipping-boxes': [
     { src: '/images/g-ship-closed.jpg', alt: 'A closed glossy black shipping carton.' },

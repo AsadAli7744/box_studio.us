@@ -88,8 +88,8 @@ export const industries = [
     name: 'Food Boxes',
     href: '/food-boxes',
     icon: 'leaf',
-    line: 'Tea, bakery, and kraft cartons',
-    intro: 'Tea, bakery, and dry goods. An inner pack is the contact layer when the product needs one.',
+    line: 'Coffee, chocolate, cereal, and bakery',
+    intro: 'Coffee, chocolate, cereal, tea, and bakery. An inner pack is the contact layer when the product needs one.',
   },
   {
     id: 'rigid-boxes',
@@ -112,8 +112,8 @@ export const industries = [
     name: 'Mailer Boxes',
     href: '/mailer-boxes',
     icon: 'parcel',
-    line: 'The box a customer opens',
-    intro: 'Mailers for one order, a subscription kit, or a flat product.',
+    line: 'Clothing, candles, shoes, and orders',
+    intro: 'Mailers for clothing, shoes, candles, samples, and the order a customer opens.',
   },
   {
     id: 'shipping-boxes',

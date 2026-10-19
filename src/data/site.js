@@ -3,7 +3,7 @@ export const site = {
   domain: 'boxstudio.us',
   url: 'https://boxstudio.us',
   description:
-    'Custom boxes designed around your product. Explore folding cartons, rigid boxes, mailers, and related structures, then request a quote.',
+    'Any box packaging sized to your product. One piece, a set, or an order you ship. Tell us what goes inside, then request a quote.',
   // Add verified details here. Empty values are omitted from the visible site.
   email: '',
   phone: '',
