@@ -2,7 +2,7 @@ import '../src/index.css';
 import Layout from '../src/components/Layout';
 import { CatalogProvider } from '../src/context/CatalogContext';
 import { RequestProvider } from '../src/context/RequestContext';
-import { readCatalog } from '../src/server/catalogFile';
+import { getPublicCatalog } from '../src/server/publicCatalog';
 
 export const metadata = {
   title: 'Box Studio | Custom boxes',
@@ -23,8 +23,8 @@ export const viewport = {
   initialScale: 1,
 };
 
-export default function RootLayout({ children }) {
-  const catalog = readCatalog();
+export default async function RootLayout({ children }) {
+  const catalog = await getPublicCatalog();
   return (
     <html lang="en">
       <body>

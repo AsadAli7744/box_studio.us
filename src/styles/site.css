@@ -890,7 +890,7 @@ legend { font-family: var(--font-display); font-size: 1.6rem; padding: 0; }
   align-items: start;
   margin-top: 1.75rem;
 }
-.gallery > img { width: 100%; aspect-ratio: 5 / 4; object-fit: contain; background: var(--ivory); }
+.gallery > img { width: 100%; height: auto; aspect-ratio: 5 / 4; object-fit: contain; background: var(--ivory); }
 .product-copy { max-width: 44rem; padding: 0.4rem 0 1.2rem; }
 .product-copy h2 { margin-bottom: 0.45rem; }
 .related-products { padding: 1rem 0 3rem; }

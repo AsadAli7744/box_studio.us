@@ -3,6 +3,7 @@
 import { useMemo, useState } from 'react';
 import Link from 'next/link';
 import Accordion from '../components/Accordion';
+import CatalogImage from '../components/CatalogImage';
 import ProductCard from '../components/ProductCard';
 import Reveal from '../components/Reveal';
 import { finishes, homeFaqs, materials, processSteps } from '../data/catalog';
@@ -446,7 +447,7 @@ function HomeCatalog() {
             aria-pressed={categorySlug === category.slug}
             onClick={() => setCategorySlug(category.slug)}
           >
-            <img src={category.image} alt="" />
+            <CatalogImage src={category.image} alt="" width={160} height={160} sizes="80px" />
             <span>{category.name}</span>
           </button>
         ))}
@@ -548,7 +549,7 @@ function ApplicationsSection() {
         {categories.map((item) => (
           <li key={item.slug}>
             <Link href={`/${item.slug}`}>
-              <img src={item.image} alt={item.alt} />
+              <CatalogImage src={item.image} alt={item.alt} sizes="(max-width: 700px) 50vw, 20vw" />
               <span>
                 <strong>{item.name}</strong>
                 <small>{item.line}</small>

@@ -4,6 +4,7 @@ import { useEffect, useState } from 'react';
 import { useParams, useRouter } from 'next/navigation';
 import Accordion from '../components/Accordion';
 import Breadcrumbs, { breadcrumbJson } from '../components/Breadcrumbs';
+import CatalogImage from '../components/CatalogImage';
 import MeasurementFigure from '../components/MeasurementFigure';
 import ProductCard from '../components/ProductCard';
 import { getFinish, getInsert, getMaterial } from '../data/catalog';
@@ -94,7 +95,7 @@ export default function ProductPage() {
       <Breadcrumbs items={crumbs} />
       <div className="product-layout">
         <div className="gallery">
-          <img src={image.src} alt={image.alt} />
+          <CatalogImage src={image.src} alt={image.alt} sizes="(max-width: 900px) 100vw, 50vw" priority />
           {product.images.length > 1 ? (
             <div className="thumbs" role="group" aria-label="Product images">
               {product.images.map((item, index) => (
@@ -105,7 +106,7 @@ export default function ProductPage() {
                   aria-pressed={index === imageIndex}
                   onClick={() => setImageIndex(index)}
                 >
-                  <img src={item.src} alt="" />
+                  <CatalogImage src={item.src} alt="" width={160} height={160} sizes="72px" />
                 </button>
               ))}
             </div>

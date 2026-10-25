@@ -44,6 +44,12 @@ function mapped(source, table) {
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   reactStrictMode: true,
+  images: {
+    localPatterns: [
+      { pathname: '/assets/**' },
+      { pathname: '/images/**' },
+    ],
+  },
   async redirects() {
     return [
       { source: '/boxes', destination: '/custom-boxes', permanent: true },

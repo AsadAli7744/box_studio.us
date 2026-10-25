@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import CatalogImage from './CatalogImage';
 import { usePrefersReducedMotion } from '../hooks/usePrefersReducedMotion';
 
 export default function ProductCard({ product }) {
@@ -20,7 +21,7 @@ export default function ProductCard({ product }) {
   return (
     <article className="product-card" onPointerMove={onMove} onPointerLeave={onLeave}>
       <Link href={`/${product.slug}`} className="product-card-link">
-        <img src={product.images[0].src} alt={product.images[0].alt} loading="lazy" />
+        <CatalogImage src={product.images[0].src} alt={product.images[0].alt} sizes="(max-width: 700px) 50vw, 25vw" />
         {/* <p className="eyebrow">{product.categoryLabel || categoryName(product.category)}</p> */}
         <h2>{product.name}</h2>
         {/* <span className="text-link">View Box</span> */}

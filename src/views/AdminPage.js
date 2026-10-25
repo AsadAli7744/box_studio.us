@@ -68,7 +68,7 @@ export default function AdminPage() {
     setBusy(true);
     setError('');
     try {
-      const response = await fetch('/api/catalog', { headers: headers(user, secret) });
+      const response = await fetch('/api/catalog', { headers: headers(user, secret), cache: 'no-store' });
       const data = await response.json();
       if (response.status === 401) {
         setLocked(true);
@@ -149,6 +149,7 @@ export default function AdminPage() {
         method: 'PUT',
         headers: headers(username, password, true),
         body: JSON.stringify(nextDoc),
+        cache: 'no-store',
       });
       const data = await response.json();
       if (response.status === 401) {
@@ -163,7 +164,7 @@ export default function AdminPage() {
       setDraft(saved);
       setBaseline(saved);
       if (data.publish?.status === 'error') setError(data.publish.message);
-      else setStatus(data.publish?.message || 'Live. Pushed to GitHub.');
+      else setStatus(data.refresh?.message || data.publish?.message || 'Published. Affected pages were refreshed.');
       router.refresh();
     } catch (saveError) {
       setError(saveError.message);
@@ -402,7 +403,7 @@ export default function AdminPage() {
             <h2>{kind === 'categories' ? 'Categories' : 'Products'}</h2>
             <p>
               Edit the name, text, images, and questions for each {kind === 'categories' ? 'category' : 'product'}.
-              Save & Publish writes the catalog and new photos into this repository, then pushes that commit to GitHub.
+              Save & Publish sends the content to the API, stores text in the catalog and images in file storage, then refreshes the affected cached pages. Other pages stay available.
             </p>
           </div>
         )}
