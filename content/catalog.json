@@ -1,4 +1,30 @@
 {
+  "heroSlides": [
+    {
+      "id": "any-box-packaging",
+      "title": "Hero CMS check slide",
+      "lead": "One product, a set, or an order you ship. Tell us what goes inside and how you sell it, then request a quote for that box.",
+      "image": "/images/hero-smooth.png",
+      "alt": "Six custom boxes: a tall green carton, an open green rigid box, a cream cylinder, an open kraft mailer, an orange hexagonal box, and a cream drawer.",
+      "collage": false,
+      "primaryLabel": "Get a Quote",
+      "primaryHref": "/quote",
+      "secondaryLabel": "Explore boxes",
+      "secondaryHref": "/custom-boxes"
+    },
+    {
+      "id": "folding-cartons",
+      "title": "Folding cartons for every product you pack",
+      "lead": "Beauty, food, gifts, electronics, and orders you ship. One range of cartons, made to the product they hold.",
+      "image": "/images/hero-packaging.jpg",
+      "alt": "A collection of folding carton boxes for cosmetics, food, gifts, electronics, coffee, and delivery.",
+      "collage": true,
+      "primaryLabel": "Get a Quote",
+      "primaryHref": "/quote",
+      "secondaryLabel": "Explore boxes",
+      "secondaryHref": "/custom-boxes"
+    }
+  ],
   "categories": [
     {
       "slug": "cosmetic-boxes",
