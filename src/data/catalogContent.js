@@ -69,6 +69,102 @@ export function blankCategory() {
   };
 }
 
+export const DEFAULT_HERO_SLIDES = [
+  {
+    id: 'any-box-packaging',
+    title: 'Any box packaging, sized to your product',
+    lead: 'One product, a set, or an order you ship. Tell us what goes inside and how you sell it, then request a quote for that box.',
+    image: '/images/hero-smooth.png',
+    alt: 'Six custom boxes: a tall green carton, an open green rigid box, a cream cylinder, an open kraft mailer, an orange hexagonal box, and a cream drawer.',
+    collage: false,
+    primaryLabel: 'Get a Quote',
+    primaryHref: '/quote',
+    secondaryLabel: 'Explore boxes',
+    secondaryHref: '/custom-boxes',
+  },
+  {
+    id: 'folding-cartons',
+    title: 'Folding cartons for every product you pack',
+    lead: 'Beauty, food, gifts, electronics, and orders you ship. One range of cartons, made to the product they hold.',
+    image: '/images/hero-packaging.png',
+    alt: 'A collection of folding carton boxes for cosmetics, food, gifts, electronics, coffee, and delivery.',
+    collage: true,
+    primaryLabel: 'Get a Quote',
+    primaryHref: '/quote',
+    secondaryLabel: 'Explore boxes',
+    secondaryHref: '/custom-boxes',
+  },
+];
+
+export function blankHeroSlide() {
+  return {
+    id: '',
+    title: '',
+    lead: '',
+    image: '',
+    alt: '',
+    collage: false,
+    primaryLabel: 'Get a Quote',
+    primaryHref: '/quote',
+    secondaryLabel: 'Explore boxes',
+    secondaryHref: '/custom-boxes',
+  };
+}
+
+function pagePath(value, fallback) {
+  const src = String(value || '').trim();
+  if (!src) return fallback;
+  if (!/^\/[a-zA-Z0-9/_-]*$/.test(src)) {
+    throw new Error('Hero button links must start with / and use a site path.');
+  }
+  return src;
+}
+
+function uniqueSlideId(raw, index, used) {
+  let id = slugify(raw?.id || raw?.title) || `slide-${index + 1}`;
+  const base = id;
+  let n = 2;
+  while (used.has(id)) {
+    id = `${base}-${n}`;
+    n += 1;
+  }
+  used.add(id);
+  return id;
+}
+
+function normalizeHeroSlides(list) {
+  const source = Array.isArray(list) ? list : DEFAULT_HERO_SLIDES;
+  if (source.length > 6) throw new Error('Use 6 hero slides or fewer.');
+  const used = new Set();
+  const slides = source.map((raw, index) => {
+    const title = cleanText(raw?.title, 140);
+    const label = title || `Slide ${index + 1}`;
+    if (!title) throw new Error('Every hero slide needs a title.');
+    const lead = cleanText(raw?.lead, 400);
+    if (!lead) throw new Error(`“${label}” needs a short line of text.`);
+    const image = imagePath(raw?.image);
+    if (!image) throw new Error(`“${label}” needs an image.`);
+    const alt = cleanText(raw?.alt, 240);
+    if (!alt) throw new Error(`“${label}” needs a description of its image.`);
+    const primaryLabel = cleanText(raw?.primaryLabel, 40);
+    const secondaryLabel = cleanText(raw?.secondaryLabel, 40);
+    return {
+      id: uniqueSlideId(raw, index, used),
+      title,
+      lead,
+      image,
+      alt,
+      collage: Boolean(raw?.collage),
+      primaryLabel,
+      primaryHref: primaryLabel ? pagePath(raw?.primaryHref, '/quote') : '',
+      secondaryLabel,
+      secondaryHref: secondaryLabel ? pagePath(raw?.secondaryHref, '/custom-boxes') : '',
+    };
+  });
+  if (!slides.length) throw new Error('Add at least one hero slide.');
+  return slides;
+}
+
 export function blankProduct(category, structureSlug) {
   const structure = getProduct(structureSlug) || structureProducts[0];
   return {
@@ -198,6 +294,7 @@ export function normalizeCatalog(input) {
     });
   });
   if (!products.length) throw new Error('Add at least one product.');
+  const heroSlides = normalizeHeroSlides(source.heroSlides);
 
   const productSlugs = new Set(products.map((item) => item.slug));
   products.forEach((product) => {
@@ -209,7 +306,7 @@ export function normalizeCatalog(input) {
     });
   });
 
-  return { categories, products };
+  return { heroSlides, categories, products };
 }
 
 export function presentCatalog(doc) {
@@ -244,6 +341,7 @@ export function presentCatalog(doc) {
   });
 
   return {
+    heroSlides: (doc.heroSlides || []).map((slide) => ({ ...slide })),
     categories,
     products,
     getCategory(slug) {

@@ -65,10 +65,13 @@ export function catalogChanges(previous, next) {
     listingChanged = true;
   }
 
+  const homeChanged = JSON.stringify(previous?.heroSlides || []) !== JSON.stringify(next?.heroSlides || []);
+
   return {
     products: [...products],
     categories: [...categories],
     listingChanged,
+    homeChanged,
   };
 }
 
@@ -80,12 +83,16 @@ export function pathsToRefresh(changes) {
     paths.add('/');
     paths.add('/custom-boxes');
   }
+  if (changes.homeChanged) paths.add('/');
   return [...paths];
 }
 
 export function refreshMessage(paths) {
   if (!paths.length) return 'Already published. No cached pages needed a refresh.';
   const productPages = paths.filter((path) => path !== '/' && path !== '/custom-boxes').length;
+  if (paths.includes('/') && !paths.includes('/custom-boxes') && productPages === 0) {
+    return 'Published. The homepage was refreshed. Other cached pages stay available.';
+  }
   if (paths.includes('/') || paths.includes('/custom-boxes')) {
     return 'Published. The changed pages and their listings were refreshed. Other cached pages stay available.';
   }

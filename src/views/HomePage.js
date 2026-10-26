@@ -1,39 +1,95 @@
 'use client';
 
-import { useMemo, useState } from 'react';
+import { useEffect, useMemo, useState } from 'react';
 import Link from 'next/link';
 import Accordion from '../components/Accordion';
 import CatalogImage from '../components/CatalogImage';
 import ProductCard from '../components/ProductCard';
 import Reveal from '../components/Reveal';
 import { finishes, homeFaqs, materials, processSteps } from '../data/catalog';
+import { DEFAULT_HERO_SLIDES } from '../data/catalogContent';
 import { absoluteUrl, site } from '../data/site';
 import { useCatalog } from '../context/CatalogContext';
 import { usePageMeta } from '../hooks/usePageMeta';
+import { usePrefersReducedMotion } from '../hooks/usePrefersReducedMotion';
 
 function Hero() {
+  const { heroSlides: catalogSlides } = useCatalog();
+  const heroSlides = catalogSlides.length ? catalogSlides : DEFAULT_HERO_SLIDES;
+  const reduced = usePrefersReducedMotion();
+  const [index, setIndex] = useState(0);
+  const [paused, setPaused] = useState(false);
+  const count = heroSlides.length;
+  const slide = heroSlides[index] || heroSlides[0];
+
+  function go(step) {
+    setIndex((current) => (current + step + count) % count);
+  }
+
+  useEffect(() => {
+    if (index >= count) setIndex(0);
+  }, [count, index]);
+
+  useEffect(() => {
+    if (reduced || paused || count < 2) return undefined;
+    const timer = window.setInterval(() => go(1), 7000);
+    return () => window.clearInterval(timer);
+  }, [reduced, paused, index, count]);
+
+  if (!slide) return null;
+
   return (
-    <section className="hero">
+    <section
+      className="hero"
+      aria-roledescription="carousel"
+      aria-label="Featured packaging"
+      onMouseEnter={() => setPaused(true)}
+      onMouseLeave={() => setPaused(false)}
+    >
       <div className="hero-copy">
-        <h1>Any box packaging, sized to your product</h1>
-        <p className="hero-lead">
-          One product, a set, or an order you ship. Tell us what goes inside and how you sell it, then request a quote for that box.
-        </p>
+        <h1>{slide.title}</h1>
+        <p className="hero-lead">{slide.lead}</p>
         <div className="hero-actions">
-          <Link href="/quote" className="btn hero-pill hero-pill-dark">
-            Get a Quote
-          </Link>
-          <Link href="/custom-boxes" className="hero-text-link">
-            Explore boxes
-          </Link>
+          {slide.primaryLabel ? (
+            <Link href={slide.primaryHref || '/quote'} className="btn hero-pill hero-pill-dark">
+              {slide.primaryLabel}
+            </Link>
+          ) : null}
+          {slide.secondaryLabel ? (
+            <Link href={slide.secondaryHref || '/custom-boxes'} className="hero-text-link">
+              {slide.secondaryLabel}
+            </Link>
+          ) : null}
         </div>
       </div>
-      <div className="hero-visual">
-        <img
-          src="/images/hero-smooth.png"
-          alt="Six custom boxes: a tall green carton, an open green rigid box, a cream cylinder, an open kraft mailer, an orange hexagonal box, and a cream drawer."
-        />
+      <div className={slide.collage ? 'hero-visual is-collage' : 'hero-visual'}>
+        <img src={slide.image} alt={slide.alt} />
       </div>
+      {count > 1 ? (
+        <div className="hero-controls">
+          <p className="sr-only" aria-live="polite">
+            Slide {index + 1} of {count}
+          </p>
+          <button type="button" onClick={() => go(-1)} aria-label="Previous hero slide">
+            <ChevronIcon />
+          </button>
+          <div className="hero-dots" role="tablist" aria-label="Hero slides">
+            {heroSlides.map((item, dot) => (
+              <button
+                key={item.id || item.image}
+                type="button"
+                role="tab"
+                aria-label={`Show slide ${dot + 1}`}
+                aria-selected={dot === index}
+                onClick={() => setIndex(dot)}
+              />
+            ))}
+          </div>
+          <button type="button" className="is-next" onClick={() => go(1)} aria-label="Next hero slide">
+            <ChevronIcon />
+          </button>
+        </div>
+      ) : null}
     </section>
   );
 }
@@ -596,11 +652,12 @@ function FinalCta() {
 }
 
 export default function HomePage() {
+  const { heroSlides } = useCatalog();
   usePageMeta({
     title: 'Any Box Packaging Sized to Your Product | Box Studio',
     description: site.description,
     path: '/',
-    image: absoluteUrl('/images/hero-smooth.png'),
+    image: absoluteUrl(heroSlides[0]?.image || '/images/hero-smooth.png'),
     jsonLd: {
       '@context': 'https://schema.org',
       '@type': 'WebSite',
@@ -611,7 +668,7 @@ export default function HomePage() {
   });
 
   return (
-    <>
+    <div className="home-page">
       <Hero />
       <StoriesSection />
       <WhySection />
@@ -622,6 +679,6 @@ export default function HomePage() {
       <ApplicationsSection />
       <FaqSection />
       <FinalCta />
-    </>
+    </div>
   );
 }

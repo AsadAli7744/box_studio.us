@@ -1,8 +1,10 @@
+import { DEFAULT_HERO_SLIDES } from './catalogContent';
 import { offerings, shopCategories } from './offerings';
 import { industries } from './uses';
 
 export function buildDefaultCatalog() {
   return {
+    heroSlides: DEFAULT_HERO_SLIDES.map((slide) => ({ ...slide })),
     categories: shopCategories.map((category) => {
       const industry = industries.find((item) => item.id === category.slug);
       return {

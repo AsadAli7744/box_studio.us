@@ -31,6 +31,7 @@ function hidden(text) {
 
 function referencedAssets(catalog) {
   const sources = [
+    ...(catalog.heroSlides || []).map((slide) => slide.image),
     ...catalog.categories.map((category) => category.image),
     ...catalog.products.flatMap((product) => product.images.map((image) => image.src)),
   ];

@@ -5,6 +5,7 @@ import Link from 'next/link';
 import { usePathname, useRouter } from 'next/navigation';
 import { useCatalog } from '../context/CatalogContext';
 import { useScrolled } from '../hooks/useScrolled';
+import CatalogImage from './CatalogImage';
 import Logo from './Logo';
 
 export default function Header() {
@@ -160,8 +161,11 @@ export default function Header() {
                 {menuCards.map((category) => (
                   <li key={category.slug}>
                     <Link href={category.href} onClick={() => setIndustryOpen(false)}>
-                      <strong>{category.name}</strong>
-                      <small>{category.line}</small>
+                      <CatalogImage src={category.image} alt="" width={160} height={160} sizes="72px" />
+                      <span>
+                        <strong>{category.name}</strong>
+                        <small>{category.line}</small>
+                      </span>
                     </Link>
                   </li>
                 ))}
@@ -262,7 +266,10 @@ export default function Header() {
                 </li>
                 {categories.map((category) => (
                   <li key={category.slug}>
-                    <Link href={`/${category.slug}`}>{category.name}</Link>
+                    <Link href={`/${category.slug}`}>
+                      <CatalogImage src={category.image} alt="" width={128} height={96} sizes="64px" />
+                      <span>{category.name}</span>
+                    </Link>
                   </li>
                 ))}
               </ul>

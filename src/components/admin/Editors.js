@@ -169,6 +169,52 @@ export function CategoryForm({ draft, onChange, upload }) {
   );
 }
 
+export function HeroForm({ draft, onChange, upload }) {
+  return (
+    <div className="admin-form">
+      <Field label="Title">
+        <input value={draft.title} onChange={(event) => onChange({ ...draft, title: event.target.value })} />
+      </Field>
+      <Field label="Short line">
+        <textarea rows={3} value={draft.lead} onChange={(event) => onChange({ ...draft, lead: event.target.value })} />
+      </Field>
+      <ImageList
+        images={draft.image ? [{ src: draft.image, alt: draft.alt }] : []}
+        multiple={false}
+        upload={upload}
+        onChange={(images) => onChange({
+          ...draft,
+          image: images[0]?.src || '',
+          alt: images[0]?.alt || '',
+        })}
+      />
+      <label className="admin-field admin-check">
+        <span>
+          <input
+            type="checkbox"
+            checked={Boolean(draft.collage)}
+            onChange={(event) => onChange({ ...draft, collage: event.target.checked })}
+          />
+          Show the full image without cropping
+        </span>
+      </label>
+      <Field label="Primary button">
+        <input value={draft.primaryLabel} onChange={(event) => onChange({ ...draft, primaryLabel: event.target.value })} />
+      </Field>
+      <Field label="Primary button path">
+        <input value={draft.primaryHref} onChange={(event) => onChange({ ...draft, primaryHref: event.target.value })} />
+      </Field>
+      <Field label="Secondary button">
+        <input value={draft.secondaryLabel} onChange={(event) => onChange({ ...draft, secondaryLabel: event.target.value })} />
+      </Field>
+      <Field label="Secondary button path">
+        <input value={draft.secondaryHref} onChange={(event) => onChange({ ...draft, secondaryHref: event.target.value })} />
+      </Field>
+      <p className="admin-note">Leave a button blank to hide it. Paths start with /, such as /quote or /custom-boxes.</p>
+    </div>
+  );
+}
+
 function Checks({ legend, options, selected, onChange }) {
   return (
     <fieldset className="admin-block">

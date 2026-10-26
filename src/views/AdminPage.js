@@ -3,8 +3,30 @@
 import { useEffect, useState } from 'react';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
-import { CategoryForm, ProductForm } from '../components/admin/Editors';
-import { blankCategory, blankProduct, slugify, structureChoices } from '../data/catalogContent';
+import { CategoryForm, HeroForm, ProductForm } from '../components/admin/Editors';
+import { blankCategory, blankHeroSlide, blankProduct, slugify, structureChoices } from '../data/catalogContent';
+
+function catalogFrom(data, fallback) {
+  return {
+    heroSlides: data.heroSlides || fallback?.heroSlides || [],
+    categories: data.categories,
+    products: data.products,
+  };
+}
+
+function listFor(doc, kind) {
+  if (!doc) return [];
+  return kind === 'hero' ? doc.heroSlides : doc[kind];
+}
+
+function itemKey(kind, item) {
+  return kind === 'hero' ? item.id : item.slug;
+}
+
+function itemName(kind, item) {
+  if (kind === 'hero') return item.title || 'Untitled slide';
+  return item.name;
+}
 
 function same(left, right) {
   return JSON.stringify(left) === JSON.stringify(right);
@@ -80,7 +102,7 @@ export default function AdminPage() {
       }
       if (!response.ok) throw new Error(data.error || 'The catalog could not be opened.');
       setLocked(false);
-      setDoc(data);
+      setDoc(catalogFrom(data));
       setUsername(user);
       setPassword(secret);
       window.sessionStorage.setItem('boxstudio-admin-login', JSON.stringify({ username: user, password: secret }));
@@ -95,11 +117,11 @@ export default function AdminPage() {
     return !dirty || window.confirm('Discard unsaved changes?');
   }
 
-  function openItem(nextKind, slug) {
+  function openItem(nextKind, key) {
     if (!guard()) return;
-    const record = doc[nextKind].find((item) => item.slug === slug);
+    const record = listFor(doc, nextKind).find((item) => itemKey(nextKind, item) === key);
     setKind(nextKind);
-    setSelected(slug);
+    setSelected(key);
     setDraft(record);
     setBaseline(record);
     setStatus('');
@@ -111,7 +133,9 @@ export default function AdminPage() {
     if (!guard()) return;
     const record = kind === 'categories'
       ? blankCategory()
-      : blankProduct(categoryFilter || doc.categories[0]?.slug, structureChoices()[0]?.slug);
+      : kind === 'hero'
+        ? blankHeroSlide()
+        : blankProduct(categoryFilter || doc.categories[0]?.slug, structureChoices()[0]?.slug);
     setSelected('new');
     setDraft(record);
     setBaseline(record);
@@ -157,10 +181,10 @@ export default function AdminPage() {
         throw new Error(data.error || 'That username or password does not match.');
       }
       if (!response.ok) throw new Error(data.error || 'The catalog could not be saved.');
-      const catalog = { categories: data.categories, products: data.products };
+      const catalog = catalogFrom(data, nextDoc);
       setDoc(catalog);
-      const saved = nextSlug ? catalog[kind].find((item) => item.slug === nextSlug) : null;
-      setSelected(saved ? saved.slug : null);
+      const saved = nextSlug ? listFor(catalog, kind).find((item) => itemKey(kind, item) === nextSlug) : null;
+      setSelected(saved ? itemKey(kind, saved) : null);
       setDraft(saved);
       setBaseline(saved);
       if (data.publish?.status === 'error') setError(data.publish.message);
@@ -176,14 +200,30 @@ export default function AdminPage() {
   async function save(event) {
     event.preventDefault();
     if (!draft) return;
+    const previous = selected === 'new' ? null : selected;
+    let heroSlides = doc.heroSlides || [];
+    let categories = doc.categories;
+    let products = doc.products;
+    if (kind === 'hero') {
+      const record = { ...draft, id: slugify(draft.id || draft.title) };
+      if (!record.id) {
+        setError('Add a title before saving.');
+        return;
+      }
+      if (!previous && heroSlides.some((item) => item.id === record.id)) {
+        record.id = `${record.id}-${heroSlides.length + 1}`;
+      }
+      heroSlides = previous
+        ? heroSlides.map((item) => (item.id === previous ? record : item))
+        : [...heroSlides, record];
+      await persist({ heroSlides, categories, products }, record.id);
+      return;
+    }
     const record = { ...draft, slug: slugify(draft.slug || draft.name) };
     if (!record.slug) {
       setError('Add a name before saving.');
       return;
     }
-    const previous = selected === 'new' ? null : selected;
-    let categories = doc.categories;
-    let products = doc.products;
     if (kind === 'categories') {
       if (previous && previous !== record.slug) {
         products = products.map((item) => (item.category === previous ? { ...item, category: record.slug } : item));
@@ -200,7 +240,7 @@ export default function AdminPage() {
         ? products.map((item) => (item.slug === previous ? record : item))
         : [...products, record];
     }
-    await persist({ categories, products }, record.slug);
+    await persist({ heroSlides, categories, products }, record.slug);
   }
 
   async function remove() {
@@ -214,26 +254,37 @@ export default function AdminPage() {
       setError('Move or delete the products in this category first.');
       return;
     }
-    const name = draft.name || 'this item';
+    if (kind === 'hero' && (doc.heroSlides || []).length <= 1) {
+      setError('Keep at least one hero slide.');
+      return;
+    }
+    const name = itemName(kind, draft);
     if (!window.confirm(`Delete ${name}?`)) return;
+    const heroSlides = kind === 'hero'
+      ? doc.heroSlides.filter((item) => item.id !== draft.id)
+      : doc.heroSlides;
     const categories = kind === 'categories' ? doc.categories.filter((item) => item.slug !== draft.slug) : doc.categories;
     const products = kind === 'products'
       ? doc.products
         .filter((item) => item.slug !== draft.slug)
         .map((item) => ({ ...item, related: item.related.filter((link) => link.slug !== draft.slug) }))
       : doc.products;
-    await persist({ categories, products }, null);
+    await persist({ heroSlides, categories, products }, null);
   }
 
   async function move(slug, direction) {
     if (!guard()) return;
-    const list = [...doc[kind]];
-    const index = list.findIndex((item) => item.slug === slug);
+    const list = [...listFor(doc, kind)];
+    const index = list.findIndex((item) => itemKey(kind, item) === slug);
     const target = index + direction;
     if (index < 0 || target < 0 || target >= list.length) return;
     const [item] = list.splice(index, 1);
     list.splice(target, 0, item);
-    const next = kind === 'categories' ? { categories: list, products: doc.products } : { categories: doc.categories, products: list };
+    const next = {
+      heroSlides: kind === 'hero' ? list : doc.heroSlides,
+      categories: kind === 'categories' ? list : doc.categories,
+      products: kind === 'products' ? list : doc.products,
+    };
     setSelected(null);
     setDraft(null);
     setBaseline(null);
@@ -241,14 +292,13 @@ export default function AdminPage() {
   }
 
   const needle = query.trim().toLowerCase();
-  const items = doc
-    ? doc[kind].filter((item) => {
-      if (kind === 'products' && categoryFilter && item.category !== categoryFilter) return false;
-      if (!needle) return true;
-      return item.name.toLowerCase().includes(needle);
-    })
-    : [];
-  const filtering = Boolean(needle || categoryFilter);
+  const collection = listFor(doc, kind);
+  const items = collection.filter((item) => {
+    if (kind === 'products' && categoryFilter && item.category !== categoryFilter) return false;
+    if (!needle) return true;
+    return itemName(kind, item).toLowerCase().includes(needle);
+  });
+  const filtering = Boolean(needle || (kind === 'products' && categoryFilter));
 
   if (locked) {
     return (
@@ -293,10 +343,15 @@ export default function AdminPage() {
         <div className="admin-tabs" role="tablist" aria-label="Catalog">
           <button type="button" aria-pressed={kind === 'categories'} onClick={() => switchKind('categories')}>Categories</button>
           <button type="button" aria-pressed={kind === 'products'} onClick={() => switchKind('products')}>Products</button>
+          <button type="button" aria-pressed={kind === 'hero'} onClick={() => switchKind('hero')}>Hero</button>
         </div>
         <label className="admin-field">
           <span className="sr-only">Search {kind}</span>
-          <input value={query} placeholder={kind === 'categories' ? 'Search categories' : 'Search products'} onChange={(event) => setQuery(event.target.value)} />
+          <input
+            value={query}
+            placeholder={kind === 'categories' ? 'Search categories' : kind === 'hero' ? 'Search slides' : 'Search products'}
+            onChange={(event) => setQuery(event.target.value)}
+          />
         </label>
         {kind === 'products' && doc ? (
           <label className="admin-field">
@@ -310,28 +365,30 @@ export default function AdminPage() {
           </label>
         ) : null}
         <button type="button" className="btn btn-dark" onClick={startNew} disabled={!doc || busy}>
-          {kind === 'categories' ? 'New category' : 'New product'}
+          {kind === 'categories' ? 'New category' : kind === 'hero' ? 'New slide' : 'New product'}
         </button>
         {!doc && !error ? <p className="admin-note">Opening the catalog…</p> : null}
         <ul className="admin-items">
           {items.map((item) => {
-            const fullIndex = doc[kind].findIndex((entry) => entry.slug === item.slug);
+            const key = itemKey(kind, item);
+            const fullIndex = collection.findIndex((entry) => itemKey(kind, entry) === key);
             return (
-              <li key={item.slug}>
-                <button type="button" className={selected === item.slug ? 'is-selected' : undefined} onClick={() => openItem(kind, item.slug)}>
-                  <img src={kind === 'categories' ? item.image : item.images[0]?.src} alt="" />
+              <li key={key}>
+                <button type="button" className={selected === key ? 'is-selected' : undefined} onClick={() => openItem(kind, key)}>
+                  <img src={kind === 'products' ? item.images[0]?.src : item.image} alt="" />
                   <span>
-                    <strong>{item.name}</strong>
+                    <strong>{itemName(kind, item)}</strong>
                     <small>
-                      {item.faqs.length} {item.faqs.length === 1 ? 'question' : 'questions'}
-                      {kind === 'products' ? ` · ${doc.categories.find((category) => category.slug === item.category)?.name || item.category}` : ''}
+                      {kind === 'hero'
+                        ? `Slide ${fullIndex + 1}`
+                        : `${item.faqs.length} ${item.faqs.length === 1 ? 'question' : 'questions'}${kind === 'products' ? ` · ${doc.categories.find((category) => category.slug === item.category)?.name || item.category}` : ''}`}
                     </small>
                   </span>
                 </button>
                 {filtering ? null : (
                   <span className="admin-move">
-                    <button type="button" aria-label={`Move ${item.name} up`} onClick={() => move(item.slug, -1)} disabled={busy || fullIndex === 0}>↑</button>
-                    <button type="button" aria-label={`Move ${item.name} down`} onClick={() => move(item.slug, 1)} disabled={busy || fullIndex === doc[kind].length - 1}>↓</button>
+                    <button type="button" aria-label={`Move ${itemName(kind, item)} up`} onClick={() => move(key, -1)} disabled={busy || fullIndex === 0}>↑</button>
+                    <button type="button" aria-label={`Move ${itemName(kind, item)} down`} onClick={() => move(key, 1)} disabled={busy || fullIndex === collection.length - 1}>↓</button>
                   </span>
                 )}
               </li>
@@ -347,11 +404,13 @@ export default function AdminPage() {
           <form onSubmit={save}>
             <header className="admin-editor-head">
               <div>
-                <p className="eyebrow">{kind === 'categories' ? 'Category' : 'Product'}</p>
-                <h2>{draft.name || (kind === 'categories' ? 'New category' : 'New product')}</h2>
+                <p className="eyebrow">{kind === 'categories' ? 'Category' : kind === 'hero' ? 'Hero slide' : 'Product'}</p>
+                <h2>{itemName(kind, draft) === 'Untitled slide' && !draft.title ? 'New slide' : itemName(kind, draft) || (kind === 'categories' ? 'New category' : 'New product')}</h2>
               </div>
               <div className="admin-editor-actions">
-                {selected !== 'new' && draft.slug ? (
+                {kind === 'hero' && selected !== 'new' ? (
+                  <Link href="/" target="_blank" className="btn btn-ghost">View</Link>
+                ) : selected !== 'new' && draft.slug ? (
                   <Link href={`/${draft.slug}`} target="_blank" className="btn btn-ghost">View</Link>
                 ) : null}
                 <button type="button" className="btn btn-ghost" onClick={remove} disabled={busy}>
@@ -364,6 +423,22 @@ export default function AdminPage() {
             </header>
             {kind === 'categories' ? (
               <CategoryForm
+                draft={draft}
+                onChange={(next) => {
+                  setDraft(next);
+                  setStatus('');
+                }}
+                upload={async (file) => {
+                  try {
+                    return await upload(file);
+                  } catch (uploadError) {
+                    setError(uploadError.message);
+                    throw uploadError;
+                  }
+                }}
+              />
+            ) : kind === 'hero' ? (
+              <HeroForm
                 draft={draft}
                 onChange={(next) => {
                   setDraft(next);
@@ -400,10 +475,11 @@ export default function AdminPage() {
           </form>
         ) : (
           <div className="admin-empty">
-            <h2>{kind === 'categories' ? 'Categories' : 'Products'}</h2>
+            <h2>{kind === 'categories' ? 'Categories' : kind === 'hero' ? 'Hero' : 'Products'}</h2>
             <p>
-              Edit the name, text, images, and questions for each {kind === 'categories' ? 'category' : 'product'}.
-              Save & Publish sends the content to the API, stores text in the catalog and images in file storage, then refreshes the affected cached pages. Other pages stay available.
+              {kind === 'hero'
+                ? 'Edit the homepage hero slides: title, text, image, and buttons. Save & Publish stores the slides in the catalog, then refreshes the homepage.'
+                : `Edit the name, text, images, and questions for each ${kind === 'categories' ? 'category' : 'product'}. Save & Publish sends the content to the API, stores text in the catalog and images in file storage, then refreshes the affected cached pages. Other pages stay available.`}
             </p>
           </div>
         )}
