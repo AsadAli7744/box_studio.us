@@ -37,16 +37,6 @@
       "faqs": []
     },
     {
-      "slug": "rigid-boxes",
-      "name": "Rigid Boxes",
-      "image": "/images/cat-rigid.jpg",
-      "alt": "Rigid boxes, one open with bottles seated inside.",
-      "short": "Set-up boxes for gifts and sets people keep.",
-      "intro": "Magnetic lids, lift-off lids, and drawers for sets that should feel firm after they are opened.",
-      "line": "Lids, drawers, and jewelry boxes",
-      "faqs": []
-    },
-    {
       "slug": "display-boxes",
       "name": "Display Boxes",
       "image": "/images/cat-display.jpg",
@@ -54,6 +44,16 @@
       "short": "Sleeves, windows, and counter trays that show the product.",
       "intro": "For a product people should see before they buy. A sleeve slides open, a window shows the front, a tray holds a row on the counter.",
       "line": "Sleeves, windows, and counter trays",
+      "faqs": []
+    },
+    {
+      "slug": "rigid-boxes",
+      "name": "Rigid Boxes",
+      "image": "/images/cat-rigid.jpg",
+      "alt": "Rigid boxes, one open with bottles seated inside.",
+      "short": "Set-up boxes for gifts and sets people keep.",
+      "intro": "Magnetic lids, lift-off lids, and drawers for sets that should feel firm after they are opened.",
+      "line": "Lids, drawers, and jewelry boxes",
       "faqs": []
     },
     {
@@ -157,6 +157,8 @@
           "note": "A wider carton for a cream jar."
         }
       ],
+      "showOnHome": false,
+      "syncReciprocal": false,
       "faqs": [
         {
           "q": "Can the front name the shade?",
@@ -252,6 +254,8 @@
           "note": "A taller carton when the product is a pump bottle."
         }
       ],
+      "showOnHome": false,
+      "syncReciprocal": false,
       "faqs": [
         {
           "q": "Should the wand fit inside with the cap on?",
@@ -347,6 +351,8 @@
           "note": "A rigid box for one fragrance bottle."
         }
       ],
+      "showOnHome": false,
+      "syncReciprocal": false,
       "faqs": [
         {
           "q": "Can the insert match the number of shades?",
@@ -441,6 +447,8 @@
           "note": "A rigid set box when you pack several shades together."
         }
       ],
+      "showOnHome": false,
+      "syncReciprocal": false,
       "faqs": [
         {
           "q": "Can the shade color show on the box?",
@@ -536,6 +544,8 @@
           "note": "A shorter carton for a balm tin."
         }
       ],
+      "showOnHome": false,
+      "syncReciprocal": false,
       "faqs": [
         {
           "q": "Does the applicator need extra height?",
@@ -631,6 +641,8 @@
           "note": "A taller carton for a cream jar."
         }
       ],
+      "showOnHome": false,
+      "syncReciprocal": false,
       "faqs": [
         {
           "q": "Can a twist-up balm and a tin share one size?",
@@ -726,6 +738,8 @@
           "note": "A folding carton for a pump bottle of lotion."
         }
       ],
+      "showOnHome": false,
+      "syncReciprocal": false,
       "faqs": [
         {
           "q": "Can the insert be shaped to the bottle?",
@@ -820,6 +834,8 @@
           "note": "A rigid box when the lotion is part of a set."
         }
       ],
+      "showOnHome": false,
+      "syncReciprocal": false,
       "faqs": [
         {
           "q": "Should the pump be locked for measuring?",
@@ -915,6 +931,8 @@
           "note": "A locked base for a heavier jar."
         }
       ],
+      "showOnHome": false,
+      "syncReciprocal": false,
       "faqs": [
         {
           "q": "Can a spatula fit in the same carton?",
@@ -1010,6 +1028,8 @@
           "note": "A tuck carton when you only pack one jar."
         }
       ],
+      "showOnHome": false,
+      "syncReciprocal": false,
       "faqs": [
         {
           "q": "Can the pieces be different heights?",
@@ -1104,6 +1124,8 @@
           "note": "An outer corrugated carton if this bottle also has to ship."
         }
       ],
+      "showOnHome": false,
+      "syncReciprocal": false,
       "faqs": [
         {
           "q": "Is the bottom glued?",
@@ -1198,6 +1220,8 @@
           "note": "A lighter cover that folds flat before packing."
         }
       ],
+      "showOnHome": false,
+      "syncReciprocal": false,
       "faqs": [
         {
           "q": "Will the lid fit tightly?",
@@ -1292,6 +1316,8 @@
           "note": "A base you pack from above, with a lid that lifts off."
         }
       ],
+      "showOnHome": false,
+      "syncReciprocal": false,
       "faqs": [
         {
           "q": "Can a ribbon pull be added?",
@@ -1386,6 +1412,8 @@
           "note": "A foldable cover if the piece does not need a rigid lid."
         }
       ],
+      "showOnHome": false,
+      "syncReciprocal": false,
       "faqs": [
         {
           "q": "Can the insert be soft?",
@@ -1480,6 +1508,8 @@
           "note": "A tray that holds a row of products on a counter."
         }
       ],
+      "showOnHome": false,
+      "syncReciprocal": false,
       "faqs": [
         {
           "q": "Which piece is printed?",
@@ -1574,6 +1604,8 @@
           "note": "A cover that hides the gift until it opens."
         }
       ],
+      "showOnHome": false,
+      "syncReciprocal": false,
       "faqs": [
         {
           "q": "Can the window be a custom shape?",
@@ -1669,6 +1701,8 @@
           "note": "The carton for a single mascara that might sit in a display."
         }
       ],
+      "showOnHome": false,
+      "syncReciprocal": false,
       "faqs": [
         {
           "q": "Can the header be printed?",
@@ -1763,6 +1797,8 @@
           "note": "A similar tuck used for a cream jar instead of a tin."
         }
       ],
+      "showOnHome": false,
+      "syncReciprocal": false,
       "faqs": [
         {
           "q": "Is the carton food-contact certified?",
@@ -1858,6 +1894,8 @@
           "note": "A natural-board carton without a window."
         }
       ],
+      "showOnHome": false,
+      "syncReciprocal": false,
       "faqs": [
         {
           "q": "Will grease mark the board?",
@@ -1953,6 +1991,8 @@
           "note": "A corrugated outer carton when the brown board has to be a shipper."
         }
       ],
+      "showOnHome": false,
+      "syncReciprocal": false,
       "faqs": [
         {
           "q": "Will the brown match a printed color?",
@@ -2045,6 +2085,8 @@
           "note": "The same tuck in unbleached board."
         }
       ],
+      "showOnHome": false,
+      "syncReciprocal": false,
       "faqs": [
         {
           "q": "Is the carton food-contact certified?",
@@ -2140,6 +2182,8 @@
           "note": "A window carton for a stack of cookies."
         }
       ],
+      "showOnHome": false,
+      "syncReciprocal": false,
       "faqs": [
         {
           "q": "Will the chocolate touch the board?",
@@ -2235,6 +2279,8 @@
           "note": "A window carton for a stack of cookies."
         }
       ],
+      "showOnHome": false,
+      "syncReciprocal": false,
       "faqs": [
         {
           "q": "Is the carton food-contact certified?",
@@ -2330,6 +2376,8 @@
           "note": "A solid kraft carton when the cookies should not show."
         }
       ],
+      "showOnHome": false,
+      "syncReciprocal": false,
       "faqs": [
         {
           "q": "Will grease mark the board?",
@@ -2425,6 +2473,8 @@
           "note": "A small carton for a tin or wrapped tea bags."
         }
       ],
+      "showOnHome": false,
+      "syncReciprocal": false,
       "faqs": [
         {
           "q": "Is the carton food-contact certified?",
@@ -2520,6 +2570,8 @@
           "note": "A window carton for cookies instead of wrapped candy."
         }
       ],
+      "showOnHome": false,
+      "syncReciprocal": false,
       "faqs": [
         {
           "q": "Can loose unwrapped candy go straight in?",
@@ -2615,6 +2667,8 @@
           "note": "A taller auto-lock carton for a bottle."
         }
       ],
+      "showOnHome": false,
+      "syncReciprocal": false,
       "faqs": [
         {
           "q": "Is the carton food-contact certified?",
@@ -2709,6 +2763,8 @@
           "note": "A lighter tuck carton for a tin."
         }
       ],
+      "showOnHome": false,
+      "syncReciprocal": false,
       "faqs": [
         {
           "q": "Is the carton food-contact certified?",
@@ -2803,6 +2859,8 @@
           "note": "An outer carton when the mailer is not the shipper."
         }
       ],
+      "showOnHome": false,
+      "syncReciprocal": false,
       "faqs": [
         {
           "q": "Can this be the only box in the shipment?",
@@ -2894,6 +2952,8 @@
           "note": "A shallow mailer when everything inside is flat."
         }
       ],
+      "showOnHome": false,
+      "syncReciprocal": false,
       "faqs": [
         {
           "q": "What if next month’s items are taller?",
@@ -2985,6 +3045,8 @@
           "note": "An outer carton if this mailer needs one."
         }
       ],
+      "showOnHome": false,
+      "syncReciprocal": false,
       "faqs": [
         {
           "q": "Will a thin garment fit?",
@@ -3075,6 +3137,8 @@
           "note": "A mailer for a jar or a single product in tissue."
         }
       ],
+      "showOnHome": false,
+      "syncReciprocal": false,
       "faqs": [
         {
           "q": "Will a hoodie fit the same mailer as a tee?",
@@ -3166,6 +3230,8 @@
           "note": "A mailer for a smaller product in tissue."
         }
       ],
+      "showOnHome": false,
+      "syncReciprocal": false,
       "faqs": [
         {
           "q": "Can both shoes sit side by side?",
@@ -3257,6 +3323,8 @@
           "note": "An outer carton when the glass should not rely on the mailer alone."
         }
       ],
+      "showOnHome": false,
+      "syncReciprocal": false,
       "faqs": [
         {
           "q": "Will the glass be safe in this mailer alone?",
@@ -3348,6 +3416,8 @@
           "note": "A larger mailer for a jar."
         }
       ],
+      "showOnHome": false,
+      "syncReciprocal": false,
       "faqs": [
         {
           "q": "Should I order the rigid jewelry box too?",
@@ -3439,6 +3509,8 @@
           "note": "The retail carton for one bottle, before it is mailed."
         }
       ],
+      "showOnHome": false,
+      "syncReciprocal": false,
       "faqs": [
         {
           "q": "What if some orders have one product?",
@@ -3530,6 +3602,8 @@
           "note": "A mailer when the shipment is a fuller kit."
         }
       ],
+      "showOnHome": false,
+      "syncReciprocal": false,
       "faqs": [
         {
           "q": "Can a full-size jar share it later?",
@@ -3621,6 +3695,8 @@
           "note": "A deeper mailer for a folded garment."
         }
       ],
+      "showOnHome": false,
+      "syncReciprocal": false,
       "faqs": [
         {
           "q": "Will a phone in the case fit?",
@@ -3711,6 +3787,8 @@
           "note": "A taped outer carton if the return should not be a mailer."
         }
       ],
+      "showOnHome": false,
+      "syncReciprocal": false,
       "faqs": [
         {
           "q": "Does the mailer include a return label?",
@@ -3802,6 +3880,8 @@
           "note": "The retail carton that might sit inside this shipper."
         }
       ],
+      "showOnHome": false,
+      "syncReciprocal": false,
       "faqs": [
         {
           "q": "Do the flaps need tape?",
@@ -3888,6 +3968,8 @@
           "note": "A lid mailer when the customer should open this box itself."
         }
       ],
+      "showOnHome": false,
+      "syncReciprocal": false,
       "faqs": [
         {
           "q": "Is the overlap a lid?",
@@ -3974,6 +4056,8 @@
           "note": "The parcel if this gift box needs to be shipped."
         }
       ],
+      "showOnHome": false,
+      "syncReciprocal": false,
       "faqs": [
         {
           "q": "Will it feel like a magnetic box?",
@@ -4067,6 +4151,8 @@
           "note": "A lighter foldable cover for a single shallow gift."
         }
       ],
+      "showOnHome": false,
+      "syncReciprocal": false,
       "faqs": [
         {
           "q": "Can our name go on the lid?",
