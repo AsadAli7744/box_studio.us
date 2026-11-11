@@ -3,8 +3,11 @@ import { readCatalog } from './catalogFile';
 
 export const PUBLIC_CATALOG_TAG = 'public-catalog';
 
-export const getPublicCatalog = unstable_cache(
-  async () => readCatalog(),
-  ['public-catalog'],
-  { tags: [PUBLIC_CATALOG_TAG] },
-);
+export const getPublicCatalog =
+  process.env.NODE_ENV === 'development'
+    ? async () => readCatalog()
+    : unstable_cache(
+        async () => readCatalog(),
+        ['public-catalog'],
+        { tags: [PUBLIC_CATALOG_TAG] },
+      );

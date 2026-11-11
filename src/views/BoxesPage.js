@@ -14,18 +14,24 @@ export default function BoxesPage({ categorySlug }) {
   const query = (params.get('q') || '').trim();
   const needle = query.toLowerCase();
   const category = categorySlug ? getCategory(categorySlug) : null;
-  const pool = category ? products.filter((item) => item.category === category.slug) : products;
+  const pool = category
+    ? products.filter(
+        (item) =>
+          item.category === category.slug ||
+          (Array.isArray(item.categories) && item.categories.includes(category.slug))
+      )
+    : products;
   const results = needle
     ? pool.filter((item) => [item.name, item.categoryLabel].join(' ').toLowerCase().includes(needle))
     : pool;
   const path = category ? `/${category.slug}` : '/custom-boxes';
-  const title = category ? category.name : 'Custom Boxes';
+  const title = category ? (category.heading || category.name) : 'Custom Boxes';
 
   usePageMeta({
     title: `${title} | Box Studio`,
     description: category ? category.intro : 'Custom boxes named for the product they hold. Open a box to see that product and request a quote.',
     path,
-    image: absoluteUrl(category ? category.image : products[0].images[0].src),
+    image: absoluteUrl(category ? category.image : products[0]?.images?.[0]?.src || '/images/cat-all.jpg'),
     jsonLd: {
       '@context': 'https://schema.org',
       '@type': 'CollectionPage',
@@ -38,7 +44,7 @@ export default function BoxesPage({ categorySlug }) {
   return (
     <div className="catalog-page">
       <header className="page-intro">
-        <p className="eyebrow">Shop by Industry</p>
+        <p className="eyebrow">{category ? category.name : 'All Packaging Categories'}</p>
         <h1>{title}</h1>
         <p>
           {query

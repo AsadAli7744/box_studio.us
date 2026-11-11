@@ -44,7 +44,7 @@ export default function AboutPage() {
         <article>
           <h2>Choosing the structure</h2>
           <p>
-            A tuck carton, a rigid lid, a drawer, and a mailer solve different jobs. Kraft is a material appearance, not a closure. Where two categories overlap, the box keeps one record and the other use is noted as a tag.
+            A tuck carton, an auto-lock carton, a sleeve, and a mailer solve different jobs. Kraft is a material appearance, not a closure. Where two categories overlap, the box keeps one record and the other use is noted as a tag.
           </p>
         </article>
         <article>

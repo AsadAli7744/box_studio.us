@@ -6,6 +6,7 @@ import Accordion from '../components/Accordion';
 import CatalogImage from '../components/CatalogImage';
 import ProductCard from '../components/ProductCard';
 import Reveal from '../components/Reveal';
+import HeroRotator from '../components/HeroRotator';
 import { finishes, homeFaqs, materials, processSteps } from '../data/catalog';
 import { DEFAULT_HERO_SLIDES } from '../data/catalogContent';
 import { absoluteUrl, site } from '../data/site';
@@ -16,35 +17,14 @@ import { usePrefersReducedMotion } from '../hooks/usePrefersReducedMotion';
 function Hero() {
   const { heroSlides: catalogSlides } = useCatalog();
   const heroSlides = catalogSlides.length ? catalogSlides : DEFAULT_HERO_SLIDES;
-  const reduced = usePrefersReducedMotion();
-  const [index, setIndex] = useState(0);
-  const [paused, setPaused] = useState(false);
-  const count = heroSlides.length;
-  const slide = heroSlides[index] || heroSlides[0];
-
-  function go(step) {
-    setIndex((current) => (current + step + count) % count);
-  }
-
-  useEffect(() => {
-    if (index >= count) setIndex(0);
-  }, [count, index]);
-
-  useEffect(() => {
-    if (reduced || paused || count < 2) return undefined;
-    const timer = window.setInterval(() => go(1), 7000);
-    return () => window.clearInterval(timer);
-  }, [reduced, paused, index, count]);
+  const slide = heroSlides[0] || DEFAULT_HERO_SLIDES[0];
 
   if (!slide) return null;
 
   return (
     <section
       className="hero"
-      aria-roledescription="carousel"
       aria-label="Featured packaging"
-      onMouseEnter={() => setPaused(true)}
-      onMouseLeave={() => setPaused(false)}
     >
       <div className="hero-copy">
         <h1>{slide.title}</h1>
@@ -56,40 +36,15 @@ function Hero() {
             </Link>
           ) : null}
           {slide.secondaryLabel ? (
-            <Link href={slide.secondaryHref || '/custom-boxes'} className="hero-text-link">
+            <Link href={slide.secondaryHref || '/cosmetic-boxes'} className="hero-text-link">
               {slide.secondaryLabel}
             </Link>
           ) : null}
         </div>
       </div>
-      <div className={slide.collage ? 'hero-visual is-collage' : 'hero-visual'}>
-        <img src={slide.image} alt={slide.alt} />
+      <div className="hero-visual is-rotator">
+        <HeroRotator />
       </div>
-      {count > 1 ? (
-        <div className="hero-controls">
-          <p className="sr-only" aria-live="polite">
-            Slide {index + 1} of {count}
-          </p>
-          <button type="button" onClick={() => go(-1)} aria-label="Previous hero slide">
-            <ChevronIcon />
-          </button>
-          <div className="hero-dots" role="tablist" aria-label="Hero slides">
-            {heroSlides.map((item, dot) => (
-              <button
-                key={item.id || item.image}
-                type="button"
-                role="tab"
-                aria-label={`Show slide ${dot + 1}`}
-                aria-selected={dot === index}
-                onClick={() => setIndex(dot)}
-              />
-            ))}
-          </div>
-          <button type="button" className="is-next" onClick={() => go(1)} aria-label="Next hero slide">
-            <ChevronIcon />
-          </button>
-        </div>
-      ) : null}
     </section>
   );
 }
@@ -467,14 +422,31 @@ function HomeCatalog() {
   const { categories, products } = useCatalog();
   const [query, setQuery] = useState('');
   const [categorySlug, setCategorySlug] = useState('');
+
+  const homeFeatured = useMemo(() => {
+    return products.filter((item) => Boolean(item.showOnHome));
+  }, [products]);
+
   const results = useMemo(() => {
     const needle = query.trim().toLowerCase();
-    return products.filter((item) => {
-      if (categorySlug && item.category !== categorySlug) return false;
-      if (!needle) return true;
-      return [item.name, item.categoryLabel].join(' ').toLowerCase().includes(needle);
-    });
-  }, [products, query, categorySlug]);
+    if (needle) {
+      return products.filter((item) => {
+        if (categorySlug && item.category !== categorySlug) return false;
+        return [item.name, item.categoryLabel].join(' ').toLowerCase().includes(needle);
+      });
+    }
+
+    if (categorySlug) {
+      const inCategory = products.filter((item) => item.category === categorySlug);
+      const featuredInCategory = inCategory.filter((item) => item.showOnHome);
+      return featuredInCategory.length ? [...featuredInCategory, ...inCategory.filter((item) => !item.showOnHome)] : inCategory;
+    }
+
+    if (homeFeatured.length > 0) {
+      return homeFeatured;
+    }
+    return products;
+  }, [products, query, categorySlug, homeFeatured]);
 
   const preview = results.slice(0, 8);
 
@@ -645,7 +617,7 @@ function FinalCta() {
       </div>
       <img
         src="/images/cta-brand.jpg"
-        alt="An open forest-green rigid box with a cream jar and a folded card inside."
+        alt="An open forest-green folding carton with a cream jar and a folded card inside."
       />
     </section>
   );

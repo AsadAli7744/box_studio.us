@@ -60,7 +60,8 @@ export function blankCategory() {
   return {
     slug: '',
     name: '',
-    image: '',
+    heading: '',
+    image: '/images/cat-all.jpg',
     alt: '',
     short: '',
     intro: '',
@@ -75,7 +76,7 @@ export const DEFAULT_HERO_SLIDES = [
     title: 'Any box packaging, sized to your product',
     lead: 'One product, a set, or an order you ship. Tell us what goes inside and how you sell it, then request a quote for that box.',
     image: '/images/hero-smooth.png',
-    alt: 'Six custom boxes: a tall green carton, an open green rigid box, a cream cylinder, an open kraft mailer, an orange hexagonal box, and a cream drawer.',
+    alt: 'Six custom boxes: a tall green carton, an open gift carton, a cream cylinder, an open kraft mailer, an orange hexagonal box, and a cream drawer.',
     collage: false,
     primaryLabel: 'Get a Quote',
     primaryHref: '/quote',
@@ -183,6 +184,9 @@ export function blankProduct(category, structureSlug) {
     ],
     uses: [],
     related: [],
+    showOnHome: false,
+    syncReciprocal: false,
+    showInProducts: [],
     faqs: [],
     structureText: structure?.structure || '',
     measurement: structure?.measurement || '',
@@ -197,34 +201,33 @@ export function normalizeCatalog(input) {
   const source = input && typeof input === 'object' ? input : {};
   const rawCategories = Array.isArray(source.categories) ? source.categories : [];
   const rawProducts = Array.isArray(source.products) ? source.products : [];
-  if (rawCategories.length > 40) throw new Error('Use 40 categories or fewer.');
-  if (rawProducts.length > 200) throw new Error('Use 200 products or fewer.');
+  if (rawCategories.length > 100) throw new Error('Use 100 categories or fewer.');
+  if (rawProducts.length > 500) throw new Error('Use 500 products or fewer.');
 
   const categories = [];
   const seenCategories = new Set();
   rawCategories.forEach((raw, index) => {
     const name = cleanText(raw?.name, 120);
     const slug = slugify(raw?.slug || name);
+    const heading = cleanText(raw?.heading, 160) || name;
     const label = name || `Category ${index + 1}`;
     if (!name) throw new Error('Every category needs a name.');
     if (!slug) throw new Error(`“${label}” needs a usable address.`);
     if (RESERVED_SLUGS.has(slug)) throw new Error(`“${slug}” is already used by another page.`);
     if (seenCategories.has(slug)) throw new Error(`Two categories use “${slug}”.`);
-    const image = imagePath(raw?.image);
-    if (!image) throw new Error(`“${label}” needs an image.`);
-    const alt = cleanText(raw?.alt, 240);
-    if (!alt) throw new Error(`“${label}” needs a description of its image.`);
-    const intro = cleanText(raw?.intro, 900);
-    if (!intro) throw new Error(`“${label}” needs an introduction.`);
+    const image = imagePath(raw?.image) || '/images/cat-all.jpg';
+    const alt = cleanText(raw?.alt, 240) || `${name} packaging category`;
+    const intro = cleanText(raw?.intro, 900) || `Custom ${name} designed and manufactured to your exact specifications.`;
     seenCategories.add(slug);
     categories.push({
       slug,
       name,
+      heading,
       image,
       alt,
-      short: cleanText(raw?.short, 280),
+      short: cleanText(raw?.short, 280) || `Custom ${name} for your brand.`,
       intro,
-      line: cleanText(raw?.line, 160) || cleanText(raw?.short, 160),
+      line: cleanText(raw?.line, 160) || cleanText(raw?.short, 160) || name,
       faqs: cleanFaqs(raw?.faqs),
     });
   });
@@ -243,6 +246,13 @@ export function normalizeCatalog(input) {
     if (categorySlugs.has(slug) || seenProducts.has(slug)) throw new Error(`“${slug}” is already used.`);
     const category = slugify(raw?.category);
     if (!categorySlugs.has(category)) throw new Error(`“${label}” needs a category.`);
+    const rawCategoriesList = Array.isArray(raw?.categories) ? raw.categories : [];
+    const categoriesList = [
+      ...new Set([
+        category,
+        ...rawCategoriesList.map((c) => slugify(c)).filter((c) => categorySlugs.has(c)),
+      ]),
+    ];
     const structureSlug = slugify(raw?.structure);
     const structure = getProduct(structureSlug);
     if (!structure) throw new Error(`“${label}” needs a structure.`);
@@ -267,12 +277,13 @@ export function normalizeCatalog(input) {
       slug,
       name,
       category,
+      categories: categoriesList,
       structure: structure.slug,
       short: cleanText(raw?.short, 320),
       meta: cleanText(raw?.meta, 360),
       description,
       images: images.slice(0, 8),
-      sections: sections.slice(0, 6),
+      sections: sections.slice(0, 16),
       uses: (Array.isArray(raw?.uses) ? raw.uses : [])
         .map((item) => cleanText(item, 140))
         .filter(Boolean)
@@ -280,7 +291,12 @@ export function normalizeCatalog(input) {
       related: (Array.isArray(raw?.related) ? raw.related : [])
         .map((link) => ({ slug: slugify(link?.slug), note: cleanText(link?.note, 240) }))
         .filter((link) => link.slug)
-        .slice(0, 6),
+        .slice(0, 12),
+      showOnHome: Boolean(raw?.showOnHome),
+      syncReciprocal: Boolean(raw?.syncReciprocal),
+      showInProducts: Array.isArray(raw?.showInProducts)
+        ? raw.showInProducts.map((slug) => slugify(slug)).filter(Boolean)
+        : [],
       faqs: cleanFaqs(raw?.faqs),
       structureText: cleanText(raw?.structureText, 1800) || structure.structure,
       measurement: cleanText(raw?.measurement, 900) || structure.measurement,
@@ -302,7 +318,6 @@ export function normalizeCatalog(input) {
       if (!productSlugs.has(link.slug) || link.slug === product.slug) {
         throw new Error(`“${product.name}” links to a box that is not in the catalog.`);
       }
-      if (!link.note) throw new Error(`Add a note for each related box on “${product.name}”.`);
     });
   });
 
@@ -310,7 +325,11 @@ export function normalizeCatalog(input) {
 }
 
 export function presentCatalog(doc) {
-  const categories = doc.categories.map((category) => ({ ...category, faqs: category.faqs.map((item) => ({ ...item })) }));
+  const categories = doc.categories.map((category) => ({
+    ...category,
+    heading: category.heading || category.name,
+    faqs: category.faqs.map((item) => ({ ...item })),
+  }));
   const byCategory = new Map(categories.map((category) => [category.slug, category]));
   const products = doc.products.map((record) => {
     const structure = getProduct(record.structure);
@@ -320,7 +339,9 @@ export function presentCatalog(doc) {
       slug: record.slug,
       name: record.name,
       category: record.category,
+      categories: Array.isArray(record.categories) && record.categories.length ? [...record.categories] : [record.category],
       categoryLabel: category?.name || record.category,
+      categoryHeading: category?.heading || category?.name || record.category,
       structureName: structure?.name || record.structure,
       structureSlug: record.structure,
       short: record.short,
@@ -330,6 +351,9 @@ export function presentCatalog(doc) {
       sections: record.sections.map((section) => ({ ...section })),
       faqs: record.faqs.map((item) => ({ ...item })),
       related: record.related.map((link) => ({ ...link })),
+      showOnHome: Boolean(record.showOnHome),
+      syncReciprocal: Boolean(record.syncReciprocal),
+      showInProducts: Array.isArray(record.showInProducts) ? [...record.showInProducts] : [],
       applications: [...record.uses],
       structure: record.structureText || structure?.structure || '',
       measurement: record.measurement || structure?.measurement || '',

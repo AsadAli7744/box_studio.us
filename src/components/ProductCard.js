@@ -1,30 +1,30 @@
+'use client';
+
 import Link from 'next/link';
 import CatalogImage from './CatalogImage';
-import { usePrefersReducedMotion } from '../hooks/usePrefersReducedMotion';
 
 export default function ProductCard({ product }) {
-  const reduced = usePrefersReducedMotion();
-
-  function onMove(event) {
-    if (reduced) return;
-    const card = event.currentTarget;
-    const rect = card.getBoundingClientRect();
-    const x = (event.clientX - rect.left) / rect.width - 0.5;
-    const y = (event.clientY - rect.top) / rect.height - 0.5;
-    card.style.transform = `rotateX(${(-y * 5).toFixed(2)}deg) rotateY(${(x * 6).toFixed(2)}deg)`;
-  }
-
-  function onLeave(event) {
-    event.currentTarget.style.transform = '';
-  }
+  const image = product?.images?.[0];
 
   return (
-    <article className="product-card" onPointerMove={onMove} onPointerLeave={onLeave}>
-      <Link href={`/${product.slug}`} className="product-card-link">
-        <CatalogImage src={product.images[0].src} alt={product.images[0].alt} sizes="(max-width: 700px) 50vw, 25vw" />
-        {/* <p className="eyebrow">{product.categoryLabel || categoryName(product.category)}</p> */}
-        <h2>{product.name}</h2>
-        {/* <span className="text-link">View Box</span> */}
+    <article className="product-card">
+      <Link href={`/${product.slug}`} className="product-card-link" title={`View ${product.name}`}>
+        <div className="product-card-image-wrap">
+          {image ? (
+            <CatalogImage
+              src={image.src}
+              alt={image.alt || product.name}
+              className="product-card-img"
+              sizes="(max-width: 580px) 50vw, (max-width: 1100px) 33vw, 20vw"
+            />
+          ) : null}
+          <span className="product-card-hover-pill" aria-hidden="true">
+            Explore Box &rarr;
+          </span>
+        </div>
+        <div className="product-card-info">
+          <h2>{product.name}</h2>
+        </div>
       </Link>
     </article>
   );

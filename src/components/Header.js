@@ -147,14 +147,14 @@ export default function Header() {
               aria-controls={industryId}
               onClick={() => setIndustryOpen((open) => !open)}
             >
-              Shop by Industry
+              Packaging Categories
               <span className="caret" aria-hidden="true" />
             </button>
             <div className="dropdown-panel nav-menu" id={industryId} hidden={!industryOpen}>
               <div className="nav-menu-head">
-                <p className="use-label">Shop by Industry</p>
-                <Link href="/custom-boxes" onClick={() => setIndustryOpen(false)}>
-                  All custom boxes
+                <p className="use-label">Cosmetic & Beauty Boxes</p>
+                <Link href="/cosmetic-boxes" onClick={() => setIndustryOpen(false)}>
+                  All Cosmetic Boxes →
                 </Link>
               </div>
               <ul className="nav-industry">
@@ -172,8 +172,8 @@ export default function Header() {
               </ul>
             </div>
           </div>
-          <Link href="/custom-box-for-your-brand" className={pathname === '/custom-box-for-your-brand' ? 'is-active' : undefined}>
-            Get custom box for your brand
+          <Link href="/custom-boxes" className={pathname === '/custom-boxes' ? 'is-active' : undefined}>
+            All Boxes
           </Link>
           <Link href="/about" className={pathname === '/about' ? 'is-active' : undefined}>
             About
@@ -216,8 +216,8 @@ export default function Header() {
             </div>
           ) : null}
         </form>
-        <Link href="/quote" className="btn btn-gold header-quote">
-          Get a Quote
+        <Link href="/custom-box-for-your-brand" className="btn btn-gold header-quote">
+          Get custom box for your brand
         </Link>
         <button
           type="button"
@@ -257,12 +257,15 @@ export default function Header() {
               aria-expanded={mobileIndustry}
               onClick={() => setMobileIndustry((open) => !open)}
             >
-              Shop by Industry
+              Packaging Categories
             </button>
             {mobileIndustry ? (
               <ul className="mobile-sub">
                 <li>
-                  <Link href="/custom-boxes">All custom boxes</Link>
+                  <Link href="/cosmetic-boxes">All Cosmetic Boxes</Link>
+                </li>
+                <li>
+                  <Link href="/custom-boxes">All Custom Boxes</Link>
                 </li>
                 {categories.map((category) => (
                   <li key={category.slug}>
@@ -274,11 +277,10 @@ export default function Header() {
                 ))}
               </ul>
             ) : null}
-            <Link href="/custom-box-for-your-brand">Get custom box for your brand</Link>
             <Link href="/about">About</Link>
             <Link href="/contact">Contact</Link>
-            <Link href="/quote" className="btn btn-gold">
-              Get a Quote
+            <Link href="/custom-box-for-your-brand" className="btn btn-gold">
+              Get custom box for your brand
             </Link>
           </nav>
         </div>

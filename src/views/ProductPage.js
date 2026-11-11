@@ -7,6 +7,7 @@ import Breadcrumbs, { breadcrumbJson } from '../components/Breadcrumbs';
 import CatalogImage from '../components/CatalogImage';
 import MeasurementFigure from '../components/MeasurementFigure';
 import ProductCard from '../components/ProductCard';
+import RelatedSlider from '../components/RelatedSlider';
 import { getFinish, getInsert, getMaterial } from '../data/catalog';
 import { absoluteUrl } from '../data/site';
 import { useCatalog } from '../context/CatalogContext';
@@ -194,23 +195,48 @@ export default function ProductPage() {
         <MeasurementFigure />
       </section>
 
+      <section className="packaging-guide-block">
+        <div className="guide-header">
+          <p className="eyebrow">Beginner-Friendly Packaging Guide</p>
+          <h2>Packaging Terms Explained Simply</h2>
+          <p className="admin-note">
+            Clear, customer-friendly definitions so you can order with confidence.
+          </p>
+        </div>
+        <div className="terms-grid">
+          <div className="term-card">
+            <strong>Dieline</strong>
+            <p>A flat template showing where your box folds, cuts, and where your artwork design is placed.</p>
+          </div>
+          <div className="term-card">
+            <strong>Insert</strong>
+            <p>A fitted support cradle or partition inside the box that holds your bottle, jar, or tube securely in place.</p>
+          </div>
+          <div className="term-card">
+            <strong>MOQ</strong>
+            <p>Minimum Order Quantity: the lowest number of custom printed boxes you can order in a single run.</p>
+          </div>
+          <div className="term-card">
+            <strong>Foil Stamping</strong>
+            <p>A metallic foil (gold, silver, rose gold, copper) hot-pressed onto your logo or lettering for a reflective shine.</p>
+          </div>
+          <div className="term-card">
+            <strong>Embossing</strong>
+            <p>Raised lettering or 3D patterns pressed into the paperboard surface for a premium tactile feel.</p>
+          </div>
+          <div className="term-card">
+            <strong>Matte Finish</strong>
+            <p>A smooth, non-reflective protective coating with reduced shine for an elegant, modern cosmetic look.</p>
+          </div>
+        </div>
+      </section>
+
       <section className="faq-section">
         <h2>Questions about this box</h2>
         <Accordion items={product.faqs} />
       </section>
 
-      <section className="related-products" aria-labelledby="related-heading">
-        <h2 id="related-heading">Boxes people compare with this one</h2>
-        <p className="related-intro">Each photo is that box, not a second view of this one. Open it if the closure or the board is a closer fit.</p>
-        <div className="product-grid related-grid">
-          {related.map((link) => (
-            <article key={link.slug} className="related-card">
-              <ProductCard product={link.product} />
-              <p className="related-note">{link.note}</p>
-            </article>
-          ))}
-        </div>
-      </section>
+      <RelatedSlider items={related} />
 
       <div className="quote-dock">
         <button

@@ -16,29 +16,66 @@ export default function Footer() {
           </p>
         </div>
         <div>
-          <h2>Shop by Industry</h2>
+          <h2>Packaging Categories</h2>
           <ul>
-            {industries.map((item) => (
-              <li key={item.id}>
-                <Link href={item.href}>{item.name}</Link>
-              </li>
-            ))}
+            <li>
+              <Link href="/cosmetic-boxes">All Cosmetic Boxes</Link>
+            </li>
+            <li>
+              <Link href="/makeup-boxes">Makeup Boxes</Link>
+            </li>
+            <li>
+              <Link href="/skincare-boxes">Skincare Boxes</Link>
+            </li>
+            <li>
+              <Link href="/sun-care-boxes">Sun Care Boxes</Link>
+            </li>
+            <li>
+              <Link href="/hair-care-boxes">Hair Care Boxes</Link>
+            </li>
+            <li>
+              <Link href="/soap-body-care-boxes">Soap & Body Care Boxes</Link>
+            </li>
+            <li>
+              <Link href="/fragrance-boxes">Perfume & Fragrance Boxes</Link>
+            </li>
+            <li>
+              <Link href="/mens-grooming-boxes">Men’s Grooming Boxes</Link>
+            </li>
+            <li>
+              <Link href="/beauty-gift-boxes">Beauty Gift & Product Sets</Link>
+            </li>
           </ul>
         </div>
         <div>
-          <h2>Visit</h2>
+          <h2>Explore & Services</h2>
           <ul>
             <li>
-              <Link href="/custom-box-for-your-brand">Get custom box for your brand</Link>
+              <Link href="/custom-printed-boxes">Custom Printed Boxes</Link>
             </li>
             <li>
-              <Link href="/about">About</Link>
+              <Link href="/cosmetic-packaging-design">Packaging Design</Link>
+            </li>
+            <li>
+              <Link href="/beauty-startup-packaging">New Beauty Brand Boxes</Link>
+            </li>
+            <li>
+              <Link href="/small-order-cosmetic-boxes">Small Order Boxes</Link>
+            </li>
+            <li>
+              <Link href="/wholesale-cosmetic-boxes">Wholesale Packaging</Link>
+            </li>
+            <li>
+              <Link href="/beauty-subscription-boxes">Subscription Boxes</Link>
+            </li>
+            <li>
+              <Link href="/quote">Request a Quote</Link>
+            </li>
+            <li>
+              <Link href="/about">About Us</Link>
             </li>
             <li>
               <Link href="/contact">Contact</Link>
-            </li>
-            <li>
-              <Link href="/quote">Request a quote</Link>
             </li>
           </ul>
         </div>
