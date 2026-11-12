@@ -596,10 +596,6 @@ function FaqSection() {
       <div className="faq-intro">
         <p className="eyebrow">Before you order</p>
         <h2>What brands ask before they request a box</h2>
-        <img
-          src="/images/sample-insert.jpg"
-          alt="Paperboard insert tray inside an open ivory box."
-        />
       </div>
       <Accordion items={homeFaqs} />
     </section>
@@ -625,6 +621,8 @@ function FinalCta() {
 
 export default function HomePage() {
   const { heroSlides } = useCatalog();
+  const [loadRest, setLoadRest] = useState(false);
+
   usePageMeta({
     title: 'Any Box Packaging Sized to Your Product | Box Studio',
     description: site.description,
@@ -639,18 +637,47 @@ export default function HomePage() {
     },
   });
 
+  useEffect(() => {
+    // 1. Load rest of the page automatically after 500ms
+    const timer = setTimeout(() => {
+      setLoadRest(true);
+    }, 500);
+
+    // 2. Or immediately on any user scroll or touch interaction
+    const triggerLoad = () => {
+      setLoadRest(true);
+    };
+
+    window.addEventListener('scroll', triggerLoad, { passive: true, once: true });
+    window.addEventListener('touchmove', triggerLoad, { passive: true, once: true });
+    window.addEventListener('wheel', triggerLoad, { passive: true, once: true });
+    window.addEventListener('keydown', triggerLoad, { passive: true, once: true });
+
+    return () => {
+      clearTimeout(timer);
+      window.removeEventListener('scroll', triggerLoad);
+      window.removeEventListener('touchmove', triggerLoad);
+      window.removeEventListener('wheel', triggerLoad);
+      window.removeEventListener('keydown', triggerLoad);
+    };
+  }, []);
+
   return (
     <div className="home-page">
       <Hero />
-      <StoriesSection />
-      <WhySection />
-      <WaySection />
-      <HomeCatalog />
-      <MaterialsSection />
-      <ProcessSection />
       <ApplicationsSection />
-      <FaqSection />
-      <FinalCta />
+      {loadRest ? (
+        <div className="home-deferred">
+          <WhySection />
+          <WaySection />
+          {/* <HomeCatalog /> */}
+          {/* <MaterialsSection /> */}
+          {/* <ProcessSection /> */}
+          <StoriesSection />
+          <FaqSection />
+          {/* <FinalCta /> */}
+        </div>
+      ) : null}
     </div>
   );
 }

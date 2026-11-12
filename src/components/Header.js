@@ -124,6 +124,7 @@ export default function Header() {
   const headerClass = ['site-header', scrolled ? 'is-scrolled' : '', home ? 'is-home' : ''].filter(Boolean).join(' ');
 
   return (
+    <>
     <header className={headerClass}>
       <div className="header-bar">
         <Link href="/" className="logo-link" aria-label="Boxstudio.us, home">
@@ -178,9 +179,6 @@ export default function Header() {
           <Link href="/about" className={pathname === '/about' ? 'is-active' : undefined}>
             About
           </Link>
-          <Link href="/contact" className={pathname === '/contact' ? 'is-active' : undefined}>
-            Contact
-          </Link>
         </nav>
         <form className="header-search" onSubmit={submitSearch} ref={searchRef}>
           <label>
@@ -216,7 +214,7 @@ export default function Header() {
             </div>
           ) : null}
         </form>
-        <Link href="/custom-box-for-your-brand" className="btn btn-gold header-quote">
+        <Link href="/quote" className="btn btn-gold header-quote">
           Get custom box for your brand
         </Link>
         <button
@@ -278,13 +276,18 @@ export default function Header() {
               </ul>
             ) : null}
             <Link href="/about">About</Link>
-            <Link href="/contact">Contact</Link>
-            <Link href="/custom-box-for-your-brand" className="btn btn-gold">
+            <Link href="/quote" className="btn btn-gold">
               Get custom box for your brand
             </Link>
           </nav>
         </div>
       ) : null}
     </header>
+    {home ? (
+      <Link href="/quote" className="btn btn-gold home-fixed-cta">
+        Get custom box for your brand
+      </Link>
+    ) : null}
+    </>
   );
 }

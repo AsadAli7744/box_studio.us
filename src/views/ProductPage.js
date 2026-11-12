@@ -5,10 +5,7 @@ import { useParams, useRouter } from 'next/navigation';
 import Accordion from '../components/Accordion';
 import Breadcrumbs, { breadcrumbJson } from '../components/Breadcrumbs';
 import CatalogImage from '../components/CatalogImage';
-import MeasurementFigure from '../components/MeasurementFigure';
-import ProductCard from '../components/ProductCard';
 import RelatedSlider from '../components/RelatedSlider';
-import { getFinish, getInsert, getMaterial } from '../data/catalog';
 import { absoluteUrl } from '../data/site';
 import { useCatalog } from '../context/CatalogContext';
 import { useRequest } from '../context/RequestContext';
@@ -137,106 +134,13 @@ export default function ProductPage() {
         </div>
       </div>
 
-      <section className="detail-grid">
-        <div>
-          <h2>Structure and closure</h2>
-          <p>{product.structure}</p>
-          <ul>
-            {product.structuralOptions.map((item) => (
-              <li key={item}>{item}</li>
-            ))}
-          </ul>
-        </div>
-        <div>
-          <h2>Available materials</h2>
-          <ul>
-            {product.materialIds.map((id) => {
-              const material = getMaterial(id);
-              return <li key={id}>{material ? `${material.name}. ${material.summary}` : id}</li>;
-            })}
-          </ul>
-        </div>
-        <div>
-          <h2>Compatible finishes</h2>
-          {product.finishIds.length ? (
-            <ul>
-              {product.finishIds.map((id) => {
-                const finish = getFinish(id);
-                return <li key={id}>{finish ? `${finish.name}. ${finish.summary}` : id}</li>;
-              })}
-            </ul>
-          ) : (
-            <p>Decorative finishes are not part of this structure. Add a note if the box needs print.</p>
-          )}
-        </div>
-        <div>
-          <h2>Insert options</h2>
-          <ul>
-            {product.insertIds.map((id) => {
-              const insert = getInsert(id);
-              return <li key={id}>{insert ? `${insert.name}. ${insert.detail}` : id}</li>;
-            })}
-          </ul>
-        </div>
-      </section>
-
-      {(product.sections || []).map((section) => (
-        <section key={section.heading} className="product-copy">
-          <h2>{section.heading}</h2>
-          <p>{section.body}</p>
-        </section>
-      ))}
-
-      <section className="measure-block">
-        <div>
-          <h2>How to measure</h2>
-          <p>{product.measurement}</p>
-        </div>
-        <MeasurementFigure />
-      </section>
-
-      <section className="packaging-guide-block">
-        <div className="guide-header">
-          <p className="eyebrow">Beginner-Friendly Packaging Guide</p>
-          <h2>Packaging Terms Explained Simply</h2>
-          <p className="admin-note">
-            Clear, customer-friendly definitions so you can order with confidence.
-          </p>
-        </div>
-        <div className="terms-grid">
-          <div className="term-card">
-            <strong>Dieline</strong>
-            <p>A flat template showing where your box folds, cuts, and where your artwork design is placed.</p>
-          </div>
-          <div className="term-card">
-            <strong>Insert</strong>
-            <p>A fitted support cradle or partition inside the box that holds your bottle, jar, or tube securely in place.</p>
-          </div>
-          <div className="term-card">
-            <strong>MOQ</strong>
-            <p>Minimum Order Quantity: the lowest number of custom printed boxes you can order in a single run.</p>
-          </div>
-          <div className="term-card">
-            <strong>Foil Stamping</strong>
-            <p>A metallic foil (gold, silver, rose gold, copper) hot-pressed onto your logo or lettering for a reflective shine.</p>
-          </div>
-          <div className="term-card">
-            <strong>Embossing</strong>
-            <p>Raised lettering or 3D patterns pressed into the paperboard surface for a premium tactile feel.</p>
-          </div>
-          <div className="term-card">
-            <strong>Matte Finish</strong>
-            <p>A smooth, non-reflective protective coating with reduced shine for an elegant, modern cosmetic look.</p>
-          </div>
-        </div>
-      </section>
+      <RelatedSlider items={related} />
 
       <section className="faq-section">
         <h2>Questions about this box</h2>
         <Accordion items={product.faqs} />
       </section>
 
-      <RelatedSlider items={related} />
 
       <div className="quote-dock">
         <button

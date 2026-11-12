@@ -57,6 +57,7 @@ export default function HeroRotator() {
     if (!scene) return;
     const w = scene.clientWidth;
     const h = scene.clientHeight;
+    if (!w || !h) return;
     const isMobile = w < 600;
     const { current } = stateRef.current;
 
@@ -67,7 +68,7 @@ export default function HeroRotator() {
       const depthFactor = Math.max(0, Math.min(1, (depth + 1) / 2)); // 0 in back, 1 in front
 
       // Horizontal elliptical spread across the scene
-      const x = Math.sin(a) * w * (isMobile ? 0.30 : 0.33);
+      const x = Math.sin(a) * w * (isMobile ? 0.18 : 0.24);
 
       // Uplift the rest part of the circle:
       // Front active item (depth=1) sits forward & grounded on the marble pedestal;
@@ -78,8 +79,8 @@ export default function HeroRotator() {
       // On mobile, front active item scales up to 1.25x so it stands tall inside the spherical backdrop
       // Side and back items scale down smoothly
       const scale = isMobile
-        ? 0.38 + Math.pow(depthFactor, 1.30) * 0.87
-        : 0.38 + Math.pow(depthFactor, 1.45) * 0.62;
+        ? 0.34 + Math.pow(depthFactor, 1.30) * 0.62
+        : 0.34 + Math.pow(depthFactor, 1.45) * 0.58;
 
       const tilt = Math.sin(a) * -4;
 
@@ -192,11 +193,14 @@ export default function HeroRotator() {
 
   useEffect(() => {
     draw();
+    const rId = requestAnimationFrame(() => draw());
+
     const scene = sceneRef.current;
     if (!scene) return undefined;
 
     const observer = new ResizeObserver(() => draw());
     observer.observe(scene);
+    window.addEventListener('resize', draw);
 
     const s = stateRef.current;
     s.manualPaused = false;
@@ -207,7 +211,9 @@ export default function HeroRotator() {
     }, 3000);
 
     return () => {
+      cancelAnimationFrame(rId);
       observer.disconnect();
+      window.removeEventListener('resize', draw);
       if (s.timer) clearInterval(s.timer);
       if (s.frame) cancelAnimationFrame(s.frame);
     };
@@ -407,6 +413,10 @@ export default function HeroRotator() {
               }}
               type="button"
               className="rotator-product"
+              style={{
+                opacity: i === 0 ? 1 : 0.5,
+                zIndex: i === 0 ? 101 : (i === 2 ? 1 : 51)
+              }}
               aria-label={`Bring ${p.fullName} to front`}
               onClick={() => go(i)}
             >
@@ -415,6 +425,7 @@ export default function HeroRotator() {
                 alt={p.alt}
                 loading="eager"
                 decoding="async"
+                fetchPriority={i === 0 ? 'high' : 'auto'}
                 draggable="false"
               />
             </button>
