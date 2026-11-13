@@ -36,6 +36,7 @@ const PRODUCTS = [
 export default function HeroRotator() {
   const [selected, setSelected] = useState(0);
   const [isPlaying, setIsPlaying] = useState(true);
+  const [imagesReady, setImagesReady] = useState(false);
 
   const sceneRef = useRef(null);
   const productRefs = useRef([]);
@@ -47,7 +48,8 @@ export default function HeroRotator() {
     timer: null,
     startX: null,
     isHovered: false,
-    manualPaused: false
+    manualPaused: false,
+    imagesReady: false
   });
 
   const draw = useCallback(() => {
@@ -110,6 +112,7 @@ export default function HeroRotator() {
   const step = useCallback(
     (delta) => {
       const s = stateRef.current;
+      if (!s.imagesReady) return;
       s.selected = ((s.selected + delta) % 4 + 4) % 4;
       s.target -= delta * 90;
       setSelected(s.selected);
@@ -187,11 +190,6 @@ export default function HeroRotator() {
 
     const s = stateRef.current;
     s.manualPaused = false;
-    s.timer = setInterval(() => {
-      if (!s.isHovered && !s.manualPaused) {
-        step(1);
-      }
-    }, 3000);
 
     return () => {
       cancelAnimationFrame(rId);
@@ -200,7 +198,51 @@ export default function HeroRotator() {
       if (s.timer) clearInterval(s.timer);
       if (s.frame) cancelAnimationFrame(s.frame);
     };
-  }, [draw, step]);
+  }, [draw]);
+
+  useEffect(() => {
+    let cancelled = false;
+    const load = (src) => new Promise((resolve) => {
+      const img = new Image();
+      const done = () => resolve();
+      img.onload = () => {
+        if (img.decode) img.decode().then(done).catch(done);
+        else done();
+      };
+      img.onerror = done;
+      img.src = src;
+    });
+
+    load(PRODUCTS[0].image).then(() => {
+      if (cancelled) return undefined;
+      return Promise.all(PRODUCTS.slice(1).map((item) => load(item.image)));
+    }).then(() => {
+      if (cancelled) return;
+      stateRef.current.imagesReady = true;
+      setImagesReady(true);
+    });
+
+    return () => {
+      cancelled = true;
+    };
+  }, []);
+
+  useEffect(() => {
+    if (!imagesReady) return undefined;
+    const frame = requestAnimationFrame(() => draw());
+    const s = stateRef.current;
+    if (s.timer) clearInterval(s.timer);
+    if (s.manualPaused) {
+      return () => cancelAnimationFrame(frame);
+    }
+    s.timer = setInterval(() => {
+      if (!s.isHovered && !s.manualPaused) step(1);
+    }, 3000);
+    return () => {
+      cancelAnimationFrame(frame);
+      if (s.timer) clearInterval(s.timer);
+    };
+  }, [imagesReady, step, draw]);
 
   function handlePointerDown(e) {
     stateRef.current.startX = e.clientX;
@@ -276,6 +318,7 @@ export default function HeroRotator() {
               }}
               type="button"
               className="rotator-product"
+              hidden={!imagesReady && i !== 0}
               style={{
                 opacity: i === 0 ? 1 : 0.5,
                 zIndex: i === 0 ? 101 : (i === 2 ? 1 : 51)
@@ -283,14 +326,16 @@ export default function HeroRotator() {
               aria-label={`Bring ${p.fullName} to front`}
               onClick={() => go(i)}
             >
-              <img
-                src={p.image}
-                alt={p.alt}
-                loading="eager"
-                decoding="async"
-                fetchPriority={i === 0 ? 'high' : 'auto'}
-                draggable="false"
-              />
+              {i === 0 || imagesReady ? (
+                <img
+                  src={p.image}
+                  alt={p.alt}
+                  loading={i === 0 ? 'eager' : 'eager'}
+                  decoding={i === 0 ? 'async' : 'sync'}
+                  fetchPriority={i === 0 ? 'high' : 'low'}
+                  draggable="false"
+                />
+              ) : null}
             </button>
           ))}
         </div>

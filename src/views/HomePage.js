@@ -574,10 +574,15 @@ function ApplicationsSection() {
         <p className="use-intro">Skincare, a product on a shelf, a gift, food, an order you ship, or a client kit. Each card opens the boxes made for that need.</p>
       </div>
       <ul className="industry-board">
-        {categories.map((item) => (
+        {categories.map((item, index) => (
           <li key={item.slug}>
             <Link href={`/${item.slug}`}>
-              <CatalogImage src={item.image} alt={item.alt} sizes="(max-width: 700px) 50vw, 20vw" />
+              <CatalogImage
+                src={item.image}
+                alt={item.alt}
+                sizes="(max-width: 700px) 50vw, 20vw"
+                priority={index < 2}
+              />
               <span>
                 <strong>{item.name}</strong>
                 <small>{item.line}</small>

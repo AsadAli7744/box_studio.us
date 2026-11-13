@@ -231,7 +231,8 @@ export default function Header() {
           <div className="mobile-nav-bar">
             <Logo />
             <button type="button" className="menu-close" onClick={() => setMenuOpen(false)}>
-              Close
+              <span className="sr-only">Close</span>
+              <span className="menu-x" aria-hidden="true" />
             </button>
           </div>
           <form className="header-search header-search-mobile" onSubmit={submitSearch}>
