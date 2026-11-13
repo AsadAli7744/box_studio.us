@@ -213,10 +213,7 @@ export default function HeroRotator() {
       img.src = src;
     });
 
-    load(PRODUCTS[0].image).then(() => {
-      if (cancelled) return undefined;
-      return Promise.all(PRODUCTS.slice(1).map((item) => load(item.image)));
-    }).then(() => {
+    Promise.all(PRODUCTS.map((item) => load(item.image))).then(() => {
       if (cancelled) return;
       stateRef.current.imagesReady = true;
       setImagesReady(true);
@@ -318,7 +315,6 @@ export default function HeroRotator() {
               }}
               type="button"
               className="rotator-product"
-              hidden={!imagesReady && i !== 0}
               style={{
                 opacity: i === 0 ? 1 : 0.5,
                 zIndex: i === 0 ? 101 : (i === 2 ? 1 : 51)
@@ -326,16 +322,14 @@ export default function HeroRotator() {
               aria-label={`Bring ${p.fullName} to front`}
               onClick={() => go(i)}
             >
-              {i === 0 || imagesReady ? (
                 <img
                   src={p.image}
                   alt={p.alt}
-                  loading={i === 0 ? 'eager' : 'eager'}
-                  decoding={i === 0 ? 'async' : 'sync'}
-                  fetchPriority={i === 0 ? 'high' : 'low'}
+                  loading="eager"
+                  decoding="async"
+                  fetchPriority="high"
                   draggable="false"
                 />
-              ) : null}
             </button>
           ))}
         </div>
