@@ -176,9 +176,6 @@ export default function Header() {
           <Link href="/custom-boxes" className={pathname === '/custom-boxes' ? 'is-active' : undefined}>
             All Boxes
           </Link>
-          <Link href="/about" className={pathname === '/about' ? 'is-active' : undefined}>
-            About
-          </Link>
         </nav>
         <form className="header-search" onSubmit={submitSearch} ref={searchRef}>
           <label>
@@ -275,7 +272,6 @@ export default function Header() {
                 ))}
               </ul>
             ) : null}
-            <Link href="/about">About</Link>
             <Link href="/quote" className="btn btn-gold">
               Get custom box for your brand
             </Link>

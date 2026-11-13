@@ -53,6 +53,7 @@ const nextConfig = {
   async redirects() {
     return [
       { source: '/contact', destination: '/quote', permanent: true },
+      { source: '/about', destination: '/', permanent: true },
       { source: '/custom-box-for-your-brand', destination: '/quote', permanent: true },
       ...mapped('/boxes/:slug', legacyCategories),
       { source: '/boxes/:categorySlug', destination: '/custom-boxes', permanent: false },

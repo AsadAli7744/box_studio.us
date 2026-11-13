@@ -71,9 +71,6 @@ export default function Footer() {
             <li>
               <Link href="/quote">Request a Quote</Link>
             </li>
-            <li>
-              <Link href="/about">About Us</Link>
-            </li>
           </ul>
         </div>
         {contact.email || contact.phone || contact.address ? (
