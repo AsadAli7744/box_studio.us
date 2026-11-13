@@ -620,7 +620,7 @@ function FinalCta() {
 }
 
 export default function HomePage() {
-  const { heroSlides } = useCatalog();
+  const { heroSlides, categories } = useCatalog();
   const [loadRest, setLoadRest] = useState(false);
 
   usePageMeta({
@@ -638,29 +638,55 @@ export default function HomePage() {
   });
 
   useEffect(() => {
-    // 1. Load rest of the page automatically after 500ms
-    const timer = setTimeout(() => {
-      setLoadRest(true);
-    }, 500);
-
-    // 2. Or immediately on any user scroll or touch interaction
-    const triggerLoad = () => {
-      setLoadRest(true);
+    let cancelled = false;
+    let watched = false;
+    const finish = () => {
+      if (!cancelled) setLoadRest(true);
     };
 
-    window.addEventListener('scroll', triggerLoad, { passive: true, once: true });
-    window.addEventListener('touchmove', triggerLoad, { passive: true, once: true });
-    window.addEventListener('wheel', triggerLoad, { passive: true, once: true });
-    window.addEventListener('keydown', triggerLoad, { passive: true, once: true });
+    if (window.scrollY > 8) finish();
+
+    const onIntent = () => finish();
+    window.addEventListener('scroll', onIntent, { passive: true });
+    window.addEventListener('wheel', onIntent, { passive: true });
+    window.addEventListener('touchmove', onIntent, { passive: true });
+
+    const watchImages = () => {
+      if (watched || !categories.length) return false;
+      const images = Array.from(document.querySelectorAll('.home-page .hero img, .home-page .use-section img'));
+      const categoryImages = images.filter((img) => img.closest('.use-section'));
+      if (categoryImages.length < categories.length) return false;
+      watched = true;
+      let pending = 0;
+      const settle = () => {
+        pending -= 1;
+        if (pending <= 0) finish();
+      };
+      images.forEach((img) => {
+        if (img.complete) return;
+        pending += 1;
+        img.addEventListener('load', settle, { once: true });
+        img.addEventListener('error', settle, { once: true });
+      });
+      if (pending === 0) finish();
+      return true;
+    };
+
+    const home = document.querySelector('.home-page');
+    const observer = new MutationObserver(() => {
+      if (watchImages()) observer.disconnect();
+    });
+    if (home) observer.observe(home, { childList: true, subtree: true });
+    if (watchImages()) observer.disconnect();
 
     return () => {
-      clearTimeout(timer);
-      window.removeEventListener('scroll', triggerLoad);
-      window.removeEventListener('touchmove', triggerLoad);
-      window.removeEventListener('wheel', triggerLoad);
-      window.removeEventListener('keydown', triggerLoad);
+      cancelled = true;
+      observer.disconnect();
+      window.removeEventListener('scroll', onIntent);
+      window.removeEventListener('wheel', onIntent);
+      window.removeEventListener('touchmove', onIntent);
     };
-  }, []);
+  }, [categories.length]);
 
   return (
     <div className="home-page">
