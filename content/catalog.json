@@ -209,9 +209,559 @@
           "a": "Yes. All our folding carton gift boxes ship flat to maximize warehouse space and reduce freight costs, and assemble in seconds."
         }
       ]
+    },
+    {
+      "slug": "healthcare-boxes",
+      "name": "Healthcare Boxes",
+      "heading": "Custom Healthcare Boxes",
+      "image": "/images/cat-healthcare-lineup.jpg",
+      "alt": "A healthcare lineup of first aid, wellness, syrup, and daily care cartons with a syrup bottle.",
+      "short": "Folding cartons for medicine, first aid, wellness, syrups, and daily care.",
+      "intro": "Custom healthcare packaging boxes for first aid kits, wellness cartons, syrup bottles, and daily care packs. Sized to the carton, bottle, or blister, with room for directions and product facts.",
+      "line": "First aid, wellness, syrup, and daily care",
+      "faqs": [
+        {
+          "q": "Can healthcare boxes be sized to a bottle, blister, or kit?",
+          "a": "Yes. Each carton is made to the bottle, blister card, or kit it holds, with clearance so the product sits securely."
+        },
+        {
+          "q": "Is there room on the box for directions and product facts?",
+          "a": "Yes. The dieline leaves panel space for product name, directions, and the facts your brand needs to print."
+        }
+      ]
+    },
+    {
+      "slug": "restaurant-food-boxes",
+      "name": "Restaurant & Food Boxes",
+      "heading": "Custom Restaurant & Food Boxes",
+      "image": "/images/cat-food-lineup.jpg",
+      "alt": "A kraft food lineup of burger, sandwich, fry, meal, bakery, and takeaway boxes.",
+      "short": "Kraft cartons for burgers, sandwiches, fries, meals, bakery, and takeaway.",
+      "intro": "Custom restaurant and food packaging for burgers, sandwiches, fries, prepared meals, bakery windows, and takeaway. Kraft board with a printed panel, sized to the food it holds.",
+      "line": "Burgers, sandwiches, fries, meals, bakery, and takeaway",
+      "faqs": [
+        {
+          "q": "Can food boxes be made in kraft with a printed panel?",
+          "a": "Yes. The cartons are kraft board, with a printed panel for a leaf mark, a color, or your own artwork."
+        },
+        {
+          "q": "Can each box be sized to the food it holds?",
+          "a": "Yes. A burger clamshell, a sandwich wedge, a fry scoop, a meal tray, a bakery window, and a takeaway carton are each drawn to what goes inside."
+        }
+      ]
+    },
+    {
+      "slug": "christmas-boxes",
+      "name": "Christmas Boxes",
+      "heading": "Custom Christmas Boxes",
+      "image": "/images/cat-christmas-lineup.jpg",
+      "alt": "A Christmas lineup of a house carton, a handled gift box, a star window box, and a kraft character gable.",
+      "short": "House cartons, handled gifts, star windows, and character gable boxes.",
+      "intro": "Custom Christmas packaging for house-shaped cartons, handled gift boxes, star window boxes, and kraft character gables. Printed for the season and sized to chocolates, gifts, and small sets.",
+      "line": "House, handle, star, and character gift boxes",
+      "faqs": [
+        {
+          "q": "Can Christmas boxes be a shaped carton, not only a rectangle?",
+          "a": "Yes. A house, a star, and a gable with a handle are each drawn as their own carton, sized to what goes inside."
+        },
+        {
+          "q": "Can the print be a character, or a pattern of snow and pine?",
+          "a": "Yes. The artwork can be a simple character, a snowflake pattern, or your own holiday print. Send the art with the quote."
+        }
+      ]
     }
   ],
   "products": [
+    {
+      "slug": "first-aid-boxes",
+      "name": "First Aid Boxes",
+      "category": "healthcare-boxes",
+      "categories": ["healthcare-boxes"],
+      "structure": "straight-tuck-end-box",
+      "short": "Folding cartons for first aid kits, bandage packs, and care sets.",
+      "meta": "Custom first aid boxes for bandage packs, care kits, and retail healthcare cartons.",
+      "description": "Custom first aid boxes made as folding cartons for bandage packs, small care kits, and retail first aid sets. The tuck closure keeps the pack flat for shipping and easy to fill.",
+      "images": [
+        {
+          "src": "/images/health-first-aid.jpg",
+          "alt": "A tall white first aid folding carton with a navy panel and an open tuck."
+        }
+      ],
+      "uses": [
+        "Bandage and plaster packs",
+        "Small first aid kits",
+        "Retail care sets"
+      ],
+      "related": [
+        { "slug": "wellness-boxes", "note": "A carton for wellness products." },
+        { "slug": "syrup-boxes", "note": "A carton for a syrup bottle." },
+        { "slug": "daily-care-boxes", "note": "A wider carton for daily care." }
+      ],
+      "showOnHome": true,
+      "syncReciprocal": true,
+      "showInProducts": [],
+      "faqs": [
+        {
+          "q": "Can a first aid box hold a blister card and a small bottle together?",
+          "a": "Yes. The carton can be drawn around both pieces, with an insert if they should stay apart inside the box."
+        }
+      ]
+    },
+    {
+      "slug": "wellness-boxes",
+      "name": "Wellness Boxes",
+      "category": "healthcare-boxes",
+      "categories": ["healthcare-boxes"],
+      "structure": "straight-tuck-end-box",
+      "short": "Printed folding cartons for wellness bottles, tins, and daily supplements.",
+      "meta": "Custom wellness boxes for supplement cartons, tins, and healthcare shelf packs.",
+      "description": "Custom wellness boxes for supplement cartons, tins, and shelf packs. A straight tuck keeps the front panel clear for the product name and a simple leaf or line mark.",
+      "images": [
+        {
+          "src": "/images/health-wellness.jpg",
+          "alt": "Two white wellness folding cartons with sage green panels."
+        }
+      ],
+      "uses": [
+        "Supplement cartons",
+        "Wellness tins",
+        "Shelf packs for a daily routine"
+      ],
+      "related": [
+        { "slug": "first-aid-boxes", "note": "A carton for a first aid pack." },
+        { "slug": "syrup-boxes", "note": "A carton for a syrup bottle." },
+        { "slug": "daily-care-boxes", "note": "A wider carton for daily care." }
+      ],
+      "showOnHome": true,
+      "syncReciprocal": true,
+      "showInProducts": [],
+      "faqs": [
+        {
+          "q": "Can wellness boxes ship flat?",
+          "a": "Yes. These are folding cartons, so they ship flat and are set up when you fill them."
+        }
+      ]
+    },
+    {
+      "slug": "syrup-boxes",
+      "name": "Syrup Boxes",
+      "category": "healthcare-boxes",
+      "categories": ["healthcare-boxes"],
+      "structure": "auto-lock-bottom-box",
+      "short": "Tall cartons for syrup bottles, with a locked base for the weight of the bottle.",
+      "meta": "Custom syrup boxes for medicine bottles, with an auto-lock bottom folding carton.",
+      "description": "Custom syrup boxes for medicine bottles. The auto-lock bottom holds the weight of a filled bottle when the carton is squared, and the top tuck closes over the cap.",
+      "images": [
+        {
+          "src": "/images/health-syrup.jpg",
+          "alt": "A tall teal syrup carton standing beside an amber syrup bottle."
+        }
+      ],
+      "uses": [
+        "Cough and cold syrup bottles",
+        "Vitamin syrup bottles",
+        "Single retail medicine bottles"
+      ],
+      "related": [
+        { "slug": "first-aid-boxes", "note": "A carton for a first aid pack." },
+        { "slug": "wellness-boxes", "note": "A carton for wellness products." },
+        { "slug": "daily-care-boxes", "note": "A wider carton for daily care." }
+      ],
+      "showOnHome": true,
+      "syncReciprocal": true,
+      "showInProducts": [],
+      "faqs": [
+        {
+          "q": "Why use an auto-lock bottom for a syrup bottle?",
+          "a": "A filled bottle is heavy. The pre-glued base locks as the carton is opened, so the bottle is not held by a tuck you fold by hand."
+        }
+      ]
+    },
+    {
+      "slug": "daily-care-boxes",
+      "name": "Daily Care Boxes",
+      "category": "healthcare-boxes",
+      "categories": ["healthcare-boxes"],
+      "structure": "straight-tuck-end-box",
+      "short": "Wide folding cartons for daily care packs, blister cards, and tablet sleeves.",
+      "meta": "Custom daily care boxes for blister packs, tablet sleeves, and healthcare cartons.",
+      "description": "Custom daily care boxes for blister cards, tablet sleeves, and flat healthcare packs. The wide front panel carries the product name, and the tuck closes the carton after filling.",
+      "images": [
+        {
+          "src": "/images/health-daily-care.jpg",
+          "alt": "A daily care carton with a blister of tablets sliding out of a matching sleeve."
+        }
+      ],
+      "uses": [
+        "Blister cards of tablets",
+        "Daily dose sleeves",
+        "Flat healthcare packs"
+      ],
+      "related": [
+        { "slug": "first-aid-boxes", "note": "A carton for a first aid pack." },
+        { "slug": "wellness-boxes", "note": "A carton for wellness products." },
+        { "slug": "syrup-boxes", "note": "A carton for a syrup bottle." }
+      ],
+      "showOnHome": true,
+      "syncReciprocal": true,
+      "showInProducts": [],
+      "faqs": [
+        {
+          "q": "Can a daily care box be wide enough for a blister card?",
+          "a": "Yes. The carton is drawn to the width and height of the blister, with a little clearance so the card slides in and the tuck still closes."
+        }
+      ]
+    },
+    {
+      "slug": "burger-boxes",
+      "name": "Burger Boxes",
+      "category": "restaurant-food-boxes",
+      "categories": ["restaurant-food-boxes"],
+      "structure": "kraft-product-box",
+      "short": "Kraft clamshell cartons for burgers, with a printed front panel.",
+      "meta": "Custom burger boxes in kraft board for restaurants, with a folding clamshell carton.",
+      "description": "Custom burger boxes made as kraft clamshell cartons. The lid folds back for service, and the front panel carries a printed color and a small leaf mark.",
+      "images": [
+        {
+          "src": "/images/food-burger.jpg",
+          "alt": "An open kraft burger box with a forest green panel, holding a sesame burger."
+        }
+      ],
+      "uses": [
+        "Restaurant burgers",
+        "Takeaway burger service",
+        "Printed kraft clamshells"
+      ],
+      "related": [
+        { "slug": "sandwich-boxes", "note": "A wedge carton for a sandwich." },
+        { "slug": "fry-boxes", "note": "A scoop for fries." },
+        { "slug": "meal-boxes", "note": "A tray for a prepared meal." }
+      ],
+      "showOnHome": true,
+      "syncReciprocal": true,
+      "showInProducts": [],
+      "faqs": [
+        {
+          "q": "Can a burger box open flat for the counter?",
+          "a": "Yes. The lid folds back so the burger can be placed in and handed over without a separate lid to set aside."
+        }
+      ]
+    },
+    {
+      "slug": "sandwich-boxes",
+      "name": "Sandwich Boxes",
+      "category": "restaurant-food-boxes",
+      "categories": ["restaurant-food-boxes"],
+      "structure": "window-gift-box",
+      "short": "Triangular kraft cartons with a window for sandwiches and wraps.",
+      "meta": "Custom sandwich boxes with a clear window, made as kraft wedge cartons.",
+      "description": "Custom sandwich boxes as triangular kraft cartons with a clear front window. The sandwich stays visible, and the green panel leaves room for a simple mark.",
+      "images": [
+        {
+          "src": "/images/food-sandwich.jpg",
+          "alt": "A triangular kraft sandwich carton with a window showing a layered sandwich."
+        }
+      ],
+      "uses": [
+        "Cafe sandwiches",
+        "Deli wedges",
+        "Grab-and-go lunch"
+      ],
+      "related": [
+        { "slug": "burger-boxes", "note": "A clamshell for a burger." },
+        { "slug": "bakery-boxes", "note": "A window box for bakery." },
+        { "slug": "takeaway-boxes", "note": "A tall carton for takeaway." }
+      ],
+      "showOnHome": true,
+      "syncReciprocal": true,
+      "showInProducts": [],
+      "faqs": [
+        {
+          "q": "Can the sandwich stay visible in the box?",
+          "a": "Yes. A clear window on the front shows the sandwich without opening the carton."
+        }
+      ]
+    },
+    {
+      "slug": "fry-boxes",
+      "name": "Fry Boxes",
+      "category": "restaurant-food-boxes",
+      "categories": ["restaurant-food-boxes"],
+      "structure": "kraft-product-box",
+      "short": "Open kraft scoops for fries and sides.",
+      "meta": "Custom fry boxes as kraft scoops for restaurants and takeaway sides.",
+      "description": "Custom fry boxes as open kraft scoops. The front panel is printed, and the rolled lip keeps the fries in while the box is carried.",
+      "images": [
+        {
+          "src": "/images/food-fries.jpg",
+          "alt": "A forest green kraft fry scoop filled with fries."
+        }
+      ],
+      "uses": [
+        "French fries",
+        "Side portions",
+        "Counter service"
+      ],
+      "related": [
+        { "slug": "burger-boxes", "note": "A clamshell for a burger." },
+        { "slug": "meal-boxes", "note": "A tray for a prepared meal." },
+        { "slug": "takeaway-boxes", "note": "A tall carton for takeaway." }
+      ],
+      "showOnHome": true,
+      "syncReciprocal": true,
+      "showInProducts": [],
+      "faqs": [
+        {
+          "q": "Are fry boxes a closed carton?",
+          "a": "No. They are an open scoop, sized for a side portion, with a printed front and a rolled lip."
+        }
+      ]
+    },
+    {
+      "slug": "meal-boxes",
+      "name": "Meal Boxes",
+      "category": "restaurant-food-boxes",
+      "categories": ["restaurant-food-boxes"],
+      "structure": "kraft-product-box",
+      "short": "Wide kraft trays for rice, vegetables, and prepared meals.",
+      "meta": "Custom meal boxes for prepared food, made as wide kraft trays with a folding lid.",
+      "description": "Custom meal boxes as wide kraft trays with a folding lid. The tray holds rice, vegetables, or a full plate, and the front panel is left clear for a printed mark.",
+      "images": [
+        {
+          "src": "/images/food-meal.jpg",
+          "alt": "An open kraft meal box filled with rice and roasted vegetables."
+        }
+      ],
+      "uses": [
+        "Prepared meals",
+        "Rice and vegetable bowls",
+        "Catering portions"
+      ],
+      "related": [
+        { "slug": "burger-boxes", "note": "A clamshell for a burger." },
+        { "slug": "sandwich-boxes", "note": "A wedge carton for a sandwich." },
+        { "slug": "takeaway-boxes", "note": "A tall carton for takeaway." }
+      ],
+      "showOnHome": true,
+      "syncReciprocal": true,
+      "showInProducts": [],
+      "faqs": [
+        {
+          "q": "Can a meal box be wide enough for a full portion?",
+          "a": "Yes. The tray is drawn to the portion, with a lid that folds over once the food is in."
+        }
+      ]
+    },
+    {
+      "slug": "bakery-boxes",
+      "name": "Bakery Boxes",
+      "category": "restaurant-food-boxes",
+      "categories": ["restaurant-food-boxes"],
+      "structure": "window-gift-box",
+      "short": "Kraft bakery cartons with a window for pastries and bread.",
+      "meta": "Custom bakery boxes with a clear window for croissants, pastries, and bread.",
+      "description": "Custom bakery boxes as kraft cartons with a clear window. The pastry stays in view, and the tuck closes the carton for the counter or a gift.",
+      "images": [
+        {
+          "src": "/images/food-bakery.jpg",
+          "alt": "A kraft bakery box with a window showing an almond croissant."
+        }
+      ],
+      "uses": [
+        "Croissants and pastries",
+        "Bakery counter boxes",
+        "Gift pastry cartons"
+      ],
+      "related": [
+        { "slug": "sandwich-boxes", "note": "A wedge carton for a sandwich." },
+        { "slug": "meal-boxes", "note": "A tray for a prepared meal." },
+        { "slug": "takeaway-boxes", "note": "A tall carton for takeaway." }
+      ],
+      "showOnHome": true,
+      "syncReciprocal": true,
+      "showInProducts": [],
+      "faqs": [
+        {
+          "q": "Can a bakery box show the pastry without opening?",
+          "a": "Yes. A clear window on the lid shows the pastry while the carton stays closed."
+        }
+      ]
+    },
+    {
+      "slug": "takeaway-boxes",
+      "name": "Takeaway Boxes",
+      "category": "restaurant-food-boxes",
+      "categories": ["restaurant-food-boxes"],
+      "structure": "straight-tuck-end-box",
+      "short": "Tall kraft cartons with a folded top for restaurant takeaway.",
+      "meta": "Custom takeaway boxes as tall kraft folding cartons for restaurants.",
+      "description": "Custom takeaway boxes as tall kraft cartons. The top folds closed for the handoff, and the lower panel is printed so the box reads as one set with the rest of the food packaging.",
+      "images": [
+        {
+          "src": "/images/food-takeaway.jpg",
+          "alt": "A tall closed kraft takeaway carton with a forest green panel and a folded top."
+        }
+      ],
+      "uses": [
+        "Restaurant takeaway",
+        "Noodle and rice cartons",
+        "Closed delivery packs"
+      ],
+      "related": [
+        { "slug": "burger-boxes", "note": "A clamshell for a burger." },
+        { "slug": "meal-boxes", "note": "A tray for a prepared meal." },
+        { "slug": "fry-boxes", "note": "A scoop for fries." }
+      ],
+      "showOnHome": true,
+      "syncReciprocal": true,
+      "showInProducts": [],
+      "faqs": [
+        {
+          "q": "Does a takeaway box ship flat?",
+          "a": "Yes. It is a folding carton, so it ships flat and is squared and closed when the order is packed."
+        }
+      ]
+    },
+    {
+      "slug": "christmas-house-boxes",
+      "name": "Christmas House Boxes",
+      "category": "christmas-boxes",
+      "categories": ["christmas-boxes"],
+      "structure": "foldable-gift-box",
+      "short": "House-shaped gift cartons with a roof, windows, and a door.",
+      "meta": "Custom Christmas house boxes for holiday gifts, chocolates, and seasonal sets.",
+      "description": "Custom Christmas house boxes shaped as a small house, with a roof, chimney, windows, and a door printed on the front. The carton folds for shipping and stands up as a gift on the table.",
+      "images": [
+        {
+          "src": "/images/christmas-house.jpg",
+          "alt": "A red house-shaped Christmas carton with a chimney, gold snowflakes, and a green door."
+        }
+      ],
+      "uses": [
+        "Holiday gift sets",
+        "Chocolate houses",
+        "Seasonal table gifts"
+      ],
+      "related": [
+        { "slug": "christmas-handle-boxes", "note": "A handled gift box for the same season." },
+        { "slug": "christmas-star-boxes", "note": "A star window for chocolates." },
+        { "slug": "holiday-character-boxes", "note": "Kraft gables with holiday characters." }
+      ],
+      "showOnHome": true,
+      "syncReciprocal": true,
+      "showInProducts": [],
+      "faqs": [
+        {
+          "q": "Does the house box ship flat?",
+          "a": "Yes. It is a folding carton, creased so it ships flat and is set up when the gift is packed."
+        }
+      ]
+    },
+    {
+      "slug": "christmas-handle-boxes",
+      "name": "Christmas Handle Boxes",
+      "category": "christmas-boxes",
+      "categories": ["christmas-boxes"],
+      "structure": "foldable-gift-box",
+      "short": "Gift cartons with a carrying handle, printed in holiday color.",
+      "meta": "Custom Christmas handle boxes for gifts that are carried, with a printed gable carton.",
+      "description": "Custom Christmas handle boxes with a die-cut carry handle. A printed band and pine pattern cover the panels, and the carton is sized for a gift that is handed over rather than posted on its own.",
+      "images": [
+        {
+          "src": "/images/christmas-handle.jpg",
+          "alt": "A dark green Christmas gift box with a handle, a red band, and gold pine branches."
+        }
+      ],
+      "uses": [
+        "Carried holiday gifts",
+        "Retail Christmas sets",
+        "Party favor cartons"
+      ],
+      "related": [
+        { "slug": "christmas-house-boxes", "note": "A house-shaped carton." },
+        { "slug": "christmas-star-boxes", "note": "A star window for chocolates." },
+        { "slug": "holiday-character-boxes", "note": "Kraft gables with holiday characters." }
+      ],
+      "showOnHome": true,
+      "syncReciprocal": true,
+      "showInProducts": [],
+      "faqs": [
+        {
+          "q": "Is the handle part of the carton?",
+          "a": "Yes. The handle is cut into the top of the same blank, so there is no separate handle to attach."
+        }
+      ]
+    },
+    {
+      "slug": "christmas-star-boxes",
+      "name": "Christmas Star Boxes",
+      "category": "christmas-boxes",
+      "categories": ["christmas-boxes"],
+      "structure": "window-gift-box",
+      "short": "Star-shaped cartons with a window for chocolates and small gifts.",
+      "meta": "Custom Christmas star boxes with a clear window for chocolates and holiday sweets.",
+      "description": "Custom Christmas star boxes with a clear star window. Chocolates stay visible through the opening, and snowflakes and pine sit on the panels around it.",
+      "images": [
+        {
+          "src": "/images/christmas-star.jpg",
+          "alt": "A cream star-shaped Christmas box with a window showing foil chocolates."
+        }
+      ],
+      "uses": [
+        "Chocolate assortments",
+        "Holiday sweets",
+        "Small gift windows"
+      ],
+      "related": [
+        { "slug": "christmas-house-boxes", "note": "A house-shaped carton." },
+        { "slug": "christmas-handle-boxes", "note": "A handled gift box." },
+        { "slug": "holiday-character-boxes", "note": "Kraft gables with holiday characters." }
+      ],
+      "showOnHome": true,
+      "syncReciprocal": true,
+      "showInProducts": [],
+      "faqs": [
+        {
+          "q": "Can the star window show the chocolates?",
+          "a": "Yes. The window is an opening covered with clear film, placed so the chocolates sit in the star."
+        }
+      ]
+    },
+    {
+      "slug": "holiday-character-boxes",
+      "name": "Holiday Character Boxes",
+      "category": "christmas-boxes",
+      "categories": ["christmas-boxes"],
+      "structure": "kraft-product-box",
+      "short": "Kraft gable boxes printed with a reindeer, tree, snowman, or Santa.",
+      "meta": "Custom holiday character boxes on kraft gable cartons for Christmas gifts and treats.",
+      "description": "Custom holiday character boxes on kraft gable cartons. Each box carries one illustration, such as a reindeer, a tree, a snowman, or Santa, with a handle at the top.",
+      "images": [
+        {
+          "src": "/images/christmas-character.jpg",
+          "alt": "Four kraft gable boxes printed with a reindeer, a Christmas tree, a snowman, and Santa."
+        }
+      ],
+      "uses": [
+        "Christmas treat boxes",
+        "Character gift sets",
+        "Kraft holiday cartons"
+      ],
+      "related": [
+        { "slug": "christmas-house-boxes", "note": "A house-shaped carton." },
+        { "slug": "christmas-handle-boxes", "note": "A handled gift box in holiday color." },
+        { "slug": "christmas-star-boxes", "note": "A star window for chocolates." }
+      ],
+      "showOnHome": true,
+      "syncReciprocal": true,
+      "showInProducts": [],
+      "faqs": [
+        {
+          "q": "Can each character be its own print run?",
+          "a": "Yes. A reindeer, a tree, a snowman, and Santa can be four prints of the same carton, or one design if you only need a single character."
+        }
+      ]
+    },
     {
       "slug": "sunscreen-boxes",
       "name": "Custom Sunblock & Sunscreen Boxes",
