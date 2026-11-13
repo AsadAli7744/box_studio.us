@@ -7,28 +7,28 @@ const PRODUCTS = [
     name: 'Rosé Atelier',
     category: 'Blush Beauty Gift Set',
     fullName: 'Rosé Atelier Blush Beauty Gift Set',
-    image: '/images/hero-rotator-rose.png',
+    image: '/images/hero-rotator-rose.webp',
     alt: 'Rosé Atelier blush beauty gift set luxury folding carton'
   },
   {
     name: 'Aurelle Ritual',
     category: 'Open Blue Ivory Skincare Kit',
     fullName: 'Open Blue Ivory Skincare Kit',
-    image: '/images/hero-rotator-aurelle.png',
+    image: '/images/hero-rotator-aurelle.webp',
     alt: 'Open blue ivory skincare kit presentation box with bottles and creams'
   },
   {
     name: 'Grove Collection',
     category: 'Kraft Takeaway Carton Collection',
     fullName: 'Grove Kraft Takeaway Carton Collection',
-    image: '/images/hero-rotator-grove.png',
+    image: '/images/hero-rotator-grove.webp',
     alt: 'Grove kraft takeaway carton collection food and bakery boxes'
   },
   {
     name: 'Vitalis Healthcare',
     category: 'Premium Folding Carton Collection',
     fullName: 'Premium Vitalis Folding Carton Collection',
-    image: '/images/hero-rotator-vitalis.png',
+    image: '/images/hero-rotator-vitalis.webp',
     alt: 'Premium Vitalis folding carton collection medicine and wellness packaging'
   }
 ];
