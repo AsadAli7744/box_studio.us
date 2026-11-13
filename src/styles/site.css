@@ -2038,6 +2038,9 @@ legend { font-family: var(--font-display); font-size: 1.6rem; padding: 0; }
   .rotator-product img {
     transform: translateZ(0) scale(1.331);
   }
+  .rotator-product:first-child img {
+    transform: translateZ(0) scale(1.464);
+  }
   .hero-controls { display: none !important; }
   .rotator-controls { display: none !important; }
   .rotator-footer { display: none !important; }
