@@ -6,6 +6,7 @@ export default function CatalogImage({
   className,
   sizes = '(max-width: 700px) 100vw, 40vw',
   priority = false,
+  unoptimized = false,
   width = 800,
   height = 800,
 }) {
@@ -19,6 +20,7 @@ export default function CatalogImage({
       height={height}
       sizes={sizes}
       priority={priority}
+      unoptimized={unoptimized}
     />
   );
 }

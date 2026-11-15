@@ -1,5 +1,6 @@
 'use client';
 
+import { useEffect, useRef, useState } from 'react';
 import Link from 'next/link';
 import { useSearchParams } from 'next/navigation';
 import ProductCard from '../components/ProductCard';
@@ -8,8 +9,12 @@ import { useCatalog } from '../context/CatalogContext';
 import { usePageMeta } from '../hooks/usePageMeta';
 import Accordion from '../components/Accordion';
 
+const PRODUCT_BATCH_SIZE = 12;
+
 export default function BoxesPage({ categorySlug }) {
   const params = useSearchParams();
+  const loadMoreRef = useRef(null);
+  const [visibleCount, setVisibleCount] = useState(PRODUCT_BATCH_SIZE);
   const { products, getCategory } = useCatalog();
   const query = (params.get('q') || '').trim();
   const needle = query.toLowerCase();
@@ -26,6 +31,30 @@ export default function BoxesPage({ categorySlug }) {
     : pool;
   const path = category ? `/${category.slug}` : '/custom-boxes';
   const title = category ? (category.heading || category.name) : 'Custom Boxes';
+  const progressivelyLoad = !categorySlug;
+  const visibleResults = progressivelyLoad ? results.slice(0, visibleCount) : results;
+  const hasMore = progressivelyLoad && visibleCount < results.length;
+
+  useEffect(() => {
+    setVisibleCount(PRODUCT_BATCH_SIZE);
+  }, [categorySlug, needle]);
+
+  useEffect(() => {
+    const target = loadMoreRef.current;
+    if (!target || !hasMore) return undefined;
+
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setVisibleCount((count) => Math.min(count + PRODUCT_BATCH_SIZE, results.length));
+        }
+      },
+      { rootMargin: '600px 0px' }
+    );
+
+    observer.observe(target);
+    return () => observer.disconnect();
+  }, [hasMore, results.length]);
 
   usePageMeta({
     title: `${title} | Box Studio`,
@@ -60,11 +89,21 @@ export default function BoxesPage({ categorySlug }) {
             {results.length} {results.length === 1 ? 'box' : 'boxes'}
           </p>
           {results.length ? (
-            <div className="product-grid shop-grid">
-              {results.map((product) => (
-                <ProductCard key={product.slug} product={product} />
-              ))}
-            </div>
+            <>
+              <div className="product-grid shop-grid">
+                {visibleResults.map((product) => (
+                  <ProductCard key={product.slug} product={product} unoptimizedImage />
+                ))}
+              </div>
+              {hasMore ? (
+                <div
+                  ref={loadMoreRef}
+                  className="catalog-load-more"
+                  role="status"
+                  aria-label="Loading more custom boxes"
+                />
+              ) : null}
+            </>
           ) : (
             <div className="empty-state">
               <h2>No boxes match</h2>

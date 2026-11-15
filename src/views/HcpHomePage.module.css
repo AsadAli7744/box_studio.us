@@ -145,6 +145,7 @@
 }
 
 .sectionInner {
+  position: relative;
   width: min(1120px, 100%);
   margin: 0 auto;
 }
@@ -169,7 +170,7 @@
 .updates {
   display: grid;
   grid-template-columns: repeat(4, minmax(0, 1fr));
-  gap: clamp(1rem, 2.2vw, 2rem);
+  gap: clamp(2.5rem, 4vw, 4.5rem) clamp(1rem, 2.2vw, 2rem);
   margin-bottom: 2.5rem;
 }
 
@@ -183,6 +184,7 @@
   width: 100%;
   aspect-ratio: 1;
   object-fit: cover;
+  background: #fff;
   transition: transform 0.5s ease;
 }
 

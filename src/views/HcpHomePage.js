@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from 'react';
 import Link from 'next/link';
+import { useCatalog } from '../context/CatalogContext';
 import { absoluteUrl, site } from '../data/site';
 import { usePageMeta } from '../hooks/usePageMeta';
 import styles from './HcpHomePage.module.css';
@@ -12,29 +13,6 @@ const heroImages = [
   '/images/hcp-home/hero-fantasy.jpg',
   '/images/hcp-home/hero-carousel.jpg',
   '/images/hcp-home/hero-uno.jpg',
-];
-
-const updates = [
-  {
-    title: 'Packaging that frames the product',
-    image: '/images/hcp-home/update-snapshot.jpg',
-    href: '/beauty-gift-boxes',
-  },
-  {
-    title: 'Beauty packaging, seen differently',
-    image: '/images/hcp-home/update-luxepack.jpg',
-    href: '/cosmetic-boxes',
-  },
-  {
-    title: 'Clear thinking for a new box',
-    image: '/images/hcp-home/update-company.jpg',
-    href: '/custom-boxes',
-  },
-  {
-    title: 'Slim, considered and shelf-ready',
-    image: '/images/hcp-home/update-ice.jpg',
-    href: '/makeup-boxes',
-  },
 ];
 
 function Arrow() {
@@ -197,22 +175,22 @@ function Hero() {
   );
 }
 
-function LatestUpdates() {
+function LatestUpdates({ categories }) {
   return (
     <section className={`${styles.section} ${styles.beige}`}>
       <div className={styles.sectionInner}>
-        <h2>Latest updates</h2>
+        <h2>Packaging categories</h2>
         <div className={styles.updates}>
-          {updates.map((item) => (
-            <article key={item.title} className={styles.updateCard}>
-              <Link href={item.href}>
-                <img src={item.image} alt="" loading="lazy" />
-                <h3>{item.title}</h3>
+          {categories.map((item) => (
+            <article key={item.slug} className={styles.updateCard}>
+              <Link href={`/${item.slug}`}>
+                <img src={item.image} alt={item.alt} loading="lazy" />
+                <h3>{item.name}</h3>
               </Link>
             </article>
           ))}
         </div>
-        <TextLink href="/custom-boxes">Read more</TextLink>
+        <TextLink href="/custom-boxes">View all boxes</TextLink>
       </div>
     </section>
   );
@@ -290,6 +268,8 @@ function Newsletter() {
 }
 
 export default function HcpHomePage() {
+  const { categories } = useCatalog();
+
   usePageMeta({
     title: 'Custom Cosmetic, Skincare & Product Packaging | Box Studio',
     description:
@@ -308,7 +288,7 @@ export default function HcpHomePage() {
   return (
     <div className={styles.home}>
       <Hero />
-      <LatestUpdates />
+      <LatestUpdates categories={categories} />
       <Discover />
       <EditorialSection
         title="A beautiful future"

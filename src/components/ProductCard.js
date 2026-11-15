@@ -3,7 +3,7 @@
 import Link from 'next/link';
 import CatalogImage from './CatalogImage';
 
-export default function ProductCard({ product }) {
+export default function ProductCard({ product, unoptimizedImage = false }) {
   const image = product?.images?.[0];
 
   return (
@@ -16,6 +16,7 @@ export default function ProductCard({ product }) {
               alt={image.alt || product.name}
               className="product-card-img"
               sizes="(max-width: 580px) 50vw, (max-width: 1100px) 33vw, 20vw"
+              unoptimized={unoptimizedImage}
             />
           ) : null}
           <span className="product-card-hover-pill" aria-hidden="true">
