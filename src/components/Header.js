@@ -4,6 +4,7 @@ import { useEffect, useId, useMemo, useRef, useState } from 'react';
 import Link from 'next/link';
 import { usePathname, useRouter } from 'next/navigation';
 import { useCatalog } from '../context/CatalogContext';
+import { site } from '../data/site';
 import { useScrolled } from '../hooks/useScrolled';
 import CatalogImage from './CatalogImage';
 import Logo from './Logo';
@@ -126,6 +127,27 @@ export default function Header() {
   return (
     <>
     <header className={headerClass}>
+      <div className="email-bar">
+        <span>Questions about custom packaging?</span>
+        <a
+          href={`https://mail.google.com/mail/?view=cm&fs=1&to=${encodeURIComponent(site.email)}`}
+          target="_blank"
+          rel="noopener noreferrer"
+          aria-label={`Email ${site.email} using Gmail`}
+        >
+          <svg viewBox="0 0 24 24" aria-hidden="true">
+            <path d="M3 5.5h18v13H3zM4 7l8 6 8-6" />
+          </svg>
+          {site.email}
+        </a>
+        <i aria-hidden="true" />
+        <a href="tel:+12254835392" aria-label={`Call ${site.phone}`}>
+          <svg viewBox="0 0 24 24" aria-hidden="true">
+            <path d="M7.2 3.5 4.7 5.1c-.7.5-.9 1.4-.6 2.2 2 5.5 6.3 9.8 11.8 11.8.8.3 1.7.1 2.2-.6l1.6-2.5-4.1-2-1.5 2a13.8 13.8 0 0 1-6-6l2-1.5-2-4.1-.9-.9Z" />
+          </svg>
+          {site.phone}
+        </a>
+      </div>
       <div className="header-bar">
         <Link href="/" className="logo-link" aria-label="Boxstudio.us, home">
           <Logo />
@@ -155,7 +177,7 @@ export default function Header() {
               <div className="nav-menu-head">
                 <p className="use-label">Cosmetic & Beauty Boxes</p>
                 <Link href="/cosmetic-boxes" onClick={() => setIndustryOpen(false)}>
-                  All Cosmetic Boxes →
+                  Cosmetic Boxes →
                 </Link>
               </div>
               <ul className="nav-industry">
@@ -273,18 +295,10 @@ export default function Header() {
                 ))}
               </ul>
             ) : null}
-            <Link href="/quote" className="btn btn-gold">
-              Get custom box for your brand
-            </Link>
           </nav>
         </div>
       ) : null}
     </header>
-    {home ? (
-      <Link href="/quote" className="btn btn-gold home-fixed-cta">
-        Get custom box for your brand
-      </Link>
-    ) : null}
     </>
   );
 }

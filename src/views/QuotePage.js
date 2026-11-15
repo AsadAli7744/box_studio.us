@@ -90,11 +90,11 @@ export default function QuotePage() {
         <p>
           Get a quote for folding cartons, art card packaging, metallized cardboard boxes, custom logo boxes, shopping bags, carry bags, labels, tags, stickers, and other print and packaging.
         </p>
-        <ul className="quote-pills" aria-label="Finishes">
+        {/* <ul className="quote-pills" aria-label="Finishes">
           <li>Art card</li>
           <li>Custom print</li>
           <li>Foil &amp; emboss</li>
-        </ul>
+        </ul> */}
         <div className="quote-collage">
           {collage.map((item) => (
             <img key={item.src} src={item.src} alt={item.alt} className={item.className} />

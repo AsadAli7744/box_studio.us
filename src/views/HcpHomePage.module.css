@@ -1,0 +1,405 @@
+.home {
+  --reference-beige: #f2efed;
+  --reference-mint: #8ed8cf;
+  --reference-black: #050505;
+  overflow: hidden;
+  background: #fff;
+  color: var(--reference-black);
+}
+
+.home h1,
+.home h2,
+.home h3,
+.home p {
+  margin-top: 0;
+}
+
+.hero {
+  display: grid;
+  grid-template-columns: minmax(0, 1.02fr) minmax(460px, 0.82fr);
+  min-height: clamp(840px, 78vw, 1120px);
+  background: #fff;
+}
+
+.heroLarge,
+.heroPreview,
+.fadeImages {
+  position: relative;
+  overflow: hidden;
+}
+
+.heroLarge img,
+.heroPreview img,
+.fadeImages img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0;
+  transition: opacity 1.35s ease-in-out;
+}
+
+.heroLarge img,
+.heroPreview img {
+  object-position: center;
+}
+
+.heroLarge img.isActive,
+.heroPreview img.isActive,
+.fadeImages img.isActive {
+  opacity: 1;
+}
+
+.heroRight {
+  position: relative;
+  display: grid;
+  grid-template-rows: 45% 55%;
+  min-width: 0;
+  background: #fff;
+}
+
+.heroPreview {
+  grid-row: 1;
+  margin: clamp(2.5rem, 8vw, 8rem) clamp(2rem, 8vw, 7.5rem) 0 1.1rem;
+}
+
+.heroKicker {
+  position: absolute;
+  z-index: 3;
+  top: calc(45% - 7.5rem);
+  left: 3.6rem;
+  margin: 0;
+  font-size: 0.9rem;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+.heroTitleWrap {
+  position: absolute;
+  z-index: 3;
+  top: 35%;
+  left: clamp(-6.5rem, -7vw, -3.5rem);
+}
+
+.heroTitleWrap h1 {
+  margin: 0;
+  padding: clamp(2rem, 3.5vw, 3.6rem);
+  background: var(--reference-beige);
+  color: #000;
+  font-size: clamp(3.15rem, 5vw, 5.45rem);
+  font-weight: 750;
+  line-height: 1.08;
+  letter-spacing: -0.045em;
+}
+
+.heroCopy {
+  grid-row: 2;
+  align-self: end;
+  max-width: 34rem;
+  padding: clamp(12rem, 17vw, 18rem) clamp(2.2rem, 8vw, 7.5rem) clamp(4rem, 7vw, 7rem) 4.8rem;
+  font-size: clamp(1rem, 1.25vw, 1.18rem);
+  line-height: 1.75;
+}
+
+.heroCopy p {
+  margin-bottom: 1.15rem;
+}
+
+.textLink {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.85rem;
+  margin-top: 1rem;
+  color: #000;
+  font-size: 0.98rem;
+  font-weight: 650;
+  text-decoration: none;
+}
+
+.textLink span {
+  border-bottom: 1px solid currentColor;
+}
+
+.textLink svg {
+  width: 17px;
+  height: 17px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.4;
+  transition: transform 0.25s ease;
+}
+
+.textLink:hover svg {
+  transform: translate(3px, -3px);
+}
+
+.section {
+  padding: clamp(5rem, 9vw, 9rem) 5vw;
+}
+
+.sectionInner {
+  width: min(1120px, 100%);
+  margin: 0 auto;
+}
+
+.sectionInner > h2,
+.copyGrid > h2 {
+  margin-bottom: clamp(2.75rem, 6vw, 5.5rem);
+  font-size: clamp(2.2rem, 4.2vw, 4.6rem);
+  font-weight: 650;
+  line-height: 1.06;
+  letter-spacing: -0.045em;
+}
+
+.beige {
+  background: var(--reference-beige);
+}
+
+.white {
+  background: #fff;
+}
+
+.updates {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: clamp(1rem, 2.2vw, 2rem);
+  margin-bottom: 2.5rem;
+}
+
+.updateCard a {
+  display: block;
+  color: inherit;
+  text-decoration: none;
+}
+
+.updateCard img {
+  width: 100%;
+  aspect-ratio: 1;
+  object-fit: cover;
+  transition: transform 0.5s ease;
+}
+
+.updateCard a:hover img {
+  transform: scale(1.02);
+}
+
+.updateCard h3 {
+  max-width: 18ch;
+  margin: 1.1rem 0 0;
+  font-size: clamp(1rem, 1.4vw, 1.25rem);
+  font-weight: 650;
+  line-height: 1.28;
+}
+
+.copyGrid {
+  display: grid;
+  grid-template-columns: minmax(260px, 0.8fr) minmax(340px, 1fr);
+  gap: clamp(3rem, 11vw, 10rem);
+  align-items: start;
+}
+
+.copyGrid > h2 {
+  margin-bottom: 0;
+}
+
+.copyGrid > div {
+  max-width: 38rem;
+  padding-top: 0.55rem;
+  font-size: clamp(1rem, 1.35vw, 1.15rem);
+  line-height: 1.78;
+}
+
+.copyGrid p {
+  margin-bottom: 1.25rem;
+}
+
+.beigeToWhite {
+  padding: 0 5vw clamp(5rem, 9vw, 9rem);
+  background: linear-gradient(to bottom, var(--reference-beige) 0 50%, #fff 50% 100%);
+}
+
+.featureImage {
+  width: min(1004px, 100%);
+  aspect-ratio: 1004 / 708;
+  margin: 0 auto;
+}
+
+.newsletter {
+  margin-top: clamp(5rem, 9vw, 9rem);
+  padding: clamp(4rem, 7vw, 6rem) 5vw;
+  background: var(--reference-mint);
+}
+
+.newsletterInner {
+  display: grid;
+  grid-template-columns: minmax(260px, 0.8fr) minmax(340px, 1fr);
+  gap: clamp(3rem, 11vw, 10rem);
+  width: min(1120px, 100%);
+  margin: 0 auto;
+}
+
+.newsletterLabel {
+  margin-bottom: 1rem;
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+.newsletter h2 {
+  margin-bottom: 0;
+  font-size: clamp(2.3rem, 4vw, 4rem);
+  line-height: 1;
+  letter-spacing: -0.045em;
+}
+
+.newsletterInner > div:last-child {
+  max-width: 34rem;
+  font-size: 1.05rem;
+  line-height: 1.7;
+}
+
+@media (max-width: 980px) {
+  .hero {
+    grid-template-columns: 1fr;
+    min-height: 0;
+  }
+
+  .heroLarge {
+    display: none;
+  }
+
+  .heroRight {
+    display: block;
+    min-height: 0;
+    padding-bottom: 3.5rem;
+  }
+
+  .heroPreview {
+    height: min(138vw, 620px);
+    margin: 0;
+  }
+
+  .heroPreview::after {
+    content: "";
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    height: 82px;
+    background: #000;
+  }
+
+  .heroKicker {
+    position: relative;
+    top: auto;
+    left: auto;
+    z-index: 4;
+    width: calc(100% - 4rem);
+    margin: -8.8rem 2rem 0;
+    padding: 1.2rem 2rem 0;
+    background: var(--reference-beige);
+    font-size: 0.78rem;
+  }
+
+  .heroTitleWrap {
+    position: relative;
+    top: auto;
+    left: auto;
+    z-index: 4;
+    width: calc(100% - 4rem);
+    margin: 0 2rem;
+  }
+
+  .heroTitleWrap h1 {
+    padding: 1rem 2rem 2.15rem;
+    font-size: clamp(2.55rem, 11vw, 4.3rem);
+    line-height: 1.12;
+  }
+
+  .heroCopy {
+    max-width: none;
+    padding: 2.6rem 2rem 0;
+    font-size: 1rem;
+    line-height: 1.65;
+  }
+
+  .updates {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    row-gap: 2.2rem;
+  }
+}
+
+@media (max-width: 680px) {
+  .section {
+    padding: 4.5rem 1.35rem;
+  }
+
+  .sectionInner > h2,
+  .copyGrid > h2 {
+    margin-bottom: 2.5rem;
+    font-size: clamp(2.15rem, 10vw, 3.25rem);
+  }
+
+  .updates {
+    grid-template-columns: 1fr;
+  }
+
+  .updateCard {
+    display: grid;
+    grid-template-columns: 42% 1fr;
+    gap: 1.1rem;
+    align-items: center;
+  }
+
+  .updateCard a {
+    display: contents;
+  }
+
+  .updateCard h3 {
+    margin: 0;
+  }
+
+  .copyGrid,
+  .newsletterInner {
+    grid-template-columns: 1fr;
+    gap: 0;
+  }
+
+  .copyGrid > div {
+    padding-top: 0;
+  }
+
+  .beigeToWhite {
+    padding: 0 1.35rem 4.5rem;
+  }
+
+  .featureImage {
+    aspect-ratio: 1 / 1.04;
+  }
+
+  .featureImage img {
+    object-fit: cover;
+  }
+
+  .newsletter {
+    margin-top: 4.5rem;
+    padding: 4rem 1.35rem;
+  }
+
+  .newsletter h2 {
+    margin-bottom: 2rem;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .heroLarge img,
+  .heroPreview img,
+  .fadeImages img,
+  .updateCard img,
+  .textLink svg {
+    transition: none;
+  }
+}

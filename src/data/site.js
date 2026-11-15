@@ -5,8 +5,8 @@ export const site = {
   description:
     'Any box packaging sized to your product. One piece, a set, or an order you ship. Tell us what goes inside, then request a quote.',
   // Add verified details here. Empty values are omitted from the visible site.
-  email: '',
-  phone: '',
+  email: 'info@boxstudio.us',
+  phone: '+1 225-483-5392',
   address: '',
   social: {},
 };

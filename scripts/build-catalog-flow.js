@@ -11,7 +11,7 @@ function getImg(name, fallback = '/images/cat-cosmetic.jpg') {
 const CATEGORIES = [
   {
     slug: 'cosmetic-boxes',
-    name: 'All Cosmetic Boxes',
+    name: 'Cosmetic Boxes',
     heading: 'Custom Cosmetic Boxes',
     image: '/images/cat-cosmetic.jpg',
     alt: 'Custom cosmetic packaging boxes in luxury colors with gold accents',
