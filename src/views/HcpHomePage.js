@@ -168,16 +168,18 @@ function Hero() {
     <section className={styles.hero} aria-labelledby="hcp-home-heading">
       <div className={styles.heroLarge}>{imageLayers('large')}</div>
       <div className={styles.heroRight}>
-        <div className={styles.heroPreview}>{imageLayers('preview')}</div>
-        <p className={styles.heroKicker}>Welcome to Box Studio</p>
-        <div className={styles.heroTitleWrap}>
-          <h1 id="hcp-home-heading">
-            Innovative.
-            <br />
-            Creative.
-            <br />
-            Dependable.
-          </h1>
+        <div className={styles.heroIntro}>
+          <div className={styles.heroPreview}>{imageLayers('preview')}</div>
+          <p className={styles.heroKicker}>Welcome to Box Studio</p>
+          <div className={styles.heroTitleWrap}>
+            <h1 id="hcp-home-heading">
+              Innovative.
+              <br />
+              Creative.
+              <br />
+              Dependable.
+            </h1>
+          </div>
         </div>
         <div className={styles.heroCopy}>
           <p>
