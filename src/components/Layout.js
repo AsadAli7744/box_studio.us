@@ -3,8 +3,6 @@
 import { useEffect } from 'react';
 import { usePathname } from 'next/navigation';
 import { useCatalog } from '../context/CatalogContext';
-import Footer from './Footer';
-import Header from './Header';
 import { HcpHomeFooter, HcpHomeHeader } from './HcpHomeChrome';
 
 const WHATSAPP_NUMBER = '12254835392';
@@ -33,7 +31,6 @@ export default function Layout({ children }) {
   const { getProduct } = useCatalog();
   const slug = pathname.replace(/^\//, '');
   const admin = pathname.startsWith('/admin');
-  const home = pathname === '/';
   const dock = !admin && Boolean(slug) && !slug.includes('/') && Boolean(getProduct(slug));
 
   useEffect(() => {
@@ -45,11 +42,11 @@ export default function Layout({ children }) {
       <a className="skip-link" href="#main">
         Skip to content
       </a>
-      {admin ? null : home ? <HcpHomeHeader /> : <Header />}
+      {admin ? null : <HcpHomeHeader />}
       <main id="main" className={admin ? 'page admin-main' : 'page'} key={pathname}>
         {children}
       </main>
-      {admin ? null : home ? <HcpHomeFooter /> : <Footer />}
+      {admin ? null : <HcpHomeFooter />}
       {admin ? null : <WhatsAppButton />}
     </div>
   );

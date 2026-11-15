@@ -37,7 +37,7 @@ export function HcpHomeHeader() {
         <div className={styles.desktop}>
           <form className={styles.search} action="/custom-boxes">
             <label className="sr-only" htmlFor="home-header-search">Search boxes</label>
-            <input id="home-header-search" name="search" type="search" placeholder="search boxes..." />
+            <input id="home-header-search" name="q" type="search" placeholder="search boxes..." />
             <button type="submit" aria-label="Search boxes">
               <SearchIcon />
             </button>
