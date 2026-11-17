@@ -1,18 +1,20 @@
 'use client';
 
-import { useState } from 'react';
+import { useEffect, useId, useRef, useState } from 'react';
 import Link from 'next/link';
+import CatalogImage from './CatalogImage';
 import Logo from './Logo';
+import { useCatalog } from '../context/CatalogContext';
+import { buildIndustryGroups } from '../data/industries';
 import { site } from '../data/site';
 import styles from './HcpHomeChrome.module.css';
 
 const links = [
-  { label: 'categories', href: '/custom-boxes' },
-  { label: 'cosmetics', href: '/cosmetic-boxes' },
-  { label: 'healthcare', href: '/healthcare-boxes' },
-  { label: 'food', href: '/restaurant-food-boxes' },
-  { label: 'christmas', href: '/christmas-boxes' },
-  { label: 'quote', href: '/quote' },
+  { label: 'Cosmetics', href: '/cosmetic-boxes' },
+  { label: 'Healthcare', href: '/healthcare-boxes' },
+  { label: 'Food', href: '/restaurant-food-boxes' },
+  { label: 'Christmas', href: '/christmas-boxes' },
+  { label: 'Quote', href: '/quote' },
 ];
 
 function SearchIcon() {
@@ -26,6 +28,36 @@ function SearchIcon() {
 
 export function HcpHomeHeader() {
   const [open, setOpen] = useState(false);
+  const [categoriesOpen, setCategoriesOpen] = useState(false);
+  const [mobileCategoriesOpen, setMobileCategoriesOpen] = useState(false);
+  const categoriesRef = useRef(null);
+  const categoriesButtonRef = useRef(null);
+  const categoriesId = useId();
+  const mobileCategoriesId = useId();
+  const { categories } = useCatalog();
+  const industries = buildIndustryGroups(categories);
+
+  useEffect(() => {
+    if (!categoriesOpen) return undefined;
+
+    function closeOnOutsideClick(event) {
+      if (!categoriesRef.current?.contains(event.target)) setCategoriesOpen(false);
+    }
+
+    function closeOnEscape(event) {
+      if (event.key === 'Escape') {
+        setCategoriesOpen(false);
+        categoriesButtonRef.current?.focus();
+      }
+    }
+
+    document.addEventListener('pointerdown', closeOnOutsideClick);
+    document.addEventListener('keydown', closeOnEscape);
+    return () => {
+      document.removeEventListener('pointerdown', closeOnOutsideClick);
+      document.removeEventListener('keydown', closeOnEscape);
+    };
+  }, [categoriesOpen]);
 
   return (
     <header className={styles.header}>
@@ -37,12 +69,64 @@ export function HcpHomeHeader() {
         <div className={styles.desktop}>
           <form className={styles.search} action="/custom-boxes">
             <label className="sr-only" htmlFor="home-header-search">Search boxes</label>
-            <input id="home-header-search" name="q" type="search" placeholder="search boxes..." />
+            <input id="home-header-search" name="q" type="search" placeholder="Search boxes..." />
             <button type="submit" aria-label="Search boxes">
               <SearchIcon />
             </button>
           </form>
           <nav aria-label="Homepage navigation">
+            <div
+              className={styles.categoryDropdown}
+              ref={categoriesRef}
+              onMouseEnter={() => {
+                if (window.matchMedia('(hover: hover) and (pointer: fine)').matches) setCategoriesOpen(true);
+              }}
+              onMouseLeave={() => {
+                if (window.matchMedia('(hover: hover) and (pointer: fine)').matches) setCategoriesOpen(false);
+              }}
+            >
+              <button
+                type="button"
+                ref={categoriesButtonRef}
+                className={styles.categoryTrigger}
+                aria-expanded={categoriesOpen}
+                aria-controls={categoriesId}
+                onClick={() => setCategoriesOpen((current) => !current)}
+              >
+                Shop By Industry
+                <span className={styles.caret} aria-hidden="true" />
+              </button>
+              <div
+                id={categoriesId}
+                className={styles.categoryPanel}
+                hidden={!categoriesOpen}
+              >
+                <div className={styles.categoryPanelHead}>
+                  <strong>Shop By Industry</strong>
+                  <Link href="/custom-boxes" onClick={() => setCategoriesOpen(false)}>
+                    View All Boxes →
+                  </Link>
+                </div>
+                <div className={styles.categoryGrid}>
+                  {industries.map((industry) => (
+                    <Link
+                      key={industry.slug}
+                      href={industry.href}
+                      onClick={() => setCategoriesOpen(false)}
+                    >
+                      <CatalogImage
+                        src={industry.image}
+                        alt=""
+                        width={144}
+                        height={144}
+                        sizes="64px"
+                      />
+                      <span>{industry.name}</span>
+                    </Link>
+                  ))}
+                </div>
+              </div>
+            </div>
             {links.map((item) => (
               <Link key={item.href} href={item.href}>{item.label}</Link>
             ))}
@@ -68,9 +152,36 @@ export function HcpHomeHeader() {
         className={open ? `${styles.mobileMenu} ${styles.isOpen}` : styles.mobileMenu}
         aria-label="Mobile homepage navigation"
       >
+        <button
+          type="button"
+          className={styles.mobileCategoryTrigger}
+          aria-expanded={mobileCategoriesOpen}
+          aria-controls={mobileCategoriesId}
+          onClick={() => setMobileCategoriesOpen((current) => !current)}
+        >
+          <span>01</span>
+          Shop By Industry
+          <i className={styles.caret} aria-hidden="true" />
+        </button>
+        <div
+          id={mobileCategoriesId}
+          className={styles.mobileCategoryList}
+          hidden={!mobileCategoriesOpen}
+        >
+          <Link href="/custom-boxes" onClick={() => setOpen(false)}>All Custom Boxes</Link>
+          {industries.map((industry) => (
+            <Link
+              key={industry.slug}
+              href={industry.href}
+              onClick={() => setOpen(false)}
+            >
+              {industry.name}
+            </Link>
+          ))}
+        </div>
         {links.map((item, index) => (
           <Link key={item.href} href={item.href} onClick={() => setOpen(false)}>
-            <span>{String(index + 1).padStart(2, '0')}</span>
+            <span>{String(index + 2).padStart(2, '0')}</span>
             {item.label}
           </Link>
         ))}
@@ -126,7 +237,7 @@ export function HcpHomeFooter() {
         </div>
 
         <div className={styles.footerLinks}>
-          <Link href="/custom-boxes">Packaging Categories</Link>
+          <Link href="/custom-boxes">Shop By Industry</Link>
           <Link href="/quote">Request a Quote</Link>
           <a
             href={`https://mail.google.com/mail/?view=cm&fs=1&to=${encodeURIComponent(site.email)}`}

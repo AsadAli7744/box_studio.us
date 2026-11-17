@@ -16,7 +16,7 @@ export default function Footer() {
           </p>
         </div>
         <div>
-          <h2>Packaging Categories</h2>
+          <h2>Shop By Industry</h2>
           <ul>
             <li>
               <Link href="/cosmetic-boxes">All Cosmetic Boxes</Link>

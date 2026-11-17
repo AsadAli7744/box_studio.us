@@ -3,16 +3,15 @@
 import { useEffect, useState } from 'react';
 import Link from 'next/link';
 import { useCatalog } from '../context/CatalogContext';
+import { buildIndustryGroups } from '../data/industries';
 import { absoluteUrl, site } from '../data/site';
 import { usePageMeta } from '../hooks/usePageMeta';
 import styles from './HcpHomePage.module.css';
 
 const heroImages = [
-  '/images/hcp-home/hero-solar.jpg',
-  '/images/hcp-home/hero-industrial.jpg',
-  '/images/hcp-home/hero-fantasy.jpg',
-  '/images/hcp-home/hero-carousel.jpg',
-  '/images/hcp-home/hero-uno.jpg',
+  '/images/hcp-home/hero-fantasy-eyes.webp',
+  '/images/hcp-home/hero-solar-capsule.webp',
+  '/images/hcp-home/hero-velora.webp',
 ];
 
 function Arrow() {
@@ -175,15 +174,15 @@ function Hero() {
   );
 }
 
-function LatestUpdates({ categories }) {
+function LatestUpdates({ industries }) {
   return (
-    <section className={`${styles.section} ${styles.beige}`}>
+    <section className={`${styles.section} ${styles.beige} ${styles.industrySection}`}>
       <div className={styles.sectionInner}>
-        <h2>Packaging categories</h2>
+        <h2>Shop By Industry</h2>
         <div className={styles.updates}>
-          {categories.map((item) => (
+          {industries.map((item) => (
             <article key={item.slug} className={styles.updateCard}>
-              <Link href={`/${item.slug}`}>
+              <Link href={item.href}>
                 <img src={item.image} alt={item.alt} loading="lazy" />
                 <h3>{item.name}</h3>
               </Link>
@@ -199,7 +198,7 @@ function LatestUpdates({ categories }) {
 function Discover() {
   return (
     <>
-      <section className={`${styles.section} ${styles.beige}`}>
+      <section className={`${styles.section} ${styles.beige} ${styles.discoverSection}`}>
         <div className={`${styles.sectionInner} ${styles.copyGrid}`}>
           <h2>Discover what we do</h2>
           <div>
@@ -217,9 +216,14 @@ function Discover() {
       </section>
       <div className={styles.beigeToWhite}>
         <FadeImages
-          images={['/images/hcp-home/discover-fusion.jpg', '/images/hcp-home/discover-brow.jpg']}
-          alt="A diagonal arrangement of cosmetic bottles and tubes."
+          images={[
+            '/images/what we do/Brow Obsession premium carton flatlay-4.webp',
+            '/images/what we do/Aqua Skincare Carton Quartet-1.webp',
+            '/images/what we do/Honey-Gold Art Deco Cosmetic Packaging-3.webp',
+          ]}
+          alt="A collection of premium custom cosmetic and skincare packaging."
           className={styles.featureImage}
+          interval={2800}
         />
       </div>
     </>
@@ -269,6 +273,7 @@ function Newsletter() {
 
 export default function HcpHomePage() {
   const { categories } = useCatalog();
+  const industries = buildIndustryGroups(categories);
 
   usePageMeta({
     title: 'Custom Cosmetic, Skincare & Product Packaging | Box Studio',
@@ -288,7 +293,7 @@ export default function HcpHomePage() {
   return (
     <div className={styles.home}>
       <Hero />
-      <LatestUpdates categories={categories} />
+      <LatestUpdates industries={industries} />
       <Discover />
       <EditorialSection
         title="A beautiful future"
@@ -296,8 +301,12 @@ export default function HcpHomePage() {
           'Better packaging begins with considered choices: the right structure, the right amount of material and finishes selected for a clear purpose.',
           'We help brands compare paperboard, kraft and recyclable options while keeping protection, print quality and shelf presence in view.',
         ]}
-        images={['/images/hcp-home/future-main.jpg', '/images/hcp-home/future-alt.jpg']}
-        alt="A clean arrangement of pastel cosmetic packaging."
+        images={[
+          '/images/beautiful future/mmckewtrojgeinzxiw4j.webp',
+          '/images/beautiful future/Drift beauty cartons on ivory stone-6.webp',
+          '/images/beautiful future/ioxxesfonf8hzb05og3z.webp',
+        ]}
+        alt="A refined collection of modern beauty packaging."
         href="/quote"
         linkLabel="Find out more"
       />
@@ -307,8 +316,14 @@ export default function HcpHomePage() {
           'A distinctive finish, proportion or opening detail can turn a familiar carton into something memorable.',
           'Use current colour, material and decoration ideas as a starting point, then make the final packaging recognisably yours.',
         ]}
-        images={['/images/hcp-home/trends-main.jpg', '/images/hcp-home/trends-alt.jpg']}
-        alt="A styled collection of contemporary lipstick packaging."
+        images={[
+          '/images/trends/Paradiso Botanical Folding Carton Collection-3.webp',
+          '/images/trends/Caresse rose-peach embossed carton collection-4.webp',
+          '/images/trends/Pastel Creams Folding Carton Showcase-5.webp',
+          '/images/trends/Turquoise luxury folding carton showcase-2.webp',
+          '/images/trends/Dreamy starlight skincare carton collection-1.webp',
+        ]}
+        alt="A collection of contemporary folding-carton packaging trends."
         href="/custom-boxes"
         linkLabel="Explore all boxes"
       />

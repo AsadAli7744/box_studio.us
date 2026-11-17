@@ -170,7 +170,7 @@ export default function Header() {
               aria-controls={industryId}
               onClick={() => setIndustryOpen((open) => !open)}
             >
-              Packaging Categories
+              Shop By Industry
               <span className="caret" aria-hidden="true" />
             </button>
             <div className="dropdown-panel nav-menu" id={industryId} hidden={!industryOpen}>
@@ -275,7 +275,7 @@ export default function Header() {
               aria-expanded={mobileIndustry}
               onClick={() => setMobileIndustry((open) => !open)}
             >
-              Packaging Categories
+              Shop By Industry
             </button>
             {mobileIndustry ? (
               <ul className="mobile-sub">
