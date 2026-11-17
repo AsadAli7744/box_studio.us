@@ -44,7 +44,7 @@ export const INDUSTRY_DEFINITIONS = [
     slug: 'food',
     name: 'Food',
     categorySlugs: ['restaurant-food-boxes'],
-    image: '/images/industries/food & resturant packaging.webp',
+    image: '/images/industries/food-restaurant-packaging.webp',
   },
 ];
 
