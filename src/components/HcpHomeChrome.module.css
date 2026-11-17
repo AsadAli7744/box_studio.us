@@ -229,6 +229,11 @@
   display: none;
 }
 
+.mobileSearch,
+.mobileActions {
+  display: none;
+}
+
 .footer {
   background: #8ed8cf;
   color: #050505;
@@ -329,12 +334,107 @@
     min-height: 64px;
   }
 
+  .logoLink {
+    flex: 0 1 auto;
+    max-width: min(54vw, 195px);
+    overflow: hidden;
+    opacity: 1;
+    transform: none;
+    transition: max-width 0.35s ease, opacity 0.25s ease, transform 0.35s ease;
+  }
+
+  .logoLink.logoHidden {
+    max-width: 0;
+    opacity: 0;
+    pointer-events: none;
+    transform: translateX(-14px);
+  }
+
   .logoLink :global(.logo) {
     width: min(54vw, 195px);
+    min-width: min(54vw, 195px);
   }
 
   .desktop {
     display: none;
+  }
+
+  .mobileActions {
+    display: flex;
+    flex: 0 0 auto;
+    align-items: center;
+    gap: 0.15rem;
+  }
+
+  .mobileSearchToggle {
+    display: grid;
+    width: 44px;
+    height: 44px;
+    padding: 0;
+    place-items: center;
+    border: 0;
+    background: transparent;
+  }
+
+  .mobileSearchToggle svg {
+    width: 23px;
+    height: 23px;
+    fill: none;
+    stroke: #000;
+    stroke-width: 1.7;
+  }
+
+  .mobileSearch {
+    display: flex;
+    flex: 0 1 0;
+    align-items: stretch;
+    max-width: 0;
+    height: 40px;
+    margin-left: auto;
+    overflow: hidden;
+    border: 1px solid transparent;
+    opacity: 0;
+    pointer-events: none;
+    transform: translateX(12px);
+    transition: flex-basis 0.35s ease, max-width 0.35s ease, opacity 0.25s ease,
+      transform 0.35s ease, border-color 0.25s ease;
+  }
+
+  .mobileSearch.isOpen {
+    flex: 1 1 auto;
+    max-width: calc(100% - 92px);
+    margin-right: 0.35rem;
+    border-color: #d8d8d8;
+    opacity: 1;
+    pointer-events: auto;
+    transform: none;
+  }
+
+  .mobileSearch input {
+    flex: 1;
+    min-width: 0;
+    padding: 0.45rem 0.65rem;
+    border: 0;
+    outline: 0;
+    background: #fff;
+    font-size: 0.8rem;
+  }
+
+  .mobileSearch button {
+    display: grid;
+    flex: 0 0 38px;
+    padding: 0;
+    place-items: center;
+    border: 0;
+    background: #fff;
+  }
+
+  .mobileSearch button svg {
+    width: 17px;
+    height: 17px;
+    fill: none;
+    stroke: #000;
+    stroke-width: 1.6;
   }
 
   .menuButton {
@@ -404,9 +504,25 @@
   .mobileCategoryList {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    padding: 0.5rem 0.8rem 0.8rem 2.5rem;
-    border-bottom: 1px solid #ececec;
+    max-height: 0;
+    padding: 0 0.8rem 0 2.5rem;
+    overflow: hidden;
+    border-bottom: 1px solid transparent;
     background: #f7f5f2;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(-8px);
+    transition: max-height 0.4s ease, padding 0.4s ease, opacity 0.25s ease,
+      visibility 0.4s ease, transform 0.35s ease, border-color 0.35s ease;
+  }
+
+  .mobileCategoryList.isOpen {
+    max-height: 440px;
+    padding: 0.5rem 0.8rem 0.8rem 2.5rem;
+    border-bottom-color: #ececec;
+    opacity: 1;
+    visibility: visible;
+    transform: none;
   }
 
   .mobileMenu .mobileCategoryList a {
@@ -446,7 +562,10 @@
 }
 
 @media (prefers-reduced-motion: reduce) {
+  .logoLink,
+  .mobileSearch,
   .menuButton span,
+  .mobileCategoryList,
   .mobileMenu {
     transition: none;
   }

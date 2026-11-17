@@ -10,11 +10,8 @@ import { site } from '../data/site';
 import styles from './HcpHomeChrome.module.css';
 
 const links = [
-  { label: 'Cosmetics', href: '/cosmetic-boxes' },
-  { label: 'Healthcare', href: '/healthcare-boxes' },
-  { label: 'Food', href: '/restaurant-food-boxes' },
   { label: 'Christmas', href: '/christmas-boxes' },
-  { label: 'Quote', href: '/quote' },
+  { label: "Get Quote for Your Brand's Box", href: '/quote' },
 ];
 
 function SearchIcon() {
@@ -28,14 +25,31 @@ function SearchIcon() {
 
 export function HcpHomeHeader() {
   const [open, setOpen] = useState(false);
+  const [mobileSearchOpen, setMobileSearchOpen] = useState(false);
   const [categoriesOpen, setCategoriesOpen] = useState(false);
   const [mobileCategoriesOpen, setMobileCategoriesOpen] = useState(false);
+  const mobileSearchRef = useRef(null);
   const categoriesRef = useRef(null);
   const categoriesButtonRef = useRef(null);
   const categoriesId = useId();
   const mobileCategoriesId = useId();
   const { categories } = useCatalog();
   const industries = buildIndustryGroups(categories);
+
+  useEffect(() => {
+    if (!mobileSearchOpen) return undefined;
+    const timer = window.setTimeout(() => mobileSearchRef.current?.focus(), 220);
+
+    function closeOnEscape(event) {
+      if (event.key === 'Escape') setMobileSearchOpen(false);
+    }
+
+    document.addEventListener('keydown', closeOnEscape);
+    return () => {
+      window.clearTimeout(timer);
+      document.removeEventListener('keydown', closeOnEscape);
+    };
+  }, [mobileSearchOpen]);
 
   useEffect(() => {
     if (!categoriesOpen) return undefined;
@@ -62,7 +76,11 @@ export function HcpHomeHeader() {
   return (
     <header className={styles.header}>
       <div className={styles.headerInner}>
-        <Link href="/" className={styles.logoLink} aria-label="Boxstudio.us, home">
+        <Link
+          href="/"
+          className={mobileSearchOpen ? `${styles.logoLink} ${styles.logoHidden}` : styles.logoLink}
+          aria-label="Boxstudio.us, home"
+        >
           <Logo />
         </Link>
 
@@ -133,18 +151,53 @@ export function HcpHomeHeader() {
           </nav>
         </div>
 
-        <button
-          type="button"
-          className={open ? `${styles.menuButton} ${styles.isOpen}` : styles.menuButton}
-          aria-expanded={open}
-          aria-controls="hcp-home-menu"
-          aria-label={open ? 'Close menu' : 'Open menu'}
-          onClick={() => setOpen((current) => !current)}
+        <form
+          className={mobileSearchOpen ? `${styles.mobileSearch} ${styles.isOpen}` : styles.mobileSearch}
+          action="/custom-boxes"
         >
-          <span />
-          <span />
-          <span />
-        </button>
+          <label className="sr-only" htmlFor="mobile-header-search">Search boxes</label>
+          <input
+            ref={mobileSearchRef}
+            id="mobile-header-search"
+            name="q"
+            type="search"
+            placeholder="Search boxes..."
+          />
+          <button type="submit" aria-label="Submit search">
+            <SearchIcon />
+          </button>
+        </form>
+
+        <div className={styles.mobileActions}>
+          <button
+            type="button"
+            className={styles.mobileSearchToggle}
+            aria-expanded={mobileSearchOpen}
+            aria-controls="mobile-header-search"
+            aria-label={mobileSearchOpen ? 'Close search' : 'Open search'}
+            onClick={() => {
+              setOpen(false);
+              setMobileSearchOpen((current) => !current);
+            }}
+          >
+            <SearchIcon />
+          </button>
+          <button
+            type="button"
+            className={open ? `${styles.menuButton} ${styles.isOpen}` : styles.menuButton}
+            aria-expanded={open}
+            aria-controls="hcp-home-menu"
+            aria-label={open ? 'Close menu' : 'Open menu'}
+            onClick={() => {
+              setMobileSearchOpen(false);
+              setOpen((current) => !current);
+            }}
+          >
+            <span />
+            <span />
+            <span />
+          </button>
+        </div>
       </div>
 
       <nav
@@ -165,8 +218,12 @@ export function HcpHomeHeader() {
         </button>
         <div
           id={mobileCategoriesId}
-          className={styles.mobileCategoryList}
-          hidden={!mobileCategoriesOpen}
+          className={
+            mobileCategoriesOpen
+              ? `${styles.mobileCategoryList} ${styles.isOpen}`
+              : styles.mobileCategoryList
+          }
+          aria-hidden={!mobileCategoriesOpen}
         >
           <Link href="/custom-boxes" onClick={() => setOpen(false)}>All Custom Boxes</Link>
           {industries.map((industry) => (

@@ -179,17 +179,32 @@ function LatestUpdates({ industries }) {
     <section className={`${styles.section} ${styles.beige} ${styles.industrySection}`}>
       <div className={styles.sectionInner}>
         <h2>Shop By Industry</h2>
-        <div className={styles.updates}>
-          {industries.map((item) => (
-            <article key={item.slug} className={styles.updateCard}>
-              <Link href={item.href}>
-                <img src={item.image} alt={item.alt} loading="lazy" />
-                <h3>{item.name}</h3>
-              </Link>
-            </article>
-          ))}
+        <div className={styles.industryDesktop}>
+          <div className={styles.updates}>
+            {industries.map((item) => (
+              <article key={item.slug} className={styles.updateCard}>
+                <Link href={item.href}>
+                  <img src={item.image} alt={item.alt} loading="lazy" />
+                  <h3>{item.name}</h3>
+                </Link>
+              </article>
+            ))}
+          </div>
+          <TextLink href="/custom-boxes">View all boxes</TextLink>
         </div>
-        <TextLink href="/custom-boxes">View all boxes</TextLink>
+        <div className={styles.industryMobile}>
+          <p>
+            Cosmetics, Skincare, Make-up, Haircare, Fragrance, Pharma &amp; Healthcare, and Food.{' '}
+            <Link href="/industries" className={styles.industryInlineLink}>View all industries</Link>
+          </p>
+          <Link href="/industries" aria-label="View all packaging industries">
+            <img
+              src="/images/Premium products in six elegant arches.png"
+              alt="Cosmetics, skincare, makeup, fragrance, healthcare, and food products displayed in arches."
+              loading="lazy"
+            />
+          </Link>
+        </div>
       </div>
     </section>
   );

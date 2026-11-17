@@ -7,6 +7,7 @@ export const RESERVED_SLUGS = new Set([
   'quote',
   'custom-boxes',
   'custom-box-for-your-brand',
+  'industries',
   'admin',
   'api',
 ]);

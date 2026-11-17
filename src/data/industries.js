@@ -2,12 +2,7 @@ export const INDUSTRY_DEFINITIONS = [
   {
     slug: 'cosmetics',
     name: 'Cosmetics',
-    categorySlugs: [
-      'cosmetic-boxes',
-      'mens-grooming-boxes',
-      'beauty-gift-boxes',
-      'christmas-boxes',
-    ],
+    categorySlugs: ['cosmetic-boxes'],
     image: '/images/industries/cosmetic packaging.webp',
   },
   {

@@ -13,8 +13,8 @@
   --orange-2: #cf5c12;
   --danger: #8c3a32;
   --shadow: 0 24px 60px rgba(11, 48, 37, 0.1);
-  --font-display: "Segoe UI", system-ui, sans-serif;
-  --font-body: "Segoe UI", system-ui, sans-serif;
+  --font-display: futura-pt, sans-serif;
+  --font-body: futura-pt, sans-serif;
   --header: 92px;
   --email-bar: 0px;
   --ease: cubic-bezier(0.22, 1, 0.36, 1);
@@ -801,7 +801,7 @@ a { color: inherit; }
   gap: 28px;
 }
 .rotator-name {
-  font-family: Georgia, serif;
+  font-family: var(--font-display);
   font-size: 24px;
   margin-top: 4px;
   color: #203e49;
@@ -1666,7 +1666,7 @@ legend { font-family: var(--font-display); font-size: 1.6rem; padding: 0; }
   max-width: 14ch;
   margin: 0 0 0.85rem;
   color: #1d4a38;
-  font-family: Georgia, "Times New Roman", serif;
+  font-family: var(--font-display);
   font-style: italic;
   font-weight: 500;
   font-size: clamp(2.7rem, 4.4vw, 3.7rem);

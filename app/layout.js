@@ -26,6 +26,11 @@ export default async function RootLayout({ children }) {
   const catalog = await getPublicCatalog();
   return (
     <html lang="en">
+      <head>
+        <link rel="preconnect" href="https://use.typekit.net" />
+        <link rel="preconnect" href="https://p.typekit.net" />
+        <link rel="stylesheet" href="https://use.typekit.net/vab1qfb.css" />
+      </head>
       <body>
         <noscript>Box Studio needs JavaScript to show this website.</noscript>
         <CatalogProvider initialCatalog={catalog}>
