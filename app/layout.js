@@ -11,7 +11,6 @@ export const metadata = {
   icons: {
     icon: [{ url: '/favicon.svg', type: 'image/svg+xml' }],
   },
-  manifest: '/manifest.json',
   alternates: {
     canonical: 'https://boxstudio.us/',
   },

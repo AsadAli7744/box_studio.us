@@ -317,16 +317,6 @@
     margin: 0;
   }
 
-  .heroPreview::after {
-    content: "";
-    position: absolute;
-    right: 0;
-    bottom: 0;
-    left: 0;
-    height: 82px;
-    background: #000;
-  }
-
   .heroKicker {
     position: relative;
     top: auto;
@@ -382,7 +372,7 @@
   .heroPreview {
     position: absolute;
     inset: 0 0 auto;
-    height: 66%;
+    height: 72%;
   }
 
   .heroTitleWrap {
