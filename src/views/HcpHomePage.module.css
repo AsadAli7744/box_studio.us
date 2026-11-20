@@ -124,14 +124,19 @@
   align-items: center;
   gap: 0.85rem;
   margin-top: 1rem;
-  color: #000;
+  color: #050505;
   font-size: 0.98rem;
   font-weight: 650;
   text-decoration: none;
 }
 
 .textLink span {
-  border-bottom: 1px solid currentColor;
+  background-image: linear-gradient(
+    transparent 48%,
+    var(--reference-mint) 48% 100%
+  );
+  box-decoration-break: clone;
+  -webkit-box-decoration-break: clone;
 }
 
 .textLink svg {

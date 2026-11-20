@@ -1,10 +1,9 @@
 'use client';
 
-import { useEffect, useState } from 'react';
+import { useEffect, useMemo, useState } from 'react';
 import { useParams, useRouter } from 'next/navigation';
 import Accordion from '../components/Accordion';
-import Breadcrumbs, { breadcrumbJson } from '../components/Breadcrumbs';
-import CatalogImage from '../components/CatalogImage';
+import { breadcrumbJson } from '../components/Breadcrumbs';
 import RelatedSlider from '../components/RelatedSlider';
 import { absoluteUrl } from '../data/site';
 import { useCatalog } from '../context/CatalogContext';
@@ -13,16 +12,79 @@ import { usePageMeta } from '../hooks/usePageMeta';
 import { selectionFromProduct, withPreservedContact } from '../utils/quoteDraft';
 import NotFoundPage from './NotFoundPage';
 
+function QuoteArrow() {
+  return (
+    <svg viewBox="0 0 18 18" aria-hidden="true">
+      <path d="M3 15 15 3M7 3h8v8" />
+    </svg>
+  );
+}
+
+function ProductFadeImages({ images, alt, interval = 2800 }) {
+  const [active, setActive] = useState(0);
+  const [ready, setReady] = useState(false);
+  const sources = useMemo(() => images.map((image) => image.src), [images]);
+
+  useEffect(() => {
+    setActive(0);
+    setReady(false);
+    let cancelled = false;
+    Promise.all(
+      sources.map(
+        (src) =>
+          new Promise((resolve) => {
+            const image = new Image();
+            image.onload = async () => {
+              try {
+                await image.decode();
+              } catch {
+                // Keep the loaded image when decode is unavailable.
+              }
+              resolve();
+            };
+            image.onerror = resolve;
+            image.src = src;
+          }),
+      ),
+    ).then(() => {
+      if (!cancelled) setReady(true);
+    });
+    return () => {
+      cancelled = true;
+    };
+  }, [sources]);
+
+  useEffect(() => {
+    if (!ready || sources.length < 2) return undefined;
+    const timer = window.setInterval(() => {
+      setActive((current) => (current + 1) % sources.length);
+    }, interval);
+    return () => window.clearInterval(timer);
+  }, [sources.length, interval, ready]);
+
+  return (
+    <div className="product-fade-images">
+      {images.map((image, index) => (
+        <img
+          key={image.src}
+          src={image.src}
+          alt={index === 0 ? alt : ''}
+          aria-hidden={index === 0 ? undefined : true}
+          className={index === active ? 'is-active' : ''}
+          loading={index === 0 ? 'eager' : 'lazy'}
+          fetchPriority={index === 0 ? 'high' : 'auto'}
+          decoding="async"
+        />
+      ))}
+    </div>
+  );
+}
+
 export default function ProductPage() {
   const { slug } = useParams();
   const { getProduct, getCategory } = useCatalog();
   const product = getProduct(slug);
-  const [imageIndex, setImageIndex] = useState(0);
   const router = useRouter();
-
-  useEffect(() => {
-    setImageIndex(0);
-  }, [slug]);
   const { updateQuote } = useRequest();
   const category = product ? getCategory(product.category) : null;
   const related = product?.related
@@ -72,7 +134,7 @@ export default function ProductPage() {
 
   if (!product) return <NotFoundPage />;
 
-  const image = product.images[imageIndex] || product.images[0];
+  const image = product.images[0];
 
   function carry(step) {
     updateQuote((current) =>
@@ -88,50 +150,28 @@ export default function ProductPage() {
     );
   }
 
+  function goToQuote() {
+    carry('specs');
+    router.push(`/quote?product=${product.slug}`);
+  }
+
   return (
     <article className="product-page">
-      <Breadcrumbs items={crumbs} />
-      <div className="product-layout">
-        <div className="gallery">
-          <CatalogImage src={image.src} alt={image.alt} sizes="(max-width: 900px) 100vw, 50vw" priority />
-          {product.images.length > 1 ? (
-            <div className="thumbs" role="group" aria-label="Product images">
-              {product.images.map((item, index) => (
-                <button
-                  key={item.src}
-                  type="button"
-                  aria-label={`Image ${index + 1} of ${product.images.length}`}
-                  aria-pressed={index === imageIndex}
-                  onClick={() => setImageIndex(index)}
-                >
-                  <CatalogImage src={item.src} alt="" width={160} height={160} sizes="72px" />
-                </button>
-              ))}
-            </div>
-          ) : null}
-        </div>
-        <div className="product-summary">
-          <p className="eyebrow">{product.categoryLabel}</p>
+      <section className="product-hero">
+        <div className="product-hero-copy">
           <h1>{product.name}</h1>
-          <p className="structure-label">{product.structureName}</p>
-          <p className="lede">{product.description}</p>
-          <h2>Made for products like yours</h2>
-          <ul>
-            {product.applications.map((item) => (
-              <li key={item}>{item}</li>
-            ))}
-          </ul>
-          <button
-            type="button"
-            className="btn btn-dark"
-            onClick={() => {
-              carry('specs');
-              router.push(`/quote?product=${product.slug}`);
-            }}
-          >
-            Get a Quote for This Box
-          </button>
+          <div>
+            <p>{product.description}</p>
+            <button type="button" className="cta-heading product-text-link" onClick={goToQuote}>
+              <span>Get a Quote for This Box</span>
+              <QuoteArrow />
+            </button>
+          </div>
         </div>
+      </section>
+
+      <div className="product-hero-media">
+        <ProductFadeImages images={product.images} alt={image.alt} />
       </div>
 
       <RelatedSlider items={related} />
@@ -141,16 +181,8 @@ export default function ProductPage() {
         <Accordion items={product.faqs} />
       </section>
 
-
       <div className="quote-dock">
-        <button
-          type="button"
-          className="btn btn-gold"
-          onClick={() => {
-            carry('specs');
-            router.push(`/quote?product=${product.slug}`);
-          }}
-        >
+        <button type="button" className="btn btn-gold" onClick={goToQuote}>
           Get a Quote for This Box
         </button>
       </div>
