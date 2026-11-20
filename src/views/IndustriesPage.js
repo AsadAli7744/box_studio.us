@@ -12,9 +12,9 @@ export default function IndustriesPage() {
   const industries = buildIndustryGroups(categories);
 
   usePageMeta({
-    title: 'Shop By Industry | Box Studio',
+    title: 'Custom Packaging by Industry | Cosmetics, Food & Healthcare | Box Studio',
     description:
-      'Explore custom packaging for cosmetics, skincare, make-up, haircare, fragrance, healthcare, pharma, and food.',
+      'Explore custom packaging by industry for cosmetics, skincare, makeup, fragrance, healthcare and food. Choose a category to browse matching product boxes.',
     path: '/industries',
     image: absoluteUrl('/images/Premium products in six elegant arches.png'),
   });

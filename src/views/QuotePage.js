@@ -4,8 +4,10 @@ import { useEffect, useState } from 'react';
 import { useSearchParams } from 'next/navigation';
 import { absoluteUrl } from '../data/site';
 import { useCatalog } from '../context/CatalogContext';
+import { useLoading } from '../context/LoadingContext';
 import { useRequest } from '../context/RequestContext';
 import { usePageMeta } from '../hooks/usePageMeta';
+import { trackEvent } from '../components/Analytics';
 import { downloadTextFile, submitQuoteRequest } from '../services/submissions';
 import { buildQuoteSummary } from '../utils/summary';
 import { hasErrors } from '../utils/validation';
@@ -24,6 +26,7 @@ export default function QuotePage() {
   const params = useSearchParams();
   const { quote, updateQuote, addFiles, removeFile } = useRequest();
   const { getProduct } = useCatalog();
+  const { withLoading } = useLoading();
   const [errors, setErrors] = useState({});
   const [fileErrors, setFileErrors] = useState([]);
   const [summary, setSummary] = useState('');
@@ -31,14 +34,15 @@ export default function QuotePage() {
   const artwork = quote.files[0];
 
   usePageMeta({
-    title: 'Get a Quote | Box Studio',
-    description: 'Get a quote for folding cartons, art card packaging, custom logo boxes, and other print and packaging.',
+    title: 'Request a Custom Packaging Quote | Box Studio',
+    description:
+      'Request a quote for custom packaging, printed folding cartons, and product boxes. Share dimensions, materials and artwork guidance for a production-ready estimate.',
     path: '/quote',
     image: absoluteUrl('/images/hero-smooth.png'),
     jsonLd: {
       '@context': 'https://schema.org',
       '@type': 'WebPage',
-      name: 'Get a Quote',
+      name: 'Request a Custom Packaging Quote',
       url: absoluteUrl('/quote'),
     },
   });
@@ -78,9 +82,15 @@ export default function QuotePage() {
     setErrors(next);
     if (hasErrors(next) || fileErrors.length) return;
     const text = buildQuoteSummary(quote, product);
-    await submitQuoteRequest();
-    setSummary(text);
-    updateQuote({ prepared: true });
+    await withLoading(async () => {
+      await submitQuoteRequest();
+      setSummary(text);
+      updateQuote({ prepared: true });
+      trackEvent('quote_submit', {
+        product_slug: quote.productSlug || 'custom',
+        has_artwork: Boolean(quote.files.length),
+      });
+    });
   }
 
   return (

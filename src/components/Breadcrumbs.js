@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import { absoluteUrl } from '../data/site';
 
 export default function Breadcrumbs({ items }) {
   return (
@@ -28,7 +29,7 @@ export function breadcrumbJson(items) {
       '@type': 'ListItem',
       position: index + 1,
       name: item.label,
-      ...(item.to ? { item: `https://boxstudio.us${item.to}` } : {}),
+      ...(item.to ? { item: absoluteUrl(item.to) } : {}),
     })),
   };
 }

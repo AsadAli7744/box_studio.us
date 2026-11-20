@@ -4,6 +4,7 @@ import { useEffect, useId, useMemo, useRef, useState } from 'react';
 import Link from 'next/link';
 import { usePathname, useRouter } from 'next/navigation';
 import { useCatalog } from '../context/CatalogContext';
+import { useLoading } from '../context/LoadingContext';
 import { site } from '../data/site';
 import { useScrolled } from '../hooks/useScrolled';
 import CatalogImage from './CatalogImage';
@@ -13,6 +14,7 @@ export default function Header() {
   const scrolled = useScrolled();
   const pathname = usePathname();
   const router = useRouter();
+  const { startLoading } = useLoading();
   const [menuOpen, setMenuOpen] = useState(false);
   const [industryOpen, setIndustryOpen] = useState(false);
   const [mobileIndustry, setMobileIndustry] = useState(false);
@@ -62,6 +64,7 @@ export default function Header() {
     const needle = query.trim();
     setSearchOpen(false);
     setMenuOpen(false);
+    startLoading();
     router.push(needle ? `/custom-boxes?q=${encodeURIComponent(needle)}` : '/custom-boxes');
   }
 

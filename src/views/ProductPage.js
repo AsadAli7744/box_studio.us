@@ -7,6 +7,7 @@ import { breadcrumbJson } from '../components/Breadcrumbs';
 import RelatedSlider from '../components/RelatedSlider';
 import { absoluteUrl } from '../data/site';
 import { useCatalog } from '../context/CatalogContext';
+import { useLoading } from '../context/LoadingContext';
 import { useRequest } from '../context/RequestContext';
 import { usePageMeta } from '../hooks/usePageMeta';
 import { selectionFromProduct, withPreservedContact } from '../utils/quoteDraft';
@@ -85,6 +86,7 @@ export default function ProductPage() {
   const { getProduct, getCategory } = useCatalog();
   const product = getProduct(slug);
   const router = useRouter();
+  const { startLoading } = useLoading();
   const { updateQuote } = useRequest();
   const category = product ? getCategory(product.category) : null;
   const related = product?.related
@@ -102,7 +104,7 @@ export default function ProductPage() {
     : [];
 
   usePageMeta({
-    title: product ? `${product.name} | Box Studio` : 'Box not found | Box Studio',
+    title: product ? `${product.name} | Custom Packaging | Box Studio` : 'Box not found | Box Studio',
     description: product ? product.meta || product.short : 'This box is not available.',
     path: product ? `/${product.slug}` : '/custom-boxes',
     image: product ? absoluteUrl(product.images[0].src) : undefined,
@@ -152,6 +154,7 @@ export default function ProductPage() {
 
   function goToQuote() {
     carry('specs');
+    startLoading();
     router.push(`/quote?product=${product.slug}`);
   }
 
@@ -161,7 +164,7 @@ export default function ProductPage() {
         <div className="product-hero-copy">
           <h1>{product.name}</h1>
           <div>
-            <p>{product.description}</p>
+            <p className="lede">{product.description}</p>
             <button type="button" className="cta-heading product-text-link" onClick={goToQuote}>
               <span>Get a Quote for This Box</span>
               <QuoteArrow />

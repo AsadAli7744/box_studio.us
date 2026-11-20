@@ -3,6 +3,7 @@
 import { useEffect } from 'react';
 import { usePathname } from 'next/navigation';
 import { useCatalog } from '../context/CatalogContext';
+import { trackEvent } from './Analytics';
 import { HcpHomeFooter, HcpHomeHeader } from './HcpHomeChrome';
 
 const WHATSAPP_NUMBER = '12254835392';
@@ -15,6 +16,7 @@ function WhatsAppButton() {
       target="_blank"
       rel="noopener noreferrer"
       aria-label="Chat on WhatsApp"
+      onClick={() => trackEvent('whatsapp_click', { location: 'floating_button' })}
     >
       <svg viewBox="0 0 24 24" aria-hidden="true">
         <path

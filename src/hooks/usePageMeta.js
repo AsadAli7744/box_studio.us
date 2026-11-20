@@ -1,7 +1,9 @@
 import { useEffect } from 'react';
 import { absoluteUrl } from '../data/site';
+import { indexingAllowed } from '../lib/seo';
 
 function ensureMeta(attribute, key, value) {
+  if (!value) return;
   const selector = `meta[${attribute}="${key}"]`;
   let node = document.head.querySelector(selector);
   if (!node) {
@@ -13,12 +15,10 @@ function ensureMeta(attribute, key, value) {
 }
 
 /**
- * Sets the document title, description, canonical URL, and structured data.
- * Create React App applies this in the browser after JavaScript runs.
- * Build-time prerendering of these routes remains an SEO improvement for
- * crawlers that do not execute the page.
+ * Client-side meta sync for soft navigations.
+ * Server generateMetadata remains the primary crawlable source.
  */
-export function usePageMeta({ title, description, path, image, jsonLd }) {
+export function usePageMeta({ title, description, path, image, jsonLd, noIndex = false }) {
   const serialized = jsonLd ? JSON.stringify(jsonLd) : '';
 
   useEffect(() => {
@@ -27,8 +27,18 @@ export function usePageMeta({ title, description, path, image, jsonLd }) {
     ensureMeta('property', 'og:title', title);
     ensureMeta('property', 'og:description', description);
     ensureMeta('property', 'og:type', 'website');
+    ensureMeta('property', 'og:site_name', 'Box Studio');
+    ensureMeta('property', 'og:locale', 'en_US');
     ensureMeta('property', 'og:url', absoluteUrl(path));
     if (image) ensureMeta('property', 'og:image', image);
+    ensureMeta('name', 'twitter:card', 'summary_large_image');
+    ensureMeta('name', 'twitter:title', title);
+    ensureMeta('name', 'twitter:description', description);
+    if (image) ensureMeta('name', 'twitter:image', image);
+
+    const host = window.location.hostname;
+    const block = noIndex || !indexingAllowed(host);
+    ensureMeta('name', 'robots', block ? 'noindex, nofollow, noimageindex' : 'index, follow');
 
     let canonical = document.head.querySelector('link[rel="canonical"]');
     if (!canonical) {
@@ -50,5 +60,5 @@ export function usePageMeta({ title, description, path, image, jsonLd }) {
     } else if (script) {
       script.remove();
     }
-  }, [title, description, path, image, serialized]);
+  }, [title, description, path, image, serialized, noIndex]);
 }

@@ -291,9 +291,9 @@ export default function HcpHomePage() {
   const industries = buildIndustryGroups(categories);
 
   usePageMeta({
-    title: 'Custom Cosmetic, Skincare & Product Packaging | Box Studio',
+    title: 'Custom Packaging Solutions | Printed Packaging | Box Studio',
     description:
-      'Creative custom printed packaging for cosmetics, skincare, fragrance, food, healthcare, gifts and retail products.',
+      'Custom packaging solutions for cosmetics, skincare, fragrance, food, healthcare and retail. Printed packaging designed around your product, then quoted for production in the United States.',
     path: '/',
     image: absoluteUrl(heroImages[0]),
     jsonLd: {
@@ -301,7 +301,7 @@ export default function HcpHomePage() {
       '@type': 'WebSite',
       name: site.name,
       url: site.url,
-      description: site.description,
+      description: site.summary || site.description,
     },
   });
 
