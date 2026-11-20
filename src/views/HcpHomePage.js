@@ -70,8 +70,8 @@ function FadeImages({ images, alt, interval = 4800, eager = false, className = '
           alt={index === 0 ? alt : ''}
           aria-hidden={index === 0 ? undefined : true}
           className={index === active ? styles.isActive : ''}
-          loading={eager ? 'eager' : 'lazy'}
-          fetchPriority={eager ? 'high' : 'auto'}
+          loading={eager && index === 0 ? 'eager' : 'lazy'}
+          fetchPriority={eager && index === 0 ? 'high' : 'low'}
           decoding="async"
         />
       ))}
@@ -94,26 +94,23 @@ function Hero() {
 
   useEffect(() => {
     let cancelled = false;
-    Promise.all(
-      heroImages.map(
-        (src) =>
-          new Promise((resolve) => {
-            const image = new Image();
-            image.onload = async () => {
-              try {
-                await image.decode();
-              } catch {
-                // Keep the loaded image when decode is unavailable.
-              }
-              resolve();
-            };
-            image.onerror = resolve;
-            image.src = src;
-          }),
-      ),
-    ).then(() => {
+    const primary = new Image();
+    primary.onload = async () => {
+      try {
+        await primary.decode();
+      } catch {
+        // Keep the loaded image when decode is unavailable.
+      }
       if (!cancelled) setReady(true);
-    });
+      heroImages.slice(1).forEach((src) => {
+        const image = new Image();
+        image.src = src;
+      });
+    };
+    primary.onerror = () => {
+      if (!cancelled) setReady(true);
+    };
+    primary.src = heroImages[0];
     return () => {
       cancelled = true;
     };
@@ -135,8 +132,8 @@ function Hero() {
         alt={index === 0 ? 'A curated collection of luxury cosmetic packaging.' : ''}
         aria-hidden={index === 0 ? undefined : true}
         className={index === active ? styles.isActive : ''}
-        loading="eager"
-        fetchPriority="high"
+        loading={index === 0 ? 'eager' : 'lazy'}
+        fetchPriority={index === 0 ? 'high' : 'low'}
         decoding="async"
       />
     ));
@@ -181,10 +178,16 @@ function LatestUpdates({ industries }) {
         <h2>Shop By Industry</h2>
         <div className={styles.industryDesktop}>
           <div className={styles.updates}>
-            {industries.map((item) => (
+            {industries.map((item, index) => (
               <article key={item.slug} className={styles.updateCard}>
                 <Link href={item.href}>
-                  <img src={item.image} alt={item.alt} loading="lazy" />
+                  <img
+                    src={item.image}
+                    alt={item.alt}
+                    loading={index < 4 ? 'eager' : 'lazy'}
+                    fetchPriority={index < 4 ? 'high' : 'auto'}
+                    decoding="async"
+                  />
                   <h3>{item.name}</h3>
                 </Link>
               </article>
@@ -201,7 +204,9 @@ function LatestUpdates({ industries }) {
             <img
               src="/images/Premium products in six elegant arches.png"
               alt="Cosmetics, skincare, makeup, fragrance, healthcare, and food products displayed in arches."
-              loading="lazy"
+              loading="eager"
+              fetchPriority="high"
+              decoding="async"
             />
           </Link>
         </div>
@@ -266,24 +271,33 @@ function EditorialSection({ title, paragraphs, images, alt, href, linkLabel }) {
   );
 }
 
-function Newsletter() {
-  return (
-    <section className={styles.newsletter}>
-      <div className={styles.newsletterInner}>
-        <div>
-          <p className={styles.newsletterLabel}>Box Studio updates</p>
-          <h2>Keep up to date</h2>
-        </div>
-        <div>
-          <p>
-            Explore new packaging ideas, finishes, materials and product launches from the Box Studio
-            catalog.
-          </p>
-          <TextLink href="/quote">Start a project</TextLink>
-        </div>
-      </div>
-    </section>
-  );
+function DeferredBelowFold({ children }) {
+  const [show, setShow] = useState(false);
+
+  useEffect(() => {
+    let cancelled = false;
+    const reveal = () => {
+      if (!cancelled) setShow(true);
+    };
+
+    // Let hero + industry claim bandwidth first, then mount the rest.
+    const timeoutId = window.setTimeout(reveal, 150);
+    let idleId;
+    if (typeof window.requestIdleCallback === 'function') {
+      idleId = window.requestIdleCallback(reveal, { timeout: 900 });
+    }
+
+    return () => {
+      cancelled = true;
+      window.clearTimeout(timeoutId);
+      if (idleId !== undefined && typeof window.cancelIdleCallback === 'function') {
+        window.cancelIdleCallback(idleId);
+      }
+    };
+  }, []);
+
+  if (!show) return null;
+  return children;
 }
 
 export default function HcpHomePage() {
@@ -309,39 +323,41 @@ export default function HcpHomePage() {
     <div className={styles.home}>
       <Hero />
       <LatestUpdates industries={industries} />
-      <Discover />
-      <EditorialSection
-        title="A beautiful future"
-        paragraphs={[
-          'Better packaging begins with considered choices: the right structure, the right amount of material and finishes selected for a clear purpose.',
-          'We help brands compare paperboard, kraft and recyclable options while keeping protection, print quality and shelf presence in view.',
-        ]}
-        images={[
-          '/images/beautiful future/mmckewtrojgeinzxiw4j.webp',
-          '/images/beautiful future/Drift beauty cartons on ivory stone-6.webp',
-          '/images/beautiful future/ioxxesfonf8hzb05og3z.webp',
-        ]}
-        alt="A refined collection of modern beauty packaging."
-        href="/quote"
-        linkLabel="Find out more"
-      />
-      <EditorialSection
-        title="Be inspired by packaging trends"
-        paragraphs={[
-          'A distinctive finish, proportion or opening detail can turn a familiar carton into something memorable.',
-          'Use current colour, material and decoration ideas as a starting point, then make the final packaging recognisably yours.',
-        ]}
-        images={[
-          '/images/trends/Paradiso Botanical Folding Carton Collection-3.webp',
-          '/images/trends/Caresse rose-peach embossed carton collection-4.webp',
-          '/images/trends/Pastel Creams Folding Carton Showcase-5.webp',
-          '/images/trends/Turquoise luxury folding carton showcase-2.webp',
-          '/images/trends/Dreamy starlight skincare carton collection-1.webp',
-        ]}
-        alt="A collection of contemporary folding-carton packaging trends."
-        href="/custom-boxes"
-        linkLabel="Explore all boxes"
-      />
+      <DeferredBelowFold>
+        <Discover />
+        <EditorialSection
+          title="A beautiful future"
+          paragraphs={[
+            'Better packaging begins with considered choices: the right structure, the right amount of material and finishes selected for a clear purpose.',
+            'We help brands compare paperboard, kraft and recyclable options while keeping protection, print quality and shelf presence in view.',
+          ]}
+          images={[
+            '/images/beautiful future/mmckewtrojgeinzxiw4j.webp',
+            '/images/beautiful future/Drift beauty cartons on ivory stone-6.webp',
+            '/images/beautiful future/ioxxesfonf8hzb05og3z.webp',
+          ]}
+          alt="A refined collection of modern beauty packaging."
+          href="/quote"
+          linkLabel="Find out more"
+        />
+        <EditorialSection
+          title="Be inspired by packaging trends"
+          paragraphs={[
+            'A distinctive finish, proportion or opening detail can turn a familiar carton into something memorable.',
+            'Use current colour, material and decoration ideas as a starting point, then make the final packaging recognisably yours.',
+          ]}
+          images={[
+            '/images/trends/Paradiso Botanical Folding Carton Collection-3.webp',
+            '/images/trends/Caresse rose-peach embossed carton collection-4.webp',
+            '/images/trends/Pastel Creams Folding Carton Showcase-5.webp',
+            '/images/trends/Turquoise luxury folding carton showcase-2.webp',
+            '/images/trends/Dreamy starlight skincare carton collection-1.webp',
+          ]}
+          alt="A collection of contemporary folding-carton packaging trends."
+          href="/custom-boxes"
+          linkLabel="Explore all boxes"
+        />
+      </DeferredBelowFold>
     </div>
   );
 }

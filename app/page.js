@@ -10,5 +10,15 @@ export const metadata = buildPageMetadata({
 });
 
 export default function Page() {
-  return <HomePage />;
+  return (
+    <>
+      <link
+        rel="preload"
+        as="image"
+        href="/images/hcp-home/hero-fantasy-eyes.webp"
+        fetchPriority="high"
+      />
+      <HomePage />
+    </>
+  );
 }

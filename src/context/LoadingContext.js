@@ -25,7 +25,8 @@ function isInternalNavLink(anchor) {
 export function LoadingProvider({ children }) {
   const pathname = usePathname();
   const searchParams = useSearchParams();
-  const [boot, setBoot] = useState(true);
+  // Skip the blocking boot overlay on the homepage so hero can paint immediately.
+  const [boot, setBoot] = useState(() => pathname !== '/');
   const [count, setCount] = useState(0);
   const hideTimer = useRef(0);
   const routeKey = `${pathname}?${searchParams?.toString() || ''}`;
@@ -55,9 +56,13 @@ export function LoadingProvider({ children }) {
   );
 
   useEffect(() => {
-    const timer = window.setTimeout(() => setBoot(false), 400);
+    if (pathname === '/') {
+      setBoot(false);
+      return undefined;
+    }
+    const timer = window.setTimeout(() => setBoot(false), 280);
     return () => window.clearTimeout(timer);
-  }, []);
+  }, [pathname]);
 
   useEffect(() => {
     function onClick(event) {
