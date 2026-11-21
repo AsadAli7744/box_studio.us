@@ -58,6 +58,7 @@ export function LoadingProvider({ children }) {
   useEffect(() => {
     if (pathname === '/') {
       setBoot(false);
+      setCount(0);
       return undefined;
     }
     const timer = window.setTimeout(() => setBoot(false), 280);
@@ -71,6 +72,13 @@ export function LoadingProvider({ children }) {
       }
       const anchor = event.target.closest?.('a[href]');
       if (!isInternalNavLink(anchor)) return;
+      try {
+        const url = new URL(anchor.getAttribute('href'), window.location.origin);
+        // Home should paint immediately — don't block it with the global overlay.
+        if (url.pathname === '/') return;
+      } catch {
+        return;
+      }
       startLoading();
     }
     function onSubmit(event) {
@@ -80,12 +88,18 @@ export function LoadingProvider({ children }) {
       try {
         const url = new URL(action, window.location.origin);
         if (url.origin !== window.location.origin) return;
+        if (url.pathname === '/') return;
       } catch {
         return;
       }
       startLoading();
     }
     function onPopState() {
+      // Destination is known on the next pathname effect; avoid flashing home.
+      if (window.location.pathname === '/') {
+        setCount(0);
+        return;
+      }
       startLoading();
     }
     document.addEventListener('click', onClick, true);
@@ -101,8 +115,12 @@ export function LoadingProvider({ children }) {
   useEffect(() => {
     setBoot(false);
     window.clearTimeout(hideTimer.current);
+    if (pathname === '/') {
+      setCount(0);
+      return;
+    }
     hideTimer.current = window.setTimeout(() => setCount(0), 220);
-  }, [routeKey]);
+  }, [routeKey, pathname]);
 
   useEffect(() => () => window.clearTimeout(hideTimer.current), []);
 

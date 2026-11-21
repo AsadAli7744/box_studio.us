@@ -45,7 +45,7 @@ export default function Layout({ children }) {
         Skip to content
       </a>
       {admin ? null : <HcpHomeHeader />}
-      <main id="main" className={admin ? 'page admin-main' : 'page'} key={pathname}>
+      <main id="main" className={admin ? 'page admin-main' : 'page'}>
         {children}
       </main>
       {admin ? null : <HcpHomeFooter />}

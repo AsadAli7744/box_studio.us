@@ -71,6 +71,7 @@ export function RequestProvider({ children }) {
         name: file.name,
         size: file.size,
         type: kind,
+        file,
         previewUrl: isImageType(kind) ? URL.createObjectURL(file) : '',
       });
     });

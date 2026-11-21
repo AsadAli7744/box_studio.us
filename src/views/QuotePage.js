@@ -30,6 +30,7 @@ export default function QuotePage() {
   const [errors, setErrors] = useState({});
   const [fileErrors, setFileErrors] = useState([]);
   const [summary, setSummary] = useState('');
+  const [submitError, setSubmitError] = useState('');
   const product = quote.customDesign ? null : getProduct(quote.productSlug);
   const artwork = quote.files[0];
 
@@ -60,6 +61,7 @@ export default function QuotePage() {
   function setField(key, value) {
     updateQuote({ [key]: value, prepared: false });
     setSummary('');
+    setSubmitError('');
   }
 
   function onArtwork(list) {
@@ -68,6 +70,7 @@ export default function QuotePage() {
     quote.files.forEach((item) => removeFile(item.id));
     setFileErrors(addFiles([file]));
     setSummary('');
+    setSubmitError('');
   }
 
   async function onSubmit(event) {
@@ -80,16 +83,31 @@ export default function QuotePage() {
     if (phone && !/^[0-9+().\-\s]{6,}$/.test(phone)) next.phone = 'Enter a contact number using digits, or leave it blank.';
     if (!email && !phone) next.email = 'Enter an email or a contact number.';
     setErrors(next);
+    setSubmitError('');
     if (hasErrors(next) || fileErrors.length) return;
     const text = buildQuoteSummary(quote, product);
     await withLoading(async () => {
-      await submitQuoteRequest();
-      setSummary(text);
-      updateQuote({ prepared: true });
-      trackEvent('quote_submit', {
-        product_slug: quote.productSlug || 'custom',
-        has_artwork: Boolean(quote.files.length),
-      });
+      try {
+        const formData = new FormData();
+        formData.append('name', quote.name.trim());
+        formData.append('email', email);
+        formData.append('phone', phone);
+        formData.append('company', quote.company.trim());
+        formData.append('notes', quote.notes.trim());
+        formData.append('productSlug', quote.productSlug || '');
+        formData.append('productName', product?.name || '');
+        formData.append('summary', text);
+        if (artwork?.file) formData.append('artwork', artwork.file, artwork.name);
+        await submitQuoteRequest(formData);
+        setSummary(text);
+        updateQuote({ prepared: true });
+        trackEvent('quote_submit', {
+          product_slug: quote.productSlug || 'custom',
+          has_artwork: Boolean(quote.files.length),
+        });
+      } catch (error) {
+        setSubmitError(error.message || 'The quote request could not be submitted.');
+      }
     });
   }
 
@@ -118,9 +136,9 @@ export default function QuotePage() {
 
         {summary ? (
           <div className="quote-ready">
-            <p>Your quote request is ready to send. Download it and share it with Box Studio. This page has not submitted it.</p>
+            <p>Your quote request was submitted. Our team will review it and follow up.</p>
             <button type="button" className="quote-submit" onClick={() => downloadTextFile('box-studio-quote-request.txt', summary)}>
-              Download request
+              Download a copy
             </button>
           </div>
         ) : (
@@ -190,6 +208,7 @@ export default function QuotePage() {
               <small>JPG, PNG, or WEBP — max 8 MB</small>
               {fileErrors.length ? <small className="is-error">{fileErrors[0]}</small> : null}
             </div>
+            {submitError ? <small className="is-error">{submitError}</small> : null}
             <button type="submit" className="quote-submit">Submit Quote Request</button>
           </>
         )}

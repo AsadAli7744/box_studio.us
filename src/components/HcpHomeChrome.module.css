@@ -55,15 +55,14 @@
   position: relative;
 }
 
-.categoryDropdown::after {
+.categoryDropdown[data-open="true"]::after {
   content: "";
   position: absolute;
   top: 100%;
-  left: 50%;
+  right: 0;
   z-index: 59;
   width: min(960px, calc(100vw - 4rem));
   height: 0.9rem;
-  transform: translateX(-50%);
 }
 
 .categoryTrigger {
@@ -98,14 +97,16 @@
 .categoryPanel {
   position: absolute;
   top: calc(100% + 0.8rem);
-  left: 50%;
+  right: 0;
+  left: auto;
   z-index: 60;
   width: min(960px, calc(100vw - 4rem));
+  max-width: calc(100vw - 2rem);
   padding: 1.5rem;
   border: 1px solid #dedede;
   background: #fff;
   box-shadow: 0 20px 45px rgba(0, 0, 0, 0.12);
-  transform: translateX(-50%);
+  transform: none;
 }
 
 .categoryPanelHead {
@@ -161,6 +162,9 @@
   font-weight: 650;
   line-height: 1.25;
   text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
 }
 
 .search {

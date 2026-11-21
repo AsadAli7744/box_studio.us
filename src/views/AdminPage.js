@@ -4,6 +4,7 @@ import { useEffect, useState } from 'react';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 import { CategoryForm, HeroForm, ProductForm } from '../components/admin/Editors';
+import AdminQuotes from '../components/admin/AdminQuotes';
 import { blankCategory, blankHeroSlide, blankProduct, slugify, structureChoices } from '../data/catalogContent';
 
 function catalogFrom(data, fallback) {
@@ -35,6 +36,7 @@ function same(left, right) {
 export default function AdminPage() {
   const router = useRouter();
   const [doc, setDoc] = useState(null);
+  const [section, setSection] = useState('catalog');
   const [kind, setKind] = useState('categories');
   const [selected, setSelected] = useState(null);
   const [draft, setDraft] = useState(null);
@@ -469,6 +471,30 @@ export default function AdminPage() {
     );
   }
 
+  if (section === 'quotes') {
+    return (
+      <div className="admin-app admin-quotes-app">
+        <div className="admin-section-bar">
+          <button type="button" className="btn btn-ghost" onClick={() => setSection('catalog')}>
+            Catalog
+          </button>
+          <button type="button" className="btn btn-dark" aria-pressed="true">
+            Quotes
+          </button>
+        </div>
+        {error ? <p className="admin-error" role="alert">{error}</p> : null}
+        {status ? <p className="admin-status" role="status">{status}</p> : null}
+        <AdminQuotes
+          headers={headers}
+          busy={busy}
+          setBusy={setBusy}
+          setError={setError}
+          setStatus={setStatus}
+        />
+      </div>
+    );
+  }
+
   return (
     <div className={sidebarCollapsed ? 'admin-app is-sidebar-collapsed' : 'admin-app'}>
       <aside className="admin-list">
@@ -476,6 +502,23 @@ export default function AdminPage() {
           <div>
             <p className="admin-brand">Box Studio</p>
             <h1>Catalog</h1>
+            <div className="admin-section-bar is-compact">
+              <button type="button" className="btn btn-dark" aria-pressed="true">
+                Catalog
+              </button>
+              <button
+                type="button"
+                className="btn btn-ghost"
+                onClick={() => {
+                  if (!guard()) return;
+                  setSection('quotes');
+                  setStatus('');
+                  setError('');
+                }}
+              >
+                Quotes
+              </button>
+            </div>
           </div>
           <button
             type="button"

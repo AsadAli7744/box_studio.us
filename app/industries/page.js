@@ -2,9 +2,9 @@ import IndustriesPage from '../../src/views/IndustriesPage';
 import { absoluteSeoUrl, buildPageMetadata } from '../../src/lib/seo';
 
 export const metadata = buildPageMetadata({
-  title: 'Custom Packaging by Industry | Cosmetics, Food & Healthcare | Box Studio',
+  title: 'Shop By Industry | Custom Packaging | Box Studio',
   description:
-    'Explore custom packaging by industry for cosmetics, skincare, makeup, fragrance, healthcare and food. Choose a category to browse matching product boxes.',
+    'Shop custom packaging by industry for cosmetics, skincare, makeup, fragrance, healthcare and food. Choose a category and request a production quote.',
   path: '/industries',
   image: absoluteSeoUrl('/images/Premium products in six elegant arches.png'),
 });

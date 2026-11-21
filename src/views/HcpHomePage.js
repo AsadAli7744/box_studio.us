@@ -1,6 +1,6 @@
 'use client';
 
-import { useEffect, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import Link from 'next/link';
 import { useCatalog } from '../context/CatalogContext';
 import { buildIndustryGroups } from '../data/industries';
@@ -24,42 +24,21 @@ function Arrow() {
 
 function FadeImages({ images, alt, interval = 4800, eager = false, className = '' }) {
   const [active, setActive] = useState(0);
-  const [ready, setReady] = useState(false);
 
   useEffect(() => {
-    let cancelled = false;
-    Promise.all(
-      images.map(
-        (src) =>
-          new Promise((resolve) => {
-            const image = new Image();
-            image.onload = async () => {
-              try {
-                await image.decode();
-              } catch {
-                // The decoded file is still usable when decode is unsupported.
-              }
-              resolve();
-            };
-            image.onerror = resolve;
-            image.src = src;
-          }),
-      ),
-    ).then(() => {
-      if (!cancelled) setReady(true);
+    if (images.length < 2) return undefined;
+    // Warm later frames in the background without blocking first paint.
+    images.slice(1).forEach((src) => {
+      const image = new Image();
+      image.src = src;
     });
-    return () => {
-      cancelled = true;
-    };
-  }, [images]);
-
-  useEffect(() => {
-    if (!ready || images.length < 2) return undefined;
     const timer = window.setInterval(() => {
       setActive((current) => (current + 1) % images.length);
     }, interval);
     return () => window.clearInterval(timer);
-  }, [images.length, interval, ready]);
+    // images is a stable constant array from the section that mounts this.
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [images.length, interval]);
 
   return (
     <div className={`${styles.fadeImages} ${className}`.trim()}>
@@ -90,39 +69,17 @@ function TextLink({ href, children }) {
 
 function Hero() {
   const [active, setActive] = useState(0);
-  const [ready, setReady] = useState(false);
 
   useEffect(() => {
-    let cancelled = false;
-    const primary = new Image();
-    primary.onload = async () => {
-      try {
-        await primary.decode();
-      } catch {
-        // Keep the loaded image when decode is unavailable.
-      }
-      if (!cancelled) setReady(true);
-      heroImages.slice(1).forEach((src) => {
-        const image = new Image();
-        image.src = src;
-      });
-    };
-    primary.onerror = () => {
-      if (!cancelled) setReady(true);
-    };
-    primary.src = heroImages[0];
-    return () => {
-      cancelled = true;
-    };
-  }, []);
-
-  useEffect(() => {
-    if (!ready) return undefined;
+    heroImages.slice(1).forEach((src) => {
+      const image = new Image();
+      image.src = src;
+    });
     const timer = window.setInterval(() => {
       setActive((current) => (current + 1) % heroImages.length);
     }, 3600);
     return () => window.clearInterval(timer);
-  }, [ready]);
+  }, []);
 
   const imageLayers = (className) =>
     heroImages.map((src, index) => (
@@ -174,8 +131,18 @@ function Hero() {
 function LatestUpdates({ industries }) {
   return (
     <section className={`${styles.section} ${styles.beige} ${styles.industrySection}`}>
-      <div className={styles.sectionInner}>
+      <div className={`${styles.sectionInner} ${styles.copyGrid} ${styles.industryIntro}`}>
         <h2>Shop By Industry</h2>
+        <div>
+          <p>
+            Explore custom packaging by industry and choose the format that fits your product, brand and
+            shelf goals. From cosmetics and skincare to fragrance, healthcare and food, each collection
+            brings together structures, finishes and presentation options ready for production.
+          </p>
+          <TextLink href="/industries">View More...</TextLink>
+        </div>
+      </div>
+      <div className={styles.sectionInner}>
         <div className={styles.industryDesktop}>
           <div className={styles.updates}>
             {industries.map((item, index) => (
@@ -184,16 +151,15 @@ function LatestUpdates({ industries }) {
                   <img
                     src={item.image}
                     alt={item.alt}
-                    loading={index < 4 ? 'eager' : 'lazy'}
-                    fetchPriority={index < 4 ? 'high' : 'auto'}
+                    loading={index < 2 ? 'eager' : 'lazy'}
+                    fetchPriority={index === 0 ? 'high' : 'auto'}
                     decoding="async"
                   />
-                  <h3>{item.name}</h3>
+                  <h3>{item.title}</h3>
                 </Link>
               </article>
             ))}
           </div>
-          <TextLink href="/custom-boxes">View all boxes</TextLink>
         </div>
         <div className={styles.industryMobile}>
           <p>
@@ -230,7 +196,7 @@ function Discover() {
               Our range includes folding cartons, window boxes, kraft packaging, sleeves, trays, gift
               boxes and presentation formats for products of many shapes and sizes.
             </p>
-            <TextLink href="/custom-boxes">Find out more</TextLink>
+            <TextLink href="/about">Find out more</TextLink>
           </div>
         </div>
       </section>
@@ -273,31 +239,50 @@ function EditorialSection({ title, paragraphs, images, alt, href, linkLabel }) {
 
 function DeferredBelowFold({ children }) {
   const [show, setShow] = useState(false);
+  const sentinelRef = useRef(null);
 
   useEffect(() => {
     let cancelled = false;
+    const node = sentinelRef.current;
     const reveal = () => {
       if (!cancelled) setShow(true);
     };
 
-    // Let hero + industry claim bandwidth first, then mount the rest.
-    const timeoutId = window.setTimeout(reveal, 150);
-    let idleId;
-    if (typeof window.requestIdleCallback === 'function') {
-      idleId = window.requestIdleCallback(reveal, { timeout: 900 });
+    if (!node || typeof window.IntersectionObserver !== 'function') {
+      const timeoutId = window.setTimeout(reveal, 1200);
+      return () => {
+        cancelled = true;
+        window.clearTimeout(timeoutId);
+      };
     }
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        if (entries.some((entry) => entry.isIntersecting)) {
+          reveal();
+          observer.disconnect();
+        }
+      },
+      { rootMargin: '280px 0px' },
+    );
+    observer.observe(node);
+
+    // Fallback if the user never scrolls far enough for the sentinel.
+    const timeoutId = window.setTimeout(reveal, 2500);
 
     return () => {
       cancelled = true;
+      observer.disconnect();
       window.clearTimeout(timeoutId);
-      if (idleId !== undefined && typeof window.cancelIdleCallback === 'function') {
-        window.cancelIdleCallback(idleId);
-      }
     };
   }, []);
 
-  if (!show) return null;
-  return children;
+  return (
+    <>
+      <div ref={sentinelRef} aria-hidden="true" className={styles.belowFoldSentinel} />
+      {show ? children : null}
+    </>
+  );
 }
 
 export default function HcpHomePage() {
@@ -337,7 +322,7 @@ export default function HcpHomePage() {
             '/images/beautiful future/ioxxesfonf8hzb05og3z.webp',
           ]}
           alt="A refined collection of modern beauty packaging."
-          href="/quote"
+          href="/trends"
           linkLabel="Find out more"
         />
         <EditorialSection
@@ -354,7 +339,7 @@ export default function HcpHomePage() {
             '/images/trends/Dreamy starlight skincare carton collection-1.webp',
           ]}
           alt="A collection of contemporary folding-carton packaging trends."
-          href="/custom-boxes"
+          href="/trends"
           linkLabel="Explore all boxes"
         />
       </DeferredBelowFold>

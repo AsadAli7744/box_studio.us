@@ -39,7 +39,7 @@ export default async function RootLayout({ children }) {
   };
 
   return (
-    <html lang="en">
+    <html lang="en" suppressHydrationWarning>
       <head>
         <link rel="preconnect" href="https://use.typekit.net" />
         <link rel="preconnect" href="https://p.typekit.net" />
@@ -50,7 +50,7 @@ export default async function RootLayout({ children }) {
           dangerouslySetInnerHTML={{ __html: JSON.stringify(graph) }}
         />
       </head>
-      <body>
+      <body suppressHydrationWarning>
         <noscript>Box Studio needs JavaScript to show this website.</noscript>
         <CatalogProvider initialCatalog={catalog}>
           <RequestProvider>

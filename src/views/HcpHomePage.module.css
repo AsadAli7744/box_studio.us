@@ -8,6 +8,12 @@
   color: var(--reference-black);
 }
 
+.belowFoldSentinel {
+  width: 100%;
+  height: 1px;
+  pointer-events: none;
+}
+
 .home h1,
 .home h2,
 .home h3,
@@ -236,16 +242,22 @@
   line-height: 1.28;
 }
 
-.industryPageTitle {
-  margin-top: 0;
-  margin-bottom: 1rem;
+.industrySection .updateCard h2,
+.industrySection .updateCard h3 {
+  max-width: none;
+  text-align: center;
 }
 
-.industryPageIntro {
-  max-width: 40rem;
-  margin: 0 0 clamp(2.75rem, 6vw, 5.5rem);
-  font-size: 1.05rem;
-  line-height: 1.7;
+.industryIntro {
+  margin-bottom: clamp(2rem, 4vw, 3rem);
+}
+
+.industryPageTitle {
+  margin: 0;
+  font-size: clamp(2.2rem, 4.2vw, 4.6rem);
+  font-weight: 650;
+  line-height: 1.06;
+  letter-spacing: -0.045em;
 }
 
 .copyGrid {
@@ -517,6 +529,23 @@
     margin: 1.65rem 0 0;
     font-size: 1.42rem;
     line-height: 1.45;
+  }
+
+  .industrySection .updateCard h2,
+  .industrySection .updateCard h3 {
+    max-width: none;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+  }
+
+  .industryIntro {
+    margin-bottom: 2rem;
+  }
+
+  .industryPageTitle {
+    margin-bottom: 0;
+    font-size: clamp(2.15rem, 8vw, 2.65rem);
   }
 
   .copyGrid,

@@ -96,9 +96,7 @@ export function HcpHomeHeader() {
             <div
               className={styles.categoryDropdown}
               ref={categoriesRef}
-              onMouseEnter={() => {
-                if (window.matchMedia('(hover: hover) and (pointer: fine)').matches) setCategoriesOpen(true);
-              }}
+              data-open={categoriesOpen ? 'true' : undefined}
               onMouseLeave={() => {
                 if (window.matchMedia('(hover: hover) and (pointer: fine)').matches) setCategoriesOpen(false);
               }}
@@ -109,6 +107,9 @@ export function HcpHomeHeader() {
                 className={styles.categoryTrigger}
                 aria-expanded={categoriesOpen}
                 aria-controls={categoriesId}
+                onMouseEnter={() => {
+                  if (window.matchMedia('(hover: hover) and (pointer: fine)').matches) setCategoriesOpen(true);
+                }}
                 onClick={() => setCategoriesOpen((current) => !current)}
               >
                 Shop By Industry
@@ -121,8 +122,8 @@ export function HcpHomeHeader() {
               >
                 <div className={styles.categoryPanelHead}>
                   <strong>Shop By Industry</strong>
-                  <Link href="/custom-boxes" onClick={() => setCategoriesOpen(false)}>
-                    View All Boxes →
+                  <Link href="/industries" onClick={() => setCategoriesOpen(false)}>
+                    View all industries →
                   </Link>
                 </div>
                 <div className={styles.categoryGrid}>
@@ -139,7 +140,7 @@ export function HcpHomeHeader() {
                         height={144}
                         sizes="64px"
                       />
-                      <span>{industry.name}</span>
+                      <span>{industry.title}</span>
                     </Link>
                   ))}
                 </div>
@@ -232,7 +233,7 @@ export function HcpHomeHeader() {
               href={industry.href}
               onClick={() => setOpen(false)}
             >
-              {industry.name}
+              {industry.title}
             </Link>
           ))}
         </div>
@@ -294,7 +295,8 @@ export function HcpHomeFooter() {
         </div>
 
         <div className={styles.footerLinks}>
-          <Link href="/custom-boxes">Shop By Industry</Link>
+          <Link href="/about">About</Link>
+          <Link href="/industries">Shop By Industry</Link>
           <Link href="/quote">Request a Quote</Link>
           <a
             href={`https://mail.google.com/mail/?view=cm&fs=1&to=${encodeURIComponent(site.email)}`}

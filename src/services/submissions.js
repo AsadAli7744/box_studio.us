@@ -1,21 +1,25 @@
-/**
- * Future backend integration point.
- * The website currently prepares requests on the visitor's device only.
- * Do not add a network call here until a real endpoint and file handling exist.
- */
-export const submissionMode = 'local';
+export const submissionMode = 'api';
 
-export function submitQuoteRequest() {
-  return Promise.resolve({
-    delivered: false,
-    mode: submissionMode,
+export async function submitQuoteRequest(formData) {
+  const response = await fetch('/api/quotes', {
+    method: 'POST',
+    body: formData,
   });
+  const data = await response.json().catch(() => ({}));
+  if (!response.ok) {
+    throw new Error(data.error || 'The quote request could not be submitted.');
+  }
+  return {
+    delivered: Boolean(data.delivered),
+    id: data.id,
+    mode: submissionMode,
+  };
 }
 
 export function submitContactInquiry() {
   return Promise.resolve({
     delivered: false,
-    mode: submissionMode,
+    mode: 'local',
   });
 }
 
