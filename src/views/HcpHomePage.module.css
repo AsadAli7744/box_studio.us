@@ -499,10 +499,7 @@
   }
 
   .industryMobile p {
-    max-width: 31rem;
-    margin: -0.65rem 0 1.75rem;
-    font-size: 1rem;
-    line-height: 1.65;
+    display: none;
   }
 
   .industryInlineLink {

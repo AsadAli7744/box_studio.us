@@ -1,4 +1,3 @@
-import { Suspense } from 'react';
 import QuotePage from '../../src/views/QuotePage';
 import { absoluteSeoUrl, buildPageMetadata } from '../../src/lib/seo';
 
@@ -10,10 +9,11 @@ export const metadata = buildPageMetadata({
   image: absoluteSeoUrl('/images/hero-smooth.png'),
 });
 
-export default function Page() {
+export default async function Page({ searchParams }) {
+  const params = await searchParams;
   return (
-    <Suspense fallback={null}>
-      <QuotePage />
-    </Suspense>
+    <QuotePage
+      initialProductSlug={typeof params?.product === 'string' ? params.product : ''}
+    />
   );
 }

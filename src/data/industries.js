@@ -72,3 +72,72 @@ export function buildIndustryGroups(categories = []) {
 export function getIndustryGroup(slug, categories = []) {
   return buildIndustryGroups(categories).find((industry) => industry.slug === slug) || null;
 }
+
+const SKIP_LAUNCH_PRODUCT_SLUGS = new Set([
+  'request-a-quote',
+  'cosmetic-packaging-design',
+  'beauty-startup-packaging',
+  'custom-printed-boxes',
+  'small-order-cosmetic-boxes',
+  'wholesale-cosmetic-boxes',
+  'beauty-subscription-boxes',
+]);
+
+/** Extra category pools when an industry’s own categories lack sellable product pages. */
+const LAUNCH_FALLBACK_CATEGORIES = {
+  cosmetics: ['makeup-boxes', 'skincare-boxes'],
+};
+
+/** Category slugs in industry display order (for sitemap / crawl priority). */
+export function getIndustryCategorySlugs() {
+  const seen = new Set();
+  const ordered = [];
+  INDUSTRY_DEFINITIONS.forEach((industry) => {
+    industry.categorySlugs.forEach((slug) => {
+      if (seen.has(slug)) return;
+      seen.add(slug);
+      ordered.push(slug);
+    });
+  });
+  return ordered;
+}
+
+function pickProductsFromCategories(products, categorySlugs, used, limit) {
+  const picked = [];
+  for (const categorySlug of categorySlugs) {
+    for (const product of products) {
+      if (product.category !== categorySlug) continue;
+      if (SKIP_LAUNCH_PRODUCT_SLUGS.has(product.slug)) continue;
+      if (used.has(product.slug)) continue;
+      picked.push(product);
+      used.add(product.slug);
+      if (picked.length >= limit) return picked;
+    }
+  }
+  return picked;
+}
+
+/**
+ * Up to two product pages per industry, preferring primary category matches
+ * in industry category order. Used for launch crawl priority in the sitemap.
+ */
+export function getLaunchProductsByIndustry(products = [], perIndustry = 2) {
+  const launch = [];
+  const used = new Set();
+
+  INDUSTRY_DEFINITIONS.forEach((industry) => {
+    let picked = pickProductsFromCategories(products, industry.categorySlugs, used, perIndustry);
+    if (picked.length < perIndustry) {
+      const fallback = LAUNCH_FALLBACK_CATEGORIES[industry.slug] || [];
+      picked = [
+        ...picked,
+        ...pickProductsFromCategories(products, fallback, used, perIndustry - picked.length),
+      ];
+    }
+    picked.forEach((product) => {
+      launch.push({ industrySlug: industry.slug, product });
+    });
+  });
+
+  return launch;
+}

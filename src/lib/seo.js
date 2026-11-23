@@ -21,15 +21,28 @@ export function isFinalDomain(origin = siteOrigin()) {
 }
 
 export function indexingAllowed(host) {
+  // Explicit opt-in always wins (useful for preview hosts during launch checks).
   if (process.env.NEXT_PUBLIC_ALLOW_INDEXING === 'true') return true;
+
+  const normalized = String(host || '')
+    .replace(/^www\./, '')
+    .toLowerCase();
+
+  // Final production domain is indexable by host check alone.
+  // A stale NEXT_PUBLIC_ALLOW_INDEXING=false must not block boxstudio.us.
+  if (normalized === 'boxstudio.us') return true;
+
   if (process.env.NEXT_PUBLIC_ALLOW_INDEXING === 'false') return false;
-  if (host) {
-    const normalized = host.replace(/^www\./, '').toLowerCase();
-    if (normalized === 'boxstudio.us') return true;
-    if (normalized.includes('railway.app') || normalized.includes('localhost') || normalized.endsWith('.local')) {
-      return false;
-    }
+
+  if (
+    normalized.includes('railway.app') ||
+    normalized.includes('localhost') ||
+    normalized.includes('127.0.0.1') ||
+    normalized.endsWith('.local')
+  ) {
+    return false;
   }
+
   return isFinalDomain();
 }
 

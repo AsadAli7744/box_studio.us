@@ -4,6 +4,8 @@ import { absoluteSeoUrl, AI_SEARCH_CRAWLERS, indexingAllowed } from '../src/lib/
 export default async function robots() {
   const host = (await headers()).get('host') || '';
   const allowIndexing = indexingAllowed(host);
+  const sitemapUrl = absoluteSeoUrl('/sitemap.xml');
+  const origin = absoluteSeoUrl('/').replace(/\/$/, '');
 
   // Staging must stay closed to Google and AI search crawlers.
   if (!allowIndexing) {
@@ -21,8 +23,8 @@ export default async function robots() {
     };
   }
 
-  // Production: allow general crawlers and explicitly allow AI search bots.
-  // Admin and API routes remain closed.
+  // Production: public pages are crawlable. Launch crawl order is controlled by
+  // sitemap.xml (home → about → industries/categories → 2 products per industry).
   return {
     rules: [
       {
@@ -36,7 +38,7 @@ export default async function robots() {
         disallow: ['/admin', '/api/'],
       })),
     ],
-    sitemap: absoluteSeoUrl('/sitemap.xml'),
-    host: absoluteSeoUrl('/').replace(/\/$/, ''),
+    sitemap: sitemapUrl,
+    host: origin,
   };
 }

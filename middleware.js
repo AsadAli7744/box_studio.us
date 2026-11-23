@@ -1,5 +1,9 @@
 import { NextResponse } from 'next/server';
 
+function isFinalHost(host = '') {
+  return host.replace(/^www\./, '').toLowerCase() === 'boxstudio.us';
+}
+
 function isStagingHost(host = '') {
   const normalized = host.toLowerCase();
   return (
@@ -15,9 +19,10 @@ export function middleware(request) {
   const allowIndexing = process.env.NEXT_PUBLIC_ALLOW_INDEXING;
   const response = NextResponse.next();
 
-  // Never block crawlers here. Only mark staging responses as non-indexable.
+  // Never noindex the final domain. Staging hosts stay closed unless forced open.
   const blockIndexing =
-    allowIndexing === 'false' || (allowIndexing !== 'true' && isStagingHost(host));
+    !isFinalHost(host) &&
+    (allowIndexing === 'false' || (allowIndexing !== 'true' && isStagingHost(host)));
 
   if (blockIndexing) {
     response.headers.set('X-Robots-Tag', 'noindex, nofollow, noimageindex');

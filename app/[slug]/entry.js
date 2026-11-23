@@ -1,6 +1,5 @@
 'use client';
 
-import { Suspense } from 'react';
 import { useParams } from 'next/navigation';
 import { useCatalog } from '../../src/context/CatalogContext';
 import BoxesPage from '../../src/views/BoxesPage';
@@ -11,12 +10,6 @@ export default function EntryPage() {
   const { slug } = useParams();
   const { getProduct, getCategory } = useCatalog();
   if (getProduct(slug)) return <ProductPage />;
-  if (getCategory(slug)) {
-    return (
-      <Suspense fallback={null}>
-        <BoxesPage categorySlug={slug} />
-      </Suspense>
-    );
-  }
+  if (getCategory(slug)) return <BoxesPage categorySlug={slug} />;
   return <NotFoundPage />;
 }

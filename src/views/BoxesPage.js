@@ -2,7 +2,6 @@
 
 import { useEffect, useRef, useState } from 'react';
 import Link from 'next/link';
-import { useSearchParams } from 'next/navigation';
 import ProductCard from '../components/ProductCard';
 import { getIndustryGroup } from '../data/industries';
 import { absoluteUrl } from '../data/site';
@@ -12,14 +11,17 @@ import Accordion from '../components/Accordion';
 
 const PRODUCT_BATCH_SIZE = 12;
 
-export default function BoxesPage({ categorySlug }) {
-  const params = useSearchParams();
+export default function BoxesPage({
+  categorySlug,
+  initialQuery = '',
+  initialIndustry = '',
+}) {
   const loadMoreRef = useRef(null);
   const [visibleCount, setVisibleCount] = useState(PRODUCT_BATCH_SIZE);
   const { categories, products, getCategory } = useCatalog();
-  const query = (params.get('q') || '').trim();
+  const query = String(initialQuery || '').trim();
   const needle = query.toLowerCase();
-  const industrySlug = (params.get('industry') || '').trim().toLowerCase();
+  const industrySlug = String(initialIndustry || '').trim().toLowerCase();
   const industry = categorySlug ? null : getIndustryGroup(industrySlug, categories);
   const category = categorySlug ? getCategory(categorySlug) : null;
   const pool = category

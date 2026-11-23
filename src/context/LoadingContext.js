@@ -1,7 +1,7 @@
 'use client';
 
 import { createContext, useCallback, useContext, useEffect, useMemo, useRef, useState } from 'react';
-import { usePathname, useSearchParams } from 'next/navigation';
+import { usePathname } from 'next/navigation';
 import SiteLoader from '../components/SiteLoader';
 
 const LoadingContext = createContext(null);
@@ -24,12 +24,10 @@ function isInternalNavLink(anchor) {
 
 export function LoadingProvider({ children }) {
   const pathname = usePathname();
-  const searchParams = useSearchParams();
   // Skip the blocking boot overlay on the homepage so hero can paint immediately.
   const [boot, setBoot] = useState(() => pathname !== '/');
   const [count, setCount] = useState(0);
   const hideTimer = useRef(0);
-  const routeKey = `${pathname}?${searchParams?.toString() || ''}`;
 
   const startLoading = useCallback(() => {
     window.clearTimeout(hideTimer.current);
@@ -120,7 +118,7 @@ export function LoadingProvider({ children }) {
       return;
     }
     hideTimer.current = window.setTimeout(() => setCount(0), 220);
-  }, [routeKey, pathname]);
+  }, [pathname]);
 
   useEffect(() => () => window.clearTimeout(hideTimer.current), []);
 

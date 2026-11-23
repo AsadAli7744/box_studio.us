@@ -1,4 +1,3 @@
-import { Suspense } from 'react';
 import BoxesPage from '../../src/views/BoxesPage';
 import { absoluteSeoUrl, buildPageMetadata } from '../../src/lib/seo';
 
@@ -10,10 +9,12 @@ export const metadata = buildPageMetadata({
   image: absoluteSeoUrl('/images/cat-all.jpg'),
 });
 
-export default function Page() {
+export default async function Page({ searchParams }) {
+  const params = await searchParams;
   return (
-    <Suspense fallback={null}>
-      <BoxesPage />
-    </Suspense>
+    <BoxesPage
+      initialQuery={typeof params?.q === 'string' ? params.q : ''}
+      initialIndustry={typeof params?.industry === 'string' ? params.industry : ''}
+    />
   );
 }

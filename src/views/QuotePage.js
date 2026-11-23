@@ -1,7 +1,6 @@
 'use client';
 
 import { useEffect, useState } from 'react';
-import { useSearchParams } from 'next/navigation';
 import { absoluteUrl } from '../data/site';
 import { useCatalog } from '../context/CatalogContext';
 import { useLoading } from '../context/LoadingContext';
@@ -22,8 +21,7 @@ const collage = [
   { src: '/images/quote-folding-f.jpg', alt: 'A group of printed folding cartons and a sleeve and tray.', className: 'area-f' },
 ];
 
-export default function QuotePage() {
-  const params = useSearchParams();
+export default function QuotePage({ initialProductSlug = '' }) {
   const { quote, updateQuote, addFiles, removeFile } = useRequest();
   const { getProduct } = useCatalog();
   const { withLoading } = useLoading();
@@ -33,6 +31,7 @@ export default function QuotePage() {
   const [submitError, setSubmitError] = useState('');
   const product = quote.customDesign ? null : getProduct(quote.productSlug);
   const artwork = quote.files[0];
+  const productSlug = String(initialProductSlug || '').trim();
 
   usePageMeta({
     title: 'Request a Custom Packaging Quote | Box Studio',
@@ -49,14 +48,13 @@ export default function QuotePage() {
   });
 
   useEffect(() => {
-    const slug = params.get('product');
-    const next = slug ? getProduct(slug) : null;
+    const next = productSlug ? getProduct(productSlug) : null;
     if (!next) return;
     updateQuote((current) => {
-      if (current.productSlug === slug) return current;
+      if (current.productSlug === productSlug) return current;
       return withPreservedContact(current, selectionFromProduct(next));
     });
-  }, [params, updateQuote, getProduct]);
+  }, [productSlug, updateQuote, getProduct]);
 
   function setField(key, value) {
     updateQuote({ [key]: value, prepared: false });

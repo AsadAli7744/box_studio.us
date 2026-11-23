@@ -44,6 +44,7 @@ export default async function RootLayout({ children }) {
         <link rel="preconnect" href="https://use.typekit.net" />
         <link rel="preconnect" href="https://p.typekit.net" />
         <link rel="stylesheet" href="https://use.typekit.net/vab1qfb.css" />
+        <link rel="describedby" href="/llms.txt" />
         <script
           id="site-jsonld"
           type="application/ld+json"
@@ -51,7 +52,7 @@ export default async function RootLayout({ children }) {
         />
       </head>
       <body suppressHydrationWarning>
-        <noscript>Box Studio needs JavaScript to show this website.</noscript>
+        <noscript>Some interactive features on Box Studio need JavaScript.</noscript>
         <CatalogProvider initialCatalog={catalog}>
           <RequestProvider>
             <LoadingProviderGate>
