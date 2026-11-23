@@ -62,6 +62,17 @@ const nextConfig = {
       { source: '/uses/:useSlug', destination: '/custom-boxes', permanent: false },
     ];
   },
+  async headers() {
+    return [
+      {
+        // Avoid caching a stale /about response after the old permanent redirect was removed.
+        source: '/about',
+        headers: [
+          { key: 'Cache-Control', value: 'private, no-cache, no-store, max-age=0, must-revalidate' },
+        ],
+      },
+    ];
+  },
 };
 
 export default nextConfig;

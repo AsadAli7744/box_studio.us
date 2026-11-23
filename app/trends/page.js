@@ -6,7 +6,7 @@ export const metadata = buildPageMetadata({
   description:
     'Explore packaging trends and get inspired by Box Studio finishes, decoration ideas and custom boxes for cosmetics, skincare and beauty brands.',
   path: '/trends',
-  image: absoluteSeoUrl('/images/trends/Paradiso Botanical Folding Carton Collection-3.webp'),
+  image: absoluteSeoUrl('/images/new_page/chromatic-beauty-ribbon.webp'),
 });
 
 export default function Page() {

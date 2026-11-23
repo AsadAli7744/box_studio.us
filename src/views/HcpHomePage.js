@@ -3,10 +3,13 @@
 import { useEffect, useRef, useState } from 'react';
 import Link from 'next/link';
 import { useCatalog } from '../context/CatalogContext';
+import { getHighlightCards } from '../data/highlights';
 import { buildIndustryGroups } from '../data/industries';
 import { absoluteUrl, site } from '../data/site';
 import { usePageMeta } from '../hooks/usePageMeta';
 import styles from './HcpHomePage.module.css';
+
+const highlightItems = getHighlightCards({ limit: 4 });
 
 const heroImages = [
   '/images/hcp-home/hero-fantasy-eyes.webp',
@@ -216,6 +219,32 @@ function Discover() {
   );
 }
 
+function LatestHighlights() {
+  return (
+    <section className={`${styles.section} ${styles.beige} ${styles.highlightsSection}`}>
+      <div className={styles.highlightsInner}>
+        <h2>Latest updates &amp; Highlights</h2>
+        <div className={styles.updates}>
+          {highlightItems.map((item) => {
+            const media = (
+              <>
+                <img src={item.image} alt={item.alt} loading="lazy" decoding="async" />
+                <h3>{item.title}</h3>
+              </>
+            );
+            return (
+              <article key={item.slug} className={styles.updateCard}>
+                {item.href ? <Link href={item.href}>{media}</Link> : <div>{media}</div>}
+              </article>
+            );
+          })}
+        </div>
+        <TextLink href="/updates">Read more</TextLink>
+      </div>
+    </section>
+  );
+}
+
 function EditorialSection({ title, paragraphs, images, alt, href, linkLabel }) {
   return (
     <>
@@ -322,13 +351,13 @@ export default function HcpHomePage() {
             '/images/beautiful future/ioxxesfonf8hzb05og3z.webp',
           ]}
           alt="A refined collection of modern beauty packaging."
-          href="/trends"
+          href="/beautiful-future"
           linkLabel="Find out more"
         />
         <EditorialSection
           title="Be inspired by packaging trends"
           paragraphs={[
-            'A distinctive finish, proportion or opening detail can turn a familiar carton into something memorable.',
+            'A distinctive finish, proportion or opening detail can turn a familiar packaging box into something memorable.',
             'Use current colour, material and decoration ideas as a starting point, then make the final packaging recognisably yours.',
           ]}
           images={[
@@ -338,10 +367,11 @@ export default function HcpHomePage() {
             '/images/trends/Turquoise luxury folding carton showcase-2.webp',
             '/images/trends/Dreamy starlight skincare carton collection-1.webp',
           ]}
-          alt="A collection of contemporary folding-carton packaging trends."
+          alt="A collection of contemporary packaging box trends."
           href="/trends"
           linkLabel="Explore all boxes"
         />
+        <LatestHighlights />
       </DeferredBelowFold>
     </div>
   );

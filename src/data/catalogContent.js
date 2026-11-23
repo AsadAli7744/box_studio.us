@@ -9,6 +9,8 @@ export const RESERVED_SLUGS = new Set([
   'custom-box-for-your-brand',
   'industries',
   'trends',
+  'beautiful-future',
+  'updates',
   'admin',
   'api',
 ]);

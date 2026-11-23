@@ -1,4 +1,5 @@
 import { headers } from 'next/headers';
+import { highlightArticles } from '../src/data/highlights';
 import { getPublicCatalog } from '../src/server/publicCatalog';
 import { absoluteSeoUrl, indexingAllowed } from '../src/lib/seo';
 
@@ -17,6 +18,8 @@ export default async function sitemap() {
     { path: '/industries', priority: 0.8, changeFrequency: 'weekly' },
     { path: '/about', priority: 0.7, changeFrequency: 'monthly' },
     { path: '/trends', priority: 0.7, changeFrequency: 'weekly' },
+    { path: '/beautiful-future', priority: 0.7, changeFrequency: 'monthly' },
+    { path: '/updates', priority: 0.7, changeFrequency: 'weekly' },
     { path: '/quote', priority: 0.8, changeFrequency: 'monthly' },
   ];
 
@@ -26,6 +29,12 @@ export default async function sitemap() {
       lastModified: now,
       changeFrequency: route.changeFrequency,
       priority: route.priority,
+    })),
+    ...highlightArticles.map((item) => ({
+      url: absoluteSeoUrl(`/updates/${item.slug}`),
+      lastModified: now,
+      changeFrequency: 'monthly',
+      priority: 0.65,
     })),
     ...catalog.categories.map((item) => ({
       url: absoluteSeoUrl(`/${item.slug}`),

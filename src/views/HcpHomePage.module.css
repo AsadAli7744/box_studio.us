@@ -252,6 +252,31 @@
   margin-bottom: clamp(2rem, 4vw, 3rem);
 }
 
+.highlightsSection {
+  padding-bottom: clamp(4rem, 7vw, 6rem);
+}
+
+.highlightsInner {
+  width: min(1400px, 100%);
+  margin: 0 auto;
+}
+
+.highlightsInner > h2 {
+  margin: 0 0 clamp(2rem, 4vw, 3.25rem);
+  font-size: clamp(2.2rem, 4.2vw, 4.6rem);
+  font-weight: 650;
+  line-height: 1.06;
+  letter-spacing: -0.045em;
+}
+
+.highlightsSection .updates {
+  margin-bottom: 0.5rem;
+}
+
+.highlightsSection .updateCard h3 {
+  max-width: 20ch;
+}
+
 .industryPageTitle {
   margin: 0;
   font-size: clamp(2.2rem, 4.2vw, 4.6rem);

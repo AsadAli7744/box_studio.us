@@ -1,0 +1,262 @@
+.page {
+  --reference-beige: #f2efed;
+  --reference-mint: #8ed8cf;
+  --reference-black: #050505;
+  overflow: hidden;
+  background: #fff;
+  color: var(--reference-black);
+}
+
+.page h1,
+.page h2,
+.page h3,
+.page p {
+  margin-top: 0;
+}
+
+.hero {
+  display: grid;
+  gap: clamp(1.25rem, 3vw, 2rem);
+  padding: clamp(3rem, 6vw, 5rem) 5vw clamp(1.5rem, 3vw, 2.5rem);
+  background: #fff;
+  text-align: center;
+}
+
+.heroCopy {
+  width: min(920px, 100%);
+  margin: 0 auto;
+}
+
+.heroCopy h1 {
+  margin: 0 0 1rem;
+  font-size: clamp(2.2rem, 4.8vw, 4.2rem);
+  font-weight: 650;
+  letter-spacing: -0.045em;
+  line-height: 1.06;
+}
+
+.heroCopy p {
+  margin: 0 auto;
+  max-width: 40rem;
+  font-size: clamp(1.05rem, 1.5vw, 1.25rem);
+  font-weight: 550;
+  line-height: 1.55;
+}
+
+.heroMedia {
+  width: min(1400px, 100%);
+  margin: 0 auto;
+  aspect-ratio: 16 / 7;
+  overflow: hidden;
+  background: #e8e4df;
+}
+
+.heroMedia img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.section {
+  padding: clamp(3rem, 6vw, 5rem) 5vw;
+}
+
+.inner {
+  width: min(1080px, 100%);
+  margin: 0 auto;
+}
+
+.beige {
+  background: var(--reference-beige);
+}
+
+.white {
+  background: #fff;
+}
+
+.rule {
+  width: min(1080px, calc(100% - 10vw));
+  height: 1px;
+  margin: 0 auto;
+  background: #ddd8d2;
+}
+
+.intro {
+  display: grid;
+  grid-template-columns: minmax(220px, 0.85fr) minmax(300px, 1.15fr);
+  gap: clamp(2rem, 6vw, 5rem);
+  align-items: start;
+}
+
+.intro h2 {
+  margin: 0;
+  font-size: clamp(1.7rem, 3vw, 2.6rem);
+  font-weight: 650;
+  letter-spacing: -0.04em;
+  line-height: 1.15;
+}
+
+.intro p {
+  margin: 0 0 1.1rem;
+  font-size: clamp(0.98rem, 1.2vw, 1.08rem);
+  line-height: 1.78;
+}
+
+.intro p:last-child {
+  margin-bottom: 0;
+}
+
+.theme {
+  display: grid;
+  gap: 0.85rem;
+  width: min(820px, 100%);
+  margin: 0 auto;
+  text-align: center;
+  padding: clamp(2.5rem, 5vw, 4rem) 0;
+}
+
+.section.beige {
+  padding-top: clamp(1.5rem, 3vw, 2.5rem);
+  padding-bottom: clamp(1.5rem, 3vw, 2.5rem);
+}
+
+.theme h2 {
+  margin: 0;
+  font-size: clamp(1.7rem, 3vw, 2.5rem);
+  font-weight: 650;
+  letter-spacing: -0.04em;
+  line-height: 1.15;
+}
+
+.theme .themeLead {
+  margin: 0;
+  max-width: none;
+  font-size: clamp(1.05rem, 1.4vw, 1.2rem);
+  font-weight: 550;
+  line-height: 1.5;
+}
+
+.theme > p {
+  margin: 0 auto;
+  max-width: 40rem;
+  font-size: clamp(0.98rem, 1.2vw, 1.08rem);
+  font-weight: 400;
+  line-height: 1.78;
+}
+
+.themeLink {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.85rem;
+  margin: 0.35rem auto 0;
+  width: fit-content;
+  color: #050505;
+  font-size: 0.98rem;
+  font-weight: 650;
+  text-decoration: none;
+}
+
+.themeLink span {
+  background-image: linear-gradient(
+    transparent 48%,
+    var(--reference-mint) 48% 100%
+  );
+  box-decoration-break: clone;
+  -webkit-box-decoration-break: clone;
+}
+
+.themeLink svg {
+  width: 17px;
+  height: 17px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.4;
+  transition: transform 0.25s ease;
+}
+
+.themeLink:hover svg {
+  transform: translate(3px, -3px);
+}
+
+.ctaBand {
+  padding: clamp(3.5rem, 7vw, 5.5rem) 5vw;
+  background: #fff;
+  text-align: center;
+}
+
+.ctaBand a {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.85rem;
+  color: #050505;
+  font-size: clamp(1.15rem, 2vw, 1.55rem);
+  font-weight: 650;
+  text-decoration: none;
+}
+
+.ctaBand a span {
+  background-image: linear-gradient(
+    transparent 48%,
+    var(--reference-mint) 48% 100%
+  );
+  box-decoration-break: clone;
+  -webkit-box-decoration-break: clone;
+}
+
+.ctaBand svg {
+  width: 18px;
+  height: 18px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.4;
+}
+
+.closing {
+  padding: clamp(3.5rem, 7vw, 5.5rem) 5vw;
+  background: var(--reference-beige);
+  text-align: center;
+}
+
+.closingInner {
+  width: min(720px, 100%);
+  margin: 0 auto;
+}
+
+.closing h2 {
+  margin: 0 0 1rem;
+  font-size: clamp(1.7rem, 3vw, 2.5rem);
+  font-weight: 650;
+  letter-spacing: -0.04em;
+  line-height: 1.15;
+}
+
+.closing p {
+  margin: 0 0 1.5rem;
+  font-size: clamp(0.98rem, 1.2vw, 1.08rem);
+  line-height: 1.78;
+}
+
+@media (max-width: 900px) {
+  .intro {
+    grid-template-columns: 1fr;
+    gap: 1.25rem;
+  }
+
+  .heroMedia {
+    aspect-ratio: 4 / 3;
+  }
+}
+
+@media (max-width: 680px) {
+  .hero,
+  .section,
+  .ctaBand,
+  .closing {
+    padding-left: 1.35rem;
+    padding-right: 1.35rem;
+  }
+
+  .rule {
+    width: calc(100% - 2.7rem);
+  }
+}

@@ -14,27 +14,27 @@ const STORIES = [
     lead:
       'Beauty packaging is shifting away from loud novelty toward calm surfaces, considered proportion and finishes that feel intentional in the hand.',
     paragraphs: [
-      'Soft peach, ivory, muted rose and warm neutrals continue to lead shelf stories — especially when paired with clean typography and a single strong accent. Emboss, soft-touch coatings and restrained foil can add depth without overcrowding the face of the carton.',
+      'Soft peach, ivory, muted rose and warm neutrals continue to lead shelf stories — especially when paired with clean typography and a single strong accent. Emboss, soft-touch coatings and restrained foil can add depth without overcrowding the face of the packaging box.',
       'For brands refreshing an existing line, start with the structure you already trust, then evolve the print and finishing language. A familiar tuck-end or sleeve can look entirely new when colour, type hierarchy and opening detail are refined together.',
-      'Box Studio helps you compare those choices against protection, print quality and production reality — so the trend inspiration still works as a manufacturable box.',
+      'Box Studio helps you compare those choices against protection, print quality and production reality — so the trend inspiration still works as a manufacturable packaging box.',
     ],
-    image: '/images/trends/Caresse rose-peach embossed carton collection-4.webp',
-    imageAlt: 'Rose-peach embossed carton packaging with a soft luxury finish.',
+    image: '/images/new_page/lilac-tangerine-beauty.webp',
+    imageAlt: 'Lilac and tangerine beauty packaging boxes.',
     productSlugs: ['blush-boxes', 'highlighter-boxes', 'face-powder-boxes'],
   },
   {
     id: 'lip-colour',
     kicker: 'Colour story',
-    title: 'The lip colour story: slim cartons with a clear point of view',
+    title: 'The lip colour story: slim packaging boxes with a clear point of view',
     lead:
-      'Lipstick, gloss and balm packaging succeed when the carton feels as precise as the product — slim, confident and easy to recognise from a distance.',
+      'Lipstick, gloss and balm packaging succeed when the packaging box feels as precise as the product — slim, confident and easy to recognise from a distance.',
     paragraphs: [
       'Tall, narrow formats remain a strong cue for lip products. They photograph well, stack cleanly and leave room for a bold product name or shade system on the front panel. Window details and metallic accents work best when they support the formula story instead of competing with it.',
-      'Sets and duos are another growing ask: two related SKUs in one presentation carton, or a primary product with a mini companion. That is where structure and insert planning matter as much as print.',
-      'Browse the lip formats below, then request a quote with your fill size, shade count and finishing preferences so the carton is sized to the actual component.',
+      'Sets and duos are another growing ask: two related SKUs in one presentation packaging box, or a primary product with a mini companion. That is where structure and insert planning matter as much as print.',
+      'Browse the lip formats below, then request a quote with your fill size, shade count and finishing preferences so the packaging box is sized to the actual component.',
     ],
-    image: '/images/trends/Pastel Creams Folding Carton Showcase-5.webp',
-    imageAlt: 'Pastel cream folding cartons arranged as a colour-led packaging story.',
+    image: '/images/new_page/chromatic-beauty-ribbon.webp',
+    imageAlt: 'Chromatic beauty packaging boxes on a silver ribbon.',
     productSlugs: ['lipstick-boxes', 'lip-gloss-boxes', 'lip-balm-boxes', 'liquid-lipstick-boxes'],
   },
   {
@@ -44,12 +44,12 @@ const STORIES = [
     lead:
       'Foundation, primer and sun care are leaning into clearer hierarchies, honest materials and packaging that communicates care as much as colour.',
     paragraphs: [
-      'Many brands are balancing “clinical clean” with warmth: cool neutrals for trust, then one soft accent for approachability. Pump bottles, tubes and sticks each need different carton footprints — so the trend is less about one universal box and more about a coherent family system.',
+      'Many brands are balancing “clinical clean” with warmth: cool neutrals for trust, then one soft accent for approachability. Pump bottles, tubes and sticks each need different packaging box footprints — so the trend is less about one universal box and more about a coherent family system.',
       'Sunscreen and after-sun lines benefit from durable print, clear usage cues and formats that survive travel and retail handling. A strong side panel or back panel can carry SPF language without crowding the hero face.',
-      'Use the related boxes as references for proportion, then adapt board, finish and artwork to your brand system.',
+      'Use the related packaging boxes as references for proportion, then adapt board, finish and artwork to your brand system.',
     ],
-    image: '/images/trends/Turquoise luxury folding carton showcase-2.webp',
-    imageAlt: 'Turquoise luxury folding cartons for skincare and complexion packaging.',
+    image: '/images/new_page/chartreuse-petrol-skincare.webp',
+    imageAlt: 'Chartreuse and petrol-blue luxury skincare packaging boxes.',
     productSlugs: ['foundation-boxes', 'primer-boxes', 'sunscreen-boxes', 'concealer-boxes'],
   },
   {
@@ -57,14 +57,14 @@ const STORIES = [
     kicker: 'Eyes & brows',
     title: 'Definition, drama and the details that hold an eye story together',
     lead:
-      'Mascara, eyeliner and brow packaging reward precision — both in the component and in the carton that introduces it.',
+      'Mascara, eyeliner and brow packaging reward precision — both in the component and in the packaging box that introduces it.',
     paragraphs: [
-      'Dark grounds, metallic type and high-contrast icons still signal intensity for eye products, while brow ranges often prefer softer neutrals with tool-led photography or line illustrations. Either way, the carton should make the ritual feel clear: define, fill, set.',
+      'Dark grounds, metallic type and high-contrast icons still signal intensity for eye products, while brow ranges often prefer softer neutrals with tool-led photography or line illustrations. Either way, the packaging box should make the ritual feel clear: define, fill, set.',
       'Kits are especially useful here — a brow powder with brush, or an eyes essentials pair — because the unboxing moment can explain the routine before the customer opens a single tube.',
-      'Explore the formats below when you need slim sleeves, kit cartons or matching secondary packaging across an eye and brow lineup.',
+      'Explore the formats below when you need slim sleeves, kit packaging boxes or matching secondary packaging across an eye and brow lineup.',
     ],
-    image: '/images/trends/Dreamy starlight skincare carton collection-1.webp',
-    imageAlt: 'Starlight-inspired carton packaging with a refined beauty finish.',
+    image: '/images/new_page/coral-cobalt-fragrance.webp',
+    imageAlt: 'Coral and cobalt fragrance packaging boxes on sculptural stairs.',
     productSlugs: ['mascara-boxes', 'eyeliner-boxes', 'eyebrow-product-boxes', 'makeup-set-boxes'],
   },
 ];
@@ -150,7 +150,7 @@ export default function TrendsPage() {
     description:
       'Read Box Studio packaging trend notes on colour, finish and structure — then explore matching custom boxes for cosmetics, skincare and beauty brands.',
     path: '/trends',
-    image: absoluteUrl('/images/trends/Paradiso Botanical Folding Carton Collection-3.webp'),
+    image: absoluteUrl('/images/new_page/chromatic-beauty-ribbon.webp'),
   });
 
   return (
@@ -167,8 +167,8 @@ export default function TrendsPage() {
         </div>
         <div className={styles.heroMedia}>
           <img
-            src="/images/trends/Paradiso Botanical Folding Carton Collection-3.webp"
-            alt="Botanical folding carton packaging trend collection."
+            src="/images/new_page/chromatic-beauty-ribbon.webp"
+            alt="Chromatic beauty packaging boxes on a silver ribbon."
             loading="eager"
             fetchPriority="high"
             decoding="async"
@@ -187,21 +187,21 @@ export default function TrendsPage() {
               why Box Studio treats inspiration as a brief — not a finished specification.
             </p>
             <p>
-              Across beauty retail, the strongest cartons share a few habits: one dominant visual idea,
-              honest structure for the component, and finishing used with restraint. Foil, emboss,
-              soft-touch and windows all have a place; they work best when they reinforce the product
-              promise instead of decorating every panel.
+              Across beauty retail, the strongest packaging boxes share a few habits: one dominant
+              visual idea, honest structure for the component, and finishing used with restraint.
+              Foil, emboss, soft-touch and windows all have a place; they work best when they
+              reinforce the product promise instead of decorating every panel.
             </p>
             <p>
               Use the stories below as a reading path. Each one pairs editorial direction with live
-              catalog boxes — lipstick sleeves, complexion cartons, eye kits and more — so you can
-              move from mood to a manufacturable reference quickly.
+              catalog packaging boxes — lipstick sleeves, complexion boxes, eye kits and more — so
+              you can move from mood to a manufacturable reference quickly.
             </p>
           </div>
           <div className={styles.pullQuote}>
             <p>
-              “A distinctive finish or opening detail can turn a familiar carton into something
-              memorable — as long as the structure still fits the product.”
+              “A distinctive finish or opening detail can turn a familiar packaging box into
+              something memorable — as long as the structure still fits the product.”
             </p>
           </div>
         </div>
@@ -272,8 +272,8 @@ export default function TrendsPage() {
               trend collection feel intentional instead of assembled.
             </p>
             <p>
-              Ready to move from inspiration to a carton? Start with a related box above, or send
-              dimensions and artwork notes through a quote request.
+              Ready to move from inspiration to a packaging box? Start with a related box above, or
+              send dimensions and artwork notes through a quote request.
             </p>
           </div>
           <div className={styles.checklist}>
