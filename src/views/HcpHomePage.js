@@ -371,7 +371,7 @@ export default function HcpHomePage() {
           href="/trends"
           linkLabel="Explore all boxes"
         />
-        <LatestHighlights />
+        {/* <LatestHighlights /> */}
       </DeferredBelowFold>
     </div>
   );

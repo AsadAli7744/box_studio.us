@@ -5,6 +5,8 @@ import { useParams, useRouter } from 'next/navigation';
 import Accordion from '../components/Accordion';
 import { breadcrumbJson } from '../components/Breadcrumbs';
 import RelatedSlider from '../components/RelatedSlider';
+import { getFinish, getInsert, getMaterial } from '../data/catalog';
+import { buildProductSeoGuide } from '../data/productSeoGuide';
 import { absoluteUrl } from '../data/site';
 import { useCatalog } from '../context/CatalogContext';
 import { useLoading } from '../context/LoadingContext';
@@ -12,6 +14,12 @@ import { useRequest } from '../context/RequestContext';
 import { usePageMeta } from '../hooks/usePageMeta';
 import { selectionFromProduct, withPreservedContact } from '../utils/quoteDraft';
 import NotFoundPage from './NotFoundPage';
+
+const INFO_TABS = [
+  { id: 'description', label: 'Description' },
+  { id: 'specs', label: 'Product Specification' },
+  { id: 'faqs', label: "FAQ's" },
+];
 
 function QuoteArrow() {
   return (
@@ -75,9 +83,181 @@ function ProductFadeImages({ images, alt, interval = 2800 }) {
           loading={index === 0 ? 'eager' : 'lazy'}
           fetchPriority={index === 0 ? 'high' : 'auto'}
           decoding="async"
+          style={{ objectFit: 'cover', objectPosition: 'center center' }}
         />
       ))}
     </div>
+  );
+}
+
+function labelList(ids = [], lookup) {
+  return ids
+    .map((id) => lookup(id)?.name || lookup(id)?.label || id)
+    .filter(Boolean);
+}
+
+function ProductInfoPanel({ product, seoGuide }) {
+  const [tab, setTab] = useState('description');
+  const materialNames = labelList(product.materialIds, getMaterial);
+  const finishNames = labelList(product.finishIds, getFinish);
+  const insertNames = labelList(
+    (product.insertIds || []).filter((id) => id && id !== 'none'),
+    getInsert,
+  );
+  const uses = product.applications || [];
+  const options = product.structuralOptions || [];
+  const faqItems = seoGuide?.aeoFaqs?.length ? seoGuide.aeoFaqs : product.faqs || [];
+
+  return (
+    <section className="product-info-panel" aria-label={`${product.name} product information`}>
+      <div className="product-info-tabs" role="tablist" aria-label="Product information tabs">
+        {INFO_TABS.map((item) => {
+          const selected = tab === item.id;
+          return (
+            <button
+              key={item.id}
+              type="button"
+              role="tab"
+              id={`product-tab-${item.id}`}
+              aria-selected={selected}
+              aria-controls={`product-panel-${item.id}`}
+              tabIndex={selected ? 0 : -1}
+              className={selected ? 'is-active' : undefined}
+              onClick={() => setTab(item.id)}
+            >
+              {item.label}
+            </button>
+          );
+        })}
+      </div>
+
+      <div className="product-info-frame">
+        <div
+          className="product-info-scroll"
+          role="tabpanel"
+          id={`product-panel-${tab}`}
+          aria-labelledby={`product-tab-${tab}`}
+          tabIndex={0}
+        >
+          {tab === 'description' && seoGuide ? (
+            <div className="product-info-copy">
+              {seoGuide.descriptionSections.map((section) => (
+                <div key={section.heading} className="product-info-section">
+                  <h2>{section.heading}</h2>
+                  {section.paragraphs.map((paragraph) => (
+                    <p key={paragraph}>{paragraph}</p>
+                  ))}
+                </div>
+              ))}
+            </div>
+          ) : null}
+
+          {tab === 'specs' ? (
+            <div className="product-info-copy">
+              <div className="product-info-section">
+                <h2>Product Specification</h2>
+                <p>
+                  Clear details for {product.name.toLowerCase()} so you know what you are ordering and what to send
+                  with your quote.
+                </p>
+              </div>
+
+              <dl className="product-spec-list">
+                <div>
+                  <dt>Product</dt>
+                  <dd>{product.name}</dd>
+                </div>
+                <div>
+                  <dt>Category</dt>
+                  <dd>{product.categoryLabel || product.category}</dd>
+                </div>
+                {product.structureName ? (
+                  <div>
+                    <dt>Structure</dt>
+                    <dd>{product.structureName}</dd>
+                  </div>
+                ) : null}
+                {materialNames.length ? (
+                  <div>
+                    <dt>Materials</dt>
+                    <dd>{materialNames.join(', ')}</dd>
+                  </div>
+                ) : null}
+                {finishNames.length ? (
+                  <div>
+                    <dt>Finishes</dt>
+                    <dd>{finishNames.join(', ')}</dd>
+                  </div>
+                ) : null}
+                {insertNames.length ? (
+                  <div>
+                    <dt>Insert options</dt>
+                    <dd>{insertNames.join(', ')}</dd>
+                  </div>
+                ) : null}
+                {product.defaults ? (
+                  <div>
+                    <dt>Starter size</dt>
+                    <dd>
+                      {product.defaults.length} × {product.defaults.width} × {product.defaults.height}{' '}
+                      {product.defaults.unit || 'mm'}
+                    </dd>
+                  </div>
+                ) : null}
+              </dl>
+
+              {product.structure ? (
+                <div className="product-info-section">
+                  <h3>How the structure works</h3>
+                  <p>{product.structure}</p>
+                </div>
+              ) : null}
+
+              {product.measurement ? (
+                <div className="product-info-section">
+                  <h3>How to measure</h3>
+                  <p>{product.measurement}</p>
+                </div>
+              ) : null}
+
+              {options.length ? (
+                <div className="product-info-section">
+                  <h3>Structural options</h3>
+                  <ul>
+                    {options.map((item) => (
+                      <li key={item}>{item}</li>
+                    ))}
+                  </ul>
+                </div>
+              ) : null}
+
+              {uses.length ? (
+                <div className="product-info-section">
+                  <h3>Best used for</h3>
+                  <ul>
+                    {uses.map((item) => (
+                      <li key={item}>{item}</li>
+                    ))}
+                  </ul>
+                </div>
+              ) : null}
+            </div>
+          ) : null}
+
+          {tab === 'faqs' ? (
+            <div className="product-info-copy">
+              <div className="product-info-section">
+                <h2>Frequently Asked Questions</h2>
+                <p>Simple answers about {product.name.toLowerCase()}, ordering, and fit.</p>
+              </div>
+              <div className="product-info-faq">
+                <Accordion items={faqItems} />
+              </div>
+            </div>
+          ) : null}
+        </div>
+      </div>
+    </section>
   );
 }
 
@@ -102,6 +282,16 @@ export default function ProductPage() {
         { label: product.name },
       ]
     : [];
+  const seoGuide = product ? buildProductSeoGuide(product) : null;
+  const faqEntities = product
+    ? [...(seoGuide?.aeoFaqs || []), ...(product.faqs || [])]
+        .filter((item, index, list) => list.findIndex((entry) => entry.q === item.q) === index)
+        .map((item) => ({
+          '@type': 'Question',
+          name: item.q,
+          acceptedAnswer: { '@type': 'Answer', text: item.a },
+        }))
+    : [];
 
   usePageMeta({
     title: product ? `${product.name} | Custom Packaging | Box Studio` : 'Box not found | Box Studio',
@@ -119,14 +309,11 @@ export default function ProductPage() {
               image: product.images.map((image) => absoluteUrl(image.src)),
               brand: { '@type': 'Brand', name: 'Box Studio' },
               category: category?.name,
+              keywords: seoGuide?.searchPhrases?.slice(0, 12).join(', '),
             },
             {
               '@type': 'FAQPage',
-              mainEntity: product.faqs.map((item) => ({
-                '@type': 'Question',
-                name: item.q,
-                acceptedAnswer: { '@type': 'Answer', text: item.a },
-              })),
+              mainEntity: faqEntities,
             },
             breadcrumbJson(crumbs),
           ],
@@ -177,12 +364,9 @@ export default function ProductPage() {
         <ProductFadeImages images={product.images} alt={image.alt} />
       </div>
 
-      <RelatedSlider items={related} />
+      {seoGuide ? <ProductInfoPanel key={product.slug} product={product} seoGuide={seoGuide} /> : null}
 
-      <section className="faq-section">
-        <h2>Questions about this box</h2>
-        <Accordion items={product.faqs} />
-      </section>
+      <RelatedSlider items={related} />
 
       <div className="quote-dock">
         <button type="button" className="btn btn-gold" onClick={goToQuote}>

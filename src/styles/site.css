@@ -1637,6 +1637,7 @@ legend { font-family: var(--font-display); font-size: 1.6rem; padding: 0; }
   width: min(1004px, 100%);
   aspect-ratio: 1004 / 708;
   margin: 0 auto;
+  background: #f2efed;
 }
 .product-fade-images img {
   position: absolute;
@@ -1644,11 +1645,173 @@ legend { font-family: var(--font-display); font-size: 1.6rem; padding: 0; }
   width: 100%;
   height: 100%;
   object-fit: cover;
+  object-position: center center;
   opacity: 0;
   transition: opacity 0.75s ease-in-out;
 }
 .product-fade-images img.is-active {
   opacity: 1;
+}
+
+.product-info-panel {
+  width: min(1120px, 100%);
+  margin: clamp(2.75rem, 5.5vw, 4.5rem) auto clamp(1.5rem, 3vw, 2.5rem);
+  color: #111;
+}
+.product-info-tabs {
+  display: inline-flex;
+  flex-wrap: wrap;
+  gap: 0.35rem;
+  margin-bottom: 1rem;
+  padding: 0.28rem;
+  border: 1px solid #d9d9d9;
+  border-radius: 999px;
+  background: #fff;
+}
+.product-info-tabs button {
+  appearance: none;
+  border: 0;
+  border-radius: 999px;
+  padding: 0.72rem 1.15rem;
+  background: transparent;
+  color: #111;
+  font: inherit;
+  font-size: 0.92rem;
+  font-weight: 600;
+  line-height: 1;
+  cursor: pointer;
+  transition: background 0.2s ease, color 0.2s ease;
+}
+.product-info-tabs button.is-active {
+  background: #111;
+  color: #fff;
+}
+.product-info-tabs button:focus-visible {
+  outline: 2px solid #8ed8cf;
+  outline-offset: 2px;
+}
+.product-info-frame {
+  border: 1px solid #d7d7d7;
+  border-radius: 1.15rem;
+  background: #fff;
+  overflow: hidden;
+}
+.product-info-scroll {
+  height: clamp(28rem, 62vh, 42rem);
+  overflow-x: hidden;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  padding: clamp(1.35rem, 3vw, 2rem) clamp(1.25rem, 3vw, 2.25rem);
+  scrollbar-width: thin;
+  scrollbar-color: #5ec8c0 #dff7f4;
+}
+.product-info-scroll:focus-visible {
+  outline: 2px solid #8ed8cf;
+  outline-offset: -2px;
+}
+.product-info-scroll::-webkit-scrollbar {
+  width: 10px;
+}
+.product-info-scroll::-webkit-scrollbar-track {
+  background: #dff7f4;
+}
+.product-info-scroll::-webkit-scrollbar-thumb {
+  background: #5ec8c0;
+  border-radius: 999px;
+  border: 2px solid #dff7f4;
+}
+.product-info-scroll::-webkit-scrollbar-thumb:hover {
+  background: #3fb8ae;
+}
+.product-info-copy {
+  width: 100%;
+  max-width: none;
+}
+.product-info-section + .product-info-section {
+  margin-top: 1.85rem;
+}
+.product-info-section h2 {
+  margin: 0 0 0.9rem;
+  font-size: clamp(1.35rem, 2.4vw, 1.85rem);
+  font-weight: 700;
+  letter-spacing: -0.03em;
+  line-height: 1.2;
+}
+.product-info-section h3 {
+  margin: 0 0 0.7rem;
+  font-size: clamp(1.05rem, 1.6vw, 1.25rem);
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  line-height: 1.25;
+}
+.product-info-section p {
+  margin: 0 0 0.95rem;
+  font-size: 0.98rem;
+  line-height: 1.75;
+  color: #222;
+}
+.product-info-section p:last-child {
+  margin-bottom: 0;
+}
+.product-info-section ul {
+  margin: 0;
+  padding-left: 1.2rem;
+}
+.product-info-section li {
+  margin: 0 0 0.55rem;
+  font-size: 0.98rem;
+  line-height: 1.65;
+}
+.product-info-section li:last-child {
+  margin-bottom: 0;
+}
+.product-spec-list {
+  display: grid;
+  gap: 0.85rem;
+  margin: 0 0 1.75rem;
+}
+.product-spec-list > div {
+  display: grid;
+  grid-template-columns: minmax(8rem, 11rem) 1fr;
+  gap: 0.75rem 1.25rem;
+  padding-bottom: 0.85rem;
+  border-bottom: 1px solid #ececec;
+}
+.product-spec-list dt {
+  margin: 0;
+  font-size: 0.92rem;
+  font-weight: 700;
+  color: #111;
+}
+.product-spec-list dd {
+  margin: 0;
+  font-size: 0.98rem;
+  line-height: 1.55;
+  color: #333;
+}
+.product-info-faq .accordion {
+  border-top: 0;
+}
+@media (max-width: 720px) {
+  .product-info-tabs {
+    display: flex;
+    width: 100%;
+    border-radius: 1rem;
+  }
+  .product-info-tabs button {
+    flex: 1 1 auto;
+    padding: 0.7rem 0.65rem;
+    font-size: 0.82rem;
+    text-align: center;
+  }
+  .product-info-scroll {
+    height: 24rem;
+    padding: 1.2rem 1.1rem 1.5rem;
+  }
+  .product-spec-list > div {
+    grid-template-columns: 1fr;
+    gap: 0.25rem;
+  }
 }
 .gallery > img { width: 100%; height: auto; aspect-ratio: 5 / 4; object-fit: contain; background: var(--ivory); }
 .product-copy { max-width: 44rem; padding: 0.4rem 0 1.2rem; }
