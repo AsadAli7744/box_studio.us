@@ -5,6 +5,7 @@ export const RESERVED_SLUGS = new Set([
   'about',
   'contact',
   'quote',
+  'request-a-quote',
   'custom-boxes',
   'custom-box-for-your-brand',
   'industries',
@@ -14,6 +15,9 @@ export const RESERVED_SLUGS = new Set([
   'admin',
   'api',
 ]);
+
+/** Pseudo-products that must never render as catalog pages. */
+export const EXCLUDED_PRODUCT_SLUGS = new Set(['request-a-quote']);
 
 const materialIds = new Set(materials.map((item) => item.id));
 const finishIds = new Set(finishes.map((item) => item.id));
@@ -335,38 +339,42 @@ export function presentCatalog(doc) {
     faqs: category.faqs.map((item) => ({ ...item })),
   }));
   const byCategory = new Map(categories.map((category) => [category.slug, category]));
-  const products = doc.products.map((record) => {
-    const structure = getProduct(record.structure);
-    const category = byCategory.get(record.category);
-    return {
-      ...structure,
-      slug: record.slug,
-      name: record.name,
-      category: record.category,
-      categories: Array.isArray(record.categories) && record.categories.length ? [...record.categories] : [record.category],
-      categoryLabel: category?.name || record.category,
-      categoryHeading: category?.heading || category?.name || record.category,
-      structureName: structure?.name || record.structure,
-      structureSlug: record.structure,
-      short: record.short,
-      description: record.description,
-      meta: record.meta,
-      images: record.images.map((image) => ({ ...image })),
-      sections: record.sections.map((section) => ({ ...section })),
-      faqs: record.faqs.map((item) => ({ ...item })),
-      related: record.related.map((link) => ({ ...link })),
-      showOnHome: Boolean(record.showOnHome),
-      syncReciprocal: Boolean(record.syncReciprocal),
-      showInProducts: Array.isArray(record.showInProducts) ? [...record.showInProducts] : [],
-      applications: [...record.uses],
-      structure: record.structureText || structure?.structure || '',
-      measurement: record.measurement || structure?.measurement || '',
-      structuralOptions: record.structuralOptions?.length ? [...record.structuralOptions] : [...(structure?.structuralOptions || [])],
-      materialIds: [...record.materialIds],
-      finishIds: [...record.finishIds],
-      insertIds: [...record.insertIds],
-    };
-  });
+  const products = doc.products
+    .filter((record) => !EXCLUDED_PRODUCT_SLUGS.has(slugify(record?.slug)))
+    .map((record) => {
+      const structure = getProduct(record.structure);
+      const category = byCategory.get(record.category);
+      return {
+        ...structure,
+        slug: record.slug,
+        name: record.name,
+        category: record.category,
+        categories: Array.isArray(record.categories) && record.categories.length ? [...record.categories] : [record.category],
+        categoryLabel: category?.name || record.category,
+        categoryHeading: category?.heading || category?.name || record.category,
+        structureName: structure?.name || record.structure,
+        structureSlug: record.structure,
+        short: record.short,
+        description: record.description,
+        meta: record.meta,
+        images: record.images.map((image) => ({ ...image })),
+        sections: record.sections.map((section) => ({ ...section })),
+        faqs: record.faqs.map((item) => ({ ...item })),
+        related: record.related
+          .map((link) => ({ ...link }))
+          .filter((link) => !EXCLUDED_PRODUCT_SLUGS.has(link.slug)),
+        showOnHome: Boolean(record.showOnHome),
+        syncReciprocal: Boolean(record.syncReciprocal),
+        showInProducts: Array.isArray(record.showInProducts) ? [...record.showInProducts] : [],
+        applications: [...record.uses],
+        structure: record.structureText || structure?.structure || '',
+        measurement: record.measurement || structure?.measurement || '',
+        structuralOptions: record.structuralOptions?.length ? [...record.structuralOptions] : [...(structure?.structuralOptions || [])],
+        materialIds: [...record.materialIds],
+        finishIds: [...record.finishIds],
+        insertIds: [...record.insertIds],
+      };
+    });
 
   return {
     heroSlides: (doc.heroSlides || []).map((slide) => ({ ...slide })),

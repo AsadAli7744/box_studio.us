@@ -1,9 +1,9 @@
 export const site = {
   name: 'Box Studio',
-  domain: 'boxstudio.us',
+  domain: 'www.boxstudio.us',
   url: (typeof process !== 'undefined' && process.env.NEXT_PUBLIC_SITE_URL
     ? process.env.NEXT_PUBLIC_SITE_URL.replace(/\/$/, '')
-    : 'https://boxstudio.us'),
+    : 'https://www.boxstudio.us'),
   description:
     'Custom packaging solutions for cosmetics, skincare, fragrance, food, healthcare and retail. Printed packaging sized to your product, then quoted for production.',
   // Factual company summary used for structured data consistency.
@@ -35,7 +35,7 @@ export const site = {
   // Add verified details here. Empty values are omitted from the visible site.
   email: 'info@boxstudio.us',
   phone: '+1 225-483-5392',
-  address: '',
+  address: 'United States',
   social: {},
 };
 

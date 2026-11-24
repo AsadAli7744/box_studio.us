@@ -74,9 +74,26 @@ export const highlightCards = [
   },
 ];
 
+const ARTICLE_DATES = {
+  'packaging-boxes-on-shelf': '2026-09-12',
+  'custom-printed-packaging-details': '2026-09-26',
+  'packaging-boxes-by-industry': '2026-10-10',
+  'compact-set-packaging-boxes': '2026-10-24',
+  'soft-touch-finishes': '2026-11-02',
+  'skincare-packaging-hierarchy': '2026-11-05',
+  'colour-story-packaging': '2026-11-08',
+  'fragrance-packaging-presence': '2026-11-11',
+  'folded-paper-structures': '2026-11-14',
+  'campaign-ready-packaging': '2026-11-17',
+  'quiet-luxury-print': '2026-11-20',
+  'opening-detail-matters': '2026-11-22',
+};
+
 export const highlightArticles = [
   {
     slug: 'packaging-boxes-on-shelf',
+    author: 'Box Studio Editorial',
+    publishedAt: ARTICLE_DATES['packaging-boxes-on-shelf'],
     title: 'How packaging boxes stay presentation-ready on shelf',
     subtitle: 'A clearer look at protection, print durability and shelf presence for custom packaging boxes.',
     heroImage: '/images/new_page/campaign-hero.webp',
@@ -120,6 +137,8 @@ export const highlightArticles = [
   },
   {
     slug: 'custom-printed-packaging-details',
+    author: 'Box Studio Editorial',
+    publishedAt: ARTICLE_DATES['custom-printed-packaging-details'],
     title: 'What shoppers notice first on custom printed packaging',
     subtitle: 'Colour, proportion and finishing cues that shape first impressions on the shelf.',
     heroImage: '/images/new_page/chromatic-beauty-ribbon.webp',
@@ -163,6 +182,8 @@ export const highlightArticles = [
   },
   {
     slug: 'packaging-boxes-by-industry',
+    author: 'Box Studio Editorial',
+    publishedAt: ARTICLE_DATES['packaging-boxes-by-industry'],
     title: 'Choosing packaging boxes by product and industry',
     subtitle: 'A practical path from product type to packaging box structure, materials and presentation.',
     heroImage: '/images/new_page/chartreuse-petrol-skincare.webp',
@@ -208,6 +229,8 @@ export const highlightArticles = [
   },
   {
     slug: 'compact-set-packaging-boxes',
+    author: 'Box Studio Editorial',
+    publishedAt: ARTICLE_DATES['compact-set-packaging-boxes'],
     title: 'Smaller footprints for compact and set packaging boxes',
     subtitle: 'How compact packaging boxes and kit formats balance protection, portability and presentation.',
     heroImage: '/images/new_page/lilac-tangerine-beauty.webp',
@@ -255,16 +278,66 @@ export const highlightArticles = [
 
 export const highlights = highlightArticles;
 
-const articleSlugs = new Set(highlightArticles.map((item) => item.slug));
+function buildStubArticle(card) {
+  return {
+    slug: card.slug,
+    author: 'Box Studio Editorial',
+    publishedAt: ARTICLE_DATES[card.slug] || '2026-11-01',
+    title: card.title,
+    subtitle: `${card.title} — practical notes for brands planning custom packaging boxes.`,
+    heroImage: card.image,
+    heroAlt: card.alt,
+    introHeading: 'What this packaging note covers',
+    intro: [
+      `${card.title} is a Box Studio packaging note written for brand teams comparing structure, print and shelf presentation.`,
+      'Use it as a briefing aid before you request a quote: confirm the product fill, preferred finishes and how the packaging box should read on shelf or in unboxing.',
+    ],
+    sections: [
+      {
+        title: 'Start with the product fill',
+        lead: 'Fit comes before artwork.',
+        body: 'Measure the closed product, then choose a packaging box footprint that protects corners and keeps brand hierarchy readable after handling.',
+        linkHref: '/custom-boxes',
+        linkLabel: 'Browse packaging box formats',
+      },
+      {
+        title: 'Keep the brand story clear',
+        lead: 'One strong cue beats crowded panels.',
+        body: 'Custom printed packaging works best when colour, type and finishing support a single idea instead of competing across every face.',
+        linkHref: '/trends',
+        linkLabel: 'Explore packaging inspiration',
+      },
+      {
+        title: 'Move from note to quote',
+        lead: 'Share size, quantity and finish intent.',
+        body: 'A short brief with dimensions and artwork notes is enough for Box Studio to turn this packaging direction into a manufacturable quote.',
+        linkHref: '/quote',
+        linkLabel: 'Request a packaging quote',
+      },
+    ],
+    closingTitle: 'Ready to brief this packaging direction?',
+    closingBody:
+      'Open a related product format, note your fill size and finish preferences, then request a quote so the packaging box can be sized and printed for production.',
+  };
+}
 
 export function getHighlight(slug) {
-  return highlightArticles.find((item) => item.slug === slug) || null;
+  const full = highlightArticles.find((item) => item.slug === slug);
+  if (full) {
+    return {
+      ...full,
+      author: full.author || 'Box Studio Editorial',
+      publishedAt: full.publishedAt || ARTICLE_DATES[full.slug] || '2026-11-01',
+    };
+  }
+  const card = highlightCards.find((item) => item.slug === slug);
+  return card ? buildStubArticle(card) : null;
 }
 
 export function getHighlightCards({ limit } = {}) {
   const cards = highlightCards.map((item) => ({
     slug: item.slug,
-    href: articleSlugs.has(item.slug) ? `/updates/${item.slug}` : null,
+    href: `/updates/${item.slug}`,
     image: item.image,
     alt: item.alt,
     title: item.title,

@@ -1,9 +1,11 @@
 'use client';
 
 import Link from 'next/link';
-import { absoluteUrl } from '../data/site';
+import { absoluteUrl, configuredContact } from '../data/site';
 import { usePageMeta } from '../hooks/usePageMeta';
 import styles from './AboutPage.module.css';
+
+const contact = configuredContact();
 
 function Arrow() {
   return (
@@ -84,6 +86,41 @@ export default function AboutPage() {
             <span>{item.label}</span>
           </div>
         ))}
+      </section>
+
+      <section className={styles.proof} aria-labelledby="about-contact-heading">
+        <div className={styles.proofInner}>
+          <h2 id="about-contact-heading">Contact &amp; production focus</h2>
+          <p>
+            Box Studio manufactures custom printed packaging for brands across the United
+            States. Reach the team with your product fill, dimensions and artwork notes —
+            we will confirm structure, finishes and a production quote.
+          </p>
+          <dl className={styles.proofList}>
+            {contact.address ? (
+              <div>
+                <dt>Location</dt>
+                <dd>{contact.address}</dd>
+              </div>
+            ) : null}
+            {contact.email ? (
+              <div>
+                <dt>Email</dt>
+                <dd>
+                  <a href={`mailto:${contact.email}`}>{contact.email}</a>
+                </dd>
+              </div>
+            ) : null}
+            {contact.phone ? (
+              <div>
+                <dt>Phone</dt>
+                <dd>
+                  <a href={`tel:${contact.phone.replace(/[^\d+]/g, '')}`}>{contact.phone}</a>
+                </dd>
+              </div>
+            ) : null}
+          </dl>
+        </div>
       </section>
 
       <div className={styles.featuresWrap}>

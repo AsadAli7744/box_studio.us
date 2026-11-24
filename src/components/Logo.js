@@ -6,7 +6,6 @@ export default function Logo({ className = '' }) {
       role="img"
       aria-label="Box Studio, next generation packaging"
     >
-      <title>Boxstudio.us</title>
       <image
         href="/images/Sleek Box Studio Packaging Logo.webp"
         x="0"

@@ -76,13 +76,20 @@ export default function BoxesPage({
     return () => observer.disconnect();
   }, [hasMore, results.length]);
 
+  const metaTitle = category
+    ? `${title} | Box Studio`
+    : industry
+      ? `${title} | Box Studio`
+      : 'Custom Product Boxes | Custom Packaging Catalog | Box Studio';
+  const metaDescription = category
+    ? category.intro
+    : industry
+      ? `Explore custom ${industry.name.toLowerCase()} packaging from all related Box Studio categories.`
+      : 'Browse custom product boxes and printed packaging by category. Open a box to review structure details and request a production quote.';
+
   usePageMeta({
-    title: `${title} | Box Studio`,
-    description: category
-      ? category.intro
-      : industry
-        ? `Explore custom ${industry.name.toLowerCase()} packaging from all related Box Studio categories.`
-        : 'Custom boxes named for the product they hold. Open a box to see that product and request a quote.',
+    title: metaTitle,
+    description: metaDescription,
     path,
     image: absoluteUrl(category ? category.image : industry?.image || products[0]?.images?.[0]?.src || '/images/cat-all.jpg'),
     jsonLd: {
@@ -90,11 +97,7 @@ export default function BoxesPage({
       '@type': 'CollectionPage',
       name: title,
       url: absoluteUrl(path),
-      description: category
-        ? category.intro
-        : industry
-          ? `Custom ${industry.name.toLowerCase()} packaging grouped from related categories.`
-          : 'Custom boxes grouped by the product they pack.',
+      description: metaDescription,
     },
   });
 

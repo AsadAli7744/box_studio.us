@@ -6,7 +6,7 @@ import Accordion from '../components/Accordion';
 import { breadcrumbJson } from '../components/Breadcrumbs';
 import RelatedSlider from '../components/RelatedSlider';
 import { getFinish, getInsert, getMaterial } from '../data/catalog';
-import { buildProductSeoGuide } from '../data/productSeoGuide';
+import { buildProductSeoGuide, getProductCommerceNotes } from '../data/productSeoGuide';
 import { absoluteUrl } from '../data/site';
 import { useCatalog } from '../context/CatalogContext';
 import { useLoading } from '../context/LoadingContext';
@@ -106,6 +106,7 @@ function ProductInfoPanel({ product, seoGuide }) {
   );
   const uses = product.applications || [];
   const options = product.structuralOptions || [];
+  const commerce = getProductCommerceNotes(product);
   const faqItems = seoGuide?.aeoFaqs?.length ? seoGuide.aeoFaqs : product.faqs || [];
 
   return (
@@ -200,8 +201,26 @@ function ProductInfoPanel({ product, seoGuide }) {
                     <dt>Starter size</dt>
                     <dd>
                       {product.defaults.length} × {product.defaults.width} × {product.defaults.height}{' '}
-                      {product.defaults.unit || 'mm'}
+                      {product.defaults.unit || 'mm'} (confirm against your closed product)
                     </dd>
+                  </div>
+                ) : null}
+                {commerce?.moq ? (
+                  <div>
+                    <dt>Minimum order</dt>
+                    <dd>{commerce.moq}</dd>
+                  </div>
+                ) : null}
+                {commerce?.leadTime ? (
+                  <div>
+                    <dt>Lead time</dt>
+                    <dd>{commerce.leadTime}</dd>
+                  </div>
+                ) : null}
+                {commerce?.sampling ? (
+                  <div>
+                    <dt>Samples &amp; proofs</dt>
+                    <dd>{commerce.sampling}</dd>
                   </div>
                 ) : null}
               </dl>

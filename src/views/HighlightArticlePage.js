@@ -26,6 +26,21 @@ export default function HighlightArticlePage({ article }) {
       <section className={styles.hero} aria-labelledby="highlight-heading">
         <div className={styles.heroCopy}>
           <h1 id="highlight-heading">{article.title}</h1>
+          <p className={styles.byline}>
+            <span>{article.author || 'Box Studio Editorial'}</span>
+            {article.publishedAt ? (
+              <>
+                <span aria-hidden="true"> · </span>
+                <time dateTime={article.publishedAt}>
+                  {new Date(`${article.publishedAt}T12:00:00Z`).toLocaleDateString('en-US', {
+                    year: 'numeric',
+                    month: 'long',
+                    day: 'numeric',
+                  })}
+                </time>
+              </>
+            ) : null}
+          </p>
           <p>{article.subtitle}</p>
         </div>
         <div className={styles.heroMedia}>

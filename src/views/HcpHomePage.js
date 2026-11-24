@@ -225,19 +225,14 @@ function LatestHighlights() {
       <div className={styles.highlightsInner}>
         <h2>Latest updates &amp; Highlights</h2>
         <div className={styles.updates}>
-          {highlightItems.map((item) => {
-            const media = (
-              <>
+          {highlightItems.map((item) => (
+            <article key={item.slug} className={styles.updateCard}>
+              <Link href={item.href || `/updates/${item.slug}`}>
                 <img src={item.image} alt={item.alt} loading="lazy" decoding="async" />
                 <h3>{item.title}</h3>
-              </>
-            );
-            return (
-              <article key={item.slug} className={styles.updateCard}>
-                {item.href ? <Link href={item.href}>{media}</Link> : <div>{media}</div>}
-              </article>
-            );
-          })}
+              </Link>
+            </article>
+          ))}
         </div>
         <TextLink href="/updates">Read more</TextLink>
       </div>

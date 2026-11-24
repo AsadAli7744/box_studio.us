@@ -1,8 +1,19 @@
 import { site } from '../data/site';
 
+const CANONICAL_ORIGIN = 'https://www.boxstudio.us';
+
 export function siteOrigin() {
   const configured = (process.env.NEXT_PUBLIC_SITE_URL || site.url || '').replace(/\/$/, '');
-  return configured || 'https://boxstudio.us';
+  const fallback = configured || CANONICAL_ORIGIN;
+  try {
+    const url = new URL(fallback);
+    const bare = url.hostname.replace(/^www\./, '').toLowerCase();
+    // Always emit www for the production domain (canonicals, sitemap, og, schema).
+    if (bare === 'boxstudio.us') return CANONICAL_ORIGIN;
+    return url.origin;
+  } catch {
+    return CANONICAL_ORIGIN;
+  }
 }
 
 export function absoluteSeoUrl(path = '/') {

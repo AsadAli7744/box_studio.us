@@ -223,6 +223,66 @@
   transform: translate(3px, -3px);
 }
 
+.proof {
+  background: #f7f5f3;
+  border-top: 1px solid #ececec;
+  border-bottom: 1px solid #ececec;
+}
+
+.proofInner {
+  width: min(920px, calc(100% - 10vw));
+  margin: 0 auto;
+  padding: clamp(2.75rem, 5vw, 4rem) 0;
+}
+
+.proofInner h2 {
+  margin: 0 0 0.85rem;
+  font-size: clamp(1.65rem, 3vw, 2.4rem);
+  font-weight: 650;
+  letter-spacing: -0.04em;
+  line-height: 1.1;
+}
+
+.proofInner > p {
+  margin: 0 0 1.5rem;
+  max-width: 40rem;
+  font-size: clamp(0.98rem, 1.2vw, 1.08rem);
+  line-height: 1.7;
+}
+
+.proofList {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1.25rem 1.75rem;
+  margin: 0;
+}
+
+.proofList div {
+  min-width: 0;
+}
+
+.proofList dt {
+  margin: 0 0 0.35rem;
+  color: #6a6662;
+  font-size: 0.82rem;
+  font-weight: 650;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+.proofList dd {
+  margin: 0;
+  font-size: 1.05rem;
+  font-weight: 550;
+  line-height: 1.4;
+}
+
+.proofList a {
+  color: inherit;
+  text-decoration: none;
+  background-image: linear-gradient(transparent 48%, var(--reference-mint) 48% 100%);
+}
+
 .featuresWrap {
   background: #fff;
   border-top: 1px solid #ececec;
@@ -272,6 +332,10 @@
 
   .featureMedia {
     min-height: 260px;
+  }
+
+  .proofList {
+    grid-template-columns: 1fr;
   }
 }
 

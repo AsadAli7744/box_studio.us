@@ -23,20 +23,14 @@ export default function UpdatesPage() {
         <div className={styles.inner}>
           <h1 id="updates-heading">Latest updates &amp; Highlights</h1>
           <div className={styles.grid}>
-            {items.map((item) => {
-              const media = (
-                <>
+            {items.map((item) => (
+              <article key={item.slug} className={styles.card}>
+                <Link href={item.href || `/updates/${item.slug}`}>
                   <img src={item.image} alt={item.alt} loading="lazy" decoding="async" />
                   <h2>{item.title}</h2>
-                </>
-              );
-
-              return (
-                <article key={item.slug} className={styles.card}>
-                  {item.href ? <Link href={item.href}>{media}</Link> : <div>{media}</div>}
-                </article>
-              );
-            })}
+                </Link>
+              </article>
+            ))}
           </div>
         </div>
       </section>

@@ -1,11 +1,18 @@
 import { NextResponse } from 'next/server';
 
+const APEX_HOST = 'boxstudio.us';
+const WWW_ORIGIN = 'https://www.boxstudio.us';
+
+function hostnameOf(host = '') {
+  return String(host).split(':')[0].toLowerCase();
+}
+
 function isFinalHost(host = '') {
-  return host.replace(/^www\./, '').toLowerCase() === 'boxstudio.us';
+  return hostnameOf(host).replace(/^www\./, '') === APEX_HOST;
 }
 
 function isStagingHost(host = '') {
-  const normalized = host.toLowerCase();
+  const normalized = hostnameOf(host);
   return (
     normalized.includes('railway.app') ||
     normalized.includes('localhost') ||
@@ -16,6 +23,17 @@ function isStagingHost(host = '') {
 
 export function middleware(request) {
   const host = request.headers.get('host') || '';
+  const hostname = hostnameOf(host);
+
+  // Permanent apex → www for every path (not only /).
+  if (hostname === APEX_HOST) {
+    const destination = new URL(
+      `${request.nextUrl.pathname}${request.nextUrl.search}`,
+      WWW_ORIGIN,
+    );
+    return NextResponse.redirect(destination, 301);
+  }
+
   const allowIndexing = process.env.NEXT_PUBLIC_ALLOW_INDEXING;
   const response = NextResponse.next();
 

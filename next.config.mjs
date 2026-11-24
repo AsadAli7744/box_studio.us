@@ -54,6 +54,7 @@ const nextConfig = {
     return [
       { source: '/contact', destination: '/quote', permanent: true },
       { source: '/custom-box-for-your-brand', destination: '/quote', permanent: true },
+      { source: '/request-a-quote', destination: '/quote', permanent: true },
       ...mapped('/boxes/:slug', legacyCategories),
       { source: '/boxes/:categorySlug', destination: '/custom-boxes', permanent: true },
       ...mapped('/products/:slug', legacyProducts),

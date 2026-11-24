@@ -1,10 +1,10 @@
 import { notFound } from 'next/navigation';
 import HighlightArticlePage from '../../../src/views/HighlightArticlePage';
-import { getHighlight, highlightArticles } from '../../../src/data/highlights';
+import { getHighlight, highlightCards } from '../../../src/data/highlights';
 import { absoluteSeoUrl, buildPageMetadata } from '../../../src/lib/seo';
 
 export function generateStaticParams() {
-  return highlightArticles.map((item) => ({ slug: item.slug }));
+  return highlightCards.map((item) => ({ slug: item.slug }));
 }
 
 export async function generateMetadata({ params }) {

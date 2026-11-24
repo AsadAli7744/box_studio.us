@@ -28,14 +28,24 @@
 }
 
 .heroCopy h1 {
-  margin: 0 0 1rem;
+  margin: 0 0 0.75rem;
   font-size: clamp(2.2rem, 4.8vw, 4.2rem);
   font-weight: 650;
   letter-spacing: -0.045em;
   line-height: 1.06;
 }
 
-.heroCopy p {
+.byline {
+  margin: 0 auto 1rem;
+  max-width: 40rem;
+  color: #5c5c5c;
+  font-size: clamp(0.92rem, 1.1vw, 1rem);
+  font-weight: 550;
+  letter-spacing: 0.01em;
+  line-height: 1.4;
+}
+
+.heroCopy p:not(.byline) {
   margin: 0 auto;
   max-width: 40rem;
   font-size: clamp(1.05rem, 1.5vw, 1.25rem);

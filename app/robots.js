@@ -1,11 +1,12 @@
 import { headers } from 'next/headers';
-import { absoluteSeoUrl, AI_SEARCH_CRAWLERS, indexingAllowed } from '../src/lib/seo';
+import { AI_SEARCH_CRAWLERS, indexingAllowed } from '../src/lib/seo';
+
+const WWW_ORIGIN = 'https://www.boxstudio.us';
+const WWW_SITEMAP = `${WWW_ORIGIN}/sitemap.xml`;
 
 export default async function robots() {
   const host = (await headers()).get('host') || '';
   const allowIndexing = indexingAllowed(host);
-  const sitemapUrl = absoluteSeoUrl('/sitemap.xml');
-  const origin = absoluteSeoUrl('/').replace(/\/$/, '');
 
   // Staging must stay closed to Google and AI search crawlers.
   if (!allowIndexing) {
@@ -23,8 +24,7 @@ export default async function robots() {
     };
   }
 
-  // Production: public pages are crawlable. Launch crawl order is controlled by
-  // sitemap.xml (home → about → industries/categories → 2 products per industry).
+  // Always advertise the www sitemap/host so apex never appears in robots.txt.
   return {
     rules: [
       {
@@ -38,7 +38,7 @@ export default async function robots() {
         disallow: ['/admin', '/api/'],
       })),
     ],
-    sitemap: sitemapUrl,
-    host: origin,
+    sitemap: WWW_SITEMAP,
+    host: 'www.boxstudio.us',
   };
 }

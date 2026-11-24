@@ -134,8 +134,7 @@ const PRODUCT_IMAGE_MAP = {
   'beauty-startup-packaging': ['/images/sample-kraft.jpg', '/images/use-skincare-jar.jpg', '/images/use-soap.jpg', '/images/cat-cosmetic.jpg'],
   'small-order-cosmetic-boxes': ['/images/g-lipstick-kraft.jpg', '/images/use-eyelash.jpg', '/images/use-lip-gloss.jpg', '/images/cat-cosmetic.jpg'],
   'wholesale-cosmetic-boxes': ['/images/product-shipping-box.jpg', '/images/use-sunscreen.jpg', '/images/use-cosmetic-bottle.jpg', '/images/cat-cosmetic.jpg'],
-  'beauty-subscription-boxes': ['/images/use-subscription.jpg', '/images/use-beauty-mailer.jpg', '/images/cat-mailer.jpg', '/images/g-beauty-bottles.jpg'],
-  'request-a-quote': ['/images/sample-paperboard.jpg', '/images/cat-cosmetic.jpg', '/images/use-perfume.jpg', '/images/use-foundation.jpg']
+  'beauty-subscription-boxes': ['/images/use-subscription.jpg', '/images/use-beauty-mailer.jpg', '/images/cat-mailer.jpg', '/images/g-beauty-bottles.jpg']
 };
 
 const PRODUCTS = [];
@@ -596,17 +595,6 @@ const BRAND_INTENT_ITEMS = [
     images: PRODUCT_IMAGE_MAP['beauty-subscription-boxes'],
     uses: ['Monthly beauty discovery subscription deliveries', 'Seasonal skincare club VIP mailers', 'Influencer PR and beauty editor product seeding boxes']
   },
-  {
-    slug: 'request-a-quote',
-    name: 'Request a Quote for Custom Boxes',
-    category: 'cosmetic-boxes',
-    structure: 'straight-tuck-end-box',
-    short: 'Instant packaging quotation inquiry for your cosmetic bottles, jars, and custom sets.',
-    meta: 'Custom box pricing, get a packaging quote. Fast quotes for custom printed cosmetic boxes, folding cartons, and custom gift boxes.',
-    description: 'Get an accurate, transparent price quote for your custom cosmetic packaging. Submit your container dimensions, preferred box style, quantity, and finishes, and our packaging team will respond with structural dielines and pricing within 24 hours.',
-    images: PRODUCT_IMAGE_MAP['request-a-quote'],
-    uses: ['Fast pricing estimates for custom cosmetic and skincare boxes', 'Material and finish cost comparisons across quantity tiers', 'Structural dieline consultation and custom sample inquiries']
-  }
 ];
 
 BRAND_INTENT_ITEMS.forEach((item) => {

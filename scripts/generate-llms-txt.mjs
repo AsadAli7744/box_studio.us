@@ -7,7 +7,7 @@ const root = path.resolve(__dirname, '..');
 const industriesModule = await import(pathToFileURL(path.join(root, 'src/data/industries.js')).href);
 const { INDUSTRY_DEFINITIONS } = industriesModule;
 
-const ORIGIN = 'https://boxstudio.us';
+const ORIGIN = 'https://www.boxstudio.us';
 const raw = JSON.parse(fs.readFileSync(path.join(root, 'content/catalog.json'), 'utf8'));
 const categories = raw.categories;
 const products = raw.products.filter((p) => p.slug !== 'request-a-quote');
@@ -170,7 +170,7 @@ lines.push(
 );
 lines.push('');
 lines.push(
-  'Box Studio (https://boxstudio.us) helps everyday brand owners and beauty founders find the right custom packaging box in plain language. The site is built for real user searches: “lipstick packaging box”, “serum boxes”, “custom packaging for my skincare brand”, “perfume boxes”, “shampoo boxes”, “burger boxes”, and similar.',
+  'Box Studio (https://www.boxstudio.us) helps everyday brand owners and beauty founders find the right custom packaging box in plain language. The site is built for real user searches: “lipstick packaging box”, “serum boxes”, “custom packaging for my skincare brand”, “perfume boxes”, “shampoo boxes”, “burger boxes”, and similar.',
 );
 lines.push('');
 lines.push(

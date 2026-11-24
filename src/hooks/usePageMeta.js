@@ -1,6 +1,5 @@
 import { useEffect } from 'react';
-import { absoluteUrl } from '../data/site';
-import { indexingAllowed } from '../lib/seo';
+import { absoluteSeoUrl, indexingAllowed } from '../lib/seo';
 
 function ensureMeta(attribute, key, value) {
   if (!value) return;
@@ -29,12 +28,12 @@ export function usePageMeta({ title, description, path, image, jsonLd, noIndex =
     ensureMeta('property', 'og:type', 'website');
     ensureMeta('property', 'og:site_name', 'Box Studio');
     ensureMeta('property', 'og:locale', 'en_US');
-    ensureMeta('property', 'og:url', absoluteUrl(path));
-    if (image) ensureMeta('property', 'og:image', image);
+    ensureMeta('property', 'og:url', absoluteSeoUrl(path));
+    if (image) ensureMeta('property', 'og:image', image.startsWith('http') ? image : absoluteSeoUrl(image));
     ensureMeta('name', 'twitter:card', 'summary_large_image');
     ensureMeta('name', 'twitter:title', title);
     ensureMeta('name', 'twitter:description', description);
-    if (image) ensureMeta('name', 'twitter:image', image);
+    if (image) ensureMeta('name', 'twitter:image', image.startsWith('http') ? image : absoluteSeoUrl(image));
 
     const host = window.location.hostname;
     const block = noIndex || !indexingAllowed(host);
@@ -46,7 +45,7 @@ export function usePageMeta({ title, description, path, image, jsonLd, noIndex =
       canonical.setAttribute('rel', 'canonical');
       document.head.appendChild(canonical);
     }
-    canonical.setAttribute('href', absoluteUrl(path));
+    canonical.setAttribute('href', absoluteSeoUrl(path));
 
     let script = document.getElementById('page-jsonld');
     if (serialized) {
