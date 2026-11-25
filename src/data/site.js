@@ -5,7 +5,7 @@ export const site = {
     ? process.env.NEXT_PUBLIC_SITE_URL.replace(/\/$/, '')
     : 'https://www.boxstudio.us'),
   description:
-    'Custom packaging solutions for cosmetics, skincare, fragrance, food, healthcare and retail. Printed packaging sized to your product, then quoted for production.',
+    'Get custom printed cosmetic boxes for makeup, skincare, and fragrance. Choose your carton size, foil stamping, and embossing. Request a quote from Box Studio.',
   // Factual company summary used for structured data consistency.
   // Keep this aligned with visible site content; do not invent claims.
   summary:

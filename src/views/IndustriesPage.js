@@ -103,7 +103,6 @@ export default function IndustriesPage() {
               shelf goals. From cosmetics and skincare to fragrance, healthcare and food, each collection
               brings together structures, finishes and presentation options ready for production.
             </p>
-            <TextLink href="/custom-boxes">View all boxes</TextLink>
           </div>
         </div>
         <div className={styles.sectionInner}>

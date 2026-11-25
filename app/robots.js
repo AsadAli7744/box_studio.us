@@ -24,18 +24,21 @@ export default async function robots() {
     };
   }
 
-  // Always advertise the www sitemap/host so apex never appears in robots.txt.
+  // Prefer clean category landings (/cosmetic-boxes) over catalog filter URLs.
+  // Keep /custom-boxes itself crawlable; block query-string industry/search filters.
+  const disallow = ['/admin', '/api/', '/custom-boxes?*'];
+
   return {
     rules: [
       {
         userAgent: '*',
-        allow: '/',
-        disallow: ['/admin', '/api/'],
+        allow: ['/', '/llms.txt'],
+        disallow,
       },
       ...AI_SEARCH_CRAWLERS.map((userAgent) => ({
         userAgent,
-        allow: '/',
-        disallow: ['/admin', '/api/'],
+        allow: ['/', '/llms.txt'],
+        disallow,
       })),
     ],
     sitemap: WWW_SITEMAP,

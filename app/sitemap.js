@@ -2,7 +2,11 @@ import fs from 'fs';
 import path from 'path';
 import { headers } from 'next/headers';
 import { getHighlight, highlightCards } from '../src/data/highlights';
-import { getIndustryCategorySlugs, getLaunchProductsByIndustry } from '../src/data/industries';
+import {
+  getIndustryCategorySlugs,
+  getIndustryLandingSlugs,
+  getLaunchProductsByIndustry,
+} from '../src/data/industries';
 import { getPublicCatalog } from '../src/server/publicCatalog';
 import { EXCLUDED_PRODUCT_SLUGS } from '../src/data/catalogContent';
 import { absoluteSeoUrl, indexingAllowed } from '../src/lib/seo';
@@ -91,26 +95,36 @@ export default async function sitemap() {
     updatesModified;
 
   const categoryBySlug = new Map(catalog.categories.map((item) => [item.slug, item]));
+  const industryLandingSlugs = getIndustryLandingSlugs();
   const industryCategorySlugs = getIndustryCategorySlugs();
   const launchProducts = getLaunchProductsByIndustry(catalog.products, 2);
   const launchProductSlugs = new Set(launchProducts.map((item) => item.product.slug));
+  const prioritizedCategorySlugs = new Set([...industryLandingSlugs, ...industryCategorySlugs]);
 
-  // Crawl order: home → about → industries → categories → 2 products/industry → rest.
-  // lastmod comes from real source-file mtimes, not one shared generation timestamp.
+  // Crawl order: home → about → industries → industry landing categories
+  // (e.g. /cosmetic-boxes) → related industry categories → other categories
+  // → 2 products/industry → rest. No ?industry= filter URLs (catalog-only).
   const ordered = [
     entry('/', 1, 'weekly', homeModified),
     entry('/about', 0.95, 'monthly', aboutModified),
     entry('/industries', 0.9, 'weekly', industriesModified),
   ];
 
-  industryCategorySlugs.forEach((slug) => {
+  industryLandingSlugs.forEach((slug) => {
     const item = categoryBySlug.get(slug);
     if (!item) return;
-    ordered.push(entry(`/${slug}`, 0.88, 'weekly', catalogItemStamp(item, catalogModified)));
+    ordered.push(entry(`/${slug}`, 0.9, 'weekly', catalogItemStamp(item, catalogModified)));
+  });
+
+  industryCategorySlugs.forEach((slug) => {
+    if (industryLandingSlugs.includes(slug)) return;
+    const item = categoryBySlug.get(slug);
+    if (!item) return;
+    ordered.push(entry(`/${slug}`, 0.86, 'weekly', catalogItemStamp(item, catalogModified)));
   });
 
   catalog.categories.forEach((item) => {
-    if (industryCategorySlugs.includes(item.slug)) return;
+    if (prioritizedCategorySlugs.has(item.slug)) return;
     ordered.push(entry(`/${item.slug}`, 0.8, 'weekly', catalogItemStamp(item, catalogModified)));
   });
 

@@ -104,20 +104,20 @@ function Hero() {
       <div className={styles.heroRight}>
         <div className={styles.heroIntro}>
           <div className={styles.heroPreview}>{imageLayers('preview')}</div>
-          <p className={styles.heroKicker}>Welcome to Box Studio</p>
+          <p className={styles.heroKicker}>CUSTOM PRINTED PACKAGING BOXES FOR BRANDS</p>
           <div className={styles.heroTitleWrap}>
             <h1 id="hcp-home-heading">
-              Innovative.
+            Custom  
               <br />
-              Creative.
+              Packaging
               <br />
-              Dependable.
+              Boxes
             </h1>
           </div>
         </div>
         <div className={styles.heroCopy}>
           <p>
-            Custom printed packaging designed around cosmetics, skincare, fragrance, food, healthcare,
+            Custom printed packaging boxes designed around cosmetics, skincare, fragrance, food, healthcare,
             gifts and retail products.
           </p>
           <p>
@@ -314,9 +314,9 @@ export default function HcpHomePage() {
   const industries = buildIndustryGroups(categories);
 
   usePageMeta({
-    title: 'Custom Packaging Solutions | Printed Packaging | Box Studio',
+    title: 'Custom Cosmetic Packaging & Printed Boxes | Box Studio',
     description:
-      'Custom packaging solutions for cosmetics, skincare, fragrance, food, healthcare and retail. Printed packaging designed around your product, then quoted for production in the United States.',
+      'Get custom printed cosmetic boxes for makeup, skincare, and fragrance. Choose your carton size, foil stamping, and embossing. Request a quote from Box Studio.',
     path: '/',
     image: absoluteUrl(heroImages[0]),
     jsonLd: {

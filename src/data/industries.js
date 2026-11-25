@@ -50,23 +50,37 @@ export const INDUSTRY_DEFINITIONS = [
   },
 ];
 
+/** Primary dedicated category URL for an industry (SEO landing page). */
+export function getIndustryLandingSlug(industry) {
+  return industry?.categorySlugs?.[0] || null;
+}
+
 export function buildIndustryGroups(categories = []) {
   return INDUSTRY_DEFINITIONS.map((industry) => {
     const members = industry.categorySlugs
       .map((slug) => categories.find((category) => category.slug === slug))
       .filter(Boolean);
     const lead = members[0];
+    const landingSlug = lead?.slug || getIndustryLandingSlug(industry);
     const title = industry.title || `${industry.name} Packaging`;
 
     return {
       ...industry,
       title,
-      href: `/custom-boxes?industry=${industry.slug}`,
+      // Direct category page for customers + crawlers (e.g. /cosmetic-boxes).
+      href: landingSlug ? `/${landingSlug}` : '/custom-boxes',
+      // Catalog filter URL for in-catalog browsing across related categories.
+      filterHref: `/custom-boxes?industry=${industry.slug}`,
       image: industry.image || lead?.image || '/images/cat-all.jpg',
       alt: lead?.alt || `${title} from Box Studio`,
       categories: members,
     };
   });
+}
+
+/** First category slug per industry — preferred crawl/discovery landings. */
+export function getIndustryLandingSlugs() {
+  return INDUSTRY_DEFINITIONS.map((industry) => getIndustryLandingSlug(industry)).filter(Boolean);
 }
 
 export function getIndustryGroup(slug, categories = []) {

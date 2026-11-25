@@ -14,14 +14,21 @@ import {
 
 export const metadata = {
   ...buildPageMetadata({
-    title: 'Custom Packaging Solutions | Printed Packaging | Box Studio',
+    title: 'Custom Cosmetic Packaging & Printed Boxes | Box Studio',
     description:
-      'Custom packaging solutions for cosmetics, skincare, fragrance, food, healthcare and retail. Printed packaging designed around your product, then quoted for production in the United States.',
+      'Get custom printed cosmetic boxes for makeup, skincare, and fragrance. Choose your carton size, foil stamping, and embossing. Request a quote from Box Studio.',
     path: '/',
     image: absoluteSeoUrl('/images/hcp-home/hero-fantasy-eyes.webp'),
   }),
   icons: {
-    icon: [{ url: '/favicon.svg', type: 'image/svg+xml' }],
+    icon: [
+      { url: '/favicon.ico', sizes: 'any' },
+      { url: '/favicon.png', type: 'image/png', sizes: '48x48' },
+      { url: '/favicon-32.png', type: 'image/png', sizes: '32x32' },
+      { url: '/favicon-16.png', type: 'image/png', sizes: '16x16' },
+      { url: '/favicon.jpg', type: 'image/jpeg' },
+    ],
+    apple: [{ url: '/apple-touch-icon.png', sizes: '180x180', type: 'image/png' }],
   },
 };
 

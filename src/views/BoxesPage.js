@@ -87,6 +87,17 @@ export default function BoxesPage({
       ? `Explore custom ${industry.name.toLowerCase()} packaging from all related Box Studio categories.`
       : 'Browse custom product boxes and printed packaging by category. Open a box to review structure details and request a production quote.';
 
+  const faqEntities = (category?.faqs || [])
+    .filter((item) => item?.q && item?.a)
+    .map((item) => ({
+      '@type': 'Question',
+      name: item.q,
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: item.a,
+      },
+    }));
+
   usePageMeta({
     title: metaTitle,
     description: metaDescription,
@@ -94,10 +105,22 @@ export default function BoxesPage({
     image: absoluteUrl(category ? category.image : industry?.image || products[0]?.images?.[0]?.src || '/images/cat-all.jpg'),
     jsonLd: {
       '@context': 'https://schema.org',
-      '@type': 'CollectionPage',
-      name: title,
-      url: absoluteUrl(path),
-      description: metaDescription,
+      '@graph': [
+        {
+          '@type': 'CollectionPage',
+          name: title,
+          url: absoluteUrl(path),
+          description: metaDescription,
+        },
+        ...(faqEntities.length
+          ? [
+              {
+                '@type': 'FAQPage',
+                mainEntity: faqEntities,
+              },
+            ]
+          : []),
+      ],
     },
   });
 

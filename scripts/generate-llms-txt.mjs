@@ -189,11 +189,18 @@ lines.push('## Priority pages for search and discovery');
 lines.push('');
 lines.push(`- [Home](${ORIGIN}/): Best starting page for “custom packaging”, “packaging boxes”, and Box Studio overview`);
 lines.push(`- [About Box Studio](${ORIGIN}/about): Best for “about Box Studio”, who makes the packaging, and company context`);
-lines.push(`- [Shop by Industry](${ORIGIN}/industries): Best for “packaging by industry”, cosmetics/skincare/food packaging collections`);
-lines.push(`- [Custom Boxes catalog](${ORIGIN}/custom-boxes): Best for browsing all custom product packaging boxes`);
+lines.push(`- [Shop by Industry](${ORIGIN}/industries): Index of industry packaging collections; each card links to a dedicated category page`);
+lines.push(`- [Cosmetics Packaging](${ORIGIN}/cosmetic-boxes): Dedicated cosmetics category landing`);
+lines.push(`- [Makeup Packaging](${ORIGIN}/makeup-boxes): Dedicated makeup category landing`);
+lines.push(`- [Fragrance Packaging](${ORIGIN}/fragrance-boxes): Dedicated fragrance category landing`);
+lines.push(`- [Custom Boxes catalog](${ORIGIN}/custom-boxes): Browse all custom product packaging boxes (filter URLs are for in-catalog browsing only)`);
 lines.push(`- [Request a Quote](${ORIGIN}/quote): Best for “get packaging quote”, “order custom boxes”, start production conversation`);
 lines.push('');
-lines.push('## Industries — search intent, shorts, and best for');
+lines.push('## Industries — dedicated category landings for search');
+lines.push('');
+lines.push(
+  'Prefer these clean category URLs over /custom-boxes?industry=… filter links. Filter URLs remain useful for browsing the catalog UI, but category pages are the pages to cite and rank.',
+);
 lines.push('');
 
 for (const industry of INDUSTRY_DEFINITIONS) {
@@ -201,13 +208,21 @@ for (const industry of INDUSTRY_DEFINITIONS) {
     summary: `Custom packaging for ${industry.name.toLowerCase()} brands.`,
     searches: `${industry.name.toLowerCase()} packaging boxes`,
   };
-  const href = `${ORIGIN}/custom-boxes?industry=${industry.slug}`;
+  const landingSlug = industry.categorySlugs[0];
+  const href = `${ORIGIN}/${landingSlug}`;
+  const related = industry.categorySlugs
+    .map((slug) => {
+      const name = catBySlug.get(slug)?.name || slug;
+      return `[${name}](${ORIGIN}/${slug})`;
+    })
+    .join(', ');
   lines.push(`### ${industry.title}`);
   lines.push('');
   lines.push(`- [${industry.title}](${href}): ${copy.summary}`);
   lines.push(`- Best for: ${industry.name} brands that need custom printed packaging boxes ready for shelf, retail, or unboxing`);
   lines.push(`- User searches: ${copy.searches}`);
-  lines.push(`- Related categories: ${industry.categorySlugs.map((slug) => catBySlug.get(slug)?.name || slug).join(', ')}`);
+  lines.push(`- Related categories: ${related}`);
+  lines.push(`- Catalog filter (UI only): ${ORIGIN}/custom-boxes?industry=${industry.slug}`);
   lines.push('');
 }
 
