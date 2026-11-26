@@ -1,7 +1,16 @@
 import { randomBytes } from 'crypto';
 import { getS3ObjectText, listS3Keys, putS3Object, s3Configured, signedS3Url } from './s3';
 
-const INDEX_KEY = 'quotes/index.json';
+function quotesPrefix() {
+  const raw = String(process.env.AWS_S3_QUOTES_PREFIX || 'quotes').trim().replace(/^\/+|\/+$/g, '');
+  return raw || 'quotes';
+}
+
+function quoteKey(...parts) {
+  return [quotesPrefix(), ...parts].join('/');
+}
+
+const INDEX_KEY = () => quoteKey('index.json');
 
 function newQuoteId() {
   const stamp = new Date().toISOString().replace(/[-:]/g, '').replace(/\.\d+Z$/, 'Z');
@@ -19,7 +28,7 @@ function safeFileName(name = 'artwork') {
 
 async function readIndex() {
   try {
-    const text = await getS3ObjectText(INDEX_KEY);
+    const text = await getS3ObjectText(INDEX_KEY());
     const parsed = JSON.parse(text);
     return Array.isArray(parsed) ? parsed : [];
   } catch {
@@ -29,7 +38,7 @@ async function readIndex() {
 
 async function writeIndex(entries) {
   await putS3Object({
-    key: INDEX_KEY,
+    key: INDEX_KEY(),
     body: JSON.stringify(entries, null, 2),
     contentType: 'application/json',
   });
@@ -44,6 +53,7 @@ export async function saveQuoteRequest({
   email,
   phone,
   company,
+  quantity,
   notes,
   productSlug,
   productName,
@@ -60,7 +70,7 @@ export async function saveQuoteRequest({
 
   if (artwork?.buffer?.length) {
     const fileName = safeFileName(artwork.name);
-    const key = `quotes/${id}/files/${fileName}`;
+    const key = quoteKey(id, 'files', fileName);
     await putS3Object({
       key,
       body: artwork.buffer,
@@ -81,6 +91,7 @@ export async function saveQuoteRequest({
     email,
     phone,
     company,
+    quantity: quantity || null,
     notes,
     productSlug,
     productName,
@@ -90,7 +101,7 @@ export async function saveQuoteRequest({
   };
 
   await putS3Object({
-    key: `quotes/${id}/meta.json`,
+    key: quoteKey(id, 'meta.json'),
     body: JSON.stringify(record, null, 2),
     contentType: 'application/json',
   });
@@ -102,6 +113,7 @@ export async function saveQuoteRequest({
     name,
     email,
     phone,
+    quantity: quantity || null,
     productSlug,
     productName,
     hasArtwork: Boolean(artworkMeta),
@@ -121,7 +133,7 @@ export async function listQuoteRequests() {
   if (index.length) return index;
 
   // Fallback if index is missing: discover meta.json objects.
-  const keys = await listS3Keys('quotes/');
+  const keys = await listS3Keys(`${quotesPrefix()}/`);
   const metaKeys = keys.filter((key) => key.endsWith('/meta.json'));
   const records = [];
   for (const key of metaKeys) {
@@ -152,7 +164,7 @@ export async function getQuoteRequest(id) {
   }
   const safeId = String(id || '').replace(/[^a-zA-Z0-9_-]/g, '');
   if (!safeId) throw new Error('Quote not found.');
-  const text = await getS3ObjectText(`quotes/${safeId}/meta.json`);
+  const text = await getS3ObjectText(quoteKey(safeId, 'meta.json'));
   return JSON.parse(text);
 }
 

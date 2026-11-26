@@ -205,12 +205,6 @@ function ProductInfoPanel({ product, seoGuide }) {
                     </dd>
                   </div>
                 ) : null}
-                {commerce?.moq ? (
-                  <div>
-                    <dt>Minimum order</dt>
-                    <dd>{commerce.moq}</dd>
-                  </div>
-                ) : null}
                 {commerce?.leadTime ? (
                   <div>
                     <dt>Lead time</dt>

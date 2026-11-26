@@ -44,6 +44,8 @@ export async function POST(request) {
     const phone = String(form.get('phone') || '').trim();
     const company = String(form.get('company') || '').trim();
     const notes = String(form.get('notes') || '').trim();
+    const quantityRaw = String(form.get('quantity') || '').trim();
+    const quantity = Number(quantityRaw);
     const productSlug = String(form.get('productSlug') || '').trim();
     const productName = String(form.get('productName') || '').trim();
     const summary = String(form.get('summary') || '').trim();
@@ -60,6 +62,9 @@ export async function POST(request) {
     }
     if (!email && !phone) {
       return fresh({ error: 'Enter an email or a contact number.' }, 400);
+    }
+    if (!quantityRaw || !Number.isInteger(quantity) || quantity < 1000) {
+      return fresh({ error: 'Enter a quantity of at least 1,000 pcs.' }, 400);
     }
 
     let artworkPayload = null;
@@ -83,6 +88,7 @@ export async function POST(request) {
       email,
       phone,
       company,
+      quantity,
       notes,
       productSlug,
       productName,

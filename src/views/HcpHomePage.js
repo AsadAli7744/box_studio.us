@@ -135,14 +135,12 @@ function LatestUpdates({ industries }) {
   return (
     <section className={`${styles.section} ${styles.beige} ${styles.industrySection}`}>
       <div className={`${styles.sectionInner} ${styles.copyGrid} ${styles.industryIntro}`}>
-        <h2>Shop By Industry</h2>
+        <h2>Custom Packaging Boxes by Industry</h2>
         <div>
           <p>
-            Explore custom packaging by industry and choose the format that fits your product, brand and
-            shelf goals. From cosmetics and skincare to fragrance, healthcare and food, each collection
-            brings together structures, finishes and presentation options ready for production.
+          Find custom printed packaging boxes for cosmetics, skincare, hair care, fragrance, healthcare, and food products. Explore folding cartons for lipsticks, serum bottles, cream jars, perfumes, and more. Choose a box style, size, and finish that fits your product and showcases your brand on the shelf.
           </p>
-          <TextLink href="/industries">View More...</TextLink>
+          <TextLink href="/industries">Shop By Industry...</TextLink>
         </div>
       </div>
       <div className={styles.sectionInner}>
@@ -192,14 +190,12 @@ function Discover() {
           <h2>Discover what we do</h2>
           <div>
             <p>
-              With a focus on thoughtful structure, strong print and careful finishing, Box Studio gives
-              brands a direct path from an idea to packaging ready for production.
+            Box Studio creates custom printed boxes for cosmetics, skincare, fragrance, food, and other retail products. We help you choose the right box style, size, and finish, then turn your idea into packaging ready for production.
             </p>
             <p>
-              Our range includes folding cartons, window boxes, kraft packaging, sleeves, trays, gift
-              boxes and presentation formats for products of many shapes and sizes.
+            Explore folding cartons, window boxes, kraft boxes, packaging sleeves, trays, and gift boxes. Add details like gold or silver foil stamping and embossing to make your packaging stand out on the shelf.
             </p>
-            <TextLink href="/about">Find out more</TextLink>
+            <TextLink href="/about">Learn About Box Studio</TextLink>
           </div>
         </div>
       </section>
@@ -364,7 +360,7 @@ export default function HcpHomePage() {
           ]}
           alt="A collection of contemporary packaging box trends."
           href="/trends"
-          linkLabel="Explore all boxes"
+          linkLabel="Explore Packaging Design Trends"
         />
         {/* <LatestHighlights /> */}
       </DeferredBelowFold>

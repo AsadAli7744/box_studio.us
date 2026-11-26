@@ -288,9 +288,30 @@ export function HcpHomeFooter() {
             <Link href="/quote" className={styles.signup}>Start a project</Link>
           </div>
           <div className={styles.socials} aria-label="Social media">
-            <a href="#" aria-label="LinkedIn"><LinkedInIcon /></a>
-            <a href="#" aria-label="Instagram"><InstagramIcon /></a>
-            <a href="#" aria-label="Facebook"><FacebookIcon /></a>
+            <a
+              href={site.social.linkedin}
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="Box Studio on LinkedIn"
+            >
+              <LinkedInIcon />
+            </a>
+            <a
+              href={site.social.instagram}
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="Box Studio on Instagram"
+            >
+              <InstagramIcon />
+            </a>
+            <a
+              href={site.social.facebook}
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="Box Studio on Facebook"
+            >
+              <FacebookIcon />
+            </a>
           </div>
         </div>
 
@@ -298,6 +319,8 @@ export function HcpHomeFooter() {
           <Link href="/about">About</Link>
           <Link href="/industries">Shop By Industry</Link>
           <Link href="/quote">Request a Quote</Link>
+          <Link href="/privacy">Privacy Policy</Link>
+          <Link href="/refund-shipping-policy">Refund &amp; Shipping Policy</Link>
           <a
             href={`https://mail.google.com/mail/?view=cm&fs=1&to=${encodeURIComponent(site.email)}`}
             target="_blank"

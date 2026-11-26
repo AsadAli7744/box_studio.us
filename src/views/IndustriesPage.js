@@ -99,9 +99,7 @@ export default function IndustriesPage() {
           <h2>Choose your industry</h2>
           <div>
             <p>
-              Explore custom packaging by industry and choose the format that fits your product, brand and
-              shelf goals. From cosmetics and skincare to fragrance, healthcare and food, each collection
-              brings together structures, finishes and presentation options ready for production.
+            Find custom printed packaging boxes for cosmetics, skincare, hair care, fragrance, healthcare, and food products. Explore folding cartons for lipsticks, serum bottles, cream jars, perfumes, and more. Choose a box style, size, and finish that fits your product and showcases your brand on the shelf.
             </p>
           </div>
         </div>

@@ -132,6 +132,10 @@ export default function AdminQuotes({ headers, busy, setBusy, setError, setStatu
                 <dt>Product</dt>
                 <dd>{detail.productName || detail.productSlug || '—'}</dd>
               </div>
+              <div>
+                <dt>Quantity</dt>
+                <dd>{detail.quantity ? `${detail.quantity} pcs` : '—'}</dd>
+              </div>
             </dl>
 
             <div className="admin-block">

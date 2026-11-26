@@ -74,6 +74,18 @@ export default async function sitemap() {
     fileMtime('src/views/HcpHomePage.js', 'src/views/HcpHomePage.module.css', 'app/page.js') || catalogModified;
   const aboutModified =
     fileMtime('src/views/AboutPage.js', 'src/views/AboutPage.module.css', 'app/about/page.js') || catalogModified;
+  const privacyModified =
+    fileMtime(
+      'src/views/PrivacyPolicyPage.js',
+      'src/views/PrivacyPolicyPage.module.css',
+      'app/privacy/page.js',
+    ) || aboutModified;
+  const refundShippingModified =
+    fileMtime(
+      'src/views/RefundShippingPolicyPage.js',
+      'src/views/PrivacyPolicyPage.module.css',
+      'app/refund-shipping-policy/page.js',
+    ) || privacyModified;
   const industriesModified =
     fileMtime('src/views/IndustriesPage.js', 'src/data/industries.js', 'app/industries/page.js') || catalogModified;
   const customBoxesModified =
@@ -140,6 +152,8 @@ export default async function sitemap() {
   ordered.push(
     entry('/custom-boxes', 0.7, 'weekly', customBoxesModified),
     entry('/quote', 0.68, 'monthly', quoteModified),
+    entry('/privacy', 0.4, 'yearly', privacyModified),
+    entry('/refund-shipping-policy', 0.4, 'yearly', refundShippingModified),
     entry('/trends', 0.6, 'weekly', trendsModified),
     entry('/beautiful-future', 0.55, 'monthly', beautifulFutureModified),
     entry('/updates', 0.55, 'weekly', updatesModified),

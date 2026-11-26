@@ -36,7 +36,11 @@ export const site = {
   email: 'info@boxstudio.us',
   phone: '+1 225-483-5392',
   address: 'United States',
-  social: {},
+  social: {
+    instagram: 'https://www.instagram.com/boxstudio.us',
+    facebook: 'https://www.facebook.com/share/1C7TFxTZs1/',
+    linkedin: 'https://www.linkedin.com/company/boxstudio-usa/',
+  },
 };
 
 export function absoluteUrl(path = '/') {

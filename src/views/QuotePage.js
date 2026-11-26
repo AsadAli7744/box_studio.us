@@ -10,16 +10,8 @@ import { trackEvent } from '../components/Analytics';
 import { downloadTextFile, submitQuoteRequest } from '../services/submissions';
 import { buildQuoteSummary } from '../utils/summary';
 import { hasErrors } from '../utils/validation';
+import { STANDARD_MOQ_ANSWER, STANDARD_MOQ_LABEL } from '../data/productSeoGuide';
 import { selectionFromProduct, withPreservedContact } from '../utils/quoteDraft';
-
-const collage = [
-  { src: '/images/quote-folding-a.jpg', alt: 'A tall green folding carton with the tuck flap open.', className: 'area-a' },
-  { src: '/images/quote-folding-b.jpg', alt: 'A cream folding carton with gold foil and closed tuck flaps.', className: 'area-b' },
-  { src: '/images/quote-folding-c.jpg', alt: 'Four printed folding cartons in green, black, burgundy, and cream.', className: 'area-c' },
-  { src: '/images/quote-folding-d.jpg', alt: 'An open folding carton with the tuck flaps lifted.', className: 'area-d' },
-  { src: '/images/quote-folding-e.jpg', alt: 'A black folding carton with a gold tuck flap.', className: 'area-e' },
-  { src: '/images/quote-folding-f.jpg', alt: 'A group of printed folding cartons and a sleeve and tray.', className: 'area-f' },
-];
 
 export default function QuotePage({ initialProductSlug = '' }) {
   const { quote, updateQuote, addFiles, removeFile } = useRequest();
@@ -80,6 +72,12 @@ export default function QuotePage({ initialProductSlug = '' }) {
     if (email && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) next.email = 'Enter a valid email address.';
     if (phone && !/^[0-9+().\-\s]{6,}$/.test(phone)) next.phone = 'Enter a contact number using digits, or leave it blank.';
     if (!email && !phone) next.email = 'Enter an email or a contact number.';
+    const quantityValue = String(quote.quantity || '').trim();
+    const quantityNumber = Number(quantityValue);
+    if (!quantityValue) next.quantity = 'Enter your quantity.';
+    else if (!Number.isInteger(quantityNumber) || quantityNumber < 1000) {
+      next.quantity = 'Minimum order quantity is 1,000 pcs.';
+    }
     setErrors(next);
     setSubmitError('');
     if (hasErrors(next) || fileErrors.length) return;
@@ -91,6 +89,7 @@ export default function QuotePage({ initialProductSlug = '' }) {
         formData.append('email', email);
         formData.append('phone', phone);
         formData.append('company', quote.company.trim());
+        formData.append('quantity', quantityValue);
         formData.append('notes', quote.notes.trim());
         formData.append('productSlug', quote.productSlug || '');
         formData.append('productName', product?.name || '');
@@ -112,25 +111,25 @@ export default function QuotePage({ initialProductSlug = '' }) {
   return (
     <div className="quote-page quote-landing">
       <div className="quote-story">
+        <p className="quote-eyebrow">Request a quote</p>
         <h1>Packaging that grows your brand</h1>
         <p>
-          Get a quote for folding cartons, art card packaging, metallized cardboard boxes, custom logo boxes, shopping bags, carry bags, labels, tags, stickers, and other print and packaging.
+          Get a quote for folding cartons, art card packaging, metallized cardboard boxes, custom logo
+          boxes, shopping bags, carry bags, labels, tags, stickers, and other print and packaging.
         </p>
-        {/* <ul className="quote-pills" aria-label="Finishes">
-          <li>Art card</li>
-          <li>Custom print</li>
-          <li>Foil &amp; emboss</li>
-        </ul> */}
-        <div className="quote-collage">
-          {collage.map((item) => (
-            <img key={item.src} src={item.src} alt={item.alt} className={item.className} />
-          ))}
-        </div>
+        {product?.name ? (
+          <p className="quote-selected-product">
+            Selected product: <strong>{product.name}</strong>
+          </p>
+        ) : null}
       </div>
 
       <form className="quote-card" onSubmit={onSubmit} noValidate>
         <h2>Get a Quote</h2>
         <p className="quote-card-lead">Email or phone is enough to get started.</p>
+        <p className="quote-moq-note">
+          {STANDARD_MOQ_LABEL}. {STANDARD_MOQ_ANSWER}
+        </p>
 
         {summary ? (
           <div className="quote-ready">
@@ -179,6 +178,20 @@ export default function QuotePage({ initialProductSlug = '' }) {
                 {errors.phone ? <small>{errors.phone}</small> : null}
               </label>
             </div>
+            <label>
+              Quantity (pcs)
+              <input
+                type="number"
+                name="quantity"
+                inputMode="numeric"
+                min={1000}
+                step={1}
+                placeholder="Minimum 1,000"
+                value={quote.quantity}
+                onChange={(event) => setField('quantity', event.target.value)}
+              />
+              {errors.quantity ? <small>{errors.quantity}</small> : null}
+            </label>
             <label>
               Additional information
               <textarea

@@ -4,11 +4,16 @@ import { useEffect } from 'react';
 import { usePathname, useSearchParams } from 'next/navigation';
 import Script from 'next/script';
 
-const MEASUREMENT_ID = process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID || '';
+const GTM_ID = process.env.NEXT_PUBLIC_GTM_ID || 'GTM-KPP5W583';
 
 export function trackEvent(eventName, params = {}) {
-  if (!MEASUREMENT_ID || typeof window === 'undefined' || typeof window.gtag !== 'function') return;
-  window.gtag('event', eventName, params);
+  if (!GTM_ID || typeof window === 'undefined') return;
+  window.dataLayer = window.dataLayer || [];
+  if (typeof window.gtag === 'function') {
+    window.gtag('event', eventName, params);
+    return;
+  }
+  window.dataLayer.push({ event: eventName, ...params });
 }
 
 export default function Analytics() {
@@ -16,20 +21,37 @@ export default function Analytics() {
   const searchParams = useSearchParams();
 
   useEffect(() => {
-    if (!MEASUREMENT_ID || typeof window.gtag !== 'function') return;
+    if (!GTM_ID || typeof window === 'undefined') return;
+    window.dataLayer = window.dataLayer || [];
     const query = searchParams?.toString();
     const pagePath = query ? `${pathname}?${query}` : pathname;
-    window.gtag('config', MEASUREMENT_ID, { page_path: pagePath });
+    window.dataLayer.push({
+      event: 'page_view',
+      page_path: pagePath,
+    });
   }, [pathname, searchParams]);
 
-  if (!MEASUREMENT_ID) return null;
+  if (!GTM_ID) return null;
 
   return (
     <>
-      <Script src={`https://www.googletagmanager.com/gtag/js?id=${MEASUREMENT_ID}`} strategy="afterInteractive" />
-      <Script id="ga4-init" strategy="afterInteractive">
-        {`window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','${MEASUREMENT_ID}',{anonymize_ip:true});`}
+      <Script id="gtm-datalayer" strategy="afterInteractive">
+        {`window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());`}
       </Script>
+      <Script
+        id="gtm-script"
+        src={`https://www.googletagmanager.com/gtm.js?id=${GTM_ID}`}
+        strategy="afterInteractive"
+      />
+      <noscript>
+        <iframe
+          src={`https://www.googletagmanager.com/ns.html?id=${GTM_ID}`}
+          height="0"
+          width="0"
+          style={{ display: 'none', visibility: 'hidden' }}
+          title="Google Tag Manager"
+        />
+      </noscript>
     </>
   );
 }

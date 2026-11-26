@@ -15,6 +15,12 @@ function faqValue(faqs, matcher) {
   return hit?.a || '';
 }
 
+/** Site-wide customer guide: minimum order for custom printed packaging. */
+export const STANDARD_MOQ_QTY = '1,000 pcs';
+export const STANDARD_MOQ_LABEL = 'Minimum order quantity (MOQ): 1,000 pcs';
+export const STANDARD_MOQ_ANSWER =
+  'The minimum order quantity (MOQ) is 1,000 pcs. Custom printed packaging quotes and production runs start at 1,000 units.';
+
 /**
  * Handwritten description copy for the highest-value commercial pages.
  * Keep headings and body unique per product — no shared fill-in templates,
@@ -35,7 +41,7 @@ const FEATURED_DESCRIPTIONS = {
       paragraphs: [
         'Measure the closed lipstick with the cap on. Internal height must clear that length; width and depth only need enough room so the mechanism is not crushed. Do not count the tuck flap as part of the height.',
         'Decide whether the front carries only the brand and shade, or also a window or foil accent. Busy decoration on every panel usually hurts recognition more than it helps on a dense shade wall.',
-        'Starter structure reference for this page is a straight tuck end carton. Paperboard or kraft board, matte or gloss, foil and emboss are available depending on the quote. Production runs commonly start around 250–500 units, with volume tiers above that — confirm current MOQ and lead time on your quote.',
+        'Starter structure reference for this page is a straight tuck end carton. Paperboard or kraft board, matte or gloss, foil and emboss are available depending on the quote. Minimum order quantity (MOQ) is 1,000 pcs — confirm lead time and finishes on your quote.',
       ],
     },
   ],
@@ -53,7 +59,7 @@ const FEATURED_DESCRIPTIONS = {
       paragraphs: [
         'A straight tuck end is the usual structure here: flat for shipping, filled by hand, front panel free for print. Soft-touch or matte finishes are common for liquid lip lines that want a modern, less glossy shelf look.',
         'If you also sell bullet lipstick, do not reuse one dieline for both. The mechanisms differ in width and height. Separate cartons keep both lines presentation-ready.',
-        'MOQ and turnaround follow standard custom folding-carton ranges (often from a few hundred units, with proofing before full production). Exact numbers are confirmed on the quote for your size and finish.',
+        'Minimum order quantity (MOQ) is 1,000 pcs. Turnaround and proofing are confirmed on the quote for your size and finish before full production.',
       ],
     },
   ],
@@ -89,7 +95,7 @@ const FEATURED_DESCRIPTIONS = {
       paragraphs: [
         'Paperboard tuck cartons remain the everyday choice. Kraft faces suit natural balm stories; white board suits brighter brand systems. Foil is optional and works best as a small accent, not a full wrap.',
         'Measure height with the cap or lid closed. For tins, send diameter and height so the internal square or rectangle does not float.',
-        'Quantity and lead time are quoted against your size and finish after artwork review — typically starting in the low hundreds for custom print runs.',
+        'Quantity and lead time are quoted against your size and finish after artwork review. Minimum order quantity (MOQ) is 1,000 pcs for custom print runs.',
       ],
     },
   ],
@@ -125,7 +131,7 @@ const FEATURED_DESCRIPTIONS = {
       paragraphs: [
         'Heavier glass bottles may need a more secure base or insert discussion on the quote. Light tubes can stay on a simple tuck.',
         'Keep artwork hierarchy simple: brand, product type, shade. Extra claims belong on the side or back if the front must stay scannable.',
-        'MOQ and production timing follow custom folding-carton norms and are confirmed after proof approval on your project.',
+        'Minimum order quantity (MOQ) is 1,000 pcs. Production timing is confirmed after proof approval on your project.',
       ],
     },
   ],
@@ -143,7 +149,7 @@ const FEATURED_DESCRIPTIONS = {
       paragraphs: [
         'A serum dropper is tall and narrow; a cream jar is short and wide. Using one blank for both usually fails on shelf and in transit. Keep serum boxes on their own footprint.',
         'Straight tuck ends are common for single bottles. Inserts or cradles can be quoted when the glass is especially fragile or the neck is unusual.',
-        'Typical custom print runs start around 250–500 units, with structural samples and digital proofs available before mass production. Lead time is commonly quoted after artwork approval — often in the multi-week production window depending on finish and quantity.',
+        'Custom print runs start at a minimum order quantity (MOQ) of 1,000 pcs, with structural samples and digital proofs available before mass production. Lead time is commonly quoted after artwork approval — often in the multi-week production window depending on finish and quantity.',
       ],
     },
   ],
@@ -179,7 +185,7 @@ const FEATURED_DESCRIPTIONS = {
       paragraphs: [
         'Taller pump bottles lean toward auto-lock bottoms for packing speed. Shorter tubs can stay on a simpler tuck if the weight is modest.',
         'Paperboard with matte or gloss lamination is typical. Soft-touch is a finish choice, not a structure change.',
-        'Confirm MOQ, volume tiers, and lead time on the quote — custom folding-carton projects usually proof structurally and in colour before the full run.',
+        'Minimum order quantity (MOQ) is 1,000 pcs. Confirm volume tiers and lead time on the quote — custom folding-carton projects usually proof structurally and in colour before the full run.',
       ],
     },
   ],
@@ -197,7 +203,7 @@ const FEATURED_DESCRIPTIONS = {
       paragraphs: [
         'Auto-lock bottoms help when bottles are filled repeatedly on a packing table. Tuck ends remain fine for lighter tubes.',
         'Keep claims readable: cleanser type on the front, usage detail on the side or back.',
-        'Samples, proofs, MOQ, and timing are handled through the quote once size and artwork are known.',
+        'Minimum order quantity (MOQ) is 1,000 pcs. Samples, proofs, and timing are handled through the quote once size and artwork are known.',
       ],
     },
   ],
@@ -215,7 +221,7 @@ const FEATURED_DESCRIPTIONS = {
       paragraphs: [
         'Auto-lock bottoms suit frequent fills. Inserts are quoted when bottles need extra hold for e-commerce kits or bundled hair sets.',
         'Print can stay bold for retail or quieter for salon professional lines — the structure comes first.',
-        'Custom runs typically begin in the low hundreds depending on size and finish, with proofs before mass production and lead time confirmed after artwork approval.',
+        'Custom runs begin at a minimum order quantity (MOQ) of 1,000 pcs, with proofs before mass production and lead time confirmed after artwork approval.',
       ],
     },
   ],
@@ -251,7 +257,7 @@ const FEATURED_DESCRIPTIONS = {
       paragraphs: [
         'Straight tuck cartons work for many single bottles. Heavier flacons or gift presentations may need a more rigid approach or a secured insert — confirmed on quote.',
         'Metallic foil and deep colour systems are common in fragrance, but they work best when hierarchy stays clear: brand, scent name, size.',
-        'MOQ, sampling, and production timing follow custom packaging norms and are stated on your quote after proof approval.',
+        'Minimum order quantity (MOQ) is 1,000 pcs. Sampling and production timing are stated on your quote after proof approval.',
       ],
     },
   ],
@@ -305,7 +311,7 @@ const FEATURED_DESCRIPTIONS = {
       paragraphs: [
         'One bottle can live in a tuck carton. Sets usually need a fitted insert and a lid style that closes cleanly over the caps.',
         'Retail merchandising and holiday gifts often prefer the set approach; everyday refill SKUs stay on simpler singles.',
-        'Confirm structure, insert, MOQ, and lead time on the quote after the bottle count is fixed.',
+        'Minimum order quantity (MOQ) is 1,000 pcs. Confirm structure, insert, and lead time on the quote after the bottle count is fixed.',
       ],
     },
   ],
@@ -341,7 +347,7 @@ const FEATURED_DESCRIPTIONS = {
       paragraphs: [
         'Keep information hierarchy calm. Wellness shoppers scan for product type and size before decorative detail.',
         'Paperboard with straightforward print finishes is usually enough; special finishes are optional accents.',
-        'MOQ and production timing follow the quote for your size and print plan.',
+        'Minimum order quantity (MOQ) is 1,000 pcs. Production timing follows the quote for your size and print plan.',
       ],
     },
   ],
@@ -436,8 +442,8 @@ function buildFallbackSections(product, core) {
     {
       heading: 'What to include in your quote',
       paragraphs: [
-        `Send closed ${coreLower} dimensions, approximate quantity, and any finish preferences. A photo of the component helps check fit.`,
-        'Minimum order quantity, volume pricing tiers, sampling, and lead time are confirmed on the quote for your size and artwork — not guessed from a template.',
+        `Send closed ${coreLower} dimensions, quantity (MOQ 1,000 pcs), and any finish preferences. A photo of the component helps check fit.`,
+        'Minimum order quantity (MOQ) is 1,000 pcs. Volume pricing tiers, sampling, and lead time are confirmed on the quote for your size and artwork.',
       ],
     },
   ];
@@ -449,9 +455,14 @@ function buildAeoFaqs(product, core) {
   const lower = name.toLowerCase();
   const existing = (Array.isArray(product.faqs) ? product.faqs : [])
     .filter((item) => item?.q && item?.a)
+    .filter((item) => !/minimum order|moq/i.test(String(item.q || '')))
     .map((item) => ({ q: item.q, a: item.a }));
 
   const generated = [
+    {
+      q: `What is the minimum order quantity (MOQ) for ${lower}?`,
+      a: STANDARD_MOQ_ANSWER,
+    },
     {
       q: `What are ${lower}?`,
       a: `${name} are custom packaging boxes made to hold ${coreLower} products for retail, online unboxing, and brand presentation. They are sized to the closed component and printed for the brand.`,
@@ -469,7 +480,7 @@ function buildAeoFaqs(product, core) {
   ];
 
   const seen = new Set();
-  return [...existing, ...generated].filter((item) => {
+  return [...generated, ...existing].filter((item) => {
     const key = String(item.q || '').toLowerCase();
     if (!key || seen.has(key)) return false;
     seen.add(key);
@@ -496,7 +507,7 @@ export function getProductCommerceNotes(product) {
   if (!product) return null;
   const faqs = product.faqs || [];
   return {
-    moq: faqValue(faqs, /minimum order|moq/i),
+    moq: '',
     leadTime: faqValue(faqs, /how long|lead time|production and delivery|turnaround/i),
     sampling: faqValue(faqs, /sample|proof/i),
   };

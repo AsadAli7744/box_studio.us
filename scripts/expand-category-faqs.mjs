@@ -7,8 +7,12 @@ const catalogPath = path.join(__dirname, '../content/catalog.json');
 
 const SHARED = [
   {
+    q: 'What is the minimum order quantity (MOQ)?',
+    a: 'The minimum order quantity (MOQ) is 1,000 pcs. Custom printed packaging quotes and production runs start at 1,000 units.',
+  },
+  {
     q: 'How do I request a quote for custom boxes?',
-    a: 'Open the product or category page that matches your fill, then submit a quote with internal dimensions, quantity intent, preferred finishes, and artwork notes. Box Studio confirms structure and pricing from that brief.',
+    a: 'Open the product or category page that matches your fill, then submit a quote with internal dimensions, quantity intent (MOQ 1,000 pcs), preferred finishes, and artwork notes. Box Studio confirms structure and pricing from that brief.',
   },
   {
     q: 'What information do you need to size my packaging correctly?',
