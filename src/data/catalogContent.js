@@ -69,6 +69,10 @@ export function blankCategory() {
     slug: '',
     name: '',
     heading: '',
+    eyebrow: '',
+    moq: '',
+    metaTitle: '',
+    metaDescription: '',
     image: '/images/cat-all.jpg',
     alt: '',
     short: '',
@@ -76,6 +80,157 @@ export function blankCategory() {
     line: '',
     faqs: [],
   };
+}
+
+export const DEFAULT_HOME_PAGE = {
+  seo: {
+    metaTitle: 'Custom Cosmetic Packaging & Printed Boxes | Box Studio',
+    metaDescription:
+      'Get custom printed cosmetic boxes for makeup, skincare, and fragrance. Choose your carton size, foil stamping, and embossing. Request a quote from Box Studio.',
+  },
+  hero: {
+    kicker: 'CUSTOM PRINTED PACKAGING BOXES FOR BRANDS',
+    heading: 'Custom\nPackaging\nBoxes',
+    p1: 'Custom printed packaging boxes designed around cosmetics, skincare, fragrance, food, healthcare, gifts and retail products.',
+    p2: 'From structure and artwork to print and finishing, Box Studio helps brands create packaging that fits the product and stands out on the shelf.',
+    ctaText: 'Get in touch',
+    ctaHref: '/quote',
+  },
+  industriesSection: {
+    heading: 'Custom Packaging Boxes by Industry',
+    intro:
+      'Find custom printed packaging boxes for cosmetics, skincare, hair care, fragrance, healthcare, and food products. Explore folding cartons for lipsticks, serum bottles, cream jars, perfumes, and more. Choose a box style, size, and finish that fits your product and showcases your brand on the shelf.',
+    linkText: 'Shop By Industry...',
+    linkHref: '/industries',
+    mobileHeadline: 'Cosmetics, Skincare, Make-up, Haircare, Fragrance, Pharma & Healthcare, and Food.',
+    mobileImage: '/images/Premium products in six elegant arches.png',
+    mobileImageAlt: 'Cosmetics, skincare, makeup, fragrance, healthcare, and food products displayed in arches.',
+  },
+  discoverSection: {
+    heading: 'Discover what we do',
+    p1: 'Box Studio creates custom printed boxes for cosmetics, skincare, fragrance, food, and other retail products. We help you choose the right box style, size, and finish, then turn your idea into packaging ready for production.',
+    p2: 'Explore folding cartons, window boxes, kraft boxes, packaging sleeves, trays, and gift boxes. Add details like gold or silver foil stamping and embossing to make your packaging stand out on the shelf.',
+    linkText: 'Learn About Box Studio',
+    linkHref: '/about',
+    images: [
+      '/images/what we do/Brow Obsession premium carton flatlay-4.webp',
+      '/images/what we do/Aqua Skincare Carton Quartet-1.webp',
+      '/images/what we do/Honey-Gold Art Deco Cosmetic Packaging-3.webp',
+    ],
+    imagesAlt: 'A collection of premium custom cosmetic and skincare packaging.',
+  },
+  futureSection: {
+    title: 'A beautiful future',
+    paragraphs: [
+      'Better packaging begins with considered choices: the right structure, the right amount of material and finishes selected for a clear purpose.',
+      'We help brands compare paperboard, kraft and recyclable options while keeping protection, print quality and shelf presence in view.',
+    ],
+    linkText: 'Find out more',
+    linkHref: '/beautiful-future',
+    images: [
+      '/images/beautiful future/mmckewtrojgeinzxiw4j.webp',
+      '/images/beautiful future/Drift beauty cartons on ivory stone-6.webp',
+      '/images/beautiful future/ioxxesfonf8hzb05og3z.webp',
+    ],
+    alt: 'A refined collection of modern beauty packaging.',
+  },
+  trendsSection: {
+    title: 'Be inspired by packaging trends',
+    paragraphs: [
+      'A distinctive finish, proportion or opening detail can turn a familiar packaging box into something memorable.',
+      'Use current colour, material and decoration ideas as a starting point, then make the final packaging recognisably yours.',
+    ],
+    linkText: 'Explore Packaging Design Trends',
+    linkHref: '/trends',
+    images: [
+      '/images/trends/Paradiso Botanical Folding Carton Collection-3.webp',
+      '/images/trends/Caresse rose-peach embossed carton collection-4.webp',
+      '/images/trends/Pastel Creams Folding Carton Showcase-5.webp',
+      '/images/trends/Turquoise luxury folding carton showcase-2.webp',
+      '/images/trends/Dreamy starlight skincare carton collection-1.webp',
+    ],
+    alt: 'A collection of contemporary packaging box trends.',
+  },
+};
+
+export function normalizeHomePage(input) {
+  const source = input && typeof input === 'object' ? input : {};
+  const d = DEFAULT_HOME_PAGE;
+
+  const rawSeo = source.seo || {};
+  const seo = {
+    metaTitle: cleanText(rawSeo.metaTitle, 160) || d.seo.metaTitle,
+    metaDescription: cleanText(rawSeo.metaDescription, 360) || d.seo.metaDescription,
+  };
+
+  const rawHero = source.hero || {};
+  const hero = {
+    kicker: cleanText(rawHero.kicker, 140) || d.hero.kicker,
+    heading: cleanText(rawHero.heading, 200) || d.hero.heading,
+    p1: cleanText(rawHero.p1, 800) || d.hero.p1,
+    p2: cleanText(rawHero.p2, 800) || d.hero.p2,
+    ctaText: cleanText(rawHero.ctaText, 60) || d.hero.ctaText,
+    ctaHref: pagePath(rawHero.ctaHref, d.hero.ctaHref),
+  };
+
+  const rawInd = source.industriesSection || {};
+  const industriesSection = {
+    heading: cleanText(rawInd.heading, 160) || d.industriesSection.heading,
+    intro: cleanText(rawInd.intro, 1200) || d.industriesSection.intro,
+    linkText: cleanText(rawInd.linkText, 80) || d.industriesSection.linkText,
+    linkHref: pagePath(rawInd.linkHref, d.industriesSection.linkHref),
+    mobileHeadline: cleanText(rawInd.mobileHeadline, 200) || d.industriesSection.mobileHeadline,
+    mobileImage: cleanText(rawInd.mobileImage, 300) || d.industriesSection.mobileImage,
+    mobileImageAlt: cleanText(rawInd.mobileImageAlt, 300) || d.industriesSection.mobileImageAlt,
+  };
+
+  const rawDisc = source.discoverSection || {};
+  const discoverImages = Array.isArray(rawDisc.images) && rawDisc.images.length
+    ? rawDisc.images.map((s) => cleanText(s, 300)).filter(Boolean).slice(0, 8)
+    : d.discoverSection.images;
+  const discoverSection = {
+    heading: cleanText(rawDisc.heading, 160) || d.discoverSection.heading,
+    p1: cleanText(rawDisc.p1, 1200) || d.discoverSection.p1,
+    p2: cleanText(rawDisc.p2, 1200) || d.discoverSection.p2,
+    linkText: cleanText(rawDisc.linkText, 80) || d.discoverSection.linkText,
+    linkHref: pagePath(rawDisc.linkHref, d.discoverSection.linkHref),
+    images: discoverImages,
+    imagesAlt: cleanText(rawDisc.imagesAlt, 300) || d.discoverSection.imagesAlt,
+  };
+
+  const rawFuture = source.futureSection || {};
+  const futureParagraphs = Array.isArray(rawFuture.paragraphs) && rawFuture.paragraphs.length
+    ? rawFuture.paragraphs.map((p) => cleanText(p, 1000)).filter(Boolean).slice(0, 6)
+    : d.futureSection.paragraphs;
+  const futureImages = Array.isArray(rawFuture.images) && rawFuture.images.length
+    ? rawFuture.images.map((s) => cleanText(s, 300)).filter(Boolean).slice(0, 8)
+    : d.futureSection.images;
+  const futureSection = {
+    title: cleanText(rawFuture.title, 160) || d.futureSection.title,
+    paragraphs: futureParagraphs,
+    linkText: cleanText(rawFuture.linkText, 80) || d.futureSection.linkText,
+    linkHref: pagePath(rawFuture.linkHref, d.futureSection.linkHref),
+    images: futureImages,
+    alt: cleanText(rawFuture.alt, 300) || d.futureSection.alt,
+  };
+
+  const rawTrends = source.trendsSection || {};
+  const trendsParagraphs = Array.isArray(rawTrends.paragraphs) && rawTrends.paragraphs.length
+    ? rawTrends.paragraphs.map((p) => cleanText(p, 1000)).filter(Boolean).slice(0, 6)
+    : d.trendsSection.paragraphs;
+  const trendsImages = Array.isArray(rawTrends.images) && rawTrends.images.length
+    ? rawTrends.images.map((s) => cleanText(s, 300)).filter(Boolean).slice(0, 8)
+    : d.trendsSection.images;
+  const trendsSection = {
+    title: cleanText(rawTrends.title, 160) || d.trendsSection.title,
+    paragraphs: trendsParagraphs,
+    linkText: cleanText(rawTrends.linkText, 80) || d.trendsSection.linkText,
+    linkHref: pagePath(rawTrends.linkHref, d.trendsSection.linkHref),
+    images: trendsImages,
+    alt: cleanText(rawTrends.alt, 300) || d.trendsSection.alt,
+  };
+
+  return { seo, hero, industriesSection, discoverSection, futureSection, trendsSection };
 }
 
 export const DEFAULT_HERO_SLIDES = [
@@ -183,6 +338,8 @@ export function blankProduct(category, structureSlug) {
     structure: structure?.slug || '',
     short: '',
     meta: '',
+    metaTitle: '',
+    moq: '',
     description: '',
     images: [],
     sections: [
@@ -231,6 +388,10 @@ export function normalizeCatalog(input) {
       slug,
       name,
       heading,
+      eyebrow: cleanText(raw?.eyebrow, 120),
+      moq: cleanText(raw?.moq, 80),
+      metaTitle: cleanText(raw?.metaTitle, 160),
+      metaDescription: cleanText(raw?.metaDescription, 360),
       image,
       alt,
       short: cleanText(raw?.short, 280) || `Custom ${name} for your brand.`,
@@ -289,6 +450,8 @@ export function normalizeCatalog(input) {
       structure: structure.slug,
       short: cleanText(raw?.short, 320),
       meta: cleanText(raw?.meta, 360),
+      metaTitle: cleanText(raw?.metaTitle, 160),
+      moq: cleanText(raw?.moq, 80),
       description,
       images: images.slice(0, 8),
       sections: sections.slice(0, 16),
@@ -329,13 +492,19 @@ export function normalizeCatalog(input) {
     });
   });
 
-  return { heroSlides, categories, products };
+  const home = normalizeHomePage(source.home);
+
+  return { home, heroSlides, categories, products };
 }
 
 export function presentCatalog(doc) {
   const categories = doc.categories.map((category) => ({
     ...category,
     heading: category.heading || category.name,
+    eyebrow: category.eyebrow || '',
+    moq: category.moq || '',
+    metaTitle: category.metaTitle || '',
+    metaDescription: category.metaDescription || '',
     faqs: category.faqs.map((item) => ({ ...item })),
   }));
   const byCategory = new Map(categories.map((category) => [category.slug, category]));
@@ -357,6 +526,8 @@ export function presentCatalog(doc) {
         short: record.short,
         description: record.description,
         meta: record.meta,
+        metaTitle: record.metaTitle || '',
+        moq: record.moq || '',
         images: record.images.map((image) => ({ ...image })),
         sections: record.sections.map((section) => ({ ...section })),
         faqs: record.faqs.map((item) => ({ ...item })),
@@ -377,6 +548,7 @@ export function presentCatalog(doc) {
     });
 
   return {
+    home: doc.home ? normalizeHomePage(doc.home) : DEFAULT_HOME_PAGE,
     heroSlides: (doc.heroSlides || []).map((slide) => ({ ...slide })),
     categories,
     products,

@@ -3,7 +3,7 @@
 import { useState } from 'react';
 import { finishes, inserts, materials } from '../../data/catalog';
 import { getProduct } from '../../data/products';
-import { slugify, structureChoices } from '../../data/catalogContent';
+import { DEFAULT_HOME_PAGE, normalizeHomePage, slugify, structureChoices } from '../../data/catalogContent';
 
 function Field({ label, hint, children, className = '' }) {
   return (
@@ -35,6 +35,36 @@ function UrlField({ slug, onChange, placeholder }) {
         {path ? `Opens at /${path}` : 'Path segment for this page'}
       </small>
     </Field>
+  );
+}
+
+export function GoogleSnippetPreview({ title, path, description }) {
+  const cleanTitle = title || 'Page Title | Box Studio';
+  const cleanPath = path ? `https://www.boxstudio.us > ${path.replace(/^\//, '')}` : 'https://www.boxstudio.us';
+  const cleanSnippet = description || 'Add a meta description to see how this page will appear in Google search results.';
+  const titleLen = cleanTitle.length;
+  const descLen = (description || '').length;
+
+  return (
+    <div className="admin-serp-preview" aria-label="Google Search Snippet Preview">
+      <div className="admin-serp-header">
+        <div className="admin-serp-favicon" aria-hidden="true">📦</div>
+        <div className="admin-serp-site-info">
+          <span className="admin-serp-site-name">Box Studio</span>
+          <span className="admin-serp-url">{cleanPath}</span>
+        </div>
+      </div>
+      <div className="admin-serp-title">{cleanTitle}</div>
+      <p className="admin-serp-snippet">{cleanSnippet}</p>
+      <div className="admin-char-meter">
+        <span className={titleLen <= 60 && titleLen >= 30 ? 'is-optimal' : titleLen > 60 ? 'is-warn' : ''}>
+          Title: {titleLen}/60 chars {titleLen <= 60 && titleLen >= 30 ? '✓ Optimal' : titleLen > 60 ? '⚠️ May truncate' : ''}
+        </span>
+        <span className={descLen <= 160 && descLen >= 120 ? 'is-optimal' : descLen > 160 ? 'is-warn' : ''}>
+          Description: {descLen}/160 chars {descLen <= 160 && descLen >= 120 ? '✓ Optimal' : descLen > 160 ? '⚠️ May truncate' : ''}
+        </span>
+      </div>
+    </div>
   );
 }
 
@@ -445,6 +475,23 @@ export function CategoryForm({ draft, onChange, upload, onShowProducts, products
         </div>
 
         <div className="admin-grid-2">
+          <Field label="Page Eyebrow" hint="Label above page heading (default: Category)">
+            <input
+              value={draft.eyebrow || ''}
+              placeholder="e.g. Category or Luxury Boxes"
+              onChange={(event) => onChange({ ...draft, eyebrow: event.target.value })}
+            />
+          </Field>
+          <Field label="Minimum Order Quantity (MOQ)" hint="Default: 1,000 pcs">
+            <input
+              value={draft.moq || ''}
+              placeholder="e.g. 1,000 pcs or 500 pcs"
+              onChange={(event) => onChange({ ...draft, moq: event.target.value })}
+            />
+          </Field>
+        </div>
+
+        <div className="admin-grid-2">
           <Field label="Menu Line" hint="Short header label">
             <input
               value={draft.line}
@@ -469,6 +516,34 @@ export function CategoryForm({ draft, onChange, upload, onShowProducts, products
             onChange={(event) => onChange({ ...draft, intro: event.target.value })}
           />
         </Field>
+      </div>
+
+      <div className="admin-card">
+        <div className="admin-card-head">
+          <h3>Google Search &amp; SEO Snippet</h3>
+          <p className="admin-note">Customize the search result title and meta description for this category.</p>
+        </div>
+        <div className="admin-grid-2">
+          <Field label="SEO Meta Title" hint="Search title (optimal: 30-60 characters)">
+            <input
+              value={draft.metaTitle || ''}
+              placeholder={draft.name ? `${draft.name} | Custom Packaging | Box Studio` : 'Category | Box Studio'}
+              onChange={(event) => onChange({ ...draft, metaTitle: event.target.value })}
+            />
+          </Field>
+          <Field label="SEO Meta Description" hint="Search snippet (optimal: 120-160 characters)">
+            <input
+              value={draft.metaDescription || ''}
+              placeholder={draft.intro || 'Custom printed boxes manufactured to your exact product specifications...'}
+              onChange={(event) => onChange({ ...draft, metaDescription: event.target.value })}
+            />
+          </Field>
+        </div>
+        <GoogleSnippetPreview
+          title={draft.metaTitle || (draft.name ? `${draft.name} | Custom Packaging | Box Studio` : 'Category | Box Studio')}
+          path={draft.slug || 'category-slug'}
+          description={draft.metaDescription || draft.intro || draft.short || 'Custom printed packaging boxes designed and manufactured to your exact product specifications.'}
+        />
       </div>
 
       <ImageList
@@ -634,6 +709,7 @@ export function ProductForm({ draft, categories, products, onChange, upload }) {
   const TABS = [
     { id: 'general', label: 'Overview & Basics', icon: '📦' },
     { id: 'media', label: `Photos (${draft.images?.length || 0})`, icon: '🖼️' },
+    { id: 'seo', label: 'SEO & SERP Preview', icon: '🔍' },
     { id: 'content', label: `Story & FAQs (${draft.sections?.length || 0})`, icon: '📝' },
     { id: 'specs', label: 'Specs & Structure', icon: '⚙️' },
     { id: 'relations', label: `Placement & Relations (${draft.related?.length || 0})`, icon: '🎯' },
@@ -712,11 +788,11 @@ export function ProductForm({ draft, categories, products, onChange, upload }) {
                 onChange={(event) => onChange({ ...draft, short: event.target.value })}
               />
             </Field>
-            <Field label="Search Meta Description" hint="Search engines & social previews">
+            <Field label="Minimum Order Quantity (MOQ)" hint="Default: 1,000 pcs">
               <input
-                value={draft.meta}
-                placeholder="e.g. Custom printed lip gloss packaging boxes..."
-                onChange={(event) => onChange({ ...draft, meta: event.target.value })}
+                value={draft.moq || ''}
+                placeholder="e.g. 1,000 pcs or 500 pcs"
+                onChange={(event) => onChange({ ...draft, moq: event.target.value })}
               />
             </Field>
           </div>
@@ -743,7 +819,50 @@ export function ProductForm({ draft, categories, products, onChange, upload }) {
 
       {/* 2. Media Photos */}
       {(activeTab === 'media' || activeTab === 'all') && (
-        <ImageList images={draft.images} multiple upload={upload} onChange={(images) => onChange({ ...draft, images })} />
+        <div className="admin-media-wrap">
+          <div className="admin-card" style={{ marginBottom: '16px' }}>
+            <p className="admin-note" style={{ margin: 0 }}>
+              💡 <strong>Primary Cover Image:</strong> The first image below is the main display cover used across product grids, category cards, and search listings.
+            </p>
+          </div>
+          <ImageList images={draft.images} multiple upload={upload} onChange={(images) => onChange({ ...draft, images })} />
+        </div>
+      )}
+
+      {/* SEO & SERP Preview */}
+      {(activeTab === 'seo' || activeTab === 'all') && (
+        <div className="admin-card">
+          <div className="admin-card-head">
+            <h3>Google Search Appearance &amp; Meta Details</h3>
+            <p className="admin-note">
+              Preview and customize how this product appears when customers find it via Google search results.
+            </p>
+          </div>
+
+          <div className="admin-grid-2">
+            <Field label="SEO Meta Title" hint="Optimal: 30-60 characters">
+              <input
+                value={draft.metaTitle || ''}
+                placeholder={draft.name ? `${draft.name} | Custom Packaging | Box Studio` : 'Box Studio'}
+                onChange={(event) => onChange({ ...draft, metaTitle: event.target.value })}
+              />
+            </Field>
+            <Field label="Search Meta Description" hint="Optimal: 120-160 characters">
+              <textarea
+                rows={3}
+                value={draft.meta || ''}
+                placeholder="Custom printed packaging boxes designed and manufactured to your exact product specifications."
+                onChange={(event) => onChange({ ...draft, meta: event.target.value })}
+              />
+            </Field>
+          </div>
+
+          <GoogleSnippetPreview
+            title={draft.metaTitle || (draft.name ? `${draft.name} | Custom Packaging | Box Studio` : 'Box Studio')}
+            path={draft.slug || 'product-slug'}
+            description={draft.meta || draft.short || draft.description || 'Custom printed packaging boxes designed around your product.'}
+          />
+        </div>
       )}
 
       {/* 3. Story & Content */}
@@ -1045,6 +1164,416 @@ export function ProductForm({ draft, categories, products, onChange, upload }) {
               )}
             </div>
           </div>
+        </div>
+      )}
+    </div>
+  );
+}
+
+export function HomePageForm({ draft, onChange, upload }) {
+  const [activeTab, setActiveTab] = useState('hero');
+  const home = draft || DEFAULT_HOME_PAGE;
+
+  function updateSection(sectionKey, patch) {
+    onChange({
+      ...home,
+      [sectionKey]: {
+        ...(home[sectionKey] || {}),
+        ...patch,
+      },
+    });
+  }
+
+  const TABS = [
+    { id: 'hero', label: 'Hero Header', icon: '🚀' },
+    { id: 'industries', label: 'Industries Showcase', icon: '🏭' },
+    { id: 'discover', label: 'Discover What We Do', icon: '🔍' },
+    { id: 'editorial', label: 'Editorial Stories', icon: '📰' },
+    { id: 'seo', label: 'Google Search & SEO', icon: '✨' },
+  ];
+
+  const hero = home.hero || DEFAULT_HOME_PAGE.hero;
+  const industries = home.industriesSection || DEFAULT_HOME_PAGE.industriesSection;
+  const discover = home.discoverSection || DEFAULT_HOME_PAGE.discoverSection;
+  const future = home.futureSection || DEFAULT_HOME_PAGE.futureSection;
+  const trends = home.trendsSection || DEFAULT_HOME_PAGE.trendsSection;
+  const seo = home.seo || DEFAULT_HOME_PAGE.seo;
+
+  return (
+    <div className="admin-form">
+      {/* Subnav */}
+      <nav className="admin-subnav" aria-label="Home Page Sections">
+        {TABS.map((tab) => (
+          <button
+            key={tab.id}
+            type="button"
+            className={`admin-subnav-btn ${activeTab === tab.id ? 'is-active' : ''}`}
+            onClick={() => setActiveTab(tab.id)}
+          >
+            <span className="admin-subnav-icon" aria-hidden="true">{tab.icon}</span>
+            <span>{tab.label}</span>
+          </button>
+        ))}
+      </nav>
+
+      {/* 1. Hero Section */}
+      {activeTab === 'hero' && (
+        <>
+          <div className="admin-card">
+            <div className="admin-card-head">
+              <h3>Homepage Hero Section</h3>
+              <p className="admin-note">
+                Controls the main headline, tagline, and call-to-action buttons shown at the top of the homepage.
+              </p>
+            </div>
+
+            <Field label="Hero Kicker / Pre-heading" hint="Small caps label above main heading">
+              <input
+                value={hero.kicker}
+                placeholder="CUSTOM PRINTED PACKAGING BOXES FOR BRANDS"
+                onChange={(e) => updateSection('hero', { kicker: e.target.value })}
+              />
+            </Field>
+
+            <Field label="Hero Main Heading (H1)" hint="Supports line breaks (press Enter)">
+              <textarea
+                rows={3}
+                value={hero.heading}
+                placeholder="Custom&#10;Packaging&#10;Boxes"
+                onChange={(e) => updateSection('hero', { heading: e.target.value })}
+              />
+            </Field>
+
+            <Field label="Hero Introduction Copy" hint="Paragraphs under the main heading">
+              <textarea
+                rows={4}
+                value={hero.copy}
+                placeholder="Custom printed packaging boxes designed around cosmetics, skincare..."
+                onChange={(e) => updateSection('hero', { copy: e.target.value })}
+              />
+            </Field>
+
+            <div className="admin-grid-2">
+              <Field label="Primary Button Text">
+                <input
+                  value={hero.primaryLabel}
+                  placeholder="Get in touch"
+                  onChange={(e) => updateSection('hero', { primaryLabel: e.target.value })}
+                />
+              </Field>
+              <Field label="Primary Button Link">
+                <input
+                  value={hero.primaryHref}
+                  placeholder="/quote"
+                  onChange={(e) => updateSection('hero', { primaryHref: e.target.value })}
+                />
+              </Field>
+            </div>
+
+            <div className="admin-grid-2">
+              <Field label="Secondary Button Text" hint="Optional secondary CTA">
+                <input
+                  value={hero.secondaryLabel}
+                  placeholder="Explore boxes"
+                  onChange={(e) => updateSection('hero', { secondaryLabel: e.target.value })}
+                />
+              </Field>
+              <Field label="Secondary Button Link">
+                <input
+                  value={hero.secondaryHref}
+                  placeholder="/custom-boxes"
+                  onChange={(e) => updateSection('hero', { secondaryHref: e.target.value })}
+                />
+              </Field>
+            </div>
+          </div>
+
+          <div className="admin-card">
+            <div className="admin-card-head">
+              <h3>Live Hero Card Preview</h3>
+              <p className="admin-note">Preview of how your hero title and copy will look to visitors.</p>
+            </div>
+            <div className="admin-hero-preview-box">
+              <div className="admin-hero-preview-kicker">{hero.kicker || 'CUSTOM PRINTED PACKAGING BOXES FOR BRANDS'}</div>
+              <div className="admin-hero-preview-heading">
+                {(hero.heading || 'Custom\nPackaging\nBoxes').split('\n').map((line, i) => (
+                  <span key={i} style={{ display: 'block' }}>{line}</span>
+                ))}
+              </div>
+              <p className="admin-hero-preview-copy">
+                {hero.copy || 'Custom printed packaging boxes designed around cosmetics, skincare...'}
+              </p>
+              <div style={{ marginTop: '14px' }}>
+                <span className="btn btn-dark btn-sm">{hero.primaryLabel || 'Get in touch'} →</span>
+              </div>
+            </div>
+          </div>
+
+          <ImageList
+            images={hero.slides || []}
+            multiple={true}
+            upload={upload}
+            onChange={(slides) => updateSection('hero', { slides })}
+          />
+        </>
+      )}
+
+      {/* 2. Industries Showcase Section */}
+      {activeTab === 'industries' && (
+        <div className="admin-card">
+          <div className="admin-card-head">
+            <h3>Shop by Industry Section</h3>
+            <p className="admin-note">
+              Configures the intro heading, overview paragraph, and links above the industry cards grid.
+            </p>
+          </div>
+
+          <Field label="Section Heading">
+            <input
+              value={industries.heading}
+              placeholder="Custom Packaging Boxes by Industry"
+              onChange={(e) => updateSection('industriesSection', { heading: e.target.value })}
+            />
+          </Field>
+
+          <Field label="Section Introduction Paragraph">
+            <textarea
+              rows={4}
+              value={industries.lead}
+              placeholder="Find custom printed packaging boxes for cosmetics, skincare, hair care, fragrance..."
+              onChange={(e) => updateSection('industriesSection', { lead: e.target.value })}
+            />
+          </Field>
+
+          <div className="admin-grid-2">
+            <Field label="Main Link Label">
+              <input
+                value={industries.linkText}
+                placeholder="Shop By Industry..."
+                onChange={(e) => updateSection('industriesSection', { linkText: e.target.value })}
+              />
+            </Field>
+            <Field label="Main Link Target">
+              <input
+                value={industries.linkHref}
+                placeholder="/industries"
+                onChange={(e) => updateSection('industriesSection', { linkHref: e.target.value })}
+              />
+            </Field>
+          </div>
+
+          <div className="admin-card-head" style={{ marginTop: '24px' }}>
+            <h4>Mobile Banner Text &amp; Link</h4>
+            <p className="admin-note">Displayed on mobile screens under the industry cards.</p>
+          </div>
+
+          <Field label="Mobile Headline Text">
+            <textarea
+              rows={2}
+              value={industries.bannerHeadline}
+              placeholder="Cosmetics, Skincare, Make-up, Haircare, Fragrance, Pharma & Healthcare, and Food."
+              onChange={(e) => updateSection('industriesSection', { bannerHeadline: e.target.value })}
+            />
+          </Field>
+
+          <div className="admin-grid-2">
+            <Field label="Mobile Link Label">
+              <input
+                value={industries.bannerLinkText}
+                placeholder="View all industries"
+                onChange={(e) => updateSection('industriesSection', { bannerLinkText: e.target.value })}
+              />
+            </Field>
+            <Field label="Mobile Link Target">
+              <input
+                value={industries.bannerLinkHref}
+                placeholder="/industries"
+                onChange={(e) => updateSection('industriesSection', { bannerLinkHref: e.target.value })}
+              />
+            </Field>
+          </div>
+        </div>
+      )}
+
+      {/* 3. Discover What We Do */}
+      {activeTab === 'discover' && (
+        <>
+          <div className="admin-card">
+            <div className="admin-card-head">
+              <h3>Discover What We Do Section</h3>
+              <p className="admin-note">
+                Introduce Box Studio's capabilities, box structures, and finishes.
+              </p>
+            </div>
+
+            <Field label="Section Heading">
+              <input
+                value={discover.heading}
+                placeholder="Discover what we do"
+                onChange={(e) => updateSection('discoverSection', { heading: e.target.value })}
+              />
+            </Field>
+
+            <Field label="Lead Paragraph">
+              <textarea
+                rows={3}
+                value={discover.lead}
+                placeholder="Box Studio creates custom printed boxes for cosmetics, skincare..."
+                onChange={(e) => updateSection('discoverSection', { lead: e.target.value })}
+              />
+            </Field>
+
+            <Field label="Secondary Story Paragraph">
+              <textarea
+                rows={3}
+                value={discover.cardTitle}
+                placeholder="Explore folding cartons, window boxes, kraft boxes, packaging sleeves..."
+                onChange={(e) => updateSection('discoverSection', { cardTitle: e.target.value })}
+              />
+            </Field>
+
+            <div className="admin-grid-2">
+              <Field label="Button / Link Label">
+                <input
+                  value={discover.cardLinkText}
+                  placeholder="Learn About Box Studio"
+                  onChange={(e) => updateSection('discoverSection', { cardLinkText: e.target.value })}
+                />
+              </Field>
+              <Field label="Button / Link Target">
+                <input
+                  value={discover.cardLinkHref}
+                  placeholder="/about"
+                  onChange={(e) => updateSection('discoverSection', { cardLinkHref: e.target.value })}
+                />
+              </Field>
+            </div>
+          </div>
+
+          <ImageList
+            images={discover.gallery || []}
+            multiple={true}
+            upload={upload}
+            onChange={(gallery) => updateSection('discoverSection', { gallery })}
+          />
+        </>
+      )}
+
+      {/* 4. Editorial Stories */}
+      {activeTab === 'editorial' && (
+        <>
+          <div className="admin-card">
+            <div className="admin-card-head">
+              <h3>Editorial: A Beautiful Future</h3>
+              <p className="admin-note">
+                Sustainability, recyclability, and thoughtful packaging engineering section.
+              </p>
+            </div>
+
+            <Field label="Story Heading">
+              <input
+                value={future.heading}
+                placeholder="A beautiful future"
+                onChange={(e) => updateSection('futureSection', { heading: e.target.value })}
+              />
+            </Field>
+
+            <Field label="Story Body (Paragraphs separated by blank lines)">
+              <textarea
+                rows={5}
+                value={future.body}
+                placeholder="Better packaging begins with considered choices...&#10;&#10;We help brands compare paperboard, kraft and recyclable options..."
+                onChange={(e) => updateSection('futureSection', { body: e.target.value })}
+              />
+            </Field>
+
+            <div className="admin-grid-2">
+              <Field label="Link Label">
+                <input
+                  value={future.ctaLabel}
+                  placeholder="Find out more"
+                  onChange={(e) => updateSection('futureSection', { ctaLabel: e.target.value })}
+                />
+              </Field>
+              <Field label="Link Target">
+                <input
+                  value={future.ctaHref}
+                  placeholder="/beautiful-future"
+                  onChange={(e) => updateSection('futureSection', { ctaHref: e.target.value })}
+                />
+              </Field>
+            </div>
+          </div>
+
+          <div className="admin-card">
+            <div className="admin-card-head">
+              <h3>Editorial: Packaging Trends</h3>
+              <p className="admin-note">
+                Showcase design inspirations, contemporary colors, and tactile finishes.
+              </p>
+            </div>
+
+            <Field label="Trends Heading">
+              <input
+                value={trends.heading}
+                placeholder="Be inspired by packaging trends"
+                onChange={(e) => updateSection('trendsSection', { heading: e.target.value })}
+              />
+            </Field>
+
+            <Field label="Trends Lead Paragraphs (separated by blank lines)">
+              <textarea
+                rows={5}
+                value={trends.lead}
+                placeholder="A distinctive finish, proportion or opening detail can turn a familiar packaging box into something memorable.&#10;&#10;Use current colour, material and decoration ideas as a starting point..."
+                onChange={(e) => updateSection('trendsSection', { lead: e.target.value })}
+              />
+            </Field>
+
+            <Field label="Link Label">
+              <input
+                value={trends.highlightTitle}
+                placeholder="Explore Packaging Design Trends"
+                onChange={(e) => updateSection('trendsSection', { highlightTitle: e.target.value })}
+              />
+            </Field>
+          </div>
+        </>
+      )}
+
+      {/* 5. Google Search & SEO */}
+      {activeTab === 'seo' && (
+        <div className="admin-card">
+          <div className="admin-card-head">
+            <h3>Homepage Google Search Appearance</h3>
+            <p className="admin-note">
+              Live Google SERP preview of your homepage title and meta description.
+            </p>
+          </div>
+
+          <div className="admin-grid-2">
+            <Field label="Homepage Meta Title" hint="Optimal: 30-60 characters">
+              <input
+                value={seo.metaTitle}
+                placeholder="Custom Cosmetic Packaging & Printed Boxes | Box Studio"
+                onChange={(e) => updateSection('seo', { metaTitle: e.target.value })}
+              />
+            </Field>
+            <Field label="Homepage Meta Description" hint="Optimal: 120-160 characters">
+              <textarea
+                rows={3}
+                value={seo.metaDescription}
+                placeholder="Get custom printed cosmetic boxes for makeup, skincare, and fragrance. Choose your carton size, foil stamping, and embossing. Request a quote from Box Studio."
+                onChange={(e) => updateSection('seo', { metaDescription: e.target.value })}
+              />
+            </Field>
+          </div>
+
+          <GoogleSnippetPreview
+            title={seo.metaTitle}
+            path=""
+            description={seo.metaDescription}
+          />
         </div>
       )}
     </div>

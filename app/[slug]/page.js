@@ -17,7 +17,7 @@ export async function generateMetadata({ params }) {
   const product = catalog.products.find((item) => item.slug === slug);
   if (product) {
     return buildPageMetadata({
-      title: `${product.name} | Custom Packaging | Box Studio`,
+      title: product.metaTitle || `${product.name} | Custom Packaging | Box Studio`,
       description: product.meta || product.short || product.description,
       path: `/${product.slug}`,
       image: product.images?.[0]?.src,
@@ -27,8 +27,8 @@ export async function generateMetadata({ params }) {
   const category = catalog.categories.find((item) => item.slug === slug);
   if (category) {
     return buildPageMetadata({
-      title: `${category.name} | Custom Packaging | Box Studio`,
-      description: category.intro || category.short || category.name,
+      title: category.metaTitle || `${category.name} | Custom Packaging | Box Studio`,
+      description: category.metaDescription || category.intro || category.short || category.name,
       path: `/${category.slug}`,
       image: category.image,
     });

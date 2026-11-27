@@ -3,29 +3,35 @@
 import { useEffect, useState } from 'react';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
-import { CategoryForm, HeroForm, ProductForm } from '../components/admin/Editors';
+import { CategoryForm, HeroForm, HomePageForm, ProductForm } from '../components/admin/Editors';
 import AdminQuotes from '../components/admin/AdminQuotes';
-import { blankCategory, blankHeroSlide, blankProduct, slugify, structureChoices } from '../data/catalogContent';
+import { DEFAULT_HOME_PAGE, blankCategory, blankHeroSlide, blankProduct, slugify, structureChoices } from '../data/catalogContent';
 
 function catalogFrom(data, fallback) {
   return {
+    home: data.home || fallback?.home || DEFAULT_HOME_PAGE,
     heroSlides: data.heroSlides || fallback?.heroSlides || [],
-    categories: data.categories,
-    products: data.products,
+    categories: data.categories || [],
+    products: data.products || [],
   };
 }
 
 function listFor(doc, kind) {
   if (!doc) return [];
-  return kind === 'hero' ? doc.heroSlides : doc[kind];
+  if (kind === 'hero') return doc.heroSlides || [];
+  if (kind === 'home') return [];
+  return doc[kind] || [];
 }
 
 function itemKey(kind, item) {
-  return kind === 'hero' ? item.id : item.slug;
+  if (kind === 'hero') return item.id;
+  if (kind === 'home') return 'home';
+  return item.slug;
 }
 
 function itemName(kind, item) {
   if (kind === 'hero') return item.title || 'Untitled slide';
+  if (kind === 'home') return 'Home Page Content & Sections';
   return item.name;
 }
 
@@ -107,7 +113,14 @@ export default function AdminPage() {
       }
       if (!response.ok) throw new Error(data.error || 'The catalog could not be opened.');
       setLocked(false);
-      setDoc(catalogFrom(data));
+      const catalog = catalogFrom(data);
+      setDoc(catalog);
+      if (kind === 'home') {
+        const homeDoc = catalog.home || DEFAULT_HOME_PAGE;
+        setSelected('home');
+        setDraft(homeDoc);
+        setBaseline(homeDoc);
+      }
       setUsername(user);
       setPassword(secret);
       window.sessionStorage.setItem('boxstudio-admin-login', JSON.stringify({ username: user, password: secret }));
@@ -164,9 +177,16 @@ export default function AdminPage() {
     if (nextKind === kind) return;
     if (!guard()) return;
     setKind(nextKind);
-    setSelected(null);
-    setDraft(null);
-    setBaseline(null);
+    if (nextKind === 'home') {
+      const homeDoc = doc?.home || DEFAULT_HOME_PAGE;
+      setSelected('home');
+      setDraft(homeDoc);
+      setBaseline(homeDoc);
+    } else {
+      setSelected(null);
+      setDraft(null);
+      setBaseline(null);
+    }
     setQuery('');
     setStatus('');
     setError('');
@@ -230,8 +250,10 @@ export default function AdminPage() {
       if (!response.ok) throw new Error(data.error || 'The catalog could not be saved.');
       const catalog = catalogFrom(data, nextDoc);
       setDoc(catalog);
-      const saved = nextSlug ? listFor(catalog, kind).find((item) => itemKey(kind, item) === nextSlug) : null;
-      setSelected(saved ? itemKey(kind, saved) : null);
+      const saved = kind === 'home'
+        ? catalog.home
+        : (nextSlug ? listFor(catalog, kind).find((item) => itemKey(kind, item) === nextSlug) : null);
+      setSelected(kind === 'home' ? 'home' : (saved ? itemKey(kind, saved) : null));
       setDraft(saved);
       setBaseline(saved);
       if (data.publish?.status === 'error') setError(data.publish.message);
@@ -251,6 +273,13 @@ export default function AdminPage() {
     let heroSlides = doc.heroSlides || [];
     let categories = doc.categories;
     let products = doc.products;
+    const home = doc.home || DEFAULT_HOME_PAGE;
+
+    if (kind === 'home') {
+      await persist({ home: draft, heroSlides, categories, products }, 'home');
+      return;
+    }
+
     if (kind === 'hero') {
       const record = { ...draft, id: slugify(draft.id || draft.title) };
       if (!record.id) {
@@ -263,7 +292,7 @@ export default function AdminPage() {
       heroSlides = previous
         ? heroSlides.map((item) => (item.id === previous ? record : item))
         : [...heroSlides, record];
-      await persist({ heroSlides, categories, products }, record.id);
+      await persist({ home, heroSlides, categories, products }, record.id);
       return;
     }
     const record = { ...draft, slug: slugify(draft.slug || draft.name) };
@@ -336,7 +365,7 @@ export default function AdminPage() {
         return item;
       });
     }
-    await persist({ heroSlides, categories, products }, record.slug);
+    await persist({ home, heroSlides, categories, products }, record.slug);
   }
 
   async function remove() {
@@ -374,7 +403,7 @@ export default function AdminPage() {
         .filter((item) => item.slug !== draft.slug)
         .map((item) => ({ ...item, related: item.related.filter((link) => link.slug !== draft.slug) }))
       : doc.products;
-    await persist({ heroSlides, categories, products }, null);
+    await persist({ home: doc.home || DEFAULT_HOME_PAGE, heroSlides, categories, products }, null);
   }
 
   async function executeCategoryDeleteWithReassign() {
@@ -387,7 +416,7 @@ export default function AdminPage() {
     setSelected(null);
     setDraft(null);
     setBaseline(null);
-    await persist({ heroSlides: doc.heroSlides, categories, products }, null);
+    await persist({ home: doc.home || DEFAULT_HOME_PAGE, heroSlides: doc.heroSlides, categories, products }, null);
   }
 
   async function executeCategoryDeleteWithCascade() {
@@ -405,7 +434,7 @@ export default function AdminPage() {
     setSelected(null);
     setDraft(null);
     setBaseline(null);
-    await persist({ heroSlides: doc.heroSlides, categories, products }, null);
+    await persist({ home: doc.home || DEFAULT_HOME_PAGE, heroSlides: doc.heroSlides, categories, products }, null);
   }
 
   async function move(slug, direction) {
@@ -417,6 +446,7 @@ export default function AdminPage() {
     const [item] = list.splice(index, 1);
     list.splice(target, 0, item);
     const next = {
+      home: doc.home || DEFAULT_HOME_PAGE,
       heroSlides: kind === 'hero' ? list : doc.heroSlides,
       categories: kind === 'categories' ? list : doc.categories,
       products: kind === 'products' ? list : doc.products,
@@ -535,6 +565,9 @@ export default function AdminPage() {
           </button>
         </div>
         <div className="admin-tabs" role="tablist" aria-label="Catalog">
+          <button type="button" aria-pressed={kind === 'home'} onClick={() => switchKind('home')}>
+            Home Page
+          </button>
           <button type="button" aria-pressed={kind === 'categories'} onClick={() => switchKind('categories')}>
             Categories {doc ? `(${doc.categories.length})` : ''}
           </button>
@@ -545,60 +578,91 @@ export default function AdminPage() {
             Hero {doc ? `(${(doc.heroSlides || []).length})` : ''}
           </button>
         </div>
-        <label className="admin-field">
-          <span className="sr-only">Search {kind}</span>
-          <input
-            value={query}
-            placeholder={kind === 'categories' ? 'Search categories' : kind === 'hero' ? 'Search slides' : 'Search products'}
-            onChange={(event) => setQuery(event.target.value)}
-          />
-        </label>
-        {kind === 'products' && doc ? (
-          <label className="admin-field">
-            <span className="sr-only">Filter by category</span>
-            <select value={categoryFilter} onChange={(event) => setCategoryFilter(event.target.value)}>
-              <option value="">All categories</option>
-              {doc.categories.map((category) => (
-                <option key={category.slug} value={category.slug}>{category.name}</option>
-              ))}
-            </select>
-          </label>
-        ) : null}
-        <button type="button" className="btn btn-dark" onClick={startNew} disabled={!doc || busy}>
-          {kind === 'categories' ? 'New category' : kind === 'hero' ? 'New slide' : 'New product'}
-        </button>
+        {kind === 'home' ? (
+          <div className="admin-card" style={{ padding: '12px 14px', margin: '12px 0 16px' }}>
+            <strong style={{ display: 'block', fontSize: '0.88rem', marginBottom: '4px' }}>Homepage Layout</strong>
+            <p className="admin-note" style={{ margin: 0, fontSize: '0.8rem' }}>
+              Edit hero headings, CTAs, industry showcase, discover gallery, and Google SERP snippet.
+            </p>
+          </div>
+        ) : (
+          <>
+            <label className="admin-field">
+              <span className="sr-only">Search {kind}</span>
+              <input
+                value={query}
+                placeholder={kind === 'categories' ? 'Search categories' : kind === 'hero' ? 'Search slides' : 'Search products'}
+                onChange={(event) => setQuery(event.target.value)}
+              />
+            </label>
+            {kind === 'products' && doc ? (
+              <label className="admin-field">
+                <span className="sr-only">Filter by category</span>
+                <select value={categoryFilter} onChange={(event) => setCategoryFilter(event.target.value)}>
+                  <option value="">All categories</option>
+                  {doc.categories.map((category) => (
+                    <option key={category.slug} value={category.slug}>{category.name}</option>
+                  ))}
+                </select>
+              </label>
+            ) : null}
+            <button type="button" className="btn btn-dark" onClick={startNew} disabled={!doc || busy}>
+              {kind === 'categories' ? 'New category' : kind === 'hero' ? 'New slide' : 'New product'}
+            </button>
+          </>
+        )}
         {!doc && !error ? <p className="admin-note">Opening the catalog…</p> : null}
         <ul className="admin-items">
-          {items.map((item) => {
-            const key = itemKey(kind, item);
-            const fullIndex = collection.findIndex((entry) => itemKey(kind, entry) === key);
-            return (
-              <li key={key}>
-                <button type="button" className={selected === key ? 'is-selected' : undefined} onClick={() => openItem(kind, key)}>
-                  <img src={kind === 'products' ? item.images[0]?.src : item.image} alt="" />
-                  <span>
-                    <strong>{itemName(kind, item)}</strong>
-                    <small>
-                      {kind === 'hero'
-                        ? `Slide ${fullIndex + 1}`
-                        : kind === 'categories'
-                          ? `${doc?.products?.filter((p) => p.category === item.slug).length || 0} products · ${item.faqs.length} ${item.faqs.length === 1 ? 'question' : 'questions'}`
-                          : `${item.faqs.length} ${item.faqs.length === 1 ? 'question' : 'questions'}${kind === 'products' ? ` · ${doc.categories.find((category) => category.slug === item.category)?.name || item.category}` : ''}`}
-                    </small>
-                    {kind === 'products' && item.showOnHome ? (
-                      <span className="admin-badge admin-badge-home">On Home</span>
-                    ) : null}
-                  </span>
-                </button>
-                {filtering ? null : (
-                  <span className="admin-move">
-                    <button type="button" aria-label={`Move ${itemName(kind, item)} up`} onClick={() => move(key, -1)} disabled={busy || fullIndex === 0}>↑</button>
-                    <button type="button" aria-label={`Move ${itemName(kind, item)} down`} onClick={() => move(key, 1)} disabled={busy || fullIndex === collection.length - 1}>↓</button>
-                  </span>
-                )}
-              </li>
-            );
-          })}
+          {kind === 'home' ? (
+            <li>
+              <button
+                type="button"
+                className="is-selected"
+                onClick={() => {
+                  setSelected('home');
+                  setDraft(doc?.home || DEFAULT_HOME_PAGE);
+                  setBaseline(doc?.home || DEFAULT_HOME_PAGE);
+                }}
+              >
+                <img src="/images/hcp-home/hero-fantasy-eyes.webp" alt="Home" />
+                <span>
+                  <strong>Home Page Sections</strong>
+                  <small>Hero · Industries · Discover · SEO</small>
+                </span>
+              </button>
+            </li>
+          ) : (
+            items.map((item) => {
+              const key = itemKey(kind, item);
+              const fullIndex = collection.findIndex((entry) => itemKey(kind, entry) === key);
+              return (
+                <li key={key}>
+                  <button type="button" className={selected === key ? 'is-selected' : undefined} onClick={() => openItem(kind, key)}>
+                    <img src={kind === 'products' ? item.images[0]?.src : item.image} alt="" />
+                    <span>
+                      <strong>{itemName(kind, item)}</strong>
+                      <small>
+                        {kind === 'hero'
+                          ? `Slide ${fullIndex + 1}`
+                          : kind === 'categories'
+                            ? `${doc?.products?.filter((p) => p.category === item.slug).length || 0} products · ${item.faqs.length} ${item.faqs.length === 1 ? 'question' : 'questions'}`
+                            : `${item.faqs.length} ${item.faqs.length === 1 ? 'question' : 'questions'}${kind === 'products' ? ` · ${doc.categories.find((category) => category.slug === item.category)?.name || item.category}` : ''}`}
+                      </small>
+                      {kind === 'products' && item.showOnHome ? (
+                        <span className="admin-badge admin-badge-home">On Home</span>
+                      ) : null}
+                    </span>
+                  </button>
+                  {filtering ? null : (
+                    <span className="admin-move">
+                      <button type="button" aria-label={`Move ${itemName(kind, item)} up`} onClick={() => move(key, -1)} disabled={busy || fullIndex === 0}>↑</button>
+                      <button type="button" aria-label={`Move ${itemName(kind, item)} down`} onClick={() => move(key, 1)} disabled={busy || fullIndex === collection.length - 1}>↓</button>
+                    </span>
+                  )}
+                </li>
+              );
+            })
+          )}
         </ul>
         <Link href="/" className="admin-site-link">View the site</Link>
       </aside>
@@ -627,7 +691,7 @@ export default function AdminPage() {
                 ) : null}
                 <div>
                   <div className="admin-editor-eyebrow-line">
-                    <p className="eyebrow">{kind === 'categories' ? 'Category' : kind === 'hero' ? 'Hero slide' : 'Product'}</p>
+                    <p className="eyebrow">{kind === 'home' ? 'Home Page' : kind === 'categories' ? 'Category' : kind === 'hero' ? 'Hero slide' : 'Product'}</p>
                     {kind === 'products' && draft.category && (
                       <span className="admin-cat-pill">
                         {doc.categories.find((c) => c.slug === draft.category)?.name || draft.category}
@@ -639,11 +703,13 @@ export default function AdminPage() {
                       <span className="admin-clean-pill">✓ Saved</span>
                     )}
                   </div>
-                  <h2>{itemName(kind, draft) === 'Untitled slide' && !draft.title ? 'New slide' : itemName(kind, draft) || (kind === 'categories' ? 'New category' : 'New product')}</h2>
+                  <h2>{kind === 'home' ? 'Homepage Content & Sections' : (itemName(kind, draft) === 'Untitled slide' && !draft.title ? 'New slide' : itemName(kind, draft) || (kind === 'categories' ? 'New category' : 'New product'))}</h2>
                 </div>
               </div>
               <div className="admin-editor-actions">
-                {kind === 'categories' && selected !== 'new' && draft.slug ? (
+                {kind === 'home' ? (
+                  <Link href="/" target="_blank" className="btn btn-ghost">View Live Home</Link>
+                ) : kind === 'categories' && selected !== 'new' && draft.slug ? (
                   <button
                     type="button"
                     className="btn btn-dark"
@@ -655,18 +721,36 @@ export default function AdminPage() {
                 ) : null}
                 {kind === 'hero' && selected !== 'new' ? (
                   <Link href="/" target="_blank" className="btn btn-ghost">View</Link>
-                ) : selected !== 'new' && draft.slug ? (
+                ) : kind !== 'home' && selected !== 'new' && draft.slug ? (
                   <Link href={`/${draft.slug}`} target="_blank" className="btn btn-ghost">View</Link>
                 ) : null}
-                <button type="button" className="btn btn-ghost" onClick={remove} disabled={busy}>
-                  {selected === 'new' ? 'Cancel' : 'Delete'}
-                </button>
+                {kind !== 'home' && (
+                  <button type="button" className="btn btn-ghost" onClick={remove} disabled={busy}>
+                    {selected === 'new' ? 'Cancel' : 'Delete'}
+                  </button>
+                )}
                 <button type="submit" className="btn btn-gold" disabled={busy || !dirty}>
                   {busy ? 'Publishing…' : 'Save & Publish'}
                 </button>
               </div>
             </header>
-            {kind === 'categories' ? (
+            {kind === 'home' ? (
+              <HomePageForm
+                draft={draft}
+                onChange={(next) => {
+                  setDraft(next);
+                  setStatus('');
+                }}
+                upload={async (file) => {
+                  try {
+                    return await upload(file);
+                  } catch (uploadError) {
+                    setError(uploadError.message);
+                    throw uploadError;
+                  }
+                }}
+              />
+            ) : kind === 'categories' ? (
               <CategoryForm
                 draft={draft}
                 productsCount={doc?.products?.filter((p) => p.category === draft.slug).length || 0}

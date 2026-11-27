@@ -65,7 +65,9 @@ export function catalogChanges(previous, next) {
     listingChanged = true;
   }
 
-  const homeChanged = JSON.stringify(previous?.heroSlides || []) !== JSON.stringify(next?.heroSlides || []);
+  const homeChanged =
+    JSON.stringify(previous?.heroSlides || []) !== JSON.stringify(next?.heroSlides || []) ||
+    JSON.stringify(previous?.home || {}) !== JSON.stringify(next?.home || {});
 
   return {
     products: [...products],

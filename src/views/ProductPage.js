@@ -217,6 +217,10 @@ function ProductInfoPanel({ product, seoGuide }) {
                     <dd>{commerce.sampling}</dd>
                   </div>
                 ) : null}
+                <div>
+                  <dt>Minimum order (MOQ)</dt>
+                  <dd>{product.moq || '1,000 pcs'}</dd>
+                </div>
               </dl>
 
               {product.structure ? (
@@ -307,7 +311,7 @@ export default function ProductPage() {
     : [];
 
   usePageMeta({
-    title: product ? `${product.name} | Custom Packaging | Box Studio` : 'Box not found | Box Studio',
+    title: product ? (product.metaTitle || `${product.name} | Custom Packaging | Box Studio`) : 'Box not found | Box Studio',
     description: product ? product.meta || product.short : 'This box is not available.',
     path: product ? `/${product.slug}` : '/custom-boxes',
     image: product ? absoluteUrl(product.images[0].src) : undefined,
