@@ -1,7 +1,7 @@
 'use client';
 
 import Link from 'next/link';
-import { absoluteUrl, configuredContact } from '../data/site';
+import { absoluteUrl, configuredContact, site } from '../data/site';
 import { usePageMeta } from '../hooks/usePageMeta';
 import styles from './AboutPage.module.css';
 
@@ -27,15 +27,15 @@ function TextLink({ href, children }) {
 const stats = [
   { value: 'CUSTOM', label: 'Packaging formats' },
   { value: 'MULTI', label: 'Industry collections' },
-  { value: 'US', label: 'Production focus' },
-  { value: 'QUOTE', label: 'Ready project flow' },
+  { value: 'QUOTE', label: 'Project-led quoting' },
+  { value: '1,000', label: 'pcs MOQ' },
 ];
 
 export default function AboutPage() {
   usePageMeta({
     title: 'About Box Studio | Custom Packaging',
     description:
-      'Box Studio designs and manufactures custom printed packaging for cosmetics, skincare, fragrance, healthcare, food and retail brands.',
+      'Box Studio designs and manufactures custom printed packaging for cosmetics, skincare, fragrance, healthcare, food and retail brands. Production is based in Karachi, with service for United States brands.',
     path: '/about',
     image: absoluteUrl('/images/about/beauty-collection.webp'),
   });
@@ -63,8 +63,8 @@ export default function AboutPage() {
             <p>
               Folding cartons, rigid boxes, kraft formats, sleeves, trays, gift sets
               and related print finishing are developed around your dimensions,
-              materials and brand presentation — then confirmed for production in the
-              United States.
+              materials and brand presentation — then quoted for manufacture and
+              shipping to your delivery address.
             </p>
           </div>
         </div>
@@ -90,17 +90,30 @@ export default function AboutPage() {
 
       <section className={styles.proof} aria-labelledby="about-contact-heading">
         <div className={styles.proofInner}>
-          <h2 id="about-contact-heading">Contact &amp; production focus</h2>
+          <h2 id="about-contact-heading">Company details &amp; contact</h2>
           <p>
-            Box Studio manufactures custom printed packaging for brands across the United
-            States. Reach the team with your product fill, dimensions and artwork notes —
-            we will confirm structure, finishes and a production quote.
+            Box Studio ({site.name}) is a custom packaging company serving brands in the{' '}
+            {site.areaServed}. Manufacturing and production operations are based in{' '}
+            <strong>{site.productionLocation}</strong>
+            {site.usPresence ? (
+              <>
+                , with a United States market presence in <strong>{site.usPresence}</strong>
+              </>
+            ) : null}
+            . Country-of-origin details for each order are confirmed on production documents and
+            shipping paperwork.
           </p>
           <dl className={styles.proofList}>
             {contact.address ? (
               <div>
-                <dt>Location</dt>
-                <dd>{contact.address}</dd>
+                <dt>Primary location</dt>
+                <dd>{site.productionLocation}</dd>
+              </div>
+            ) : null}
+            {site.usPresence ? (
+              <div>
+                <dt>US presence</dt>
+                <dd>{site.usPresence}</dd>
               </div>
             ) : null}
             {contact.email ? (
@@ -120,6 +133,21 @@ export default function AboutPage() {
               </div>
             ) : null}
           </dl>
+          <p>
+            Follow Box Studio on{' '}
+            <a href={site.social.linkedin} target="_blank" rel="noopener noreferrer">
+              LinkedIn
+            </a>
+            ,{' '}
+            <a href={site.social.instagram} target="_blank" rel="noopener noreferrer">
+              Instagram
+            </a>
+            , and{' '}
+            <a href={site.social.facebook} target="_blank" rel="noopener noreferrer">
+              Facebook
+            </a>
+            .
+          </p>
         </div>
       </section>
 
@@ -147,13 +175,15 @@ export default function AboutPage() {
 
         <section className={styles.feature}>
           <div className={styles.featureCopy}>
-            <h2>Where does Box Studio manufacture packaging?</h2>
+            <h2>Where is packaging produced and shipped?</h2>
             <p>
-              Box Studio’s production focus is built for reliable custom packaging
-              in the United States — efficient runs, competitive lead times and
-              packaging sized to your product, brand and shelf goals.
+              Custom packaging is manufactured in {site.productionLocation}. Finished
+              orders are packed and shipped to the delivery address confirmed on your
+              quote. Lead times, freight method, and country-of-origin marking are
+              confirmed before production starts — including any sample or proof step
+              you request.
             </p>
-            <TextLink href="/quote">Find out more</TextLink>
+            <TextLink href="/quote">Request a packaging quote</TextLink>
           </div>
           <div className={styles.featureMedia}>
             <img
@@ -172,7 +202,7 @@ export default function AboutPage() {
               The Box Studio portfolio includes folding cartons, rigid boxes, kraft
               packaging, sleeves and trays, gift formats and related print finishes.
               Brands choose a structure, confirm dimensions and materials, then
-              request a quote for production.
+              request a quote for production. Minimum order quantity is 1,000 pcs.
             </p>
             <TextLink href="/custom-boxes">Browse custom boxes</TextLink>
           </div>

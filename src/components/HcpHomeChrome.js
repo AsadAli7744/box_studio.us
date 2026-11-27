@@ -321,13 +321,7 @@ export function HcpHomeFooter() {
           <Link href="/quote">Request a Quote</Link>
           <Link href="/privacy">Privacy Policy</Link>
           <Link href="/refund-shipping-policy">Refund &amp; Shipping Policy</Link>
-          <a
-            href={`https://mail.google.com/mail/?view=cm&fs=1&to=${encodeURIComponent(site.email)}`}
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Email Us
-          </a>
+          <a href={`mailto:${site.email}`}>Email Us</a>
           <a href="tel:+12254835392">Call {site.phone}</a>
           <Link href="/healthcare-boxes">Healthcare Boxes</Link>
           <Link href="/restaurant-food-boxes">Food Boxes</Link>

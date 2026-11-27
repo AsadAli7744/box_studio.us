@@ -136,6 +136,32 @@ export default function AdminQuotes({ headers, busy, setBusy, setError, setStatu
                 <dt>Quantity</dt>
                 <dd>{detail.quantity ? `${detail.quantity} pcs` : '—'}</dd>
               </div>
+              <div>
+                <dt>Product type</dt>
+                <dd>{detail.productType || detail.productName || '—'}</dd>
+              </div>
+              <div>
+                <dt>Size</dt>
+                <dd>
+                  {detail.dimensionsUnsure
+                    ? 'Not sure yet'
+                    : detail.length || detail.width || detail.height
+                      ? `${detail.length || '—'} × ${detail.width || '—'} × ${detail.height || '—'} ${detail.unit || 'mm'}`
+                      : '—'}
+                </dd>
+              </div>
+              <div>
+                <dt>Board / material</dt>
+                <dd>{detail.materialName || detail.materialId || '—'}</dd>
+              </div>
+              <div>
+                <dt>Finish</dt>
+                <dd>{detail.finishNames || detail.finishIds || '—'}</dd>
+              </div>
+              <div>
+                <dt>Sample requested</dt>
+                <dd>{detail.sampleRequest ? 'Yes' : 'No'}</dd>
+              </div>
             </dl>
 
             <div className="admin-block">

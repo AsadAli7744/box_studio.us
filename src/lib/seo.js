@@ -92,6 +92,15 @@ export function organizationJsonLd() {
     description: site.summary || site.description,
     areaServed: site.areaServed || 'United States',
     knowsAbout: [...(site.packagingCapabilities || []), ...(site.industriesServed || [])],
+    ...(site.productionLocation
+      ? {
+          address: {
+            '@type': 'PostalAddress',
+            addressLocality: site.productionLocation,
+            addressCountry: 'PK',
+          },
+        }
+      : {}),
     ...(sameAs.length ? { sameAs } : {}),
     ...(site.email || site.phone
       ? {

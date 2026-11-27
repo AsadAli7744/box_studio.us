@@ -8,7 +8,17 @@ const ALLOWED_TYPES = {
   'image/jpeg': true,
   'image/png': true,
   'image/webp': true,
+  'application/pdf': true,
+  'application/postscript': true,
+  'application/illustrator': true,
 };
+
+function isAllowedArtwork(file) {
+  if (!file || typeof file === 'string') return false;
+  if (ALLOWED_TYPES[file.type]) return true;
+  const name = String(file.name || '').toLowerCase();
+  return name.endsWith('.ai') || name.endsWith('.pdf');
+}
 
 function fresh(body, status = 200) {
   return Response.json(body, {
@@ -46,6 +56,17 @@ export async function POST(request) {
     const notes = String(form.get('notes') || '').trim();
     const quantityRaw = String(form.get('quantity') || '').trim();
     const quantity = Number(quantityRaw);
+    const productType = String(form.get('productType') || '').trim();
+    const length = String(form.get('length') || '').trim();
+    const width = String(form.get('width') || '').trim();
+    const height = String(form.get('height') || '').trim();
+    const unit = String(form.get('unit') || 'mm').trim();
+    const dimensionsUnsure = String(form.get('dimensionsUnsure') || '') === '1';
+    const materialId = String(form.get('materialId') || '').trim();
+    const materialName = String(form.get('materialName') || '').trim();
+    const finishIds = String(form.get('finishIds') || '').trim();
+    const finishNames = String(form.get('finishNames') || '').trim();
+    const sampleRequest = String(form.get('sampleRequest') || '') === '1';
     const productSlug = String(form.get('productSlug') || '').trim();
     const productName = String(form.get('productName') || '').trim();
     const summary = String(form.get('summary') || '').trim();
@@ -66,20 +87,40 @@ export async function POST(request) {
     if (!quantityRaw || !Number.isInteger(quantity) || quantity < 1000) {
       return fresh({ error: 'Enter a quantity of at least 1,000 pcs.' }, 400);
     }
+    if (!productType && !productName) {
+      return fresh({ error: 'Select a product type.' }, 400);
+    }
+    if (!materialId && !materialName) {
+      return fresh({ error: 'Select a board or material.' }, 400);
+    }
+    if (!finishIds && !finishNames) {
+      return fresh({ error: 'Select at least one finish.' }, 400);
+    }
+    if (!dimensionsUnsure && (!length || !width || !height)) {
+      return fresh({ error: 'Enter internal size, or mark that you are unsure.' }, 400);
+    }
 
     let artworkPayload = null;
     if (artwork && typeof artwork !== 'string') {
-      if (!ALLOWED_TYPES[artwork.type]) {
-        return fresh({ error: 'Artwork must be a JPG, PNG, or WEBP file.' }, 400);
+      if (!isAllowedArtwork(artwork)) {
+        return fresh({ error: 'Artwork must be a JPG, PNG, WEBP, PDF, or AI file.' }, 400);
       }
       const buffer = Buffer.from(await artwork.arrayBuffer());
       if (!buffer.length || buffer.length > 8 * 1024 * 1024) {
         return fresh({ error: 'Artwork must be under 8 MB.' }, 400);
       }
+      const lowerName = String(artwork.name || '').toLowerCase();
+      const contentType =
+        artwork.type ||
+        (lowerName.endsWith('.ai')
+          ? 'application/postscript'
+          : lowerName.endsWith('.pdf')
+            ? 'application/pdf'
+            : 'application/octet-stream');
       artworkPayload = {
         buffer,
         name: artwork.name || 'artwork',
-        contentType: artwork.type,
+        contentType,
       };
     }
 
@@ -89,6 +130,17 @@ export async function POST(request) {
       phone,
       company,
       quantity,
+      productType,
+      length,
+      width,
+      height,
+      unit,
+      dimensionsUnsure,
+      materialId,
+      materialName,
+      finishIds,
+      finishNames,
+      sampleRequest,
       notes,
       productSlug,
       productName,

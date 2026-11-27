@@ -4,7 +4,7 @@ import { absoluteSeoUrl, buildPageMetadata } from '../../src/lib/seo';
 export const metadata = buildPageMetadata({
   title: 'Request a Custom Packaging Quote | Box Studio',
   description:
-    'Request a quote for custom packaging, printed folding cartons, and product boxes. Share dimensions, materials and artwork guidance for a production-ready estimate.',
+    'Request a custom packaging quote from Box Studio. Share product type, size, board, finish, quantity (MOQ 1,000 pcs), and artwork. Typical timing is confirmed after proof approval.',
   path: '/quote',
   image: absoluteSeoUrl('/images/hero-smooth.png'),
 });

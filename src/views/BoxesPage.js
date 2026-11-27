@@ -127,16 +127,16 @@ export default function BoxesPage({
   return (
     <div className="catalog-page">
       <header className="page-intro">
-        <p className="eyebrow">{category ? category.name : 'Shop By Industry'}</p>
+        <p className="eyebrow">{category ? 'Category' : industry ? 'Industry' : 'Catalog'}</p>
         <h1>{title}</h1>
         <p>
           {query
             ? `Boxes matching “${query}”.`
             : category
-              ? category.intro
+              ? `${category.intro} Minimum order quantity (MOQ) is 1,000 pcs.`
               : industry
-                ? `Browse every existing category merged under ${industry.name}.`
-                : 'Each box is named for the product it holds. The photo shows that product in the box.'}
+                ? `Browse every existing category merged under ${industry.name}. Minimum order quantity (MOQ) is 1,000 pcs.`
+                : 'Each box is named for the product it holds. The photo shows that product in the box. Minimum order quantity (MOQ) is 1,000 pcs.'}
         </p>
       </header>
       <div className="shop-layout">

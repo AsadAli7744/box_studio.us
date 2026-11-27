@@ -46,6 +46,9 @@ export default function RefundShippingPolicyPage() {
             <h2>Key points</h2>
             <ul>
               <li>
+                <strong>Proof approval</strong> is required before production starts.
+              </li>
+              <li>
                 <strong>No refund</strong> once product production has begun.
               </li>
               <li>
@@ -60,6 +63,19 @@ export default function RefundShippingPolicyPage() {
           </section>
 
           <section className={styles.section}>
+            <h2>Proof approval before production</h2>
+            <p>
+              Before manufacturing starts, Box Studio provides an artwork/production proof (digital
+              and/or structural, as agreed on the quote). Production does not begin until you
+              approve that proof in writing (email is enough).
+            </p>
+            <p>
+              Changes after proof approval may require a revised quote. Once you approve the proof
+              and production begins, the order falls under the non-refundable production rule below.
+            </p>
+          </section>
+
+          <section className={styles.section}>
             <h2>No refund after production begins</h2>
             <p>
               Custom packaging is made to your approved size, structure, artwork, and finishing
@@ -68,8 +84,9 @@ export default function RefundShippingPolicyPage() {
             </p>
             <p>
               That means Box Studio will not refund, reverse, or credit the payment for cancelled,
-              delayed, or changed orders after manufacturing has started. Please review artwork,
-              dimensions, quantity, and finishes carefully before approving production.
+              delayed, or changed orders after manufacturing has started. Review artwork,
+              dimensions, quantity, and finishes carefully at the proof stage before approving
+              production.
             </p>
           </section>
 

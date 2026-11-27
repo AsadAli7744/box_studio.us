@@ -32,10 +32,13 @@ export const site = {
   orderingProcess:
     'Review packaging options on the website, open a product or category page, then submit a quote request with product details, dimensions, and artwork guidance.',
   areaServed: 'United States',
-  // Add verified details here. Empty values are omitted from the visible site.
+  // Verified operating details — keep aligned with legal/commercial records.
+  productionLocation: 'Karachi, Pakistan',
+  usPresence: 'Los Angeles, United States',
+  foundingYear: '',
   email: 'info@boxstudio.us',
   phone: '+1 225-483-5392',
-  address: 'United States',
+  address: 'Karachi, Pakistan · Serving brands in the United States',
   social: {
     instagram: 'https://www.instagram.com/boxstudio.us',
     facebook: 'https://www.facebook.com/share/1C7TFxTZs1/',
